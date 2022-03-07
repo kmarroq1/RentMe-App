@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AddMemberUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddMemberUserControl.Designer.cs">
+      <DependentUpon>AddMemberUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\AddPersonUserControl.cs">
@@ -60,6 +66,9 @@
     <Compile Include="UserControls\AddPersonUserControl.Designer.cs">
       <DependentUpon>AddPersonUserControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddMemberUserControl.resx">
+      <DependentUpon>AddMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
