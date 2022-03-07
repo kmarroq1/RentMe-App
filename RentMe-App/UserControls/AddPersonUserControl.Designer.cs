@@ -555,7 +555,7 @@ namespace RentMe_App.UserControls
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel PrimaryFlowLayoutPanel;
-        private System.Windows.Forms.Label HeaderLabel;
+        protected System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.TableLayoutPanel FirstNameFormGroup;
         private System.Windows.Forms.Label FirstNameLabel;
         private System.Windows.Forms.TextBox FirstNameTextBox;
@@ -583,9 +583,9 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TableLayoutPanel BirthdayFormGroup;
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
-        private System.Windows.Forms.TableLayoutPanel FormTableLayoutPanel;
+        protected System.Windows.Forms.TableLayoutPanel FormTableLayoutPanel;
         private System.Windows.Forms.Label ErrorMessage;
-        private System.Windows.Forms.FlowLayoutPanel ControlsFlowLayoutPanel;
+        protected System.Windows.Forms.FlowLayoutPanel ControlsFlowLayoutPanel;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ClearButton;
     }

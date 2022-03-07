@@ -29,13 +29,31 @@ namespace RentMe_App
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.addEmployeeUserControl1 = new RentMe_App.UserControls.AddEmployeeUserControl();
+            this.SuspendLayout();
+            // 
+            // addEmployeeUserControl1
+            // 
+            this.addEmployeeUserControl1.Location = new System.Drawing.Point(12, 12);
+            this.addEmployeeUserControl1.Name = "addEmployeeUserControl1";
+            this.addEmployeeUserControl1.Size = new System.Drawing.Size(371, 427);
+            this.addEmployeeUserControl1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 509);
+            this.Controls.Add(this.addEmployeeUserControl1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private UserControls.AddEmployeeUserControl addEmployeeUserControl1;
     }
 }
 
