@@ -31,7 +31,7 @@ namespace RentMe_App.UserControls
         {
             this.PrimaryFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.HeaderLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.FormTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.FirstNameFormGroup = new System.Windows.Forms.TableLayoutPanel();
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@ namespace RentMe_App.UserControls
             this.AddButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.PrimaryFlowLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.FormTableLayoutPanel.SuspendLayout();
             this.FirstNameFormGroup.SuspendLayout();
             this.LastNameFormGroup.SuspendLayout();
             this.BirthdayFormGroup.SuspendLayout();
@@ -82,7 +82,7 @@ namespace RentMe_App.UserControls
             this.PrimaryFlowLayoutPanel.AutoSize = true;
             this.PrimaryFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PrimaryFlowLayoutPanel.Controls.Add(this.HeaderLabel);
-            this.PrimaryFlowLayoutPanel.Controls.Add(this.tableLayoutPanel1);
+            this.PrimaryFlowLayoutPanel.Controls.Add(this.FormTableLayoutPanel);
             this.PrimaryFlowLayoutPanel.Controls.Add(this.ErrorMessage);
             this.PrimaryFlowLayoutPanel.Controls.Add(this.ControlsFlowLayoutPanel);
             this.PrimaryFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -102,34 +102,34 @@ namespace RentMe_App.UserControls
             this.HeaderLabel.TabIndex = 0;
             this.HeaderLabel.Text = "Add Person";
             // 
-            // tableLayoutPanel1
+            // FormTableLayoutPanel
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.FirstNameFormGroup, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LastNameFormGroup, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.BirthdayFormGroup, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.PhoneFormGroup, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.ZipFormGroup, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.StateFormGroup, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.CityFormGroup, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.Address2FormGroup, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.Address1FormGroup, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 23);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(324, 257);
-            this.tableLayoutPanel1.TabIndex = 11;
+            this.FormTableLayoutPanel.AutoSize = true;
+            this.FormTableLayoutPanel.ColumnCount = 2;
+            this.FormTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.FormTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.FormTableLayoutPanel.Controls.Add(this.FirstNameFormGroup, 0, 0);
+            this.FormTableLayoutPanel.Controls.Add(this.LastNameFormGroup, 0, 1);
+            this.FormTableLayoutPanel.Controls.Add(this.BirthdayFormGroup, 0, 7);
+            this.FormTableLayoutPanel.Controls.Add(this.PhoneFormGroup, 0, 6);
+            this.FormTableLayoutPanel.Controls.Add(this.ZipFormGroup, 0, 5);
+            this.FormTableLayoutPanel.Controls.Add(this.StateFormGroup, 1, 4);
+            this.FormTableLayoutPanel.Controls.Add(this.CityFormGroup, 0, 4);
+            this.FormTableLayoutPanel.Controls.Add(this.Address2FormGroup, 0, 3);
+            this.FormTableLayoutPanel.Controls.Add(this.Address1FormGroup, 0, 2);
+            this.FormTableLayoutPanel.Location = new System.Drawing.Point(3, 23);
+            this.FormTableLayoutPanel.Name = "FormTableLayoutPanel";
+            this.FormTableLayoutPanel.RowCount = 8;
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.Size = new System.Drawing.Size(324, 257);
+            this.FormTableLayoutPanel.TabIndex = 11;
             // 
             // FirstNameFormGroup
             // 
@@ -526,8 +526,8 @@ namespace RentMe_App.UserControls
             this.Size = new System.Drawing.Size(330, 380);
             this.PrimaryFlowLayoutPanel.ResumeLayout(false);
             this.PrimaryFlowLayoutPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.FormTableLayoutPanel.ResumeLayout(false);
+            this.FormTableLayoutPanel.PerformLayout();
             this.FirstNameFormGroup.ResumeLayout(false);
             this.FirstNameFormGroup.PerformLayout();
             this.LastNameFormGroup.ResumeLayout(false);
@@ -583,7 +583,7 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TableLayoutPanel BirthdayFormGroup;
         private System.Windows.Forms.Label BirthdayLabel;
         private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel FormTableLayoutPanel;
         private System.Windows.Forms.Label ErrorMessage;
         private System.Windows.Forms.FlowLayoutPanel ControlsFlowLayoutPanel;
         private System.Windows.Forms.Button AddButton;
