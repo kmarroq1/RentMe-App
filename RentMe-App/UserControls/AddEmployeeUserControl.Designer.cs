@@ -1,7 +1,7 @@
 ﻿
 namespace RentMe_App.UserControls
 {
-    partial class AddPersonUserControl
+    partial class AddEmployeeUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -63,6 +63,13 @@ namespace RentMe_App.UserControls
             this.ControlsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.AddButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.PasswordLabel = new System.Windows.Forms.Label();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ConfirmPasswordLabel = new System.Windows.Forms.Label();
+            this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.PrimaryFlowLayoutPanel.SuspendLayout();
             this.FormTableLayoutPanel.SuspendLayout();
             this.FirstNameFormGroup.SuspendLayout();
@@ -75,6 +82,8 @@ namespace RentMe_App.UserControls
             this.Address2FormGroup.SuspendLayout();
             this.Address1FormGroup.SuspendLayout();
             this.ControlsFlowLayoutPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrimaryFlowLayoutPanel
@@ -89,7 +98,7 @@ namespace RentMe_App.UserControls
             this.PrimaryFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PrimaryFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.PrimaryFlowLayoutPanel.Name = "PrimaryFlowLayoutPanel";
-            this.PrimaryFlowLayoutPanel.Size = new System.Drawing.Size(330, 380);
+            this.PrimaryFlowLayoutPanel.Size = new System.Drawing.Size(335, 400);
             this.PrimaryFlowLayoutPanel.TabIndex = 0;
             // 
             // HeaderLabel
@@ -108,6 +117,7 @@ namespace RentMe_App.UserControls
             this.FormTableLayoutPanel.ColumnCount = 2;
             this.FormTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.FormTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.FormTableLayoutPanel.Controls.Add(this.tableLayoutPanel2, 0, 9);
             this.FormTableLayoutPanel.Controls.Add(this.FirstNameFormGroup, 0, 0);
             this.FormTableLayoutPanel.Controls.Add(this.LastNameFormGroup, 0, 1);
             this.FormTableLayoutPanel.Controls.Add(this.BirthdayFormGroup, 0, 7);
@@ -117,9 +127,10 @@ namespace RentMe_App.UserControls
             this.FormTableLayoutPanel.Controls.Add(this.CityFormGroup, 0, 4);
             this.FormTableLayoutPanel.Controls.Add(this.Address2FormGroup, 0, 3);
             this.FormTableLayoutPanel.Controls.Add(this.Address1FormGroup, 0, 2);
+            this.FormTableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 8);
             this.FormTableLayoutPanel.Location = new System.Drawing.Point(3, 23);
             this.FormTableLayoutPanel.Name = "FormTableLayoutPanel";
-            this.FormTableLayoutPanel.RowCount = 8;
+            this.FormTableLayoutPanel.RowCount = 10;
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -128,7 +139,9 @@ namespace RentMe_App.UserControls
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.FormTableLayoutPanel.Size = new System.Drawing.Size(324, 257);
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.FormTableLayoutPanel.Size = new System.Drawing.Size(324, 321);
             this.FormTableLayoutPanel.TabIndex = 11;
             // 
             // FirstNameFormGroup
@@ -481,7 +494,7 @@ namespace RentMe_App.UserControls
             this.ErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ErrorMessage.AutoSize = true;
             this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessage.Location = new System.Drawing.Point(127, 283);
+            this.ErrorMessage.Location = new System.Drawing.Point(127, 347);
             this.ErrorMessage.Name = "ErrorMessage";
             this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
             this.ErrorMessage.TabIndex = 12;
@@ -494,9 +507,10 @@ namespace RentMe_App.UserControls
             this.ControlsFlowLayoutPanel.AutoSize = true;
             this.ControlsFlowLayoutPanel.Controls.Add(this.AddButton);
             this.ControlsFlowLayoutPanel.Controls.Add(this.ClearButton);
-            this.ControlsFlowLayoutPanel.Location = new System.Drawing.Point(84, 299);
+            this.ControlsFlowLayoutPanel.Controls.Add(this.CloseButton);
+            this.ControlsFlowLayoutPanel.Location = new System.Drawing.Point(43, 363);
             this.ControlsFlowLayoutPanel.Name = "ControlsFlowLayoutPanel";
-            this.ControlsFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
+            this.ControlsFlowLayoutPanel.Size = new System.Drawing.Size(243, 29);
             this.ControlsFlowLayoutPanel.TabIndex = 13;
             // 
             // AddButton
@@ -517,13 +531,88 @@ namespace RentMe_App.UserControls
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             // 
-            // AddPersonUserControl
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.PasswordLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.PasswordTextBox, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 260);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(196, 26);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // PasswordLabel
+            // 
+            this.PasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.Location = new System.Drawing.Point(42, 6);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.PasswordLabel.TabIndex = 0;
+            this.PasswordLabel.Text = "Password";
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.Location = new System.Drawing.Point(101, 3);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
+            this.PasswordTextBox.Size = new System.Drawing.Size(92, 20);
+            this.PasswordTextBox.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.ConfirmPasswordLabel, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ConfirmPasswordTextBox, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 292);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(196, 26);
+            this.tableLayoutPanel2.TabIndex = 11;
+            // 
+            // ConfirmPasswordLabel
+            // 
+            this.ConfirmPasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ConfirmPasswordLabel.AutoSize = true;
+            this.ConfirmPasswordLabel.Location = new System.Drawing.Point(4, 6);
+            this.ConfirmPasswordLabel.Name = "ConfirmPasswordLabel";
+            this.ConfirmPasswordLabel.Size = new System.Drawing.Size(91, 13);
+            this.ConfirmPasswordLabel.TabIndex = 0;
+            this.ConfirmPasswordLabel.Text = "Confirm Password";
+            // 
+            // ConfirmPasswordTextBox
+            // 
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(101, 3);
+            this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
+            this.ConfirmPasswordTextBox.PasswordChar = '*';
+            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(92, 20);
+            this.ConfirmPasswordTextBox.TabIndex = 1;
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(165, 3);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.TabIndex = 2;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            // 
+            // AddEmployeeUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PrimaryFlowLayoutPanel);
-            this.Name = "AddPersonUserControl";
-            this.Size = new System.Drawing.Size(330, 380);
+            this.Name = "AddEmployeeUserControl";
+            this.Size = new System.Drawing.Size(335, 400);
             this.PrimaryFlowLayoutPanel.ResumeLayout(false);
             this.PrimaryFlowLayoutPanel.PerformLayout();
             this.FormTableLayoutPanel.ResumeLayout(false);
@@ -547,6 +636,10 @@ namespace RentMe_App.UserControls
             this.Address1FormGroup.ResumeLayout(false);
             this.Address1FormGroup.PerformLayout();
             this.ControlsFlowLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,5 +681,12 @@ namespace RentMe_App.UserControls
         protected System.Windows.Forms.FlowLayoutPanel ControlsFlowLayoutPanel;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label ConfirmPasswordLabel;
+        private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label PasswordLabel;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.Button CloseButton;
     }
 }
