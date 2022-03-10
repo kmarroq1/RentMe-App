@@ -1,11 +1,18 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RentMe_App.UserControls
 {
-    public partial class AddEmployeeUserControl : AddPersonUserControl
+    public partial class AddEmployeeUserControl : UserControl
     {
-        public AddEmployeeUserControl() : base()
+        public AddEmployeeUserControl()
         {
             InitializeComponent();
         }
