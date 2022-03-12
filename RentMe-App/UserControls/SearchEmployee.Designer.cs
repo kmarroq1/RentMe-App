@@ -29,21 +29,21 @@ namespace RentMe_App.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
+            this.fNameTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.lNameLabel = new System.Windows.Forms.Label();
+            this.lNameTextBox = new System.Windows.Forms.TextBox();
+            this.fNameLabel = new System.Windows.Forms.Label();
+            this.employeeIDTextBox = new System.Windows.Forms.TextBox();
+            this.searchEmployeeLabel = new System.Windows.Forms.Label();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.AddNewButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,87 +51,86 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label6
+            // errorMsgLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(233, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
+            this.errorMsgLabel.AutoSize = true;
+            this.errorMsgLabel.Location = new System.Drawing.Point(233, 0);
+            this.errorMsgLabel.Name = "errorMsgLabel";
+            this.errorMsgLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorMsgLabel.TabIndex = 5;
             // 
-            // textBox1
+            // fNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(92, 20);
-            this.textBox1.TabIndex = 7;
+            this.fNameTextBox.Location = new System.Drawing.Point(101, 28);
+            this.fNameTextBox.Name = "fNameTextBox";
+            this.fNameTextBox.Size = new System.Drawing.Size(92, 20);
+            this.fNameTextBox.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(199, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.label4.Text = "Employee ID";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(395, 54);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.label5.Text = "Phone";
             // 
-            // label3
+            // lNameLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.lNameLabel.AutoSize = true;
+            this.lNameLabel.Location = new System.Drawing.Point(3, 54);
+            this.lNameLabel.Name = "lNameLabel";
+            this.lNameLabel.Size = new System.Drawing.Size(58, 13);
+            this.lNameLabel.TabIndex = 2;
+            this.lNameLabel.Text = "Last Name";
             // 
-            // textBox2
+            // lNameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(92, 20);
-            this.textBox2.TabIndex = 8;
+            this.lNameTextBox.Location = new System.Drawing.Point(101, 57);
+            this.lNameTextBox.Name = "lNameTextBox";
+            this.lNameTextBox.Size = new System.Drawing.Size(92, 20);
+            this.lNameTextBox.TabIndex = 8;
             // 
-            // label2
+            // fNameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.fNameLabel.AutoSize = true;
+            this.fNameLabel.Location = new System.Drawing.Point(3, 25);
+            this.fNameLabel.Name = "fNameLabel";
+            this.fNameLabel.Size = new System.Drawing.Size(57, 13);
+            this.fNameLabel.TabIndex = 1;
+            this.fNameLabel.Text = "First Name";
             // 
-            // textBox3
+            // employeeIDTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(297, 57);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(92, 20);
-            this.textBox3.TabIndex = 9;
+            this.employeeIDTextBox.Location = new System.Drawing.Point(297, 57);
+            this.employeeIDTextBox.Name = "employeeIDTextBox";
+            this.employeeIDTextBox.Size = new System.Drawing.Size(92, 20);
+            this.employeeIDTextBox.TabIndex = 9;
             // 
-            // label1
+            // searchEmployeeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.searchEmployeeLabel.AutoSize = true;
+            this.searchEmployeeLabel.Location = new System.Drawing.Point(3, 0);
+            this.searchEmployeeLabel.Name = "searchEmployeeLabel";
+            this.searchEmployeeLabel.Size = new System.Drawing.Size(90, 13);
+            this.searchEmployeeLabel.TabIndex = 0;
+            this.searchEmployeeLabel.Text = "Search Employee";
             // 
-            // textBox4
+            // phoneTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(493, 57);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(92, 20);
-            this.textBox4.TabIndex = 10;
+            this.phoneTextBox.Location = new System.Drawing.Point(493, 57);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(92, 20);
+            this.phoneTextBox.TabIndex = 10;
             // 
             // tableLayoutPanel1
             // 
@@ -143,17 +142,17 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 6, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.phoneTextBox, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.searchEmployeeLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SearchButton, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ClearButton, 6, 2);
+            this.tableLayoutPanel1.Controls.Add(this.employeeIDTextBox, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.fNameLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lNameTextBox, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lNameLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label5, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.fNameTextBox, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -163,41 +162,45 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.Size = new System.Drawing.Size(691, 87);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // button1
+            // SearchButton
             // 
-            this.button1.Location = new System.Drawing.Point(591, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SearchButton.Location = new System.Drawing.Point(591, 28);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 7;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // button2
+            // ClearButton
             // 
-            this.button2.Location = new System.Drawing.Point(591, 57);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ClearButton.Location = new System.Drawing.Point(591, 57);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.TabIndex = 8;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // button3
+            // EditButton
             // 
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 22);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.EditButton.Location = new System.Drawing.Point(3, 3);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(75, 22);
+            this.EditButton.TabIndex = 9;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // button4
+            // AddNewButton
             // 
-            this.button4.Location = new System.Drawing.Point(463, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 22);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.AddNewButton.Location = new System.Drawing.Point(463, 3);
+            this.AddNewButton.Name = "AddNewButton";
+            this.AddNewButton.Size = new System.Drawing.Size(75, 22);
+            this.AddNewButton.TabIndex = 10;
+            this.AddNewButton.Text = "Add New";
+            this.AddNewButton.UseVisualStyleBackColor = true;
+            this.AddNewButton.Click += new System.EventHandler(this.AddNewButton_Click);
             // 
             // dataGridView1
             // 
@@ -213,9 +216,9 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.button4, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.AddNewButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.errorMsgLabel, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.EditButton, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 363);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -242,21 +245,21 @@ namespace RentMe_App.UserControls
         }
 
         #endregion
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label errorMsgLabel;
+        private System.Windows.Forms.TextBox fNameTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label lNameLabel;
+        private System.Windows.Forms.TextBox lNameTextBox;
+        private System.Windows.Forms.Label fNameLabel;
+        private System.Windows.Forms.TextBox employeeIDTextBox;
+        private System.Windows.Forms.Label searchEmployeeLabel;
+        private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button AddNewButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }

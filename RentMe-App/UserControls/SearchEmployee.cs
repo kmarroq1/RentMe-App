@@ -16,5 +16,25 @@ namespace RentMe_App.UserControls
         {
             InitializeComponent();
         }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddNewButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
