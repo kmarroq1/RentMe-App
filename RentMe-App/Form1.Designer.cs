@@ -29,13 +29,31 @@ namespace RentMe_App
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.searchFurnitureUserControl1 = new RentMe_App.UserControls.SearchFurnitureUserControl();
+            this.SuspendLayout();
+            // 
+            // searchFurnitureUserControl1
+            // 
+            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(16, 5);
+            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
+            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(800, 500);
+            this.searchFurnitureUserControl1.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.Controls.Add(this.searchFurnitureUserControl1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
     }
 }
 

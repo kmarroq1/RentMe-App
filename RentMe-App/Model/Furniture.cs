@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace RentMe_App.Model
 {
@@ -14,6 +12,11 @@ namespace RentMe_App.Model
     public class Furniture
     {
         #region Data Members
+
+        /// <summary>
+        /// getter/setter method for FurnitureID
+        /// </summary>
+        public int? FurnitureID { get; set; }
 
         /// <summary>
         /// getter/setter method for Name
@@ -46,9 +49,14 @@ namespace RentMe_App.Model
         public string Category_Name { get; set; }
 
         /// <summary>
-        /// getter/setter method for Image_Name
+        /// getter/setter method for Image_Small_Url
         /// </summary>
-        public string Image_Name { get; set; }
+        public string Image_Small_Url { get; set; }
+
+        /// <summary>
+        /// getter/setter method for Image_Large_Url
+        /// </summary>
+        public string Image_Large_Url { get; set; }
 
         #endregion
 
@@ -64,16 +72,23 @@ namespace RentMe_App.Model
         /// <summary>
         /// constructor used to create furniture
         /// </summary>
+        /// <param name="furnitureID">furnture furnitureID</param>
         /// <param name="name">furnture name</param>
         /// <param name="description">furniture description</param>
         /// <param name="daily_rental_rate">furniture daily_rental_rate</param>
         /// <param name="daily_fine_rate">furniture daily_fine_rate</param>
         /// <param name="style_name">furniture style_name</param>
         /// <param name="category_name">furniture category_name</param>
-        /// <param name="image_name">furniture image_name of url</param>
-        public Furniture(string name, string description, decimal daily_rental_rate, 
-            decimal daily_fine_rate, string style_name, string category_name, string image_name)
+        /// <param name="image_small_url">furniture image_name of small url</param>
+        /// <param name="image_large_url">furniture image_name of large url</param>
+        public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate, 
+            decimal daily_fine_rate, string style_name, string category_name, string image_small_url, string image_large_url)
         {
+            if (furnitureID != null && furnitureID < 0)
+            {
+                throw new ArgumentOutOfRangeException("furnitureID", "FurnitureID has to be number greater than 0");
+
+            }
 
             if (string.IsNullOrEmpty(name) || name.Length > 100)
             {
@@ -111,19 +126,27 @@ namespace RentMe_App.Model
 
             }
 
-            if (image_name.Length > 200)
+            if (image_small_url.Length > 200)
             {
-                throw new ArgumentException("Image_Name cannot be greater than 200", "image_name");
+                throw new ArgumentException("Image_Small_Url cannot be greater than 200", "image_small_url");
 
             }
 
+            if (image_large_url.Length > 200)
+            {
+                throw new ArgumentException("Image_Large_Url cannot be greater than 200", "image_large_url");
+
+            }
+
+            this.FurnitureID = furnitureID;
             this.Name = name;
             this.Description = description;
             this.Daily_Rental_Rate = daily_rental_rate;
             this.Daily_Fine_Rate = daily_fine_rate;
             this.Style_Name = style_name;
             this.Category_Name = category_name;
-            this.Image_Name = image_name;
+            this.Image_Small_Url = image_small_url;
+            this.Image_Large_Url = image_large_url;
         }
 
         #endregion
