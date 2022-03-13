@@ -60,7 +60,7 @@ namespace RentMe_App.UserControls
             // 
             this.styleLabel.AutoSize = true;
             this.styleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.styleLabel.Location = new System.Drawing.Point(20, 52);
+            this.styleLabel.Location = new System.Drawing.Point(300, 52);
             this.styleLabel.Name = "styleLabel";
             this.styleLabel.Size = new System.Drawing.Size(44, 20);
             this.styleLabel.TabIndex = 2;
@@ -70,16 +70,17 @@ namespace RentMe_App.UserControls
             // 
             this.styleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(70, 49);
+            this.styleComboBox.Location = new System.Drawing.Point(350, 49);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(130, 28);
             this.styleComboBox.TabIndex = 3;
+            this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.StyleComboBox_SelectedIndexChanged);
             // 
             // categoryLabel
             // 
             this.categoryLabel.AutoSize = true;
             this.categoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryLabel.Location = new System.Drawing.Point(206, 52);
+            this.categoryLabel.Location = new System.Drawing.Point(15, 52);
             this.categoryLabel.Name = "categoryLabel";
             this.categoryLabel.Size = new System.Drawing.Size(73, 20);
             this.categoryLabel.TabIndex = 4;
@@ -89,10 +90,11 @@ namespace RentMe_App.UserControls
             // 
             this.categoryComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(285, 49);
+            this.categoryComboBox.Location = new System.Drawing.Point(94, 49);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(195, 28);
             this.categoryComboBox.TabIndex = 5;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // furnitureIDLabel
             // 
@@ -111,7 +113,7 @@ namespace RentMe_App.UserControls
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
             this.furnitureIDTextBox.Size = new System.Drawing.Size(194, 26);
             this.furnitureIDTextBox.TabIndex = 7;
-            this.furnitureIDTextBox.TextChanged += new System.EventHandler(this.FurnitureID_TextChanged);
+            this.furnitureIDTextBox.Enter += new System.EventHandler(this.FurnitureID_Enter);
             // 
             // searchFurnitureDataGridView
             // 

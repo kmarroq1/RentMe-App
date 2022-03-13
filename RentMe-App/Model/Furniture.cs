@@ -84,7 +84,7 @@ namespace RentMe_App.Model
         public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate, 
             decimal daily_fine_rate, string style_name, string category_name, string image_small_url, string image_large_url)
         {
-            if (furnitureID != null && furnitureID < 0)
+            if (furnitureID < 0)
             {
                 throw new ArgumentOutOfRangeException("furnitureID", "FurnitureID has to be number greater than 0");
 

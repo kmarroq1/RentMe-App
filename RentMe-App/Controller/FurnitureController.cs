@@ -33,19 +33,60 @@ namespace RentMe_App.Controller
         #region Methods
 
         /// <summary>
-        /// method used to get furniture by furnitureID, style_name or category_name
+        /// method used to get furniture by furnitureID
         /// </summary>
         /// <param name="furnitureID">furniture furnitureID</param>
+        /// <returns>list of furniture objects</returns>
+        public List<Furniture> GetFurnitureByID(int furnitureID)
+        {
+            if (furnitureID < 0)
+            {
+                throw new ArgumentException("FurnitureID must be greater than 0 to return results");
+            }
+            return furnitureDBSource.GetFurnitureByID(furnitureID);
+        }
+
+        /// <summary>
+        /// method used to get furniture by style_name
+        /// </summary>
+        /// <param name="style_name">furniture style_name</param>
+        /// <returns>list of furniture objects</returns>
+        public List<Furniture> GetFurnitureByStyle(string style_name)
+        {
+            if (string.IsNullOrEmpty(style_name))
+            {
+                throw new ArgumentException("Style cannot be null or empty");
+            }
+            return furnitureDBSource.GetFurnitureByStyle(style_name);
+        }
+
+        /// <summary>
+        /// method used to get furniture by category_name
+        /// </summary>
+        /// <param name="category_name">furniture category_name</param>
+        /// <returns>list of furniture objects</returns>
+        public List<Furniture> GetFurnitureByCategory(string category_name)
+        {
+            if (string.IsNullOrEmpty(category_name))
+            {
+                throw new ArgumentException("Category cannot be null or empty");
+            }
+            return furnitureDBSource.GetFurnitureByCategory(category_name);
+        }
+
+        /// <summary>
+        /// method used to get furniture by style_name and category_name
+        /// </summary>
         /// <param name="style_name">furniture style_name</param>
         /// <param name="category_name">furniture category_name</param>
         /// <returns>list of furniture objects</returns>
-        public List<Furniture> GetFurniture(int furnitureID, string style_name, string category_name)
+        public List<Furniture> GetFurnitureByCategoryStyle(string category_name, string style_name)
         {
-            if (string.IsNullOrEmpty(style_name) && string.IsNullOrEmpty(category_name) && furnitureID < 0)
+            if (string.IsNullOrEmpty(style_name) || string.IsNullOrEmpty(category_name))
             {
-                throw new ArgumentException("Style, Name or FurnitureID must be present and valid to return results");
+                throw new ArgumentException("Style and Category must be selected to return results");
             }
-            return furnitureDBSource.GetFurniture(furnitureID, style_name, category_name);
+            return furnitureDBSource.GetFurnitureByCategoryStyle(category_name, style_name);
         }
 
         #endregion

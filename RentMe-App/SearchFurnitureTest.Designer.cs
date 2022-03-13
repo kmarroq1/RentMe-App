@@ -1,7 +1,7 @@
 ﻿
 namespace RentMe_App
 {
-    partial class Form1
+    partial class SearchFurnitureTest
     {
         /// <summary>
         /// Required designer variable.
@@ -39,14 +39,14 @@ namespace RentMe_App
             this.searchFurnitureUserControl1.Size = new System.Drawing.Size(800, 500);
             this.searchFurnitureUserControl1.TabIndex = 0;
             // 
-            // Form1
+            // SearchFurnitureTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 511);
             this.Controls.Add(this.searchFurnitureUserControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "SearchFurnitureTest";
+            this.Text = "Test Search Furniture Control";
             this.ResumeLayout(false);
 
         }
