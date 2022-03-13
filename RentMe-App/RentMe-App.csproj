@@ -90,6 +90,7 @@
     </Compile>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchEmployee.resx">
       <DependentUpon>SearchEmployee.cs</DependentUpon>
     </EmbeddedResource>
