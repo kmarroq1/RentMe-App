@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RentMe_App
 {
-    public partial class Form1 : Form
+    public partial class SearchFurnitureTest : Form
     {
-        public Form1()
+        public SearchFurnitureTest()
         {
             InitializeComponent();
         }
