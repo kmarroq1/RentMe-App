@@ -34,7 +34,7 @@ namespace RentMe_App
             // 
             // searchFurnitureUserControl1
             // 
-            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(16, 5);
+            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(22, -1);
             this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
             this.searchFurnitureUserControl1.Size = new System.Drawing.Size(800, 500);
             this.searchFurnitureUserControl1.TabIndex = 0;
