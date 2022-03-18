@@ -29,22 +29,22 @@ namespace RentMe_App
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchFurnitureUserControl1 = new RentMe_App.UserControls.SearchFurnitureUserControl();
+            this.searchMemberUserControl1 = new RentMe_App.UserControls.SearchMemberUserControl();
             this.SuspendLayout();
             // 
-            // searchFurnitureUserControl1
+            // searchMemberUserControl1
             // 
-            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(22, -1);
-            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
-            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(800, 500);
-            this.searchFurnitureUserControl1.TabIndex = 0;
+            this.searchMemberUserControl1.Location = new System.Drawing.Point(22, -1);
+            this.searchMemberUserControl1.Name = "searchMemberUserControl1";
+            this.searchMemberUserControl1.Size = new System.Drawing.Size(800, 500);
+            this.searchMemberUserControl1.TabIndex = 0;
             // 
             // SearchFurnitureTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 511);
-            this.Controls.Add(this.searchFurnitureUserControl1);
+            this.Controls.Add(this.searchMemberUserControl1);
             this.Name = "SearchFurnitureTest";
             this.Text = "Test Search Furniture Control";
             this.ResumeLayout(false);
@@ -53,7 +53,7 @@ namespace RentMe_App
 
         #endregion
 
-        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
+        private UserControls.SearchMemberUserControl searchMemberUserControl1;
     }
 }
 
