@@ -127,14 +127,15 @@ namespace RentMe_App.UserControls
         private void BuildDataGridView()
         {
             searchMemberDataGridView.DataSource = null;
-
             dataTable = new DataTable();
+            string memberActive;
 
             dataTable.Columns.Add(new DataColumn("Member ID", typeof(int)));
             dataTable.Columns.Add(new DataColumn("First Name", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Last Name", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Phone", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Age", typeof(int)));
+            dataTable.Columns.Add(new DataColumn("Active", typeof(string)));
 
             try
             {
@@ -149,8 +150,17 @@ namespace RentMe_App.UserControls
                         Fname = go.Fname,
                         Lname = go.Lname,
                         Phone = go.Phone,
-                        BirthDate = go.BirthDate
+                        BirthDate = go.BirthDate,
+                        Active = go.Active
                     };
+
+                    if (go.Active == true)
+                    {
+                        memberActive = "Yes";
+                    }
+                    else {
+                        memberActive = "No";
+                    }
 
                     age = GetAge(member.BirthDate);
 
@@ -159,6 +169,7 @@ namespace RentMe_App.UserControls
                     row["Last Name"] = member.Lname;
                     row["Phone"] = member.Phone;
                     row["Age"] = age;
+                    row["Active"] = memberActive;
                 }
 
                 dataTable.Rows.Add(row);

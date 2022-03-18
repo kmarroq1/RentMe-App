@@ -27,8 +27,7 @@ namespace RentMe_App.DAL
                 "SELECT * " +
                 "FROM storeMember " +
                 "WHERE " +
-                "memberID = @memberID " +
-                "AND active = 1";
+                "memberID = @memberID";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -81,7 +80,6 @@ namespace RentMe_App.DAL
                 "WHERE " +
                 "LOWER(fname) = @fname " +
                 "AND LOWER(lname) = @lname " +
-                "AND active = 1 " +
                 "ORDER BY memberID";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
@@ -136,7 +134,6 @@ namespace RentMe_App.DAL
                 "FROM storeMember " +
                 "WHERE " +
                 "phone = @phone " +
-                "AND active = 1 " +
                 "ORDER BY memberID";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
