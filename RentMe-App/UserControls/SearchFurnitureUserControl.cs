@@ -2,13 +2,7 @@
 using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe_App.UserControls
@@ -93,7 +87,8 @@ namespace RentMe_App.UserControls
         {
             this.searchFurnitureDataGridView.DataSource = null;
 
-
+            try
+            {
                 bool getFurnitureCheck = Int32.TryParse(furnitureIDTextBox.Text, out int furnitureID);
                 string selectedStyleName = GetStyleSelected();
                 string selectedCategoryName = GetCategorySelected();
@@ -103,26 +98,22 @@ namespace RentMe_App.UserControls
                 if (getFurnitureCheck == true && furnitureID > 0)
                 {
                     furnitureList = furnitureController.GetFurnitureByID(furnitureID);
-                    this.searchFurnitureDataGridView.DataSource = furnitureList;
-                    AdjustColumnOrder();
+                    CheckFurnitureFound(furnitureList);
                 }
                 else if (styleComboBox.SelectedIndex > 0 && categoryComboBox.SelectedIndex == 0)
                 {
                     furnitureList = furnitureController.GetFurnitureByStyle(selectedStyleName);
-                    this.searchFurnitureDataGridView.DataSource = furnitureList;
-                    AdjustColumnOrder();
+                    CheckFurnitureFound(furnitureList);
                 }
                 else if (styleComboBox.SelectedIndex == 0 && categoryComboBox.SelectedIndex > 0)
                 {
                     furnitureList = furnitureController.GetFurnitureByCategory(selectedCategoryName);
-                    this.searchFurnitureDataGridView.DataSource = furnitureList;
-                    AdjustColumnOrder();
+                    CheckFurnitureFound(furnitureList);
                 }
                 else if (styleComboBox.SelectedIndex > 0 && categoryComboBox.SelectedIndex > 0)
                 {
                     furnitureList = furnitureController.GetFurnitureByCategoryStyle(selectedCategoryName, selectedStyleName);
-                    this.searchFurnitureDataGridView.DataSource = furnitureList;
-                    AdjustColumnOrder();
+                    CheckFurnitureFound(furnitureList);
                 }
                 else if (getFurnitureCheck == false && furnitureIDTextBox.Text.Length > 0)
                 {
@@ -134,7 +125,12 @@ namespace RentMe_App.UserControls
                     string errorMessage = "Selection must be made to return result";
                     this.ShowInvalidErrorMessage(errorMessage);
                 }
-
+            }
+            catch (Exception)
+            {
+                string errorMessage = "Invalid Logic";
+                this.ShowInvalidErrorMessage(errorMessage);
+            }
         }
 
         private void AdjustColumnOrder()
@@ -149,6 +145,20 @@ namespace RentMe_App.UserControls
             searchFurnitureDataGridView.Columns["style_name"].DisplayIndex = 7;
             searchFurnitureDataGridView.Columns["image_large_url"].Visible = false;
             searchFurnitureDataGridView.Columns["image_small_url"].Visible = false;
+        }
+
+        private void CheckFurnitureFound(List<Furniture> furnitureList)
+        {
+            if (furnitureList.Count > 0)
+            {
+                this.searchFurnitureDataGridView.DataSource = furnitureList;
+                AdjustColumnOrder();
+            }
+            else
+            {
+                string errorMessage = "No furniture found";
+                this.ShowInvalidErrorMessage(errorMessage);
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
