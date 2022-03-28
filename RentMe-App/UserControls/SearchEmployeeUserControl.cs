@@ -46,8 +46,7 @@ namespace RentMe_App.UserControls
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            //open modal
-            //add employee
+            AddEmployeeModal newForm = new AddEmployeeModal();
         }
     }
 }
