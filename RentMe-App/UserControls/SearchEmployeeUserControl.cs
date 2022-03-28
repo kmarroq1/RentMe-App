@@ -39,7 +39,7 @@ namespace RentMe_App.UserControls
             {
                 EditButton.Enabled = true;
             }
-
+            //Get employee id value and set it to instance variable
             EditEmployeeModal newForm = new EditEmployeeModal(selectedEmployeeID);
             newForm.ShowDialog();
         }
@@ -47,6 +47,7 @@ namespace RentMe_App.UserControls
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddEmployeeModal newForm = new AddEmployeeModal();
+            newForm.ShowDialog();
         }
     }
 }
