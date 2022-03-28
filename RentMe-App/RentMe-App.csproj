@@ -55,6 +55,12 @@
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="View\AdminModals\EditEmployeeModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminModals\EditEmployeeModal.Designer.cs">
+      <DependentUpon>EditEmployeeModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AdminModals\EditEmployeeModal.resx">
+      <DependentUpon>EditEmployeeModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
