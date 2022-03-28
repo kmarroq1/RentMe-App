@@ -55,6 +55,18 @@
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainAdminForm.Designer.cs">
+      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Member.cs" />
     <Compile Include="SearchFurnitureTest.cs">
       <SubType>Form</SubType>
@@ -85,6 +97,18 @@
     <Compile Include="UserControls\SearchMemberUserControl.Designer.cs">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MainEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainEmployeeForm.Designer.cs">
+      <DependentUpon>MainEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainAdminForm.resx">
+      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchFurnitureTest.resx">
       <DependentUpon>SearchFurnitureTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +130,9 @@
     <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MainEmployeeForm.resx">
+      <DependentUpon>MainEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,8 +146,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
