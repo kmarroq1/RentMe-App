@@ -38,6 +38,7 @@ namespace RentMe_App.View
             this.ClientSize = new System.Drawing.Size(836, 608);
             this.Name = "MainEmployeeForm";
             this.Text = "MainEmployeeForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainEmployeeForm_FormClosing);
             this.ResumeLayout(false);
 
         }

@@ -31,8 +31,8 @@ namespace RentMe_App
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.personnelTabPage = new System.Windows.Forms.TabPage();
-            this.reportsTabPage = new System.Windows.Forms.TabPage();
             this.searchEmployeeUserControl1 = new RentMe_App.UserControls.SearchEmployeeUserControl();
+            this.reportsTabPage = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.personnelTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -58,16 +58,6 @@ namespace RentMe_App
             this.personnelTabPage.Text = "Personnel";
             this.personnelTabPage.UseVisualStyleBackColor = true;
             // 
-            // reportsTabPage
-            // 
-            this.reportsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.reportsTabPage.Name = "reportsTabPage";
-            this.reportsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.reportsTabPage.Size = new System.Drawing.Size(901, 541);
-            this.reportsTabPage.TabIndex = 1;
-            this.reportsTabPage.Text = "Reports";
-            this.reportsTabPage.UseVisualStyleBackColor = true;
-            // 
             // searchEmployeeUserControl1
             // 
             this.searchEmployeeUserControl1.Location = new System.Drawing.Point(8, 15);
@@ -75,14 +65,25 @@ namespace RentMe_App
             this.searchEmployeeUserControl1.Size = new System.Drawing.Size(800, 500);
             this.searchEmployeeUserControl1.TabIndex = 0;
             // 
-            // MainForm
+            // reportsTabPage
+            // 
+            this.reportsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.reportsTabPage.Name = "reportsTabPage";
+            this.reportsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.reportsTabPage.Size = new System.Drawing.Size(829, 531);
+            this.reportsTabPage.TabIndex = 1;
+            this.reportsTabPage.Text = "Reports";
+            this.reportsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MainAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 608);
             this.Controls.Add(this.tabControl1);
-            this.Name = "MainForm";
+            this.Name = "MainAdminForm";
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainAdminForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.personnelTabPage.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -55,6 +55,12 @@
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="UserControls\DashboardHeaderUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +173,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Common\Images\RentMe Logo_smaller.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
