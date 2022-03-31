@@ -1,7 +1,7 @@
 ﻿
 namespace RentMe_App
 {
-    partial class MainForm
+    partial class MainAdminForm
     {
         /// <summary>
         /// Required designer variable.
