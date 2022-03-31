@@ -56,11 +56,10 @@ namespace RentMe_App.View
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 3;
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(836, 608);
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(278, 211);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
             // buttonFlowLayoutPanel
@@ -70,7 +69,7 @@ namespace RentMe_App.View
             this.buttonFlowLayoutPanel.Controls.Add(this.showEmployeeButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.showAdminButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.loginButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(287, 491);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(8, 170);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(262, 29);
             this.buttonFlowLayoutPanel.TabIndex = 0;
@@ -90,14 +89,14 @@ namespace RentMe_App.View
             this.inputTableLayoutPanel.RowCount = 2;
             this.inputTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.inputTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.inputTableLayoutPanel.Size = new System.Drawing.Size(830, 196);
+            this.inputTableLayoutPanel.Size = new System.Drawing.Size(272, 140);
             this.inputTableLayoutPanel.TabIndex = 1;
             // 
             // usernameLabel
             // 
             this.usernameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(354, 42);
+            this.usernameLabel.Location = new System.Drawing.Point(75, 28);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(58, 13);
             this.usernameLabel.TabIndex = 0;
@@ -107,7 +106,7 @@ namespace RentMe_App.View
             // 
             this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(356, 140);
+            this.passwordLabel.Location = new System.Drawing.Point(77, 98);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(56, 13);
             this.passwordLabel.TabIndex = 1;
@@ -116,7 +115,7 @@ namespace RentMe_App.View
             // usernameTextBox
             // 
             this.usernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.usernameTextBox.Location = new System.Drawing.Point(418, 39);
+            this.usernameTextBox.Location = new System.Drawing.Point(139, 25);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 2;
@@ -124,7 +123,7 @@ namespace RentMe_App.View
             // passwordTextBox
             // 
             this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.passwordTextBox.Location = new System.Drawing.Point(418, 137);
+            this.passwordTextBox.Location = new System.Drawing.Point(139, 95);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 3;
@@ -134,7 +133,7 @@ namespace RentMe_App.View
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(380, 296);
+            this.errorMessageLabel.Location = new System.Drawing.Point(101, 146);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(75, 13);
             this.errorMessageLabel.TabIndex = 2;
@@ -175,7 +174,7 @@ namespace RentMe_App.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 608);
+            this.ClientSize = new System.Drawing.Size(278, 211);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "LoginForm";
             this.Text = "RentMe: Login";
