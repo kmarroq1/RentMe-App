@@ -51,10 +51,12 @@
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
+    <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="SearchFurnitureTest.cs">
       <SubType>Form</SubType>
@@ -67,6 +69,18 @@
     <Compile Include="Model\Style.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\EmployeeDetailsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EmployeeDetailsUserControl.Designer.cs">
+      <DependentUpon>EmployeeDetailsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MemberDetailsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDetailsUserControl.Designer.cs">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,12 +105,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\MemberDetailsUserControl.resx">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EmployeeDetailsUserControl.resx">
+      <DependentUpon>EmployeeDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe_App.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\RentMe_App.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
