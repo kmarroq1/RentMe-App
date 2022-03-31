@@ -138,6 +138,9 @@
     <EmbeddedResource Include="UserControls\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDetailsUserControl.resx">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
     </EmbeddedResource>

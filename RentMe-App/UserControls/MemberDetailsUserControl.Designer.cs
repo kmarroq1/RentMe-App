@@ -30,15 +30,15 @@ namespace RentMe_App.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label address1Label;
-            System.Windows.Forms.Label address2Label;
-            System.Windows.Forms.Label birthDateLabel;
-            System.Windows.Forms.Label cityLabel;
-            System.Windows.Forms.Label fnameLabel;
-            System.Windows.Forms.Label lnameLabel;
-            System.Windows.Forms.Label phoneLabel;
-            System.Windows.Forms.Label zipLabel;
-            System.Windows.Forms.Label stateLabel;
+            this.address1Label = new System.Windows.Forms.Label();
+            this.address2Label = new System.Windows.Forms.Label();
+            this.birthDateLabel = new System.Windows.Forms.Label();
+            this.cityLabel = new System.Windows.Forms.Label();
+            this.fnameLabel = new System.Windows.Forms.Label();
+            this.lnameLabel = new System.Windows.Forms.Label();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.zipLabel = new System.Windows.Forms.Label();
+            this.stateLabel = new System.Windows.Forms.Label();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.address1TextBox = new System.Windows.Forms.TextBox();
@@ -51,17 +51,89 @@ namespace RentMe_App.UserControls
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.ErrorMessageLabel = new System.Windows.Forms.Label();
-            address1Label = new System.Windows.Forms.Label();
-            address2Label = new System.Windows.Forms.Label();
-            birthDateLabel = new System.Windows.Forms.Label();
-            cityLabel = new System.Windows.Forms.Label();
-            fnameLabel = new System.Windows.Forms.Label();
-            lnameLabel = new System.Windows.Forms.Label();
-            phoneLabel = new System.Windows.Forms.Label();
-            zipLabel = new System.Windows.Forms.Label();
-            stateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // address1Label
+            // 
+            this.address1Label.AutoSize = true;
+            this.address1Label.Location = new System.Drawing.Point(5, 58);
+            this.address1Label.Name = "address1Label";
+            this.address1Label.Size = new System.Drawing.Size(54, 13);
+            this.address1Label.TabIndex = 3;
+            this.address1Label.Text = "Address1:";
+            // 
+            // address2Label
+            // 
+            this.address2Label.AutoSize = true;
+            this.address2Label.Location = new System.Drawing.Point(5, 84);
+            this.address2Label.Name = "address2Label";
+            this.address2Label.Size = new System.Drawing.Size(54, 13);
+            this.address2Label.TabIndex = 5;
+            this.address2Label.Text = "Address2:";
+            // 
+            // birthDateLabel
+            // 
+            this.birthDateLabel.AutoSize = true;
+            this.birthDateLabel.Location = new System.Drawing.Point(5, 189);
+            this.birthDateLabel.Name = "birthDateLabel";
+            this.birthDateLabel.Size = new System.Drawing.Size(57, 13);
+            this.birthDateLabel.TabIndex = 7;
+            this.birthDateLabel.Text = "Birth Date:";
+            // 
+            // cityLabel
+            // 
+            this.cityLabel.AutoSize = true;
+            this.cityLabel.Location = new System.Drawing.Point(5, 110);
+            this.cityLabel.Name = "cityLabel";
+            this.cityLabel.Size = new System.Drawing.Size(27, 13);
+            this.cityLabel.TabIndex = 9;
+            this.cityLabel.Text = "City:";
+            // 
+            // fnameLabel
+            // 
+            this.fnameLabel.AutoSize = true;
+            this.fnameLabel.Location = new System.Drawing.Point(5, 6);
+            this.fnameLabel.Name = "fnameLabel";
+            this.fnameLabel.Size = new System.Drawing.Size(60, 13);
+            this.fnameLabel.TabIndex = 11;
+            this.fnameLabel.Text = "First Name:";
+            // 
+            // lnameLabel
+            // 
+            this.lnameLabel.AutoSize = true;
+            this.lnameLabel.Location = new System.Drawing.Point(5, 32);
+            this.lnameLabel.Name = "lnameLabel";
+            this.lnameLabel.Size = new System.Drawing.Size(61, 13);
+            this.lnameLabel.TabIndex = 13;
+            this.lnameLabel.Text = "Last Name:";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.AutoSize = true;
+            this.phoneLabel.Location = new System.Drawing.Point(5, 162);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(41, 13);
+            this.phoneLabel.TabIndex = 15;
+            this.phoneLabel.Text = "Phone:";
+            // 
+            // zipLabel
+            // 
+            this.zipLabel.AutoSize = true;
+            this.zipLabel.Location = new System.Drawing.Point(5, 136);
+            this.zipLabel.Name = "zipLabel";
+            this.zipLabel.Size = new System.Drawing.Size(25, 13);
+            this.zipLabel.TabIndex = 19;
+            this.zipLabel.Text = "Zip:";
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(274, 110);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(35, 13);
+            this.stateLabel.TabIndex = 20;
+            this.stateLabel.Text = "State:";
             // 
             // memberBindingSource
             // 
@@ -77,15 +149,6 @@ namespace RentMe_App.UserControls
             this.activeCheckBox.Text = "Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // address1Label
-            // 
-            address1Label.AutoSize = true;
-            address1Label.Location = new System.Drawing.Point(5, 58);
-            address1Label.Name = "address1Label";
-            address1Label.Size = new System.Drawing.Size(54, 13);
-            address1Label.TabIndex = 3;
-            address1Label.Text = "Address1:";
-            // 
             // address1TextBox
             // 
             this.address1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Address1", true));
@@ -93,15 +156,6 @@ namespace RentMe_App.UserControls
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(200, 20);
             this.address1TextBox.TabIndex = 4;
-            // 
-            // address2Label
-            // 
-            address2Label.AutoSize = true;
-            address2Label.Location = new System.Drawing.Point(5, 84);
-            address2Label.Name = "address2Label";
-            address2Label.Size = new System.Drawing.Size(54, 13);
-            address2Label.TabIndex = 5;
-            address2Label.Text = "Address2:";
             // 
             // address2TextBox
             // 
@@ -111,15 +165,6 @@ namespace RentMe_App.UserControls
             this.address2TextBox.Size = new System.Drawing.Size(200, 20);
             this.address2TextBox.TabIndex = 6;
             // 
-            // birthDateLabel
-            // 
-            birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(5, 189);
-            birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(57, 13);
-            birthDateLabel.TabIndex = 7;
-            birthDateLabel.Text = "Birth Date:";
-            // 
             // birthDateDateTimePicker
             // 
             this.birthDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.memberBindingSource, "BirthDate", true));
@@ -127,15 +172,6 @@ namespace RentMe_App.UserControls
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.birthDateDateTimePicker.TabIndex = 8;
-            // 
-            // cityLabel
-            // 
-            cityLabel.AutoSize = true;
-            cityLabel.Location = new System.Drawing.Point(5, 110);
-            cityLabel.Name = "cityLabel";
-            cityLabel.Size = new System.Drawing.Size(27, 13);
-            cityLabel.TabIndex = 9;
-            cityLabel.Text = "City:";
             // 
             // cityTextBox
             // 
@@ -145,15 +181,6 @@ namespace RentMe_App.UserControls
             this.cityTextBox.Size = new System.Drawing.Size(200, 20);
             this.cityTextBox.TabIndex = 10;
             // 
-            // fnameLabel
-            // 
-            fnameLabel.AutoSize = true;
-            fnameLabel.Location = new System.Drawing.Point(5, 6);
-            fnameLabel.Name = "fnameLabel";
-            fnameLabel.Size = new System.Drawing.Size(42, 13);
-            fnameLabel.TabIndex = 11;
-            fnameLabel.Text = "Fname:";
-            // 
             // fnameTextBox
             // 
             this.fnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Fname", true));
@@ -161,15 +188,6 @@ namespace RentMe_App.UserControls
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(200, 20);
             this.fnameTextBox.TabIndex = 12;
-            // 
-            // lnameLabel
-            // 
-            lnameLabel.AutoSize = true;
-            lnameLabel.Location = new System.Drawing.Point(5, 32);
-            lnameLabel.Name = "lnameLabel";
-            lnameLabel.Size = new System.Drawing.Size(42, 13);
-            lnameLabel.TabIndex = 13;
-            lnameLabel.Text = "Lname:";
             // 
             // lnameTextBox
             // 
@@ -179,15 +197,6 @@ namespace RentMe_App.UserControls
             this.lnameTextBox.Size = new System.Drawing.Size(200, 20);
             this.lnameTextBox.TabIndex = 14;
             // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(5, 162);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(41, 13);
-            phoneLabel.TabIndex = 15;
-            phoneLabel.Text = "Phone:";
-            // 
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Phone", true));
@@ -196,15 +205,6 @@ namespace RentMe_App.UserControls
             this.phoneTextBox.Size = new System.Drawing.Size(200, 20);
             this.phoneTextBox.TabIndex = 16;
             // 
-            // zipLabel
-            // 
-            zipLabel.AutoSize = true;
-            zipLabel.Location = new System.Drawing.Point(5, 136);
-            zipLabel.Name = "zipLabel";
-            zipLabel.Size = new System.Drawing.Size(25, 13);
-            zipLabel.TabIndex = 19;
-            zipLabel.Text = "Zip:";
-            // 
             // zipTextBox
             // 
             this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Zip", true));
@@ -212,15 +212,6 @@ namespace RentMe_App.UserControls
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(200, 20);
             this.zipTextBox.TabIndex = 20;
-            // 
-            // stateLabel
-            // 
-            stateLabel.AutoSize = true;
-            stateLabel.Location = new System.Drawing.Point(274, 110);
-            stateLabel.Name = "stateLabel";
-            stateLabel.Size = new System.Drawing.Size(35, 13);
-            stateLabel.TabIndex = 20;
-            stateLabel.Text = "State:";
             // 
             // stateComboBox
             // 
@@ -241,31 +232,31 @@ namespace RentMe_App.UserControls
             this.ErrorMessageLabel.TabIndex = 22;
             this.ErrorMessageLabel.Text = "Error Message";
             // 
-            // AddMemberUserControl
+            // MemberDetailsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ErrorMessageLabel);
-            this.Controls.Add(stateLabel);
+            this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.activeCheckBox);
-            this.Controls.Add(address1Label);
+            this.Controls.Add(this.address1Label);
             this.Controls.Add(this.address1TextBox);
-            this.Controls.Add(address2Label);
+            this.Controls.Add(this.address2Label);
             this.Controls.Add(this.address2TextBox);
-            this.Controls.Add(birthDateLabel);
+            this.Controls.Add(this.birthDateLabel);
             this.Controls.Add(this.birthDateDateTimePicker);
-            this.Controls.Add(cityLabel);
+            this.Controls.Add(this.cityLabel);
             this.Controls.Add(this.cityTextBox);
-            this.Controls.Add(fnameLabel);
+            this.Controls.Add(this.fnameLabel);
             this.Controls.Add(this.fnameTextBox);
-            this.Controls.Add(lnameLabel);
+            this.Controls.Add(this.lnameLabel);
             this.Controls.Add(this.lnameTextBox);
-            this.Controls.Add(phoneLabel);
+            this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.phoneTextBox);
-            this.Controls.Add(zipLabel);
+            this.Controls.Add(this.zipLabel);
             this.Controls.Add(this.zipTextBox);
-            this.Name = "AddMemberUserControl";
+            this.Name = "MemberDetailsUserControl";
             this.Size = new System.Drawing.Size(404, 260);
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -287,5 +278,14 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.Label ErrorMessageLabel;
+        private System.Windows.Forms.Label address1Label;
+        private System.Windows.Forms.Label address2Label;
+        private System.Windows.Forms.Label birthDateLabel;
+        private System.Windows.Forms.Label cityLabel;
+        private System.Windows.Forms.Label fnameLabel;
+        private System.Windows.Forms.Label lnameLabel;
+        private System.Windows.Forms.Label phoneLabel;
+        private System.Windows.Forms.Label zipLabel;
+        private System.Windows.Forms.Label stateLabel;
     }
 }
