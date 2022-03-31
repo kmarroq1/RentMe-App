@@ -31,10 +31,11 @@ namespace RentMe_App.UserControls
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.headerLabel = new System.Windows.Forms.Label();
-            this.memberDetailsUserControl = new RentMe_App.UserControls.MemberDetailsUserControl();
             this.controlsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.addButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
+            this.memberDetailsUserControl = new RentMe_App.UserControls.MemberDetailsUserControl();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.controlsFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -45,13 +46,15 @@ namespace RentMe_App.UserControls
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.Controls.Add(this.headerLabel, 0, 0);
             this.mainTableLayoutPanel.Controls.Add(this.memberDetailsUserControl, 0, 1);
-            this.mainTableLayoutPanel.Controls.Add(this.controlsFlowLayoutPanel, 0, 2);
+            this.mainTableLayoutPanel.Controls.Add(this.controlsFlowLayoutPanel, 0, 3);
+            this.mainTableLayoutPanel.Controls.Add(this.errorMessageLabel, 0, 2);
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
-            this.mainTableLayoutPanel.RowCount = 3;
+            this.mainTableLayoutPanel.RowCount = 4;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(432, 387);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
@@ -64,14 +67,6 @@ namespace RentMe_App.UserControls
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Add Member";
             // 
-            // memberDetailsUserControl
-            // 
-            this.memberDetailsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberDetailsUserControl.Location = new System.Drawing.Point(3, 16);
-            this.memberDetailsUserControl.Name = "memberDetailsUserControl";
-            this.memberDetailsUserControl.Size = new System.Drawing.Size(426, 260);
-            this.memberDetailsUserControl.TabIndex = 1;
-            // 
             // controlsFlowLayoutPanel
             // 
             this.controlsFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -79,7 +74,7 @@ namespace RentMe_App.UserControls
             this.controlsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.controlsFlowLayoutPanel.Controls.Add(this.addButton);
             this.controlsFlowLayoutPanel.Controls.Add(this.clearButton);
-            this.controlsFlowLayoutPanel.Location = new System.Drawing.Point(135, 318);
+            this.controlsFlowLayoutPanel.Location = new System.Drawing.Point(135, 328);
             this.controlsFlowLayoutPanel.Name = "controlsFlowLayoutPanel";
             this.controlsFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
             this.controlsFlowLayoutPanel.TabIndex = 2;
@@ -101,6 +96,27 @@ namespace RentMe_App.UserControls
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            // 
+            // memberDetailsUserControl
+            // 
+            this.memberDetailsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberDetailsUserControl.Location = new System.Drawing.Point(3, 16);
+            this.memberDetailsUserControl.Name = "memberDetailsUserControl";
+            this.memberDetailsUserControl.Size = new System.Drawing.Size(426, 260);
+            this.memberDetailsUserControl.TabIndex = 1;
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(178, 282);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(75, 13);
+            this.errorMessageLabel.TabIndex = 3;
+            this.errorMessageLabel.Text = "Error Message";
+            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.errorMessageLabel.Visible = false;
             // 
             // AddMemberUserControl
             // 
@@ -124,5 +140,6 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.FlowLayoutPanel controlsFlowLayoutPanel;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }

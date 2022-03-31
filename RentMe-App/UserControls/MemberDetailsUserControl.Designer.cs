@@ -50,7 +50,6 @@ namespace RentMe_App.UserControls
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.ErrorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,21 +221,10 @@ namespace RentMe_App.UserControls
             this.stateComboBox.Size = new System.Drawing.Size(84, 21);
             this.stateComboBox.TabIndex = 21;
             // 
-            // ErrorMessageLabel
-            // 
-            this.ErrorMessageLabel.AutoSize = true;
-            this.ErrorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessageLabel.Location = new System.Drawing.Point(133, 238);
-            this.ErrorMessageLabel.Name = "ErrorMessageLabel";
-            this.ErrorMessageLabel.Size = new System.Drawing.Size(75, 13);
-            this.ErrorMessageLabel.TabIndex = 22;
-            this.ErrorMessageLabel.Text = "Error Message";
-            // 
             // MemberDetailsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ErrorMessageLabel);
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.activeCheckBox);
@@ -257,7 +245,7 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.zipLabel);
             this.Controls.Add(this.zipTextBox);
             this.Name = "MemberDetailsUserControl";
-            this.Size = new System.Drawing.Size(404, 260);
+            this.Size = new System.Drawing.Size(404, 242);
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -277,7 +265,6 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.ComboBox stateComboBox;
-        private System.Windows.Forms.Label ErrorMessageLabel;
         private System.Windows.Forms.Label address1Label;
         private System.Windows.Forms.Label address2Label;
         private System.Windows.Forms.Label birthDateLabel;
