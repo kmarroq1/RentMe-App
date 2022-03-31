@@ -31,15 +31,15 @@ namespace RentMe_App.View
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.inputTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.showEmployeeButton = new System.Windows.Forms.Button();
             this.showAdminButton = new System.Windows.Forms.Button();
             this.loginButton = new System.Windows.Forms.Button();
+            this.inputTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.buttonFlowLayoutPanel.SuspendLayout();
             this.inputTableLayoutPanel.SuspendLayout();
@@ -74,6 +74,38 @@ namespace RentMe_App.View
             this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(262, 29);
             this.buttonFlowLayoutPanel.TabIndex = 0;
             // 
+            // showEmployeeButton
+            // 
+            this.showEmployeeButton.AutoSize = true;
+            this.showEmployeeButton.Location = new System.Drawing.Point(3, 3);
+            this.showEmployeeButton.Name = "showEmployeeButton";
+            this.showEmployeeButton.Size = new System.Drawing.Size(93, 23);
+            this.showEmployeeButton.TabIndex = 0;
+            this.showEmployeeButton.Text = "Show Employee";
+            this.showEmployeeButton.UseVisualStyleBackColor = true;
+            this.showEmployeeButton.Click += new System.EventHandler(this.ShowEmployeeButton_Click);
+            // 
+            // showAdminButton
+            // 
+            this.showAdminButton.AutoSize = true;
+            this.showAdminButton.Location = new System.Drawing.Point(102, 3);
+            this.showAdminButton.Name = "showAdminButton";
+            this.showAdminButton.Size = new System.Drawing.Size(76, 23);
+            this.showAdminButton.TabIndex = 1;
+            this.showAdminButton.Text = "Show Admin";
+            this.showAdminButton.UseVisualStyleBackColor = true;
+            this.showAdminButton.Click += new System.EventHandler(this.ShowAdminButton_Click);
+            // 
+            // loginButton
+            // 
+            this.loginButton.Enabled = false;
+            this.loginButton.Location = new System.Drawing.Point(184, 3);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(75, 23);
+            this.loginButton.TabIndex = 2;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
+            // 
             // inputTableLayoutPanel
             // 
             this.inputTableLayoutPanel.ColumnCount = 2;
@@ -91,6 +123,14 @@ namespace RentMe_App.View
             this.inputTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.inputTableLayoutPanel.Size = new System.Drawing.Size(272, 140);
             this.inputTableLayoutPanel.TabIndex = 1;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.passwordTextBox.Location = new System.Drawing.Point(139, 95);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordTextBox.TabIndex = 3;
             // 
             // usernameLabel
             // 
@@ -120,14 +160,6 @@ namespace RentMe_App.View
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 2;
             // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.passwordTextBox.Location = new System.Drawing.Point(139, 95);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 3;
-            // 
             // errorMessageLabel
             // 
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -139,36 +171,6 @@ namespace RentMe_App.View
             this.errorMessageLabel.TabIndex = 2;
             this.errorMessageLabel.Text = "Error Message";
             this.errorMessageLabel.Visible = false;
-            // 
-            // showEmployeeButton
-            // 
-            this.showEmployeeButton.AutoSize = true;
-            this.showEmployeeButton.Location = new System.Drawing.Point(3, 3);
-            this.showEmployeeButton.Name = "showEmployeeButton";
-            this.showEmployeeButton.Size = new System.Drawing.Size(93, 23);
-            this.showEmployeeButton.TabIndex = 0;
-            this.showEmployeeButton.Text = "Show Employee";
-            this.showEmployeeButton.UseVisualStyleBackColor = true;
-            // 
-            // showAdminButton
-            // 
-            this.showAdminButton.AutoSize = true;
-            this.showAdminButton.Location = new System.Drawing.Point(102, 3);
-            this.showAdminButton.Name = "showAdminButton";
-            this.showAdminButton.Size = new System.Drawing.Size(76, 23);
-            this.showAdminButton.TabIndex = 1;
-            this.showAdminButton.Text = "Show Admin";
-            this.showAdminButton.UseVisualStyleBackColor = true;
-            // 
-            // loginButton
-            // 
-            this.loginButton.Enabled = false;
-            this.loginButton.Location = new System.Drawing.Point(184, 3);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 2;
-            this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
