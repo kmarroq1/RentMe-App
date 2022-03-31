@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace RentMe_App.DAL
@@ -169,6 +170,57 @@ namespace RentMe_App.DAL
                 }
             }
             return memberList;
+        }
+
+        /// <summary>
+        /// Adds a new Member to the Database based off of a Member model object.
+        /// </summary>
+        /// <param name="newMember">The new Member to add to the Members table.</param>
+        /// <returns>Whether or not the insertion was successful.</returns>
+        public bool AddMember(Member newMember)
+        {
+            string insertStatement = @"INSERT INTO [Members] ([Fname], [Lname], [BirthDate] [Address1], [Address2], [City], [State], [Zip], [Phone], [Active])
+                                       VALUES (@Fname, @Lname, @BirthDate, @Address1, @Address2, @City, @State, @Zip, @Phone, @Active);";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
+                {
+                    cmd.Parameters.Add("Fname", SqlDbType.VarChar);
+                    cmd.Parameters["Fname"].Value = newMember.Fname;
+
+                    cmd.Parameters.Add("Lname", SqlDbType.VarChar);
+                    cmd.Parameters["Lname"].Value = newMember.Lname;
+
+                    cmd.Parameters.Add("BirthDate", SqlDbType.Date);
+                    cmd.Parameters["Date"].Value = newMember.BirthDate;
+
+                    cmd.Parameters.Add("Address1", SqlDbType.VarChar);
+                    cmd.Parameters["Address1"].Value = newMember.Address1;
+
+                    cmd.Parameters.Add("Address2", SqlDbType.VarChar);
+                    cmd.Parameters["Address2"].Value = newMember.Address1;
+
+                    cmd.Parameters.Add("City", SqlDbType.VarChar);
+                    cmd.Parameters["City"].Value = newMember.City;
+
+                    cmd.Parameters.Add("State", SqlDbType.Char);
+                    cmd.Parameters["State"].Value = newMember.State;
+
+                    cmd.Parameters.Add("Zip", SqlDbType.Char);
+                    cmd.Parameters["Zip"].Value = newMember.Zip;
+
+                    cmd.Parameters.Add("Phone", SqlDbType.Char);
+                    cmd.Parameters["Phone"].Value = newMember.Phone;
+
+                    cmd.Parameters.Add("Active", SqlDbType.Bit);
+                    cmd.Parameters["Active"].Value = newMember.Active ? 1 : 0;
+
+                    return cmd.ExecuteNonQuery() >= 1;
+                }
+            }
         }
 
         #endregion
