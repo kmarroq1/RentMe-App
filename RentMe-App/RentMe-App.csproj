@@ -176,5 +176,8 @@
   <ItemGroup>
     <Content Include="Common\Images\RentMe Logo_smaller.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Sql\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
