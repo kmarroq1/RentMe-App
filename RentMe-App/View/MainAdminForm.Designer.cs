@@ -33,6 +33,7 @@ namespace RentMe_App
             this.personnelTabPage = new System.Windows.Forms.TabPage();
             this.searchEmployeeUserControl1 = new RentMe_App.UserControls.SearchEmployeeUserControl();
             this.reportsTabPage = new System.Windows.Forms.TabPage();
+            this.dashboardHeaderUserControl = new RentMe_App.UserControls.DashboardHeaderUserControl();
             this.tabControl1.SuspendLayout();
             this.personnelTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -41,10 +42,10 @@ namespace RentMe_App
             // 
             this.tabControl1.Controls.Add(this.personnelTabPage);
             this.tabControl1.Controls.Add(this.reportsTabPage);
-            this.tabControl1.Location = new System.Drawing.Point(1, 53);
+            this.tabControl1.Location = new System.Drawing.Point(1, 120);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(837, 557);
+            this.tabControl1.Size = new System.Drawing.Size(837, 490);
             this.tabControl1.TabIndex = 0;
             // 
             // personnelTabPage
@@ -53,7 +54,7 @@ namespace RentMe_App
             this.personnelTabPage.Location = new System.Drawing.Point(4, 22);
             this.personnelTabPage.Name = "personnelTabPage";
             this.personnelTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.personnelTabPage.Size = new System.Drawing.Size(829, 531);
+            this.personnelTabPage.Size = new System.Drawing.Size(829, 464);
             this.personnelTabPage.TabIndex = 0;
             this.personnelTabPage.Text = "Personnel";
             this.personnelTabPage.UseVisualStyleBackColor = true;
@@ -75,11 +76,20 @@ namespace RentMe_App
             this.reportsTabPage.Text = "Reports";
             this.reportsTabPage.UseVisualStyleBackColor = true;
             // 
+            // dashboardHeaderUserControl
+            // 
+            this.dashboardHeaderUserControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dashboardHeaderUserControl.Location = new System.Drawing.Point(0, 0);
+            this.dashboardHeaderUserControl.Name = "dashboardHeaderUserControl";
+            this.dashboardHeaderUserControl.Size = new System.Drawing.Size(836, 114);
+            this.dashboardHeaderUserControl.TabIndex = 1;
+            // 
             // MainAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 608);
+            this.Controls.Add(this.dashboardHeaderUserControl);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainAdminForm";
             this.Text = "MainForm";
@@ -96,5 +106,6 @@ namespace RentMe_App
         private System.Windows.Forms.TabPage personnelTabPage;
         private System.Windows.Forms.TabPage reportsTabPage;
         private UserControls.SearchEmployeeUserControl searchEmployeeUserControl1;
+        private UserControls.DashboardHeaderUserControl dashboardHeaderUserControl;
     }
 }
