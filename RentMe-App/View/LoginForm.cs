@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe_App.View
@@ -15,6 +8,18 @@ namespace RentMe_App.View
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void ShowEmployeeButton_Click(object sender, EventArgs e)
+        {
+            (new MainEmployeeForm(this)).Show();
+            Hide();
+        }
+
+        private void ShowAdminButton_Click(object sender, EventArgs e)
+        {
+            (new MainAdminForm(this)).Show();
+            Hide();
         }
     }
 }

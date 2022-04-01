@@ -96,6 +96,7 @@ namespace RentMe_App.View
             this.Controls.Add(this.mainTabControl);
             this.Name = "MainEmployeeForm";
             this.Text = "MainEmployeeForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainEmployeeForm_FormClosing);
             this.mainTabControl.ResumeLayout(false);
             this.addMemberTabPage.ResumeLayout(false);
             this.searchMembersTabPage.ResumeLayout(false);

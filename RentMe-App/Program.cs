@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RentMe_App.View;
+using System;
 using System.Windows.Forms;
 
 namespace RentMe_App
@@ -16,7 +14,7 @@ namespace RentMe_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainAdminForm());
+            Application.Run(new LoginForm());
         }
     }
 }

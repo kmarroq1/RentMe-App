@@ -62,6 +62,12 @@
     <Compile Include="UserControls\AddMemberUserControl.Designer.cs">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DashboardHeaderUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     <EmbeddedResource Include="UserControls\MemberDetailsUserControl.resx">
       <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +201,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Common\Images\RentMe Logo_smaller.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

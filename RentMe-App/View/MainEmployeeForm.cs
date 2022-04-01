@@ -12,9 +12,17 @@ namespace RentMe_App.View
 {
     public partial class MainEmployeeForm : Form
     {
-        public MainEmployeeForm()
+        private readonly LoginForm _loginForm;
+
+        public MainEmployeeForm(LoginForm loginForm)
         {
             InitializeComponent();
+            _loginForm = loginForm;
+        }
+
+        private void MainEmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _loginForm.Show();
         }
     }
 }
