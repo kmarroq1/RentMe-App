@@ -31,7 +31,6 @@ namespace RentMe_App.UserControls
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardHeaderUserControl));
             this.logoutTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.userDetailsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.employeeNameLabel = new System.Windows.Forms.Label();
@@ -39,9 +38,10 @@ namespace RentMe_App.UserControls
             this.dividerLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameLabelLabel = new System.Windows.Forms.Label();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.logoutTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.userDetailsFlowLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // logoutTableLayoutPanel
@@ -60,16 +60,6 @@ namespace RentMe_App.UserControls
             this.logoutTableLayoutPanel.Size = new System.Drawing.Size(387, 77);
             this.logoutTableLayoutPanel.TabIndex = 0;
             // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(128, 128);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logoPictureBox.TabIndex = 0;
-            this.logoPictureBox.TabStop = false;
-            // 
             // logoutLinkLabel
             // 
             this.logoutLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -81,6 +71,7 @@ namespace RentMe_App.UserControls
             this.logoutLinkLabel.TabIndex = 0;
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
             // userDetailsFlowLayoutPanel
             // 
@@ -145,6 +136,16 @@ namespace RentMe_App.UserControls
             this.usernameLabelLabel.TabIndex = 4;
             this.usernameLabelLabel.Text = "Username:";
             // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(128, 128);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 0;
+            this.logoPictureBox.TabStop = false;
+            // 
             // DashboardHeaderUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,9 +157,9 @@ namespace RentMe_App.UserControls
             this.Load += new System.EventHandler(this.DashboardHeaderUserControl_Load);
             this.logoutTableLayoutPanel.ResumeLayout(false);
             this.logoutTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.userDetailsFlowLayoutPanel.ResumeLayout(false);
             this.userDetailsFlowLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

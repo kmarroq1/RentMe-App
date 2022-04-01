@@ -73,6 +73,7 @@
     <Compile Include="View\AdminModals\EditEmployeeModal.Designer.cs">
       <DependentUpon>EditEmployeeModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Interfaces\ILogout.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

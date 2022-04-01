@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentMe_App.View.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,26 @@ namespace RentMe_App.UserControls
 {
     public partial class DashboardHeaderUserControl : UserControl
     {
+        private ILogout _parentForm;
+
         public DashboardHeaderUserControl()
         {
             InitializeComponent();
         }
 
+        public void SetParameters(ILogout parentForm)
+        {
+            _parentForm = parentForm;
+        }
+
         private void DashboardHeaderUserControl_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _parentForm.Logout();
         }
     }
 }
