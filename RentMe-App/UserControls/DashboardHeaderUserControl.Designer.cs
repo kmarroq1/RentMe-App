@@ -46,12 +46,13 @@ namespace RentMe_App.UserControls
             // 
             // logoutTableLayoutPanel
             // 
+            this.logoutTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logoutTableLayoutPanel.AutoSize = true;
             this.logoutTableLayoutPanel.ColumnCount = 1;
             this.logoutTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.logoutTableLayoutPanel.Controls.Add(this.logoutLinkLabel, 0, 1);
             this.logoutTableLayoutPanel.Controls.Add(this.userDetailsFlowLayoutPanel, 0, 0);
-            this.logoutTableLayoutPanel.Location = new System.Drawing.Point(137, 3);
+            this.logoutTableLayoutPanel.Location = new System.Drawing.Point(234, 3);
             this.logoutTableLayoutPanel.Name = "logoutTableLayoutPanel";
             this.logoutTableLayoutPanel.RowCount = 2;
             this.logoutTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -151,7 +152,7 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.logoutTableLayoutPanel);
             this.Name = "DashboardHeaderUserControl";
-            this.Size = new System.Drawing.Size(527, 135);
+            this.Size = new System.Drawing.Size(624, 135);
             this.Load += new System.EventHandler(this.DashboardHeaderUserControl_Load);
             this.logoutTableLayoutPanel.ResumeLayout(false);
             this.logoutTableLayoutPanel.PerformLayout();
