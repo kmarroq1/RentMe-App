@@ -14,23 +14,26 @@ namespace RentMe_App.View
     public partial class MainEmployeeForm : Form, ILogout
     {
         private readonly LoginForm _loginForm;
+        private bool _killApp;
 
         public MainEmployeeForm(LoginForm loginForm)
         {
             InitializeComponent();
             _loginForm = loginForm;
             dashboardHeaderUserControl.SetParameters(this);
+            _killApp = true;
         }
 
         public void Logout()
         {
+            _killApp = false;
             _loginForm.Show();
             Close();
         }
 
         private void MainEmployeeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _loginForm.Show();
+            if(_killApp) Application.Exit();
         }
     }
 }
