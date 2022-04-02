@@ -37,6 +37,10 @@ namespace RentMe_App.Controller
         /// <returns></returns>
         public List<Employee> GetEmployeeById(int employeeID)
         {
+            if (employeeID < 0)
+            {
+                throw new ArgumentException("Employee ID must be a positive number");
+            }
             return _employeeDbdal.GetEmployeeById(employeeID);
         }
 
@@ -48,6 +52,10 @@ namespace RentMe_App.Controller
         /// <returns></returns>
         public List<Employee> GetEmployeeByName(string fName, string lName)
         {
+            if (string.IsNullOrEmpty(fName) || string.IsNullOrEmpty(lName))
+            {
+                throw new ArgumentException("Must enter first AND last name");
+            }
             return _employeeDbdal.GetEmployeeByName(fName, lName);
         }
 
@@ -58,6 +66,10 @@ namespace RentMe_App.Controller
         /// <returns></returns>
         public List<Employee> GetEmployeeByPhone(string phone)
         {
+            if (phone == null)
+            {
+                throw new ArgumentException("Invalid phone number");
+            }
             return _employeeDbdal.GetEmployeeByPhone(phone);
         }
 

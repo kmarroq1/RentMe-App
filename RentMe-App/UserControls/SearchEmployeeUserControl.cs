@@ -55,37 +55,36 @@ namespace RentMe_App.UserControls
                 {
                     _employeeList = _employeeController.GetEmployeeByPhone(phoneTextBox.Text);
                 }
+
                 else if (!string.IsNullOrEmpty(idTextBox.Text) && int.Parse(idTextBox.Text) < 0)
                 {
                     errorLabel.Text = "Employee ID must be a positive number";
+                    return;
                 }
                 else if ((string.IsNullOrEmpty(fNameTextBox.Text) && !string.IsNullOrEmpty(lNameTextBox.Text)) ||
                          (!string.IsNullOrEmpty(fNameTextBox.Text) && string.IsNullOrEmpty(lNameTextBox.Text)))
                 {
                     errorLabel.Text = "Search by name requires both values";
+                    return;
                 }
                 else if (!string.IsNullOrEmpty(phoneTextBox.Text) && !IsPhoneNumber(phoneTextBox.Text))
                 {
                     errorLabel.Text = "Invalid phone number";
+                    return;
                 }
                 else
                 {
                     errorLabel.Text = "Enter a value for ID, First/Last Name, or Phone # fields";
+                    return;
                 }
             }
             catch (Exception exception)
             {
-                errorLabel.Text = exception.Message + ": Invalid data";
+                errorLabel.Text = exception.Message;
+                return;
             }
 
-            if (_employeeList.Count == 0)
-            {
-                errorLabel.Text = "No employees found...";
-            }
-            else
-            {
-                RefreshData();
-            }
+            RefreshData();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -94,6 +93,7 @@ namespace RentMe_App.UserControls
             lNameTextBox.Clear();
             idTextBox.Clear();
             phoneTextBox.Clear();
+            errorLabel.Text = "";
             employeeSearchGridView.DataSource = null;
         }
 
@@ -124,6 +124,12 @@ namespace RentMe_App.UserControls
 
         private void RefreshData()
         {
+            if (_employeeList.Count == 0)
+            {
+                errorLabel.Text = "No employees found...";
+                return;
+            }
+
             employeeSearchGridView.DataSource = null;
 
             try
@@ -142,8 +148,15 @@ namespace RentMe_App.UserControls
 
         private static bool IsPhoneNumber(string phone)
         {
-            Match phoneMatch = Regex.Match(phone, @"^\(\d{3}\) \d{3}-\d{4}$");
-            return phoneMatch.Success;
+            if (string.IsNullOrEmpty(phone))
+            {
+                throw new ArgumentException("Invalid phone number");
+            }
+            else
+            {
+                Match phoneMatch = Regex.Match(phone, @"^\(\d{3}\) \d{3}-\d{4}$");
+                return phoneMatch.Success;
+            }
         }
 
         #endregion
