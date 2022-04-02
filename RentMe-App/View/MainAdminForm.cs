@@ -3,6 +3,11 @@ using System.Windows.Forms;
 
 namespace RentMe_App
 {
+    /// <summary>
+    /// class for main employee form
+    /// Author: cs6232-g5
+    /// Version: Spring 2022
+    /// </summary>
     public partial class MainAdminForm : Form
     {
         #region Data members
