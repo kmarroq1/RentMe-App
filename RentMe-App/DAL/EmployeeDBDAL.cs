@@ -51,7 +51,7 @@ namespace RentMe_App.DAL
                         {
                             Employee employee = new Employee
                             {
-                                EmployeeId = (int)reader["memberID"],
+                                EmployeeId = (int)reader["employeeID"],
                                 BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
                                 Name = reader["fname"] + " " + reader["lname"],
                                 Phone = reader["phone"].ToString(),
@@ -113,7 +113,7 @@ namespace RentMe_App.DAL
                         {
                             Employee employee = new Employee
                             {
-                                EmployeeId = (int)reader["memberID"],
+                                EmployeeId = (int)reader["employeeID"],
                                 BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
                                 Name = reader["fname"] + " " + reader["lname"],
                                 Phone = reader["phone"].ToString(),
@@ -172,7 +172,7 @@ namespace RentMe_App.DAL
                         {
                             Employee employee = new Employee
                             {
-                                EmployeeId = (int)reader["memberID"],
+                                EmployeeId = (int)reader["employeeID"],
                                 BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
                                 Name = reader["fname"] + " " + reader["lname"],
                                 Phone = reader["phone"].ToString(),

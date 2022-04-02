@@ -53,7 +53,7 @@ namespace RentMe_App.UserControls
                 }
                 else if (!string.IsNullOrEmpty(phoneTextBox.Text) && IsPhoneNumber(phoneTextBox.Text))
                 {
-                    _employeeList = _employeeController.GetEmployeeByPhone(phoneTextBox.Text);
+                    _employeeList = _employeeController.GetEmployeeByPhone(RemovePhoneSpecialCharacters(phoneTextBox.Text));
                 }
 
                 else if (!string.IsNullOrEmpty(idTextBox.Text) && int.Parse(idTextBox.Text) < 0)
@@ -94,6 +94,7 @@ namespace RentMe_App.UserControls
             idTextBox.Clear();
             phoneTextBox.Clear();
             errorLabel.Text = "";
+            infoLabel.Text = "";
             employeeSearchGridView.DataSource = null;
         }
 
@@ -101,13 +102,13 @@ namespace RentMe_App.UserControls
         {
             try
             {
-                _selectedEmployeeId = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["ID"].Value.ToString());
+                _selectedEmployeeId = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
                 EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployeeId);
                 newForm.ShowDialog();
             }
             catch (Exception exception)
             {
-                errorLabel.Text = exception.Message + ": Invalid row data";
+                errorLabel.Text = exception.Message;
             }
         }
 
@@ -120,6 +121,8 @@ namespace RentMe_App.UserControls
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
             EditButton.Enabled = employeeSearchGridView.SelectedRows.Count == 1;
+            infoLabel.Text = "";
+            errorLabel.Text = "";
         }
 
         private void RefreshData()
@@ -129,8 +132,9 @@ namespace RentMe_App.UserControls
                 errorLabel.Text = "No employees found...";
                 return;
             }
-
+            
             employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
 
             try
             {
@@ -139,6 +143,8 @@ namespace RentMe_App.UserControls
                     employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Phone, employee.Address,
                         employee.City, employee.State, employee.BirthDate, employee.IsActive);
                 }
+
+                infoLabel.Text = "Tip: Select a row to edit";
             }
             catch (Exception exception)
             {
@@ -154,9 +160,20 @@ namespace RentMe_App.UserControls
             }
             else
             {
-                Match phoneMatch = Regex.Match(phone, @"^\(\d{3}\) \d{3}-\d{4}$");
+                Match phoneMatch = Regex.Match(phone, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
                 return phoneMatch.Success;
             }
+        }
+
+        private string RemovePhoneSpecialCharacters(string phone)
+        {
+            var stringPhone = phone;
+            var charactersToRemove = new string[] { " ", ".", "-", ")", "(", "'" };
+            foreach (var c in charactersToRemove)
+            {
+                stringPhone = stringPhone.Replace(c, string.Empty);
+            }
+            return stringPhone;
         }
 
         #endregion
