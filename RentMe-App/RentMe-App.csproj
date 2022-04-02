@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StyleController.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>
