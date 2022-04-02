@@ -5,7 +5,7 @@ namespace RentMe_App.Model
     /// <summary>
     /// Class for defining an employee.
     /// </summary>
-    class Employee
+    public class Employee
     {
         #region Data Members
 
@@ -15,7 +15,17 @@ namespace RentMe_App.Model
         public int EmployeeId { get; set; }
 
         /// <summary>
-        /// employee name
+        /// employee first name
+        /// </summary>
+        public string FName { get; set; }
+
+        /// <summary>
+        /// employee lst name
+        /// </summary>
+        public string LName { get; set; }
+
+        /// <summary>
+        /// employee full name
         /// </summary>
         public string Name { get; set; }
 
@@ -25,7 +35,17 @@ namespace RentMe_App.Model
         public string Phone { get; set; }
 
         /// <summary>
-        /// employee address
+        /// employee address1
+        /// </summary>
+        public string Address1 { get; set; }
+
+        /// <summary>
+        /// employee address2
+        /// </summary>
+        public string Address2 { get; set; }
+
+        /// <summary>
+        /// employee full address
         /// </summary>
         public string Address { get; set; }
 
@@ -47,7 +67,7 @@ namespace RentMe_App.Model
         /// <summary>
         /// employee date of birth
         /// </summary>
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         /// <summary>
         /// employment status

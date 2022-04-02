@@ -45,6 +45,15 @@ namespace RentMe_App.Controller
         }
 
         /// <summary>
+        /// Updates an existing employee
+        /// </summary>
+        /// <param name="employee"></param>
+        public void UpdateEmployee(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Gets the employee by their name and returns the employee
         /// </summary>
         /// <param name="fName"></param>

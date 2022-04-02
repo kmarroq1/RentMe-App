@@ -52,10 +52,14 @@ namespace RentMe_App.DAL
                             Employee employee = new Employee
                             {
                                 EmployeeId = (int)reader["employeeID"],
-                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                BirthDate = ((DateTime)reader["birthDate"]),
                                 Name = reader["fname"] + " " + reader["lname"],
+                                FName = reader["fname"].ToString(),
+                                LName = reader["lname"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
+                                Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
@@ -114,10 +118,14 @@ namespace RentMe_App.DAL
                             Employee employee = new Employee
                             {
                                 EmployeeId = (int)reader["employeeID"],
-                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                BirthDate = ((DateTime)reader["birthDate"]),
                                 Name = reader["fname"] + " " + reader["lname"],
+                                FName = reader["fname"].ToString(),
+                                LName = reader["lname"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
+                                Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
@@ -173,10 +181,14 @@ namespace RentMe_App.DAL
                             Employee employee = new Employee
                             {
                                 EmployeeId = (int)reader["employeeID"],
-                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                BirthDate = ((DateTime)reader["birthDate"]),
                                 Name = reader["fname"] + " " + reader["lname"],
+                                FName = reader["fname"].ToString(),
+                                LName = reader["lname"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
+                                Address1 = reader["address1"].ToString(),
+                                Address2 = reader["address2"].ToString(),
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),

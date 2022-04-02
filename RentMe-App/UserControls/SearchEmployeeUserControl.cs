@@ -3,6 +3,7 @@ using RentMe_App.Model;
 using RentMe_App.View.AdminModals;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace RentMe_App.UserControls
 
         private readonly EmployeeController _employeeController;
         private List<Employee> _employeeList;
-        private int _selectedEmployeeId;
+        private Employee _selectedEmployee;
 
         #endregion
 
@@ -32,7 +33,6 @@ namespace RentMe_App.UserControls
             EditButton.Enabled = false;
             _employeeController = new EmployeeController();
             _employeeList = new List<Employee>();
-            _selectedEmployeeId = 0;
         }
 
         #endregion
@@ -105,8 +105,9 @@ namespace RentMe_App.UserControls
         {
             try
             {
-                _selectedEmployeeId = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
-                EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployeeId);
+                var employeeID = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
+                _selectedEmployee = _employeeList.Find(x => x.EmployeeId == employeeID);
+                EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployee);
                 newForm.ShowDialog();
             }
             catch (Exception exception)
@@ -144,7 +145,7 @@ namespace RentMe_App.UserControls
                 foreach (Employee employee in _employeeList)
                 {
                     employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Phone, employee.Address,
-                        employee.City, employee.State, employee.BirthDate, employee.IsActive);
+                        employee.City, employee.State, employee.BirthDate.ToShortDateString(), employee.IsActive);
                 }
 
                 infoLabel.Text = "Tip: Select a row to edit";
