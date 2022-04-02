@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace RentMe_App.DAL
 {
@@ -9,19 +10,188 @@ namespace RentMe_App.DAL
     /// </summary>
     class EmployeeDBDAL
     {
-        internal List<Employee> GetEmployeeById(int employeeID)
+        #region Queries
+
+        /// <summary>
+        /// Query for getting the employee by their id
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public List<Employee> GetEmployeeById(int employeeId)
         {
-            throw new NotImplementedException();
+            if (employeeId < 0)
+            {
+                throw new ArgumentException("Employee ID must be a positive number");
+            }
+
+            List<Employee> newList = new List<Employee>();
+
+            string selectStatement =
+                "SELECT * " +
+                "FROM employee " +
+                "WHERE " +
+                "employeeID = @employeeID";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@employeeID", employeeId);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return null;
+                        }
+
+                        while (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                EmployeeId = (int)reader["memberID"],
+                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                Name = reader["fname"] + " " + reader["lname"],
+                                Phone = reader["phone"].ToString(),
+                                Address = reader["address1"] + " " + reader["address2"],
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                Zip = reader["zip"].ToString(),
+                                IsActive = (bool)reader["active"]
+                            };
+                            newList.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return newList;
         }
 
+        /// <summary>
+        /// Query for getting the employee by their name
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="lName"></param>
+        /// <returns></returns>
         public List<Employee> GetEmployeeByName(string fName, string lName)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(fName) || string.IsNullOrEmpty(lName))
+            {
+                throw new ArgumentException("Must enter first AND last name");
+            }
+
+            List<Employee> newList = new List<Employee>();
+
+            string selectStatement =
+                "SELECT * " +
+                "FROM employee " +
+                "WHERE " +
+                "LOWER(fname) = @fName " +
+                "AND LOWER(lname) = @lName " +
+                "ORDER BY employeeID";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@fName", fName);
+                    selectCommand.Parameters.AddWithValue("@lName", lName);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return null;
+                        }
+
+                        while (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                EmployeeId = (int)reader["memberID"],
+                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                Name = reader["fname"] + " " + reader["lname"],
+                                Phone = reader["phone"].ToString(),
+                                Address = reader["address1"] + " " + reader["address2"],
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                Zip = reader["zip"].ToString(),
+                                IsActive = (bool)reader["active"]
+                            };
+                            newList.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return newList;
         }
 
-        internal List<Employee> GetEmployeeByPhone(string phone)
+        /// <summary>
+        /// Query for getting the employee by their phone number
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public List<Employee> GetEmployeeByPhone(string phone)
         {
-            throw new NotImplementedException();
+            if (phone == null)
+            {
+                throw new ArgumentException("Invalid phone number");
+            }
+
+            List<Employee> newList = new List<Employee>();
+
+            string selectStatement =
+                "SELECT * " +
+                "FROM employee " +
+                "WHERE " +
+                "phone = @phone " +
+                "ORDER BY employeeID";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@phone", phone);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return null;
+                        }
+
+                        while (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                EmployeeId = (int)reader["memberID"],
+                                BirthDate = ((DateTime)reader["birthDate"]).ToShortDateString(),
+                                Name = reader["fname"] + " " + reader["lname"],
+                                Phone = reader["phone"].ToString(),
+                                Address = reader["address1"] + " " + reader["address2"],
+                                City = reader["city"].ToString(),
+                                State = reader["state"].ToString(),
+                                Zip = reader["zip"].ToString(),
+                                IsActive = (bool)reader["active"]
+                            };
+                            newList.Add(employee);
+                        }
+                    }
+                }
+            }
+
+            return newList;
         }
+
+        #endregion
+
     }
 }

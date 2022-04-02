@@ -136,8 +136,8 @@ namespace RentMe_App.UserControls
             {
                 foreach (Employee employee in _employeeList)
                 {
-                    employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Address,
-                        employee.City, employee.State, employee.Dob, employee.IsActive);
+                    employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Phone, employee.Address,
+                        employee.City, employee.State, employee.BirthDate, employee.IsActive);
                 }
             }
             catch (Exception exception)
