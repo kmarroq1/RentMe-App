@@ -157,6 +157,18 @@ namespace RentMe_App.View
             HideErrorMessage();
         }
 
+        private void UsernameTextBox_Enter(object sender, EventArgs e)
+        {
+            this.usernameTextBox.Text = "";
+            HideErrorMessage();
+        }
+
+        private void PasswordTextBox_Enter(object sender, EventArgs e)
+        {
+            this.passwordTextBox.Text = "";
+            HideErrorMessage();
+        }
+
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
