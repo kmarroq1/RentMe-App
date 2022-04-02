@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using RentMe_App.DAL;
 
 namespace RentMe_App.Controller
 {
@@ -9,6 +10,12 @@ namespace RentMe_App.Controller
     /// </summary>
     class EmployeeController
     {
+        #region Data Members
+
+        private readonly EmployeeDBDAL _employeeDbdal;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -16,26 +23,42 @@ namespace RentMe_App.Controller
         /// </summary>
         public EmployeeController()
         {
-
+            _employeeDbdal = new EmployeeDBDAL();
         }
 
         #endregion
 
         #region Methods
 
-        internal List<Employee> GetEmployeeById(int employeeID)
+        /// <summary>
+        /// Gets the employee by their ID and returns the employee
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <returns></returns>
+        public List<Employee> GetEmployeeById(int employeeID)
         {
-            throw new NotImplementedException();
+            return _employeeDbdal.GetEmployeeById(employeeID);
         }
 
-        internal List<Employee> GetEmployeeByName(string text1, string text2)
+        /// <summary>
+        /// Gets the employee by their name and returns the employee
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="lName"></param>
+        /// <returns></returns>
+        public List<Employee> GetEmployeeByName(string fName, string lName)
         {
-            throw new NotImplementedException();
+            return _employeeDbdal.GetEmployeeByName(fName, lName);
         }
 
-        internal List<Employee> GetEmployeeByPhone(string text)
+        /// <summary>
+        /// Gets the employee by their phone number and returns the employee
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        public List<Employee> GetEmployeeByPhone(string phone)
         {
-            throw new NotImplementedException();
+            return _employeeDbdal.GetEmployeeByPhone(phone);
         }
 
         #endregion
