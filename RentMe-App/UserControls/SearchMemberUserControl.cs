@@ -51,7 +51,7 @@ namespace RentMe_App.UserControls
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 string phone = phoneTextBox.Text;
-                Match matchPhone = Regex.Match(phone, @"^\(\d{3}\) \d{3}-\d{4}$");
+                Match matchPhone = Regex.Match(phone, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
 
                 memberList = new List<Member>();
 
@@ -67,12 +67,12 @@ namespace RentMe_App.UserControls
                 }
                 else if (matchPhone.Success)
                 {
-                    memberList = memberController.GetMemberByPhone(phone);
+                    memberList = memberController.GetMemberByPhone(RemovePhoneSpecialCharacters(phone));
                     CheckMemberFound(memberList);
                 }
                 else if (!string.IsNullOrEmpty(phone) && !matchPhone.Success)
                 {
-                    string errorMessage = "Phone number format should be (XXX) XXX-XXXX";
+                    string errorMessage = "Phone number contains 10 digits";
                     this.ShowInvalidErrorMessage(errorMessage);
                 }
                 else if (getMemberIDCheck == false && memberIDTextBox.Text.Length > 0)
@@ -97,6 +97,17 @@ namespace RentMe_App.UserControls
                 string errorMessage = "Invalid Logic";
                 this.ShowInvalidErrorMessage(errorMessage);
             }
+        }
+
+        private string RemovePhoneSpecialCharacters(string phone)
+        {
+            var stringPhone = phone;
+            var charactersToRemove = new string[] { " ", ".", "-", ")", "(", "'" };
+            foreach (var c in charactersToRemove)
+            {
+                stringPhone = stringPhone.Replace(c, string.Empty);
+            }
+            return stringPhone;
         }
 
         private void CheckMemberFound(List<Member> memberList)

@@ -49,14 +49,22 @@
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
     <Compile Include="DAL\EmployeeDBDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
+    <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="UserControls\DashboardHeaderUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Employee.cs" />
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
@@ -118,6 +126,9 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
+      <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +152,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\SearchEmployeeUserControl.resx">
       <DependentUpon>SearchEmployeeUserControl.cs</DependentUpon>
@@ -166,6 +178,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\Images\RentMe Logo_smaller.png" />
+    <Content Include="Common\QA_Checklist.txt" />
+    <Content Include="Common\Sql\insert_furniture_part1.sql" />
+    <Content Include="Common\Sql\insert_furniture_part2.sql" />
+    <Content Include="Common\Sql\insert_furniture_part3.sql" />
+    <Content Include="Common\Sql\RentMeScript_v2.sql" />
+    <Content Include="Common\Sql\sfGetAuthorizedAdminLoginInfo.sql" />
+    <Content Include="Common\Sql\sfGetAuthorizedEmployeeLoginInfo.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

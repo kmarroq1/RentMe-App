@@ -1,0 +1,30 @@
+﻿/*--------------------------
+QA Checklist
+--------------------------*/
+
+The tab orders should be set properly (e.g. in the order of username, password, login button)
+
+In the Design view, set LoginForm's properties
+- StartPosition to CenterScreen
+- MaximizeBox to False, (this gets rid of the icon to maximize the form so that the form cannot be maximized)
+- MinimizeBox to False,  (this gets rid of the icon to minimize the form so that the form cannot be minimized)
+
+XML comments on all classes and public methods
+
+username and password Textboxes and labels, Password textbox should be masked. There is no requirement for the password field.
+
+Closing either form by clicking on the x button on the right corner exits the program
+
+when a  user is logged in, he/she is brought to the MainForm page with username shown on the MainForm upper right corner, and the login form is hidden
+when the user clicks the logout link, the MainForm is hidden or closed and the previously hidden login form is shown to the user. 
+Hidden forms should be closed when the program exits, otherwise, your program would not end even if it looks like it's over since there are no forms showing. Run your application, and then close your forms (try login form, and MainForm). Rebuild your solution, if your program doesn't rebuild and give you an error message about "not be able to copy \bin\Debug\TechSupport.ext to ...", that means there is a hidden process running.  Make sure the user can exit from your program by clicking on the X on the right corner of the window when the user is in the MainForm or Login Form.
+Only one instance of the login form and mainForm should be present at any time. For instance, if you created a form by using new Form(), then hid it, the form is still present. If you call new Form() again, another form is created. You should dispose  the first form first or make sure to use the same instance.
+
+/*--------------------------
+Passwords
+--------------------------*/
+
+SELECT
+HASHBYTES('SHA2_256','Passw0rd!') AS p1
+, HASHBYTES('SHA2_256','L0veData123!!') AS p2
+, HASHBYTES('SHA2_256','test1234') AS p3
