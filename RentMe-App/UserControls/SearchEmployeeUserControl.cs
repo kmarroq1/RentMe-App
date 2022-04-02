@@ -41,6 +41,9 @@ namespace RentMe_App.UserControls
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
+
             try
             {
                 if (!string.IsNullOrEmpty(idTextBox.Text) && int.Parse(idTextBox.Text) > 0)
@@ -127,7 +130,7 @@ namespace RentMe_App.UserControls
 
         private void RefreshData()
         {
-            if (_employeeList.Count == 0)
+            if (_employeeList == null || _employeeList.Count == 0)
             {
                 errorLabel.Text = "No employees found...";
                 return;
@@ -176,7 +179,11 @@ namespace RentMe_App.UserControls
             return stringPhone;
         }
 
-        #endregion
+        private void ClearError(object sender, EventArgs e)
+        {
+            errorLabel.Text = "";
+        }
 
+        #endregion
     }
 }
