@@ -48,10 +48,12 @@
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
+    <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\SearchEmployeeUserControl.resx">
       <DependentUpon>SearchEmployeeUserControl.cs</DependentUpon>
@@ -175,9 +178,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Common\Images\RentMe Logo_smaller.png" />
+    <Content Include="Common\QA_Checklist.txt" />
+    <Content Include="Common\Sql\insert_furniture_part1.sql" />
+    <Content Include="Common\Sql\insert_furniture_part2.sql" />
+    <Content Include="Common\Sql\insert_furniture_part3.sql" />
+    <Content Include="Common\Sql\RentMeScript_v2.sql" />
+    <Content Include="Common\Sql\sfGetAuthorizedAdminLoginInfo.sql" />
+    <Content Include="Common\Sql\sfGetAuthorizedEmployeeLoginInfo.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Sql\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

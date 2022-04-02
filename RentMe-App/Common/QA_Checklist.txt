@@ -1,0 +1,23 @@
+﻿/*--------------------------
+QA Checklist
+--------------------------*/
+
+The tab orders should be set properly (e.g. in the order of username, password, login button)
+
+In the Design view, set LoginForm's properties
+- StartPosition to CenterScreen
+- MaximizeBox to False, (this gets rid of the icon to maximize the form so that the form cannot be maximized)
+- MinimizeBox to False,  (this gets rid of the icon to minimize the form so that the form cannot be minimized)
+
+XML comments on all classes and public methods
+
+username and password Textboxes and labels, Password textbox should be masked. There is no requirement for the password field.
+
+/*--------------------------
+Passwords
+--------------------------*/
+
+SELECT
+HASHBYTES('SHA2_256','Passw0rd!') AS p1
+, HASHBYTES('SHA2_256','L0veData123!!') AS p2
+, HASHBYTES('SHA2_256','test1234') AS p3

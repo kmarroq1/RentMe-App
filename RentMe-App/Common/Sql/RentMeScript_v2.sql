@@ -1,4 +1,4 @@
--- =========================================
+﻿-- =========================================
 -- Create Database
 -- =========================================
 
@@ -115,7 +115,7 @@ CREATE TABLE [dbo].[login]
 (
 	[employeeID] int NOT NULL FOREIGN KEY ([employeeID]) REFERENCES [dbo].[employee](employeeID), 
 	[username] VARCHAR(45) NOT NULL, 
-	[password] VARCHAR(100) NOT NULL,
+	[password] VARBINARY(150) NOT NULL,
 	PRIMARY KEY ([employeeID])
 )
 GO
@@ -383,7 +383,7 @@ VALUES
     ('1945-01-27','Connie','Tiley','4044564561','22 Saint John Road','','Alamo','GA','30411',1,'female')
     , ('1975-07-18','Brent','Tradon','4044899821','21 Woodfire Court','','Suwanee','GA','30024',1,'male')
     , ('1990-06-11','Kendra','Donald','4049856541','26 Sweetwater Drive','','Cataula','GA','31804',1,'female')
-    , ('1986-05-25','Tobey','Reynolds','4048794563','13 Carters Drive','','Hartwell','GA','30643',1,'male')
+    , ('1986-05-25','Jane','Reynolds','4048794563','13 Carters Drive','','Hartwell','GA','30643',1,'female')
     , ('1987-04-22','Lucy','Leonard','4045643211','14 Patterson Drive','','Franklin','GA','30213',1,'female')
     , ('1988-02-15','Larry','Post','4047893201','16 Shadowrock Drive','Apt 56','Marietta','GA','30062',1,'male')
     , ('1989-01-11','Doris','Littlefoot','4049850303','29 Meadows Road','Apt 5','Wadley','GA','30433',1,'female')
@@ -417,16 +417,16 @@ GO
 
 INSERT INTO [login] (employeeID,username,password)
 VALUES
-    (1,'cTiley','0xE66860546F18CDBBCD86B35E18B525BFFC67F772C650CEDFE3FF7A0026FA1DEE')
-    , (2,'bTradon','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (3,'kDonald','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (4,'tReynolds','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (5,'lLeonard','0xE66860546F18CDBBCD86B35E18B525BFFC67F772C650CEDFE3FF7A0026FA1DEE')
-    , (6,'lPost','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (7,'dLittlefoot','0xE66860546F18CDBBCD86B35E18B525BFFC67F772C650CEDFE3FF7A0026FA1DEE')
-    , (8,'kCornwall','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (9,'dMoon','0x6E303D89F7AA3DB12FD351C4BD6C5171371A99F0D9602D1C060AA36D5826D936')
-    , (10,'jBean','0xE66860546F18CDBBCD86B35E18B525BFFC67F772C650CEDFE3FF7A0026FA1DEE')
-    , (11,'kBayer','0xE66860546F18CDBBCD86B35E18B525BFFC67F772C650CEDFE3FF7A0026FA1DEE')
+    (1,'Connie',HASHBYTES('SHA2_256','Passw0rd!'))
+    , (2,'Brent',HASHBYTES('SHA2_256','Passw0rd!'))
+    , (3,'Kendra',HASHBYTES('SHA2_256','L0veData123!!'))
+    , (4,'Jane',HASHBYTES('SHA2_256','test1234'))
+    , (5,'Lucy',HASHBYTES('SHA2_256','Passw0rd!'))
+    , (6,'Larry',HASHBYTES('SHA2_256','L0veData123!!'))
+    , (7,'Doris',HASHBYTES('SHA2_256','Passw0rd!'))
+    , (8,'Kathryn',HASHBYTES('SHA2_256','L0veData123!!'))
+    , (9,'Daphne',HASHBYTES('SHA2_256','Passw0rd!'))
+    , (10,'Justin',HASHBYTES('SHA2_256','L0veData123!!'))
+    , (11,'Kelly',HASHBYTES('SHA2_256','Passw0rd!'))
     ;
 GO
