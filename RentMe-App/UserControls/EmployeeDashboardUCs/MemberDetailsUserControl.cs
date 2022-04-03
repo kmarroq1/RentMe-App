@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RentMe_App.UserControls
@@ -11,7 +12,7 @@ namespace RentMe_App.UserControls
     public partial class MemberDetailsUserControl : UserControl
     {
         #region Fields
-        private readonly StateController _stateController;
+        private readonly StatesController _statesController;
         #endregion
 
         #region Properties
@@ -34,7 +35,7 @@ namespace RentMe_App.UserControls
                     Zip = zipTextBox.Text
                 };
 
-                if (stateComboBox.SelectedIndex > -1)
+                if (stateComboBox.SelectedIndex > 0)
                     newMember.State = stateComboBox.SelectedItem.ToString();
 
                 if (!string.IsNullOrWhiteSpace(address2TextBox.Text))
@@ -65,10 +66,11 @@ namespace RentMe_App.UserControls
         public MemberDetailsUserControl()
         {
             InitializeComponent();
-            _stateController = new StateController();
+            _statesController = new StatesController();
 
-            stateComboBox.Items.Clear();
-            stateComboBox.Items.AddRange(_stateController.GetStateAbbreviations().ToArray());
+            List<string> states = new List<string> { "--Select--" };
+            states.AddRange(_statesController.GetStatesList().StatesList);
+            stateComboBox.DataSource = new BindingSource(states, dataMember: null);
         }
         #endregion
 
@@ -83,7 +85,7 @@ namespace RentMe_App.UserControls
 
             birthDateDateTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0);
             activeCheckBox.Checked = true;
-            stateComboBox.SelectedIndex = -1;
+            stateComboBox.SelectedIndex = 0;
         }
         #endregion
     }
