@@ -219,6 +219,30 @@ namespace RentMe_App.Model
                 + $"\tPhone: {Phone}\n"
                 + $"\tAddress:\n\t\t{Address1}\n\t\t{Address2}\n\t\t{City}, {State} {Zip}";
         }
+
+        /// <summary>
+        /// Checks if two Member objects have identical fields.
+        /// </summary>
+        /// <param name="obj">The other Member to compare against.</param>
+        /// <returns>Whether or not all fields match between the two objects.</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Member)) return false;
+
+            Member otherMember = (Member)obj;
+
+            return (MemberID == otherMember.MemberID)
+                && (Fname == otherMember.Fname)
+                && (Lname == otherMember.Lname)
+                && (BirthDate.ToString() == otherMember.BirthDate.ToString())
+                && (Phone == otherMember.Phone)
+                && (Address1 == otherMember.Address1)
+                && (Address2 == otherMember.Address2)
+                && (City == otherMember.City)
+                && (State == otherMember.State)
+                && (Zip == otherMember.Zip)
+                && (Active == otherMember.Active);
+        }
         #endregion
     }
 }

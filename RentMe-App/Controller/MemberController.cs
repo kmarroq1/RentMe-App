@@ -1,5 +1,6 @@
 ﻿using RentMe_App.DAL;
 using RentMe_App.Model;
+using System;
 using System.Collections.Generic;
 
 namespace RentMe_App.Controller
@@ -71,6 +72,19 @@ namespace RentMe_App.Controller
             memberDBSource.AddMember(newMember);
         }
 
+        /// <summary>
+        /// Updates the selected member in the db with the new values.
+        /// </summary>
+        /// <param name="oldMember">The member to be updated. (also used to prevent race condiditons)</param>
+        /// <param name="newMember">The new values to use in the member.</param>
+        public void UpdateMember(Member oldMember, Member newMember)
+        {
+            if (oldMember == null || newMember == null)
+                throw new InvalidOperationException("Something went wrong. One of the members was null.");
+
+            if (newMember.Equals(oldMember))
+                throw new Exception("No fields have been updated.");
+        }
         #endregion
     }
 }
