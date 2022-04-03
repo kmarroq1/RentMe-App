@@ -39,9 +39,21 @@ namespace RentMe_App.UserControls
             try
             {
                 Member newMember = memberDetailsUserControl.Member;
+
+                if (newMember.Fname == null
+                || newMember.Lname == null
+                || newMember.Phone == null
+                || newMember.Address1 == null
+                || newMember.City == null
+                || newMember.State == null
+                || newMember.Zip == null
+                ) throw new InvalidOperationException("Form missing required fields.");
+
                 _memberController.AddMember(newMember);
+                
                 MessageBox.Show($"Successfully added {newMember.Fname} {newMember.Lname}.", "New Member Registered");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 errorMessageLabel.Text = ex.Message;
                 errorMessageLabel.Show();
