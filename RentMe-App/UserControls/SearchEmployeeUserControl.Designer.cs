@@ -30,23 +30,33 @@ namespace RentMe_App.UserControls
         private void InitializeComponent()
         {
             this.employeeSearchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.lNameTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
+            this.fNameTextBox = new System.Windows.Forms.TextBox();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.searchEmployeeLabel = new System.Windows.Forms.Label();
             this.employeeIdLabel = new System.Windows.Forms.Label();
             this.fNameLabel = new System.Windows.Forms.Label();
             this.lNameLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.employeeSearchGridView = new System.Windows.Forms.DataGridView();
+            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dobColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
-            this.fNameTextBox = new System.Windows.Forms.TextBox();
-            this.lNameTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.errorLabel = new System.Windows.Forms.Label();
+            this.infoLabel = new System.Windows.Forms.Label();
             this.employeeSearchTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSearchGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,25 +90,58 @@ namespace RentMe_App.UserControls
             this.employeeSearchTableLayoutPanel.Size = new System.Drawing.Size(800, 182);
             this.employeeSearchTableLayoutPanel.TabIndex = 0;
             // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.Location = new System.Drawing.Point(573, 63);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
+            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonPhoneFields);
+            // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(345, 63);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.TabIndex = 3;
+            this.idTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonIdFields);
+            // 
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(687, 123);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 4;
+            this.ClearButton.TabIndex = 6;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // lNameTextBox
+            // 
+            this.lNameTextBox.Location = new System.Drawing.Point(117, 123);
+            this.lNameTextBox.Name = "lNameTextBox";
+            this.lNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.lNameTextBox.TabIndex = 2;
+            this.lNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // SearchButton
             // 
             this.SearchButton.Location = new System.Drawing.Point(687, 63);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
-            this.SearchButton.TabIndex = 3;
+            this.SearchButton.TabIndex = 5;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            this.SearchButton.Enter += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // fNameTextBox
+            // 
+            this.fNameTextBox.Location = new System.Drawing.Point(117, 63);
+            this.fNameTextBox.Name = "fNameTextBox";
+            this.fNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.fNameTextBox.TabIndex = 1;
+            this.fNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // phoneLabel
             // 
@@ -145,34 +188,87 @@ namespace RentMe_App.UserControls
             this.lNameLabel.TabIndex = 2;
             this.lNameLabel.Text = "Last Name";
             // 
-            // dataGridView1
+            // employeeSearchGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 179);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 286);
-            this.dataGridView1.TabIndex = 1;
+            this.employeeSearchGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeSearchGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDColumn,
+            this.nameColumn,
+            this.addressColumn,
+            this.cityColumn,
+            this.stateColumn,
+            this.phoneColumn,
+            this.dobColumn,
+            this.activeColumn});
+            this.employeeSearchGridView.Location = new System.Drawing.Point(0, 179);
+            this.employeeSearchGridView.Name = "employeeSearchGridView";
+            this.employeeSearchGridView.Size = new System.Drawing.Size(800, 286);
+            this.employeeSearchGridView.TabIndex = 1;
+            this.employeeSearchGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            // 
+            // IDColumn
+            // 
+            this.IDColumn.HeaderText = "ID";
+            this.IDColumn.Name = "IDColumn";
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.HeaderText = "name";
+            this.nameColumn.Name = "nameColumn";
+            // 
+            // addressColumn
+            // 
+            this.addressColumn.HeaderText = "address";
+            this.addressColumn.Name = "addressColumn";
+            // 
+            // cityColumn
+            // 
+            this.cityColumn.HeaderText = "city";
+            this.cityColumn.Name = "cityColumn";
+            // 
+            // stateColumn
+            // 
+            this.stateColumn.HeaderText = "state";
+            this.stateColumn.Name = "stateColumn";
+            // 
+            // phoneColumn
+            // 
+            this.phoneColumn.HeaderText = "phone";
+            this.phoneColumn.Name = "phoneColumn";
+            // 
+            // dobColumn
+            // 
+            this.dobColumn.HeaderText = "DOB";
+            this.dobColumn.Name = "dobColumn";
+            // 
+            // activeColumn
+            // 
+            this.activeColumn.HeaderText = "active";
+            this.activeColumn.Name = "activeColumn";
+            this.activeColumn.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214F));
             this.tableLayoutPanel1.Controls.Add(this.AddButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.EditButton, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 468);
+            this.tableLayoutPanel1.Controls.Add(this.errorLabel, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(298, 471);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(232, 32);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(446, 26);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // AddButton
             // 
             this.AddButton.Location = new System.Drawing.Point(119, 3);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 4;
+            this.AddButton.Size = new System.Drawing.Size(75, 20);
+            this.AddButton.TabIndex = 8;
             this.AddButton.Text = "Add New";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -181,54 +277,46 @@ namespace RentMe_App.UserControls
             // 
             this.EditButton.Location = new System.Drawing.Point(3, 3);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(75, 23);
-            this.EditButton.TabIndex = 4;
+            this.EditButton.Size = new System.Drawing.Size(75, 20);
+            this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // fNameTextBox
+            // errorLabel
             // 
-            this.fNameTextBox.Location = new System.Drawing.Point(117, 63);
-            this.fNameTextBox.Name = "fNameTextBox";
-            this.fNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.fNameTextBox.TabIndex = 4;
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(235, 0);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorLabel.TabIndex = 5;
             // 
-            // lNameTextBox
+            // infoLabel
             // 
-            this.lNameTextBox.Location = new System.Drawing.Point(117, 123);
-            this.lNameTextBox.Name = "lNameTextBox";
-            this.lNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.lNameTextBox.TabIndex = 5;
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.Location = new System.Drawing.Point(345, 63);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 6;
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.Location = new System.Drawing.Point(573, 63);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
-            this.phoneTextBox.TabIndex = 7;
+            this.infoLabel.AutoSize = true;
+            this.infoLabel.Location = new System.Drawing.Point(153, 473);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(0, 13);
+            this.infoLabel.TabIndex = 3;
             // 
             // SearchEmployeeUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.employeeSearchGridView);
             this.Controls.Add(this.employeeSearchTableLayoutPanel);
             this.Name = "SearchEmployeeUserControl";
             this.Size = new System.Drawing.Size(800, 500);
             this.employeeSearchTableLayoutPanel.ResumeLayout(false);
             this.employeeSearchTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeSearchGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -240,7 +328,7 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.Label employeeIdLabel;
         private System.Windows.Forms.Label fNameLabel;
         private System.Windows.Forms.Label lNameLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView employeeSearchGridView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button SearchButton;
@@ -250,5 +338,15 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox lNameTextBox;
         private System.Windows.Forms.TextBox fNameTextBox;
+        private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dobColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn activeColumn;
+        private System.Windows.Forms.Label infoLabel;
     }
 }
