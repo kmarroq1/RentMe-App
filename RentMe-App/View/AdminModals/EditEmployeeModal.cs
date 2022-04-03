@@ -99,6 +99,7 @@ namespace RentMe_App.View.AdminModals
             lNameTextBox.Text = _employee.LName;
             var sex = new List<string>() { "--Select--", "female", "male", "other" };
             sexComboBox.DataSource = new BindingSource(sex, null);
+            sexComboBox.SelectedItem = _employee.Sex;
 
             address1TextBox.Text = _employee.Address1;
             address2TextBox.Text = _employee.Address2;
