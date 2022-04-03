@@ -11,7 +11,7 @@ namespace RentMe_App.View
         /// <summary>
         /// Initializes the Modal's components & fills Member fields with Member info.
         /// </summary>
-        /// <param name="memberToEdit"></param>
+        /// <param name="memberToEdit">The member to edit</param>
         public EditMemberModal(Member memberToEdit)
         {
             InitializeComponent();
