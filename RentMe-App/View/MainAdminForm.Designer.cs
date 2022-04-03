@@ -207,7 +207,7 @@ namespace RentMe_App
             this.MinimizeBox = false;
             this.Name = "MainAdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "RentMe: Admin Access";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainAdminForm_FormClosing);
             this.Load += new System.EventHandler(this.MainAdminForm_Load);
             this.tabControl1.ResumeLayout(false);

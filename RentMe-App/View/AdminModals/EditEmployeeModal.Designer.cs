@@ -30,6 +30,7 @@ namespace RentMe_App.View.AdminModals
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.sexTextBox = new System.Windows.Forms.TextBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
@@ -59,7 +60,8 @@ namespace RentMe_App.View.AdminModals
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.activeCheckbox = new System.Windows.Forms.CheckBox();
-            this.sexTextBox = new System.Windows.Forms.TextBox();
+            this.confirmPasswordLabel = new System.Windows.Forms.Label();
+            this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +72,8 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel1.Controls.Add(this.confirmPasswordTextBox, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.confirmPasswordLabel, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.sexTextBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.CloseButton, 3, 13);
             this.tableLayoutPanel1.Controls.Add(this.ClearButton, 2, 13);
@@ -118,12 +122,19 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(472, 574);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(470, 570);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // sexTextBox
+            // 
+            this.sexTextBox.Location = new System.Drawing.Point(354, 43);
+            this.sexTextBox.Name = "sexTextBox";
+            this.sexTextBox.Size = new System.Drawing.Size(100, 20);
+            this.sexTextBox.TabIndex = 2;
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(357, 523);
+            this.CloseButton.Location = new System.Drawing.Point(354, 523);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 2;
@@ -133,7 +144,7 @@ namespace RentMe_App.View.AdminModals
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(239, 523);
+            this.ClearButton.Location = new System.Drawing.Point(237, 523);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 2;
@@ -143,7 +154,7 @@ namespace RentMe_App.View.AdminModals
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(121, 523);
+            this.UpdateButton.Location = new System.Drawing.Point(120, 523);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(75, 23);
             this.UpdateButton.TabIndex = 1;
@@ -153,56 +164,56 @@ namespace RentMe_App.View.AdminModals
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(121, 363);
+            this.passwordTextBox.Location = new System.Drawing.Point(120, 363);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 2;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(121, 283);
+            this.phoneTextBox.Location = new System.Drawing.Point(120, 283);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.phoneTextBox.TabIndex = 2;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new System.Drawing.Point(121, 243);
+            this.zipTextBox.Location = new System.Drawing.Point(120, 243);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(100, 20);
             this.zipTextBox.TabIndex = 2;
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(121, 203);
+            this.cityTextBox.Location = new System.Drawing.Point(120, 203);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(100, 20);
             this.cityTextBox.TabIndex = 2;
             // 
             // address2TextBox
             // 
-            this.address2TextBox.Location = new System.Drawing.Point(121, 163);
+            this.address2TextBox.Location = new System.Drawing.Point(120, 163);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(100, 20);
             this.address2TextBox.TabIndex = 2;
             // 
             // address1TextBox
             // 
-            this.address1TextBox.Location = new System.Drawing.Point(121, 123);
+            this.address1TextBox.Location = new System.Drawing.Point(120, 123);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(100, 20);
             this.address1TextBox.TabIndex = 2;
             // 
             // lNameTextBox
             // 
-            this.lNameTextBox.Location = new System.Drawing.Point(121, 83);
+            this.lNameTextBox.Location = new System.Drawing.Point(120, 83);
             this.lNameTextBox.Name = "lNameTextBox";
             this.lNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.lNameTextBox.TabIndex = 2;
             // 
             // fNameTextBox
             // 
-            this.fNameTextBox.Location = new System.Drawing.Point(121, 43);
+            this.fNameTextBox.Location = new System.Drawing.Point(120, 43);
             this.fNameTextBox.Name = "fNameTextBox";
             this.fNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.fNameTextBox.TabIndex = 1;
@@ -211,7 +222,7 @@ namespace RentMe_App.View.AdminModals
             // 
             this.errorLabel.AutoSize = true;
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(239, 480);
+            this.errorLabel.Location = new System.Drawing.Point(237, 480);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(13, 13);
             this.errorLabel.TabIndex = 1;
@@ -219,21 +230,23 @@ namespace RentMe_App.View.AdminModals
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(239, 200);
+            this.label16.Location = new System.Drawing.Point(274, 200);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.Size = new System.Drawing.Size(36, 40);
             this.label16.TabIndex = 1;
-            this.label16.Text = "State";
+            this.label16.Text = "State*";
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(239, 40);
+            this.label15.Location = new System.Drawing.Point(278, 40);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(25, 13);
+            this.label15.Size = new System.Drawing.Size(29, 40);
             this.label15.TabIndex = 1;
-            this.label15.Text = "Sex";
+            this.label15.Text = "Sex*";
             // 
             // label14
             // 
@@ -256,45 +269,45 @@ namespace RentMe_App.View.AdminModals
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 360);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Password";
+            this.label10.Text = "New Password";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 320);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 13);
+            this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 1;
-            this.label9.Text = "Birthday";
+            this.label9.Text = "Birthday*";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 280);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Phone";
+            this.label8.Text = "Phone*";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 240);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(22, 13);
+            this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Zip";
+            this.label7.Text = "Zip*";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(3, 200);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "City";
+            this.label6.Text = "City*";
             // 
             // label5
             // 
@@ -310,27 +323,27 @@ namespace RentMe_App.View.AdminModals
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 120);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Address 1";
+            this.label4.Text = "Address 1*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Last Name";
+            this.label3.Text = "Last Name*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "First Name";
+            this.label2.Text = "First Name*";
             // 
             // label1
             // 
@@ -343,7 +356,7 @@ namespace RentMe_App.View.AdminModals
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(121, 323);
+            this.dateTimePicker.Location = new System.Drawing.Point(120, 323);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(111, 20);
             this.dateTimePicker.TabIndex = 3;
@@ -351,7 +364,7 @@ namespace RentMe_App.View.AdminModals
             // stateComboBox
             // 
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(357, 203);
+            this.stateComboBox.Location = new System.Drawing.Point(354, 203);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(111, 21);
             this.stateComboBox.TabIndex = 4;
@@ -359,19 +372,28 @@ namespace RentMe_App.View.AdminModals
             // activeCheckbox
             // 
             this.activeCheckbox.AutoSize = true;
-            this.activeCheckbox.Location = new System.Drawing.Point(121, 443);
+            this.activeCheckbox.Location = new System.Drawing.Point(120, 443);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(56, 17);
             this.activeCheckbox.TabIndex = 5;
             this.activeCheckbox.Text = "Active";
             this.activeCheckbox.UseVisualStyleBackColor = true;
             // 
-            // sexTextBox
+            // confirmPasswordLabel
             // 
-            this.sexTextBox.Location = new System.Drawing.Point(357, 43);
-            this.sexTextBox.Name = "sexTextBox";
-            this.sexTextBox.Size = new System.Drawing.Size(100, 20);
-            this.sexTextBox.TabIndex = 2;
+            this.confirmPasswordLabel.AutoSize = true;
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(3, 400);
+            this.confirmPasswordLabel.Name = "confirmPasswordLabel";
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(91, 13);
+            this.confirmPasswordLabel.TabIndex = 1;
+            this.confirmPasswordLabel.Text = "Confirm Password";
+            // 
+            // confirmPasswordTextBox
+            // 
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(120, 403);
+            this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
+            this.confirmPasswordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.confirmPasswordTextBox.TabIndex = 3;
             // 
             // EditEmployeeModal
             // 
@@ -379,7 +401,10 @@ namespace RentMe_App.View.AdminModals
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 572);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditEmployeeModal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditEmployeeModal";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -420,5 +445,7 @@ namespace RentMe_App.View.AdminModals
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.CheckBox activeCheckbox;
         private System.Windows.Forms.TextBox sexTextBox;
+        private System.Windows.Forms.TextBox confirmPasswordTextBox;
+        private System.Windows.Forms.Label confirmPasswordLabel;
     }
 }

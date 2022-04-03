@@ -144,8 +144,8 @@ namespace RentMe_App.UserControls
             {
                 foreach (Employee employee in _employeeList)
                 {
-                    employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Phone, employee.Address,
-                        employee.City, employee.State, employee.BirthDate.ToShortDateString(), employee.IsActive);
+                    employeeSearchGridView.Rows.Add(employee.EmployeeId, employee.Name, employee.Address,
+                        employee.City, employee.State, employee.Phone, employee.BirthDate.ToShortDateString(), employee.IsActive);
                 }
 
                 infoLabel.Text = "Tip: Select a row to edit";

@@ -1,7 +1,7 @@
-﻿using RentMe_App.Model;
+﻿using RentMe_App.DAL;
+using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
-using RentMe_App.DAL;
 
 namespace RentMe_App.Controller
 {
@@ -48,9 +48,14 @@ namespace RentMe_App.Controller
         /// Updates an existing employee
         /// </summary>
         /// <param name="employee"></param>
-        public void UpdateEmployee(Employee employee)
+        public void UpdateEmployee(Employee employee, Employee editedEmployee)
         {
-            throw new NotImplementedException();
+            if (employee == null || editedEmployee == null)
+            {
+                throw new ArgumentNullException("Cannot update employee");
+            }
+
+            _employeeDbdal.UpdateEmployee(employee, editedEmployee);
         }
 
         /// <summary>

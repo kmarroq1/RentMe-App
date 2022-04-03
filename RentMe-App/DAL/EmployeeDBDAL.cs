@@ -56,6 +56,7 @@ namespace RentMe_App.DAL
                                 Name = reader["fname"] + " " + reader["lname"],
                                 FName = reader["fname"].ToString(),
                                 LName = reader["lname"].ToString(),
+                                Sex = reader["sex"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
                                 Address1 = reader["address1"].ToString(),
@@ -122,6 +123,7 @@ namespace RentMe_App.DAL
                                 Name = reader["fname"] + " " + reader["lname"],
                                 FName = reader["fname"].ToString(),
                                 LName = reader["lname"].ToString(),
+                                Sex = reader["sex"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
                                 Address1 = reader["address1"].ToString(),
@@ -185,6 +187,7 @@ namespace RentMe_App.DAL
                                 Name = reader["fname"] + " " + reader["lname"],
                                 FName = reader["fname"].ToString(),
                                 LName = reader["lname"].ToString(),
+                                Sex = reader["sex"].ToString(),
                                 Phone = reader["phone"].ToString(),
                                 Address = reader["address1"] + " " + reader["address2"],
                                 Address1 = reader["address1"].ToString(),
@@ -203,7 +206,16 @@ namespace RentMe_App.DAL
             return newList;
         }
 
-        #endregion
+        public void UpdateEmployee(Employee oldEmployee, Employee editedEmployee)
+        {
+            if (oldEmployee == null || editedEmployee == null)
+            {
+                throw new ArgumentNullException("Invalid employees");
+            }
+            //Make sure employee wasn't changed before updating
+            throw new NotImplementedException();
+        }
 
+        #endregion
     }
 }

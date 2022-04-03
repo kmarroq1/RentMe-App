@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RentMe_App.View.AdminModals
@@ -13,7 +14,10 @@ namespace RentMe_App.View.AdminModals
         #region Data Members
 
         private readonly Employee _employee;
+        private Employee _editedEmployee;
         private readonly EmployeeController _employeeController;
+        private readonly LoginController _loginController;
+        private readonly StatesController _statesController;
 
         #endregion
 
@@ -27,6 +31,8 @@ namespace RentMe_App.View.AdminModals
             InitializeComponent();
             _employee = employee ?? throw new ArgumentNullException(nameof(employee));
             _employeeController = new EmployeeController();
+            _loginController = new LoginController();
+            _statesController = new StatesController();
             PopulateFields();
         }
 
@@ -38,8 +44,24 @@ namespace RentMe_App.View.AdminModals
         {
             try
             {
-                //Make sure employee wasn't changed before updating
-                _employeeController.UpdateEmployee(_employee);
+                Validation();
+
+                _editedEmployee = new Employee()
+                {
+                    FName = fNameTextBox.Text,
+                    LName = lNameTextBox.Text,
+                    Sex = sexTextBox.Text,
+                    Address1 = address1TextBox.Text,
+                    Address2 = address2TextBox.Text,
+                    City = cityTextBox.Text,
+                    State = stateComboBox.SelectedValue.ToString(),
+                    Zip = zipTextBox.Text,
+                    BirthDate = dateTimePicker.Value,
+                    Phone = RemovePhoneSpecialCharacters(phoneTextBox.Text),
+                    Password = passwordTextBox.Text,
+                    IsActive = activeCheckbox.Checked
+                };
+                _employeeController.UpdateEmployee(_employee, _editedEmployee);
             }
             catch (Exception exception)
             {
@@ -75,15 +97,71 @@ namespace RentMe_App.View.AdminModals
             fNameTextBox.Text = _employee.FName;
             lNameTextBox.Text = _employee.LName;
             sexTextBox.Text = _employee.Sex;
+
             address1TextBox.Text = _employee.Address1;
             address2TextBox.Text = _employee.Address2;
             cityTextBox.Text = _employee.City;
-            //stateComboBox.SelectedIndex = _employee.State;
+
+            var states = _statesController.GetStatesList().StatesList;
+            stateComboBox.DataSource = new BindingSource(states, null);
+            stateComboBox.SelectedItem = _employee.State;
             zipTextBox.Text = _employee.Zip;
+
             dateTimePicker.Value = _employee.BirthDate;
+
             phoneTextBox.Text = _employee.Phone;
-            //passwordTextBox.Text = _login.Password;
+
+            passwordTextBox.Text = "";
+            confirmPasswordTextBox.Text = "";
+
             activeCheckbox.Checked = _employee.IsActive;
+        }
+
+        private void Validation()
+        {
+            if (fNameTextBox.Text == "" ||
+            lNameTextBox.Text == "" ||
+            sexTextBox.Text == "" ||
+            address1TextBox.Text == "" ||
+            cityTextBox.Text == "" ||
+            stateComboBox.SelectedIndex == -1 ||
+            zipTextBox.Text == "" ||
+            phoneTextBox.Text == "")
+            {
+                throw new ArgumentException("Must populate required fields");
+            }
+            else if (!IsPhoneNumber(phoneTextBox.Text))
+            {
+                throw new ArgumentException("Invalid phone number");
+            }
+            else if (passwordTextBox.Text != "" && passwordTextBox.Text != confirmPasswordTextBox.Text)
+            {
+                throw new ArgumentException("Password confirmation does not match");
+            }
+        }
+
+        private static bool IsPhoneNumber(string phone)
+        {
+            if (string.IsNullOrEmpty(phone))
+            {
+                throw new ArgumentException("Invalid phone number");
+            }
+            else
+            {
+                Match phoneMatch = Regex.Match(phone, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
+                return phoneMatch.Success;
+            }
+        }
+
+        private string RemovePhoneSpecialCharacters(string phone)
+        {
+            var stringPhone = phone;
+            var charactersToRemove = new string[] { " ", ".", "-", ")", "(", "'" };
+            foreach (var c in charactersToRemove)
+            {
+                stringPhone = stringPhone.Replace(c, string.Empty);
+            }
+            return stringPhone;
         }
 
         #endregion

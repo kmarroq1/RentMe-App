@@ -75,9 +75,14 @@ namespace RentMe_App.Model
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// employee address
+        /// employee sex
         /// </summary>
         public string Sex { get; set; }
+
+        /// <summary>
+        /// employee password
+        /// </summary>
+        public string Password { get; set; }
 
         #endregion
 
