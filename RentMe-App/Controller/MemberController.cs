@@ -63,6 +63,12 @@ namespace RentMe_App.Controller
             return memberDBSource.GetMemberByPhone(phone);
         }
 
+        public void AddMember(Member newMember)
+        {
+            Console.WriteLine("adding member " + newMember.ToString());
+            //memberDBSource.AddMember(newMember);
+        }
+
         #endregion
     }
 }

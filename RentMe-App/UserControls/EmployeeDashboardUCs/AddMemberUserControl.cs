@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RentMe_App.Controller;
+using RentMe_App.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,12 @@ namespace RentMe_App.UserControls
 {
     public partial class AddMemberUserControl : UserControl
     {
+        private readonly MemberController _memberController;
+
         public AddMemberUserControl()
         {
             InitializeComponent();
+            _memberController = new MemberController();
         }
 
         public void ClearFields()
@@ -25,6 +30,19 @@ namespace RentMe_App.UserControls
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Member newMember = memberDetailsUserControl.Member;
+                _memberController.AddMember(newMember);
+            } catch (Exception ex)
+            {
+                errorMessageLabel.Text = ex.Message;
+                errorMessageLabel.Show();
+            }
         }
     }
 }
