@@ -179,7 +179,7 @@ namespace RentMe_App.DAL
         /// <returns>Whether or not the insertion was successful.</returns>
         public bool AddMember(Member newMember)
         {
-            string insertStatement = @"INSERT INTO [Members] ([Fname], [Lname], [BirthDate] [Address1], [Address2], [City], [State], [Zip], [Phone], [Active])
+            string insertStatement = @"INSERT INTO [storeMember] ([Fname], [Lname], [BirthDate], [Address1], [Address2], [City], [State], [Zip], [Phone], [Active])
                                        VALUES (@Fname, @Lname, @BirthDate, @Address1, @Address2, @City, @State, @Zip, @Phone, @Active);";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
@@ -195,13 +195,14 @@ namespace RentMe_App.DAL
                     cmd.Parameters["Lname"].Value = newMember.Lname;
 
                     cmd.Parameters.Add("BirthDate", SqlDbType.Date);
-                    cmd.Parameters["Date"].Value = newMember.BirthDate;
+                    cmd.Parameters["BirthDate"].Value = newMember.BirthDate;
 
                     cmd.Parameters.Add("Address1", SqlDbType.VarChar);
                     cmd.Parameters["Address1"].Value = newMember.Address1;
 
                     cmd.Parameters.Add("Address2", SqlDbType.VarChar);
-                    cmd.Parameters["Address2"].Value = newMember.Address1;
+                    if (newMember.Address2 == null) cmd.Parameters["Address2"].Value = DBNull.Value;
+                    else cmd.Parameters["Address2"].Value = newMember.Address2;
 
                     cmd.Parameters.Add("City", SqlDbType.VarChar);
                     cmd.Parameters["City"].Value = newMember.City;

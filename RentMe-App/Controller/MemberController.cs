@@ -63,10 +63,13 @@ namespace RentMe_App.Controller
             return memberDBSource.GetMemberByPhone(phone);
         }
 
+        /// <summary>
+        /// Delegates adding a new member to the MemberDAL.
+        /// </summary>
+        /// <param name="newMember">The new member to add.</param>
         public void AddMember(Member newMember)
         {
-            Console.WriteLine("adding member " + newMember.ToString());
-            //memberDBSource.AddMember(newMember);
+            memberDBSource.AddMember(newMember);
         }
 
         #endregion
