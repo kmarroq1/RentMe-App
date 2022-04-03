@@ -229,9 +229,7 @@
     <Content Include="Common\Sql\insert_furniture_part1.sql" />
     <Content Include="Common\Sql\insert_furniture_part2.sql" />
     <Content Include="Common\Sql\insert_furniture_part3.sql" />
-    <Content Include="Common\Sql\RentMeScript_v2.sql" />
-    <Content Include="Common\Sql\sfGetAuthorizedAdminLoginInfo.sql" />
-    <Content Include="Common\Sql\sfGetAuthorizedEmployeeLoginInfo.sql" />
+    <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

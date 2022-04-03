@@ -25,7 +25,6 @@ namespace RentMe_App.Model
 
         #region Properties
         /// <summary>
-        /// employee ID
         /// Dictates the manner in which the Employee's ID can be accessed & mutated.
         /// </summary>
         public int EmployeeId
@@ -164,6 +163,13 @@ namespace RentMe_App.Model
         /// <summary>
         /// Dictates the manner in which the Employee's address' state can be accessed & mutated.
         /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The row version - auto incremented when a row is updated
+        /// </summary>
+        public byte[] Version { get; set; }
+
         public string State
         {
             get => _state;
@@ -197,10 +203,6 @@ namespace RentMe_App.Model
             }
         }
 
-        /// <summary>
-        /// employee password
-        /// </summary>
-        public string Password { get; set; }
         #endregion
     }
 }

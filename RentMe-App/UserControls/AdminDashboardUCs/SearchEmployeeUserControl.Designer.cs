@@ -96,7 +96,7 @@ namespace RentMe_App.UserControls
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.phoneTextBox.TabIndex = 4;
-            this.phoneTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonPhoneFields);
+            this.phoneTextBox.Enter += new System.EventHandler(this.ClearErrorAndNonPhoneFields);
             // 
             // idTextBox
             // 
@@ -104,7 +104,7 @@ namespace RentMe_App.UserControls
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(100, 20);
             this.idTextBox.TabIndex = 3;
-            this.idTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonIdFields);
+            this.idTextBox.Enter += new System.EventHandler(this.ClearErrorAndNonIdFields);
             // 
             // ClearButton
             // 
@@ -122,7 +122,7 @@ namespace RentMe_App.UserControls
             this.lNameTextBox.Name = "lNameTextBox";
             this.lNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.lNameTextBox.TabIndex = 2;
-            this.lNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
+            this.lNameTextBox.Enter += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // SearchButton
             // 
@@ -133,7 +133,6 @@ namespace RentMe_App.UserControls
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            this.SearchButton.Enter += new System.EventHandler(this.SearchButton_Click);
             // 
             // fNameTextBox
             // 
@@ -141,7 +140,7 @@ namespace RentMe_App.UserControls
             this.fNameTextBox.Name = "fNameTextBox";
             this.fNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.fNameTextBox.TabIndex = 1;
-            this.fNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
+            this.fNameTextBox.Enter += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // phoneLabel
             // 
