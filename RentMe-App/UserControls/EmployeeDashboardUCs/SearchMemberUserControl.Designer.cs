@@ -44,8 +44,11 @@ namespace RentMe_App.UserControls
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.bottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.editButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.searchMemberDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.bottomButtonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // clearSearchButton
@@ -84,6 +87,8 @@ namespace RentMe_App.UserControls
             this.searchMemberDataGridView.ReadOnly = true;
             this.searchMemberDataGridView.Size = new System.Drawing.Size(763, 258);
             this.searchMemberDataGridView.TabIndex = 36;
+            this.searchMemberDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchMemberDataGridView_CellClick);
+            this.searchMemberDataGridView.SelectionChanged += new System.EventHandler(this.SearchMemberDataGridView_SelectionChanged);
             this.searchMemberDataGridView.VisibleChanged += new System.EventHandler(this.SearchMemberDataGridView_VisibleChanged);
             // 
             // memberIDTextBox
@@ -121,13 +126,15 @@ namespace RentMe_App.UserControls
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(371, 14);
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(325, 9);
             this.errorMessageLabel.MaximumSize = new System.Drawing.Size(400, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(21, 20);
+            this.errorMessageLabel.Size = new System.Drawing.Size(113, 20);
             this.errorMessageLabel.TabIndex = 26;
-            this.errorMessageLabel.Text = "   ";
+            this.errorMessageLabel.Text = "Error Message";
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.errorMessageLabel.Visible = false;
             // 
             // tableLayoutPanel1
             // 
@@ -138,7 +145,7 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(763, 49);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(763, 39);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
             // firstNameTextBox
@@ -148,7 +155,7 @@ namespace RentMe_App.UserControls
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(172, 26);
             this.firstNameTextBox.TabIndex = 41;
-            this.firstNameTextBox.Enter += new System.EventHandler(this.Fname_Enter);
+            this.firstNameTextBox.Enter += new System.EventHandler(this.Name_Enter);
             // 
             // firstNameLabel
             // 
@@ -167,7 +174,7 @@ namespace RentMe_App.UserControls
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(172, 26);
             this.lastNameTextBox.TabIndex = 43;
-            this.lastNameTextBox.Enter += new System.EventHandler(this.Lname_Enter);
+            this.lastNameTextBox.Enter += new System.EventHandler(this.Name_Enter);
             // 
             // lastNameLabel
             // 
@@ -202,14 +209,40 @@ namespace RentMe_App.UserControls
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 500);
+            this.splitter1.Size = new System.Drawing.Size(3, 533);
             this.splitter1.TabIndex = 46;
             this.splitter1.TabStop = false;
+            // 
+            // bottomButtonsTableLayoutPanel
+            // 
+            this.bottomButtonsTableLayoutPanel.ColumnCount = 1;
+            this.bottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.bottomButtonsTableLayoutPanel.Controls.Add(this.editButton, 0, 0);
+            this.bottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(21, 481);
+            this.bottomButtonsTableLayoutPanel.Name = "bottomButtonsTableLayoutPanel";
+            this.bottomButtonsTableLayoutPanel.RowCount = 1;
+            this.bottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.bottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(763, 46);
+            this.bottomButtonsTableLayoutPanel.TabIndex = 47;
+            // 
+            // editButton
+            // 
+            this.editButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.editButton.AutoSize = true;
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editButton.Location = new System.Drawing.Point(341, 3);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(80, 34);
+            this.editButton.TabIndex = 48;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // SearchMemberUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bottomButtonsTableLayoutPanel);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.phoneLabel);
@@ -225,10 +258,12 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.searchHeaderLabel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SearchMemberUserControl";
-            this.Size = new System.Drawing.Size(800, 500);
+            this.Size = new System.Drawing.Size(800, 533);
             ((System.ComponentModel.ISupportInitialize)(this.searchMemberDataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.bottomButtonsTableLayoutPanel.ResumeLayout(false);
+            this.bottomButtonsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +286,7 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.TableLayoutPanel bottomButtonsTableLayoutPanel;
+        private System.Windows.Forms.Button editButton;
     }
 }

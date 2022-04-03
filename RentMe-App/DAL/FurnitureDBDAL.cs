@@ -1,9 +1,8 @@
 ﻿using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Net;
 
 namespace RentMe_App.DAL
 {
@@ -37,7 +36,7 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@furnitureID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters.Add("@furnitureID", SqlDbType.Int);
                     selectCommand.Parameters["@furnitureID"].Value = furnitureID;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -86,7 +85,7 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@style_name", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@style_name", SqlDbType.VarChar);
                     selectCommand.Parameters["@style_name"].Value = style_name;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -135,7 +134,7 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@category_name", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@category_name", SqlDbType.VarChar);
                     selectCommand.Parameters["@category_name"].Value = category_name;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -186,10 +185,10 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@category_name", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@category_name", SqlDbType.VarChar);
                     selectCommand.Parameters["@category_name"].Value = category_name;
 
-                    selectCommand.Parameters.Add("@style_name", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@style_name", SqlDbType.VarChar);
                     selectCommand.Parameters["@style_name"].Value = style_name;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())

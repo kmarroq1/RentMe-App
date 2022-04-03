@@ -32,7 +32,6 @@ namespace RentMe_App.View
         #endregion
 
         #region Methods
-
         /// <summary>
         /// method used to set the username to show on the form
         /// </summary>
@@ -42,7 +41,9 @@ namespace RentMe_App.View
             usernameForm = username;
             employeeNameForm = name;
         }
+        #endregion
 
+        #region Event Handlers
         private void LogoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _loginForm.LogOut();
@@ -60,6 +61,10 @@ namespace RentMe_App.View
             employeeNameValueLabel.Text = employeeNameForm;
         }
 
+        private void AddMemberUserControl1_Load(object sender, System.EventArgs e)
+        {
+            addMemberUserControl1.ClearFields();
+        }
         #endregion
     }
 }
