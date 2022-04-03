@@ -3,6 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace RentMe_App.Model
 {
+    /// <summary>
+    /// Class for defining an employee.
+    /// </summary>
     public class Employee
     {
         #region Fields
@@ -22,6 +25,7 @@ namespace RentMe_App.Model
 
         #region Properties
         /// <summary>
+        /// employee ID
         /// Dictates the manner in which the Employee's ID can be accessed & mutated.
         /// </summary>
         public int EmployeeID
@@ -69,6 +73,11 @@ namespace RentMe_App.Model
         }
 
         /// <summary>
+        /// employee full name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Dictates the manner in which the Employee's birth date can be accessed & mutated.
         /// </summary>
         public DateTime BirthDate { get => _birthDate; set => _birthDate = value; }
@@ -105,6 +114,11 @@ namespace RentMe_App.Model
                 _phone = storedFormat;
             }
         }
+
+        /// <summary>
+        /// employee full address
+        /// </summary>
+        public string Address { get; set; }
 
         /// <summary>
         /// Dictates the manner in which the Employee's active status can be accessed & mutated.
@@ -170,7 +184,7 @@ namespace RentMe_App.Model
         {
             get => _zip;
             set
-            {
+        {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentNullException("Zip", "Employee zip code cannot be null or empty");
 

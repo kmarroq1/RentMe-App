@@ -11,6 +11,8 @@ In the Design view, set LoginForm's properties
 
 XML comments on all classes and public methods
 
+Error handling on any method/constructor that receives a parameter
+
 username and password Textboxes and labels, Password textbox should be masked. There is no requirement for the password field.
 
 Closing either form by clicking on the x button on the right corner exits the program
