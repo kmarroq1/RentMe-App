@@ -62,6 +62,7 @@ namespace RentMe_App.View.AdminModals
                     IsActive = activeCheckbox.Checked
                 };
                 _employeeController.UpdateEmployee(_employee, editedEmployee);
+                errorLabel.Text = "Employee updated!";
             }
             catch (Exception exception)
             {
