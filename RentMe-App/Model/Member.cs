@@ -216,7 +216,7 @@ namespace RentMe_App.Model
             return "Member:\n"
                 + $"\tName: {Fname} {Lname}\n"
                 + $"\tDOB: {BirthDate}\n"
-                + $"\tPhone: {Phone}"
+                + $"\tPhone: {Phone}\n"
                 + $"\tAddress:\n\t\t{Address1}\n\t\t{Address2}\n\t\t{City}, {State} {Zip}";
         }
         #endregion
