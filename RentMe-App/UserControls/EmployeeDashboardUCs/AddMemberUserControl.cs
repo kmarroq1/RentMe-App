@@ -16,5 +16,15 @@ namespace RentMe_App.UserControls
         {
             InitializeComponent();
         }
+
+        public void ClearFields()
+        {
+            memberDetailsUserControl.ClearFields();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
     }
 }

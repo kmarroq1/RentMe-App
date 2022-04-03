@@ -61,5 +61,10 @@ namespace RentMe_App.View
         }
 
         #endregion
+
+        private void AddMemberUserControl1_Load(object sender, System.EventArgs e)
+        {
+            addMemberUserControl1.ClearFields();
+        }
     }
 }

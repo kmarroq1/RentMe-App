@@ -31,10 +31,10 @@ namespace RentMe_App.UserControls
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.headerLabel = new System.Windows.Forms.Label();
+            this.memberDetailsUserControl = new RentMe_App.UserControls.MemberDetailsUserControl();
             this.controlsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.addButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.memberDetailsUserControl = new RentMe_App.UserControls.MemberDetailsUserControl();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.mainTableLayoutPanel.SuspendLayout();
             this.controlsFlowLayoutPanel.SuspendLayout();
@@ -67,6 +67,14 @@ namespace RentMe_App.UserControls
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Add Member";
             // 
+            // memberDetailsUserControl
+            // 
+            this.memberDetailsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberDetailsUserControl.Location = new System.Drawing.Point(3, 16);
+            this.memberDetailsUserControl.Name = "memberDetailsUserControl";
+            this.memberDetailsUserControl.Size = new System.Drawing.Size(426, 260);
+            this.memberDetailsUserControl.TabIndex = 1;
+            // 
             // controlsFlowLayoutPanel
             // 
             this.controlsFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -96,14 +104,7 @@ namespace RentMe_App.UserControls
             this.clearButton.TabIndex = 1;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            // 
-            // memberDetailsUserControl
-            // 
-            this.memberDetailsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memberDetailsUserControl.Location = new System.Drawing.Point(3, 16);
-            this.memberDetailsUserControl.Name = "memberDetailsUserControl";
-            this.memberDetailsUserControl.Size = new System.Drawing.Size(426, 260);
-            this.memberDetailsUserControl.TabIndex = 1;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // errorMessageLabel
             // 
