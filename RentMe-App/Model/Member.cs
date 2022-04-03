@@ -60,8 +60,10 @@ namespace RentMe_App.Model
             get => _firstName;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("FName cannot be null/empty or greater than 45", "fname");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Fname", "Member missing required field(s)");
+                if(value.Length > 45)
+                    throw new ArgumentException("FName cannot greater than 45 characters long", "fname");
                 
                 _firstName = value;
             }
@@ -74,8 +76,10 @@ namespace RentMe_App.Model
             get => _lastName;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("LName cannot be null/empty or greater than 45", "lname");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Lname", "Member missing required field(s)");
+                if (value.Length > 45)
+                    throw new ArgumentException("LName cannot greater than 45 characters long", "lname");
 
                 _lastName = value;
             }
@@ -88,8 +92,10 @@ namespace RentMe_App.Model
             get => _phone;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("Phone cannot be null/empty or greater than 45", "phone");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Phone", "Member missing required field(s)");
+                if (value.Length > 45)
+                    throw new ArgumentException("Phone cannot greater than 45 characters long", "phone");
 
                 _phone = value;
             }
@@ -102,8 +108,10 @@ namespace RentMe_App.Model
             get => _address1;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("Address1 cannot be null/empty or greater than 45", "address1");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Address1", "Member missing required field(s)");
+                if (value.Length > 45)
+                    throw new ArgumentException("Address1 cannot be than 45 characters long", "address1");
 
                 _address1 = value;
             }
@@ -117,7 +125,7 @@ namespace RentMe_App.Model
             set
             {
                 if (value.Length > 45)
-                    throw new ArgumentException("Address2 cannot be greater than 45", "address2");
+                    throw new ArgumentException("Address2 cannot be greater than 45 characters long", "address2");
 
                 _address2 = value;
             }
@@ -130,8 +138,10 @@ namespace RentMe_App.Model
             get => _city;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("City cannot be null/empty or greater than 45", "city");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("City", "Member missing required field(s)");
+                if (value.Length > 45)
+                    throw new ArgumentException("City cannot be greater than 45 characters long", "city");
 
                 _city = value;
             }
@@ -144,8 +154,10 @@ namespace RentMe_App.Model
             get => _state;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 45)
-                    throw new ArgumentException("State cannot be null/empty or greater than 45", "state");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("State", "Member missing required field(s)");
+                if (value.Length > 45)
+                    throw new ArgumentException("State cannot be greater than 45 characters long", "state");
 
                 _state = value;
             }
@@ -158,8 +170,10 @@ namespace RentMe_App.Model
             get => _zip;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length > 20)
-                    throw new ArgumentException("Zip cannot be null/empty or greater than 20", "zip");
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Zip", "Member missing required field(s)");
+                if (value.Length > 20)
+                    throw new ArgumentException("Zip cannot be greater than 20 characters long", "zip");
 
                 _zip = value;
             }

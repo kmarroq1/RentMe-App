@@ -53,8 +53,8 @@ namespace RentMe_App.UserControls
             this.mainTableLayoutPanel.RowCount = 4;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(432, 387);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
@@ -82,7 +82,7 @@ namespace RentMe_App.UserControls
             this.controlsFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.controlsFlowLayoutPanel.Controls.Add(this.addButton);
             this.controlsFlowLayoutPanel.Controls.Add(this.clearButton);
-            this.controlsFlowLayoutPanel.Location = new System.Drawing.Point(135, 328);
+            this.controlsFlowLayoutPanel.Location = new System.Drawing.Point(135, 325);
             this.controlsFlowLayoutPanel.Name = "controlsFlowLayoutPanel";
             this.controlsFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
             this.controlsFlowLayoutPanel.TabIndex = 2;
@@ -112,7 +112,7 @@ namespace RentMe_App.UserControls
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(178, 282);
+            this.errorMessageLabel.Location = new System.Drawing.Point(178, 279);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(75, 13);
             this.errorMessageLabel.TabIndex = 3;
