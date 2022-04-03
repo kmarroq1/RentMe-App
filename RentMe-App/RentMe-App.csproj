@@ -126,12 +126,6 @@
     <Compile Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.Designer.cs">
       <DependentUpon>SearchEmployeeUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\AdminDashboardUCs\EmployeeDetailsUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\AdminDashboardUCs\EmployeeDetailsUserControl.Designer.cs">
-      <DependentUpon>EmployeeDetailsUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\EmployeeDashboardUCs\MemberDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,9 +150,6 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\AdminDashboardUCs\EmployeeDetailsUserControl.resx">
-      <DependentUpon>EmployeeDetailsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
