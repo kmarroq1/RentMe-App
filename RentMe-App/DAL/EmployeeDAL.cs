@@ -25,10 +25,10 @@ namespace RentMe_App.DAL
                 using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
                 {
                     cmd.Parameters.Add("Fname", SqlDbType.VarChar);
-                    cmd.Parameters["Fname"].Value = newEmployee.Fname;
+                    cmd.Parameters["Fname"].Value = newEmployee.FName;
 
                     cmd.Parameters.Add("Lname", SqlDbType.VarChar);
-                    cmd.Parameters["Lname"].Value = newEmployee.Lname;
+                    cmd.Parameters["Lname"].Value = newEmployee.LName;
 
                     cmd.Parameters.Add("BirthDate", SqlDbType.Date);
                     cmd.Parameters["BirthDate"].Value = newEmployee.BirthDate;

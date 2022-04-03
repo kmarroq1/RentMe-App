@@ -77,7 +77,6 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Employee.cs" />
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,7 +28,7 @@ namespace RentMe_App.Model
         /// employee ID
         /// Dictates the manner in which the Employee's ID can be accessed & mutated.
         /// </summary>
-        public int EmployeeID
+        public int EmployeeId
         {
             get => _employeeID;
             set
@@ -44,7 +44,7 @@ namespace RentMe_App.Model
         /// Dictates the manner in which the Employee's first name can be accessed & mutated.
         /// Fname label chosen to match db column name.
         /// </summary>
-        public string Fname
+        public string FName
         {
             get => _fname;
             set
@@ -60,7 +60,7 @@ namespace RentMe_App.Model
         /// Dictates the manner in which the Employee's last name can be accessed & mutated.
         /// Lname label chosen to match db column name.
         /// </summary>
-        public string Lname
+        public string LName
         {
             get => _lname;
             set
@@ -196,6 +196,11 @@ namespace RentMe_App.Model
                 _zip = value;
             }
         }
+
+        /// <summary>
+        /// employee password
+        /// </summary>
+        public string Password { get; set; }
         #endregion
     }
 }
