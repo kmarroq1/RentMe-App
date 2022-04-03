@@ -39,7 +39,6 @@ namespace RentMe_App.UserControls
             this.phoneLabel = new System.Windows.Forms.Label();
             this.zipLabel = new System.Windows.Forms.Label();
             this.stateLabel = new System.Windows.Forms.Label();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@ namespace RentMe_App.UserControls
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,10 +134,6 @@ namespace RentMe_App.UserControls
             this.stateLabel.TabIndex = 20;
             this.stateLabel.Text = "State:";
             // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(RentMe_App.Model.Member);
-            // 
             // activeCheckBox
             // 
             this.activeCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.memberBindingSource, "Active", true));
@@ -215,11 +211,16 @@ namespace RentMe_App.UserControls
             // stateComboBox
             // 
             this.stateComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "State", true));
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(315, 107);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(84, 21);
             this.stateComboBox.TabIndex = 21;
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(RentMe_App.Model.Member);
             // 
             // MemberDetailsUserControl
             // 
@@ -246,6 +247,7 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.zipTextBox);
             this.Name = "MemberDetailsUserControl";
             this.Size = new System.Drawing.Size(404, 242);
+            this.Load += new System.EventHandler(this.MemberDetailsUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
