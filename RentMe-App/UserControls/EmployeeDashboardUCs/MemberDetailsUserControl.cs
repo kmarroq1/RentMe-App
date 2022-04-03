@@ -82,7 +82,7 @@ namespace RentMe_App.UserControls
                 textBox.Clear();
 
             birthDateDateTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0);
-            activeCheckBox.Checked = false;
+            activeCheckBox.Checked = true;
             stateComboBox.SelectedIndex = -1;
         }
         #endregion

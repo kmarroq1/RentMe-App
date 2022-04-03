@@ -133,6 +133,8 @@ namespace RentMe_App.UserControls
             // 
             // activeCheckBox
             // 
+            this.activeCheckBox.Checked = true;
+            this.activeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activeCheckBox.Location = new System.Drawing.Point(8, 211);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(200, 24);
