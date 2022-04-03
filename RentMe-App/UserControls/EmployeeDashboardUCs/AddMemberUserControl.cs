@@ -26,6 +26,7 @@ namespace RentMe_App.UserControls
         /// </summary>
         public void ClearFields()
         {
+            errorMessageLabel.Hide();
             memberDetailsUserControl.ClearFields();
         }
 
@@ -36,6 +37,8 @@ namespace RentMe_App.UserControls
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            errorMessageLabel.Hide();
+
             try
             {
                 Member newMember = memberDetailsUserControl.Member;

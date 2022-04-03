@@ -62,8 +62,8 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Fname", "Member missing required field(s)");
-                if(value.Length > 45)
+                    throw new ArgumentException("Member missing required field(s)");
+                if (value.Length > 45)
                     throw new ArgumentException("FName cannot greater than 45 characters long", "fname");
                 
                 _firstName = value;
@@ -78,7 +78,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Lname", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("LName cannot greater than 45 characters long", "lname");
 
@@ -94,7 +94,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Phone", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("Phone cannot greater than 45 characters long", "phone");
 
@@ -122,7 +122,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Address1", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("Address1 cannot be than 45 characters long", "address1");
 
@@ -152,7 +152,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("City", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("City cannot be greater than 45 characters long", "city");
 
@@ -168,7 +168,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("State", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("State cannot be greater than 45 characters long", "state");
 
@@ -184,7 +184,7 @@ namespace RentMe_App.Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Zip", "Member missing required field(s)");
+                    throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 20)
                     throw new ArgumentException("Zip cannot be greater than 20 characters long", "zip");
 
