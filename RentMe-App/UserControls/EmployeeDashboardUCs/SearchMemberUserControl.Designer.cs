@@ -87,6 +87,8 @@ namespace RentMe_App.UserControls
             this.searchMemberDataGridView.ReadOnly = true;
             this.searchMemberDataGridView.Size = new System.Drawing.Size(763, 258);
             this.searchMemberDataGridView.TabIndex = 36;
+            this.searchMemberDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchMemberDataGridView_CellClick);
+            this.searchMemberDataGridView.SelectionChanged += new System.EventHandler(this.SearchMemberDataGridView_SelectionChanged);
             this.searchMemberDataGridView.VisibleChanged += new System.EventHandler(this.SearchMemberDataGridView_VisibleChanged);
             // 
             // memberIDTextBox
@@ -124,13 +126,15 @@ namespace RentMe_App.UserControls
             this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(371, 9);
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(325, 9);
             this.errorMessageLabel.MaximumSize = new System.Drawing.Size(400, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(21, 20);
+            this.errorMessageLabel.Size = new System.Drawing.Size(113, 20);
             this.errorMessageLabel.TabIndex = 26;
-            this.errorMessageLabel.Text = "   ";
+            this.errorMessageLabel.Text = "Error Message";
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.errorMessageLabel.Visible = false;
             // 
             // tableLayoutPanel1
             // 
@@ -151,7 +155,7 @@ namespace RentMe_App.UserControls
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(172, 26);
             this.firstNameTextBox.TabIndex = 41;
-            this.firstNameTextBox.Enter += new System.EventHandler(this.Fname_Enter);
+            this.firstNameTextBox.Enter += new System.EventHandler(this.Name_Enter);
             // 
             // firstNameLabel
             // 
@@ -170,7 +174,7 @@ namespace RentMe_App.UserControls
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(172, 26);
             this.lastNameTextBox.TabIndex = 43;
-            this.lastNameTextBox.Enter += new System.EventHandler(this.Lname_Enter);
+            this.lastNameTextBox.Enter += new System.EventHandler(this.Name_Enter);
             // 
             // lastNameLabel
             // 
