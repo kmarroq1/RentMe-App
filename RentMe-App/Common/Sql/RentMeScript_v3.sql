@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[employee]
 	[lname] VARCHAR(45) NOT NULL,
 	[phone] VARCHAR(45) NOT NULL,
 	[address1] VARCHAR(45) NOT NULL,
-	[address2] VARCHAR(45) NOT NULL,
+	[address2] VARCHAR(45),
 	[city] VARCHAR(45) NOT NULL,
 	[state] VARCHAR(45) NOT NULL FOREIGN KEY REFERENCES [dbo].[states](name),
 	[zip] VARCHAR(20) NOT NULL,
