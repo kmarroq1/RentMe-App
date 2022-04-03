@@ -15,7 +15,6 @@ namespace RentMe_App.View.AdminModals
         #region Data Members
 
         private readonly Employee _employee;
-        private Employee _editedEmployee;
         private readonly EmployeeController _employeeController;
         private readonly LoginController _loginController;
         private readonly StatesController _statesController;
@@ -47,7 +46,7 @@ namespace RentMe_App.View.AdminModals
             {
                 Validation();
 
-                _editedEmployee = new Employee()
+                var editedEmployee = new Employee()
                 {
                     FName = fNameTextBox.Text,
                     LName = lNameTextBox.Text,
@@ -62,7 +61,7 @@ namespace RentMe_App.View.AdminModals
                     Password = passwordTextBox.Text,
                     IsActive = activeCheckbox.Checked
                 };
-                _employeeController.UpdateEmployee(_employee, _editedEmployee);
+                _employeeController.UpdateEmployee(_employee, editedEmployee);
             }
             catch (Exception exception)
             {

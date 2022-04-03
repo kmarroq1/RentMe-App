@@ -64,7 +64,8 @@ namespace RentMe_App.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
-                                IsActive = (bool)reader["active"]
+                                IsActive = (bool)reader["active"],
+                                Version = (byte[])reader["version"]
                             };
                             newList.Add(employee);
                         }
@@ -131,7 +132,8 @@ namespace RentMe_App.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
-                                IsActive = (bool)reader["active"]
+                                IsActive = (bool)reader["active"],
+                                Version = (byte[]) reader["version"]
                             };
                             newList.Add(employee);
                         }
@@ -195,7 +197,8 @@ namespace RentMe_App.DAL
                                 City = reader["city"].ToString(),
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
-                                IsActive = (bool)reader["active"]
+                                IsActive = (bool)reader["active"],
+                                Version = (byte[]) reader["version"]
                             };
                             newList.Add(employee);
                         }
@@ -208,12 +211,64 @@ namespace RentMe_App.DAL
 
         public void UpdateEmployee(Employee oldEmployee, Employee editedEmployee)
         {
-            if (oldEmployee == null || editedEmployee == null)
+            _ = editedEmployee ?? throw new ArgumentNullException(nameof(editedEmployee));
+            _ = oldEmployee ?? throw new ArgumentNullException(nameof(oldEmployee));
+
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
-                throw new ArgumentNullException("Invalid employees");
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    var updateEmployeeStatement =
+                        "UPDATE employee " +
+                        "SET birthDate = @birthDate, fname = @fname, lname = @lname, phone = @phone, address1 = @address1, address2 = @address2, city = @city, state = @state, zip = @zip, active = @active, sex = @sex " +
+                        "WHERE employeeID = @employeeID AND version = @expectedVersion";
+                    using (var command = new SqlCommand(updateEmployeeStatement, connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@birthDate", editedEmployee.BirthDate);
+                        command.Parameters.AddWithValue("@fname", editedEmployee.FName);
+                        command.Parameters.AddWithValue("@lname", editedEmployee.LName);
+                        command.Parameters.AddWithValue("@phone", editedEmployee.Phone);
+                        command.Parameters.AddWithValue("@address1", editedEmployee.Address1);
+                        command.Parameters.AddWithValue("@address2", editedEmployee.Address2);
+                        command.Parameters.AddWithValue("@city", editedEmployee.City);
+                        command.Parameters.AddWithValue("@state", editedEmployee.State);
+                        command.Parameters.AddWithValue("@zip", editedEmployee.Zip);
+                        command.Parameters.AddWithValue("@active", editedEmployee.IsActive);
+                        command.Parameters.AddWithValue("@sex", editedEmployee.Sex);
+                        command.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
+                        command.Parameters.AddWithValue("@expectedVersion", oldEmployee.Version);
+
+                        var rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected != 1)
+                        {
+                            throw new InvalidOperationException(
+                                "Employee update failed - employee has been updated since last search");
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(editedEmployee.Password))
+                    {
+                        var updateLoginStatement =
+                            "UPDATE login SET password = HASHBYTES('SHA2_256', @password) WHERE employeeID = @employeeID";
+                        using (var command = new SqlCommand(updateLoginStatement, connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
+                            command.Parameters.AddWithValue("@password", editedEmployee.Password);
+
+                            var rowsAffected = command.ExecuteNonQuery();
+                            if (rowsAffected != 1)
+                            {
+                                throw new InvalidOperationException(
+                                    "Login update failed"); // should only occur if no login for employee, so basically never
+                            }
+                        }
+                    }
+
+                    transaction.Commit();
+                }
             }
-            //Make sure employee wasn't changed before updating
-            throw new NotImplementedException();
         }
 
         #endregion

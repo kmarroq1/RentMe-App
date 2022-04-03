@@ -84,6 +84,11 @@ namespace RentMe_App.Model
         /// </summary>
         public string Password { get; set; }
 
+        /// <summary>
+        /// The row version - auto incremented when a row is updated
+        /// </summary>
+        public byte[] Version { get; set; }
+
         #endregion
 
         #region Constructor
