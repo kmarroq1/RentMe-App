@@ -1,4 +1,5 @@
 ﻿using RentMe_App.Controller;
+using RentMe_App.Interfaces;
 using RentMe_App.Model;
 using System;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace RentMe_App.UserControls
     /// <summary>
     /// User control for registering new Members in the db
     /// </summary>
-    public partial class AddMemberUserControl : UserControl
+    public partial class AddMemberUserControl : UserControl, IHideErrorMessage
     {
         private readonly MemberController _memberController;
 
@@ -19,6 +20,7 @@ namespace RentMe_App.UserControls
         {
             InitializeComponent();
             _memberController = new MemberController();
+            memberDetailsUserControl.SetParentContainer(this);
         }
 
         /// <summary>
@@ -26,7 +28,7 @@ namespace RentMe_App.UserControls
         /// </summary>
         public void ClearFields()
         {
-            errorMessageLabel.Hide();
+            HideErrorMessage();
             memberDetailsUserControl.ClearFields();
         }
 
@@ -37,7 +39,7 @@ namespace RentMe_App.UserControls
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            errorMessageLabel.Hide();
+            HideErrorMessage();
 
             try
             {
@@ -61,6 +63,12 @@ namespace RentMe_App.UserControls
                 errorMessageLabel.Text = ex.Message;
                 errorMessageLabel.Show();
             }
+        }
+
+        public void HideErrorMessage()
+        {
+            errorMessageLabel.Text = "";
+            errorMessageLabel.Hide();
         }
     }
 }

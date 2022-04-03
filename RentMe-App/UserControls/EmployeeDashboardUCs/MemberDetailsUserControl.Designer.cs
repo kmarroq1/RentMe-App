@@ -148,6 +148,7 @@ namespace RentMe_App.UserControls
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(200, 20);
             this.address1TextBox.TabIndex = 3;
+            this.address1TextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // address2TextBox
             // 
@@ -155,6 +156,7 @@ namespace RentMe_App.UserControls
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(200, 20);
             this.address2TextBox.TabIndex = 4;
+            this.address2TextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // birthDateDateTimePicker
             // 
@@ -169,6 +171,7 @@ namespace RentMe_App.UserControls
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 20);
             this.cityTextBox.TabIndex = 5;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // fnameTextBox
             // 
@@ -176,6 +179,7 @@ namespace RentMe_App.UserControls
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(200, 20);
             this.fnameTextBox.TabIndex = 1;
+            this.fnameTextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // lnameTextBox
             // 
@@ -183,6 +187,7 @@ namespace RentMe_App.UserControls
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(200, 20);
             this.lnameTextBox.TabIndex = 2;
+            this.lnameTextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // phoneTextBox
             // 
@@ -190,6 +195,7 @@ namespace RentMe_App.UserControls
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(200, 20);
             this.phoneTextBox.TabIndex = 8;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // zipTextBox
             // 
@@ -197,6 +203,7 @@ namespace RentMe_App.UserControls
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(200, 20);
             this.zipTextBox.TabIndex = 7;
+            this.zipTextBox.TextChanged += new System.EventHandler(this.Field_Changed);
             // 
             // stateComboBox
             // 
@@ -206,6 +213,7 @@ namespace RentMe_App.UserControls
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(84, 21);
             this.stateComboBox.TabIndex = 6;
+            this.stateComboBox.SelectedIndexChanged += new System.EventHandler(this.Field_Changed);
             // 
             // MemberDetailsUserControl
             // 

@@ -1,4 +1,5 @@
 ﻿using RentMe_App.Controller;
+using RentMe_App.Interfaces;
 using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace RentMe_App.UserControls
     {
         #region Fields
         private readonly StatesController _statesController;
+        private IHideErrorMessage _parentContainer;
         #endregion
 
         #region Properties
@@ -86,6 +88,18 @@ namespace RentMe_App.UserControls
             birthDateDateTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0);
             activeCheckBox.Checked = true;
             stateComboBox.SelectedIndex = 0;
+        }
+
+        public void SetParentContainer(IHideErrorMessage container)
+        {
+            _parentContainer = container;
+        }
+        #endregion
+
+        #region Event Handlers
+        private void Field_Changed(object sender, EventArgs e)
+        {
+            if (_parentContainer != null) _parentContainer.HideErrorMessage();
         }
         #endregion
     }

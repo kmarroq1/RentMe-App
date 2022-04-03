@@ -64,6 +64,7 @@
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StateDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\States.cs" />
     <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>

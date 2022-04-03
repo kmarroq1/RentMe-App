@@ -1,4 +1,5 @@
 ﻿using RentMe_App.Controller;
+using RentMe_App.Interfaces;
 using RentMe_App.Model;
 using System;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace RentMe_App.View
     /// <summary>
     /// Displays the dialog to edit the selected Member.
     /// </summary>
-    public partial class EditMemberModal : Form
+    public partial class EditMemberModal : Form, IHideErrorMessage
     {
         private readonly MemberController _memberController;
         private readonly Member _oldMember;
@@ -23,6 +24,13 @@ namespace RentMe_App.View
             _memberController = new MemberController();
             _oldMember = memberToEdit;
             MemberDetailsUserControl.Member = memberToEdit;
+            MemberDetailsUserControl.SetParentContainer(this);
+        }
+
+        public void HideErrorMessage()
+        {
+            ErrorMessage.Text = "";
+            ErrorMessage.Hide();
         }
 
         private void ShowError(string message)
