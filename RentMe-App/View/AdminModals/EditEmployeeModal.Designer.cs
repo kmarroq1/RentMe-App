@@ -405,7 +405,7 @@ namespace RentMe_App.View.AdminModals
             this.MinimizeBox = false;
             this.Name = "EditEmployeeModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EditEmployeeModal";
+            this.Text = "Edit Employee";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -217,5 +217,11 @@ namespace RentMe_App.DAL
         }
 
         #endregion
+
+        public void AddEmployee(Employee newEmployee)
+        {
+            //add employee to database
+            throw new NotImplementedException();
+        }
     }
 }
