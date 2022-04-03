@@ -8,8 +8,11 @@ namespace RentMe_App.Controller
     /// </summary>
     public class StateController
     {
+        #region Fields
         private readonly StateDAL _stateData;
-        
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// Initializes the StateDAL.
         /// </summary>
@@ -17,7 +20,9 @@ namespace RentMe_App.Controller
         {
             _stateData = new StateDAL();
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Delegates to the StateDAL to collect the State abbreviations from the db.
         /// </summary>
@@ -26,5 +31,6 @@ namespace RentMe_App.Controller
         {
             return _stateData.GetStateAbbreviations();
         }
+        #endregion
     }
 }

@@ -36,7 +36,7 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@memberID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters.Add("@memberID", SqlDbType.Int);
                     selectCommand.Parameters["@memberID"].Value = memberID;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -89,10 +89,10 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@fname", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@fname", SqlDbType.VarChar);
                     selectCommand.Parameters["@fname"].Value = fname.ToLower();
 
-                    selectCommand.Parameters.Add("@lname", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@lname", SqlDbType.VarChar);
                     selectCommand.Parameters["@lname"].Value = lname.ToLower();
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -143,7 +143,7 @@ namespace RentMe_App.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@phone", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters.Add("@phone", SqlDbType.VarChar);
                     selectCommand.Parameters["@phone"].Value = phone;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())

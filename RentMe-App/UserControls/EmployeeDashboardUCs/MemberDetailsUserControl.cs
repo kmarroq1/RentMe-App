@@ -5,21 +5,34 @@ using System.Windows.Forms;
 
 namespace RentMe_App.UserControls
 {
+    /// <summary>
+    /// Contains fields to display Member details for registering and editing members.
+    /// </summary>
     public partial class MemberDetailsUserControl : UserControl
     {
         private readonly StateController _stateController;
+
+        /// <summary>
+        /// Initializes UC's components & controller.
+        /// </summary>
         public MemberDetailsUserControl()
         {
             InitializeComponent();
             _stateController = new StateController();
         }
 
+        /// <summary>
+        /// Clears all of the fields and resets the birth date field.
+        /// </summary>
         public void ClearFields()
         {
             memberBindingSource.Clear();
             birthDateDateTimePicker.Value = DateTime.Now;
         }
 
+        /// <summary>
+        /// Dictates how the implicitly stored member is accessed and mutated.
+        /// </summary>
         public Member Member
         {
             get

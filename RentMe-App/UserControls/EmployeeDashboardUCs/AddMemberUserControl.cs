@@ -1,27 +1,29 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe_App.UserControls
 {
+    /// <summary>
+    /// User control for registering new Members in the db
+    /// </summary>
     public partial class AddMemberUserControl : UserControl
     {
         private readonly MemberController _memberController;
 
+        /// <summary>
+        /// Initializes the UserControl's components and controller.
+        /// </summary>
         public AddMemberUserControl()
         {
             InitializeComponent();
             _memberController = new MemberController();
         }
 
+        /// <summary>
+        /// Clears the fields in the user details.
+        /// </summary>
         public void ClearFields()
         {
             memberDetailsUserControl.ClearFields();
