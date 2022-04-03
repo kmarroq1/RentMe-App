@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -260,6 +261,24 @@ namespace RentMe_App.UserControls
             this.ClearForm();
         }
 
+        #endregion
+
+        #region Event Handlers
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            new EditMemberModal(new Member
+            { Fname = "John"
+            , Lname = "Doe"
+            , Address1 = "555 Somewhere Lane"
+            , City = "Somewhere"
+            , State = "NY"
+            , Phone = "5555555555"
+            , Zip = "55555"
+            , BirthDate = new DateTime(1970,1,1)
+            , Active = true
+            , MemberID = 42
+            }).ShowDialog();
+        }
         #endregion
     }
 }

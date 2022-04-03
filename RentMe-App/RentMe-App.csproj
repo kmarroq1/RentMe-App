@@ -84,6 +84,12 @@
     <Compile Include="View\AdminModals\EditEmployeeModal.Designer.cs">
       <DependentUpon>EditEmployeeModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeeModals\EditMemberModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
+      <DependentUpon>EditMemberModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\EditEmployeeModal.resx">
       <DependentUpon>EditEmployeeModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
+      <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
