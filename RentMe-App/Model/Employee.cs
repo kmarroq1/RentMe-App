@@ -161,7 +161,7 @@ namespace RentMe_App.Model
         }
 
         /// <summary>
-        /// Dictates the manner in which the Employee's address' state can be accessed & mutated.
+        /// employee's password
         /// </summary>
         public string Password { get; set; }
 
@@ -170,6 +170,9 @@ namespace RentMe_App.Model
         /// </summary>
         public byte[] Version { get; set; }
 
+        /// <summary>
+        /// Dictates the manner in which the Employee's address' state can be accessed & mutated.
+        /// </summary>
         public string State
         {
             get => _state;
@@ -202,7 +205,6 @@ namespace RentMe_App.Model
                 _zip = value;
             }
         }
-
         #endregion
     }
 }
