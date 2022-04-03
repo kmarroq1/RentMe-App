@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -44,7 +45,7 @@ namespace RentMe_App.View.AdminModals
                 {
                     FName = fNameTextBox.Text,
                     LName = lNameTextBox.Text,
-                    Sex = sexTextBox.Text,
+                    Sex = sexComboBox.SelectedValue.ToString(),
                     Address1 = address1TextBox.Text,
                     Address2 = address2TextBox.Text,
                     City = cityTextBox.Text,
@@ -60,8 +61,7 @@ namespace RentMe_App.View.AdminModals
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-                throw;
+                errorLabel.Text = exception.Message;
             }
         }
 
@@ -69,11 +69,11 @@ namespace RentMe_App.View.AdminModals
         {
             fNameTextBox.Text = "";
             lNameTextBox.Text = "";
-            sexTextBox.Text = "";
+            sexComboBox.SelectedIndex = 0;
             address1TextBox.Text = "";
             address2TextBox.Text = "";
             cityTextBox.Text = "";
-            stateComboBox.SelectedIndex = -1;
+            stateComboBox.SelectedIndex = 0;
             zipTextBox.Text = "";
             dateTimePicker.Value = DateTime.Today;
             phoneTextBox.Text = "";
@@ -87,14 +87,26 @@ namespace RentMe_App.View.AdminModals
             DialogResult = DialogResult.OK;
         }
 
+        private void PopulateFields()
+        {
+            var sex = new List<string>() { "--Select--", "female", "male", "other" };
+            sexComboBox.DataSource = new BindingSource(sex, null);
+
+            var states = new List<string>() { "--Select--" };
+            states.AddRange(_statesController.GetStatesList().StatesList);
+            stateComboBox.DataSource = new BindingSource(states, null);
+
+            activeCheckbox.Checked = true;
+        }
+
         private void Validation()
         {
             if (fNameTextBox.Text == "" ||
                 lNameTextBox.Text == "" ||
-                sexTextBox.Text == "" ||
+                sexComboBox.SelectedIndex == 0 ||
                 address1TextBox.Text == "" ||
                 cityTextBox.Text == "" ||
-                stateComboBox.SelectedIndex == -1 ||
+                stateComboBox.SelectedIndex == 0 ||
                 zipTextBox.Text == "" ||
                 phoneTextBox.Text == "" ||
                 passwordTextBox.Text == "" ||
@@ -108,16 +120,8 @@ namespace RentMe_App.View.AdminModals
             }
             else if (passwordTextBox.Text != "" && passwordTextBox.Text != confirmPasswordTextBox.Text)
             {
-                throw new ArgumentException("Password confirmation does not match entered password");
+                throw new ArgumentException("Make sure your password fields match");
             }
-        }
-
-        private void PopulateFields()
-        {
-            var states = _statesController.GetStatesList().StatesList;
-            stateComboBox.DataSource = new BindingSource(states, null);
-
-            activeCheckbox.Enabled = true;
         }
 
         private static bool IsPhoneNumber(string phone)
@@ -146,5 +150,9 @@ namespace RentMe_App.View.AdminModals
 
         #endregion
 
+        private void ClearError(object sender, EventArgs e)
+        {
+            errorLabel.Text = "";
+        }
     }
 }

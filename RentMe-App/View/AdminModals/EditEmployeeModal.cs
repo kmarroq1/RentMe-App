@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -50,7 +51,7 @@ namespace RentMe_App.View.AdminModals
                 {
                     FName = fNameTextBox.Text,
                     LName = lNameTextBox.Text,
-                    Sex = sexTextBox.Text,
+                    Sex = sexComboBox.SelectedValue.ToString(),
                     Address1 = address1TextBox.Text,
                     Address2 = address2TextBox.Text,
                     City = cityTextBox.Text,
@@ -74,11 +75,11 @@ namespace RentMe_App.View.AdminModals
         {
             fNameTextBox.Text = "";
             lNameTextBox.Text = "";
-            sexTextBox.Text = "";
+            sexComboBox.SelectedIndex = 0;
             address1TextBox.Text = "";
             address2TextBox.Text = "";
             cityTextBox.Text = "";
-            stateComboBox.SelectedIndex = -1;
+            stateComboBox.SelectedIndex = 0;
             zipTextBox.Text = "";
             dateTimePicker.Value = DateTime.Today;
             phoneTextBox.Text = "";
@@ -96,13 +97,15 @@ namespace RentMe_App.View.AdminModals
         {
             fNameTextBox.Text = _employee.FName;
             lNameTextBox.Text = _employee.LName;
-            sexTextBox.Text = _employee.Sex;
+            var sex = new List<string>() { "--Select--", "female", "male", "other" };
+            sexComboBox.DataSource = new BindingSource(sex, null);
 
             address1TextBox.Text = _employee.Address1;
             address2TextBox.Text = _employee.Address2;
             cityTextBox.Text = _employee.City;
 
-            var states = _statesController.GetStatesList().StatesList;
+            var states = new List<string>() {"--Select--"};
+            states.AddRange(_statesController.GetStatesList().StatesList);
             stateComboBox.DataSource = new BindingSource(states, null);
             stateComboBox.SelectedItem = _employee.State;
             zipTextBox.Text = _employee.Zip;
@@ -121,10 +124,10 @@ namespace RentMe_App.View.AdminModals
         {
             if (fNameTextBox.Text == "" ||
             lNameTextBox.Text == "" ||
-            sexTextBox.Text == "" ||
+            sexComboBox.SelectedIndex == 0 ||
             address1TextBox.Text == "" ||
             cityTextBox.Text == "" ||
-            stateComboBox.SelectedIndex == -1 ||
+            stateComboBox.SelectedIndex == 0 ||
             zipTextBox.Text == "" ||
             phoneTextBox.Text == "")
             {
@@ -136,7 +139,7 @@ namespace RentMe_App.View.AdminModals
             }
             else if (passwordTextBox.Text != "" && passwordTextBox.Text != confirmPasswordTextBox.Text)
             {
-                throw new ArgumentException("Password confirmation does not match");
+                throw new ArgumentException("Make sure your password fields match");
             }
         }
 
@@ -166,5 +169,9 @@ namespace RentMe_App.View.AdminModals
 
         #endregion
 
+        private void ClearError(object sender, EventArgs e)
+        {
+            errorLabel.Text = "";
+        }
     }
 }

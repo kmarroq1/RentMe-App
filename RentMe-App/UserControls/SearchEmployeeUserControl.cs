@@ -180,9 +180,27 @@ namespace RentMe_App.UserControls
             return stringPhone;
         }
 
-        private void ClearError(object sender, EventArgs e)
+        private void ClearErrorAndNonNameFields(object sender, EventArgs e)
         {
             errorLabel.Text = "";
+            idTextBox.Text = "";
+            phoneTextBox.Text = "";
+        }
+
+        private void ClearErrorAndNonIdFields(object sender, EventArgs e)
+        {
+            errorLabel.Text = "";
+            fNameTextBox.Text = "";
+            lNameTextBox.Text = "";
+            phoneTextBox.Text = "";
+        }
+
+        private void ClearErrorAndNonPhoneFields(object sender, EventArgs e)
+        {
+            errorLabel.Text = "";
+            fNameTextBox.Text = "";
+            lNameTextBox.Text = "";
+            idTextBox.Text = "";
         }
 
         #endregion

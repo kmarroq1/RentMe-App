@@ -95,23 +95,23 @@ namespace RentMe_App.UserControls
             this.phoneTextBox.Location = new System.Drawing.Point(573, 63);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
-            this.phoneTextBox.TabIndex = 7;
-            this.phoneTextBox.TextChanged += new System.EventHandler(this.ClearError);
+            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonPhoneFields);
             // 
             // idTextBox
             // 
             this.idTextBox.Location = new System.Drawing.Point(345, 63);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 6;
-            this.idTextBox.TextChanged += new System.EventHandler(this.ClearError);
+            this.idTextBox.TabIndex = 3;
+            this.idTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonIdFields);
             // 
             // ClearButton
             // 
             this.ClearButton.Location = new System.Drawing.Point(687, 123);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 4;
+            this.ClearButton.TabIndex = 6;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -121,26 +121,27 @@ namespace RentMe_App.UserControls
             this.lNameTextBox.Location = new System.Drawing.Point(117, 123);
             this.lNameTextBox.Name = "lNameTextBox";
             this.lNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.lNameTextBox.TabIndex = 5;
-            this.lNameTextBox.TextChanged += new System.EventHandler(this.ClearError);
+            this.lNameTextBox.TabIndex = 2;
+            this.lNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // SearchButton
             // 
             this.SearchButton.Location = new System.Drawing.Point(687, 63);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
-            this.SearchButton.TabIndex = 3;
+            this.SearchButton.TabIndex = 5;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            this.SearchButton.Enter += new System.EventHandler(this.SearchButton_Click);
             // 
             // fNameTextBox
             // 
             this.fNameTextBox.Location = new System.Drawing.Point(117, 63);
             this.fNameTextBox.Name = "fNameTextBox";
             this.fNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.fNameTextBox.TabIndex = 4;
-            this.fNameTextBox.TextChanged += new System.EventHandler(this.ClearError);
+            this.fNameTextBox.TabIndex = 1;
+            this.fNameTextBox.TextChanged += new System.EventHandler(this.ClearErrorAndNonNameFields);
             // 
             // phoneLabel
             // 
@@ -267,7 +268,7 @@ namespace RentMe_App.UserControls
             this.AddButton.Location = new System.Drawing.Point(119, 3);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 20);
-            this.AddButton.TabIndex = 4;
+            this.AddButton.TabIndex = 8;
             this.AddButton.Text = "Add New";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -277,7 +278,7 @@ namespace RentMe_App.UserControls
             this.EditButton.Location = new System.Drawing.Point(3, 3);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 20);
-            this.EditButton.TabIndex = 4;
+            this.EditButton.TabIndex = 7;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
