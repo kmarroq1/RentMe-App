@@ -40,6 +40,7 @@ namespace RentMe_App.UserControls
             this.zipLabel = new System.Windows.Forms.Label();
             this.stateLabel = new System.Windows.Forms.Label();
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.birthDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +50,6 @@ namespace RentMe_App.UserControls
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,9 +140,13 @@ namespace RentMe_App.UserControls
             this.activeCheckBox.Location = new System.Drawing.Point(8, 211);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(200, 24);
-            this.activeCheckBox.TabIndex = 2;
+            this.activeCheckBox.TabIndex = 10;
             this.activeCheckBox.Text = "Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(RentMe_App.Model.Member);
             // 
             // address1TextBox
             // 
@@ -150,7 +154,7 @@ namespace RentMe_App.UserControls
             this.address1TextBox.Location = new System.Drawing.Point(68, 55);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(200, 20);
-            this.address1TextBox.TabIndex = 4;
+            this.address1TextBox.TabIndex = 3;
             // 
             // address2TextBox
             // 
@@ -158,7 +162,7 @@ namespace RentMe_App.UserControls
             this.address2TextBox.Location = new System.Drawing.Point(68, 81);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(200, 20);
-            this.address2TextBox.TabIndex = 6;
+            this.address2TextBox.TabIndex = 4;
             // 
             // birthDateDateTimePicker
             // 
@@ -166,7 +170,7 @@ namespace RentMe_App.UserControls
             this.birthDateDateTimePicker.Location = new System.Drawing.Point(68, 185);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.birthDateDateTimePicker.TabIndex = 8;
+            this.birthDateDateTimePicker.TabIndex = 9;
             // 
             // cityTextBox
             // 
@@ -174,7 +178,7 @@ namespace RentMe_App.UserControls
             this.cityTextBox.Location = new System.Drawing.Point(68, 107);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(200, 20);
-            this.cityTextBox.TabIndex = 10;
+            this.cityTextBox.TabIndex = 5;
             // 
             // fnameTextBox
             // 
@@ -182,7 +186,7 @@ namespace RentMe_App.UserControls
             this.fnameTextBox.Location = new System.Drawing.Point(68, 3);
             this.fnameTextBox.Name = "fnameTextBox";
             this.fnameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.fnameTextBox.TabIndex = 12;
+            this.fnameTextBox.TabIndex = 1;
             // 
             // lnameTextBox
             // 
@@ -190,7 +194,7 @@ namespace RentMe_App.UserControls
             this.lnameTextBox.Location = new System.Drawing.Point(68, 29);
             this.lnameTextBox.Name = "lnameTextBox";
             this.lnameTextBox.Size = new System.Drawing.Size(200, 20);
-            this.lnameTextBox.TabIndex = 14;
+            this.lnameTextBox.TabIndex = 2;
             // 
             // phoneTextBox
             // 
@@ -198,7 +202,7 @@ namespace RentMe_App.UserControls
             this.phoneTextBox.Location = new System.Drawing.Point(68, 159);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(200, 20);
-            this.phoneTextBox.TabIndex = 16;
+            this.phoneTextBox.TabIndex = 8;
             // 
             // zipTextBox
             // 
@@ -206,7 +210,7 @@ namespace RentMe_App.UserControls
             this.zipTextBox.Location = new System.Drawing.Point(68, 133);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(200, 20);
-            this.zipTextBox.TabIndex = 20;
+            this.zipTextBox.TabIndex = 7;
             // 
             // stateComboBox
             // 
@@ -216,11 +220,7 @@ namespace RentMe_App.UserControls
             this.stateComboBox.Location = new System.Drawing.Point(315, 107);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(84, 21);
-            this.stateComboBox.TabIndex = 21;
-            // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(RentMe_App.Model.Member);
+            this.stateComboBox.TabIndex = 6;
             // 
             // MemberDetailsUserControl
             // 
