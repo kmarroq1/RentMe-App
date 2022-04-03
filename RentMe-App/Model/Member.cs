@@ -205,5 +205,20 @@ namespace RentMe_App.Model
         }
 
         #endregion
+
+        #region Methods
+        /// <summary>
+        /// Overrides ToString to display Member fields.
+        /// </summary>
+        /// <returns>The string representation of the Member</returns>
+        public override string ToString()
+        {
+            return "Member:\n"
+                + $"\tName: {Fname} {Lname}\n"
+                + $"\tDOB: {BirthDate}\n"
+                + $"\tPhone: {Phone}"
+                + $"\tAddress:\n\t\t{Address1}\n\t\t{Address2}\n\t\t{City}, {State} {Zip}";
+        }
+        #endregion
     }
 }
