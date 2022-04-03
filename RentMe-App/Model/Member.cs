@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace RentMe_App.Model
 {
@@ -97,6 +98,18 @@ namespace RentMe_App.Model
                 if (value.Length > 45)
                     throw new ArgumentException("Phone cannot greater than 45 characters long", "phone");
 
+                Regex phoneRegex = new Regex(@"(^\(\d{3}\) ?\d{3}-\d{4}$)|(^\d{10}$)|(^\d{3}[.-]\d{3}[.-]\d{4}$)");
+                if (!phoneRegex.IsMatch(value))
+                    throw new ArgumentException("Phone is not in viable format. Can be (###) ###-####, ##########, ###.###.####, or ###-###-####.");
+
+                string storedFormat = "";
+
+                // pulls numbers from propertly formatted string
+                foreach (Match matchedNumber in (new Regex(@"\d+")).Matches(value))
+                    storedFormat += matchedNumber.Value;
+
+                _phone = storedFormat;
+
                 _phone = value;
             }
         }
@@ -174,6 +187,11 @@ namespace RentMe_App.Model
                     throw new ArgumentNullException("Zip", "Member missing required field(s)");
                 if (value.Length > 20)
                     throw new ArgumentException("Zip cannot be greater than 20 characters long", "zip");
+
+                Regex zipCodeRegex = new Regex(@"(^\d{5}$)|(^\d{5}-\d{4}$)");
+
+                if (!zipCodeRegex.IsMatch(value))
+                    throw new ArgumentException("Not a valid zip code. Must be in format ##### or #####-####");
 
                 _zip = value;
             }
