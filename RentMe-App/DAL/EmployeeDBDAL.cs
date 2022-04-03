@@ -133,7 +133,7 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
-                                Version = (byte[]) reader["version"]
+                                Version = (byte[])reader["version"]
                             };
                             newList.Add(employee);
                         }
@@ -198,7 +198,7 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
-                                Version = (byte[]) reader["version"]
+                                Version = (byte[])reader["version"]
                             };
                             newList.Add(employee);
                         }
@@ -209,6 +209,11 @@ namespace RentMe_App.DAL
             return newList;
         }
 
+        /// <summary>
+        /// Updates the employee table
+        /// </summary>
+        /// <param name="oldEmployee"></param>
+        /// <param name="editedEmployee"></param>
         public void UpdateEmployee(Employee oldEmployee, Employee editedEmployee)
         {
             _ = editedEmployee ?? throw new ArgumentNullException(nameof(editedEmployee));
@@ -271,12 +276,47 @@ namespace RentMe_App.DAL
             }
         }
 
-        #endregion
-
+        /// <summary>
+        /// Adds an employee to the database
+        /// </summary>
+        /// <param name="newEmployee"></param>
         public void AddEmployee(Employee newEmployee)
         {
-            //add employee to database
-            throw new NotImplementedException();
+            try
+            {
+                _ = newEmployee ?? throw new ArgumentNullException(nameof(newEmployee));
+                using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+                {
+                    connection.Open();
+                    var insertStatement =
+                        "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
+                        "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)";
+                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
+                        insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
+                        insertCommand.Parameters.AddWithValue("@lname", newEmployee.LName);
+                        insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
+                        insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
+                        insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
+                        insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
+                        insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
+                        insertCommand.Parameters.AddWithValue("@zip", newEmployee.Zip);
+                        insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
+                        insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
+
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException(
+                    "Could not add employee");
+            }
+
         }
+
+        #endregion
     }
 }

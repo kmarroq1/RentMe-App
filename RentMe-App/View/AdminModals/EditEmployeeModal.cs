@@ -16,7 +16,6 @@ namespace RentMe_App.View.AdminModals
 
         private readonly Employee _employee;
         private readonly EmployeeController _employeeController;
-        private readonly LoginController _loginController;
         private readonly StatesController _statesController;
 
         #endregion
@@ -31,7 +30,7 @@ namespace RentMe_App.View.AdminModals
             InitializeComponent();
             _employee = employee ?? throw new ArgumentNullException(nameof(employee));
             _employeeController = new EmployeeController();
-            _loginController = new LoginController();
+            new LoginController();
             _statesController = new StatesController();
             PopulateFields();
         }
