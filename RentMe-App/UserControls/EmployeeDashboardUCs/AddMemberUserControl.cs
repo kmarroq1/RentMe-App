@@ -40,6 +40,7 @@ namespace RentMe_App.UserControls
             {
                 Member newMember = memberDetailsUserControl.Member;
                 _memberController.AddMember(newMember);
+                MessageBox.Show($"Successfully added {newMember.Fname} {newMember.Lname}.", "New Member Registered");
             } catch (Exception ex)
             {
                 errorMessageLabel.Text = ex.Message;
