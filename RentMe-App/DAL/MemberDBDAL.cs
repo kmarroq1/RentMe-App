@@ -291,7 +291,7 @@ namespace RentMe_App.DAL
 
                     cmd.Parameters.Add("new_phone", SqlDbType.VarChar);
                     cmd.Parameters["new_phone"].Value = newValues.Phone;
-                    
+
                     cmd.Parameters.Add("new_active", SqlDbType.Bit);
                     cmd.Parameters["new_active"].Value = newValues.Active ? 1 : 0;
                     #endregion

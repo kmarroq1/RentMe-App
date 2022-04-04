@@ -79,7 +79,7 @@ namespace RentMe_App.Model
         /// <param name="category_name">furniture category_name</param>
         /// <param name="image_small_url">furniture image_name of small url</param>
         /// <param name="image_large_url">furniture image_name of large url</param>
-        public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate, 
+        public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate,
             decimal daily_fine_rate, string style_name, string category_name, string image_small_url, string image_large_url)
         {
             if (furnitureID < 0)

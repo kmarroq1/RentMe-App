@@ -1,7 +1,7 @@
-﻿using System;
+﻿using RentMe_App.Model;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using RentMe_App.Model;
 
 namespace RentMe_App.DAL
 {

@@ -29,7 +29,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for MemberID
         /// </summary>
-        public int? MemberID {
+        public int? MemberID
+        {
             get => _memberID;
             set
             {
@@ -43,7 +44,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for BirthDate
         /// </summary>
-        public DateTime BirthDate {
+        public DateTime BirthDate
+        {
             get => _birthDate;
             set
             {
@@ -57,7 +59,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Fname
         /// </summary>
-        public string Fname {
+        public string Fname
+        {
             get => _firstName;
             set
             {
@@ -65,7 +68,7 @@ namespace RentMe_App.Model
                     throw new ArgumentException("Member missing required field(s)");
                 if (value.Length > 45)
                     throw new ArgumentException("FName cannot greater than 45 characters long", "fname");
-                
+
                 _firstName = value;
             }
         }
@@ -73,7 +76,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Lname
         /// </summary>
-        public string Lname {
+        public string Lname
+        {
             get => _lastName;
             set
             {
@@ -89,7 +93,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Phone
         /// </summary>
-        public string Phone {
+        public string Phone
+        {
             get => _phone;
             set
             {
@@ -117,7 +122,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Address1
         /// </summary>
-        public string Address1 {
+        public string Address1
+        {
             get => _address1;
             set
             {
@@ -133,7 +139,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Address2
         /// </summary>
-        public string Address2 {
+        public string Address2
+        {
             get => _address2;
             set
             {
@@ -147,7 +154,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for City
         /// </summary>
-        public string City {
+        public string City
+        {
             get => _city;
             set
             {
@@ -163,7 +171,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for State
         /// </summary>
-        public string State {
+        public string State
+        {
             get => _state;
             set
             {
@@ -179,7 +188,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Zip
         /// </summary>
-        public string Zip {
+        public string Zip
+        {
             get => _zip;
             set
             {
@@ -200,7 +210,8 @@ namespace RentMe_App.Model
         /// <summary>
         /// getter/setter method for Active
         /// </summary>
-        public bool Active {
+        public bool Active
+        {
             get => _active;
             set => _active = value;
         }
@@ -220,7 +231,7 @@ namespace RentMe_App.Model
         /// constructor used to create Member
         /// </summary>
         /// <param name="name">furnture style name</param>
-        public Member(int? memberID, DateTime birthDate, string fname, string lname, 
+        public Member(int? memberID, DateTime birthDate, string fname, string lname,
             string phone, string address1, string address2, string city, string state, string zip, bool active)
         {
             MemberID = memberID;

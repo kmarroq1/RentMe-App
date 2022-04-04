@@ -55,7 +55,7 @@ namespace RentMe_App.UserControls
                 ) throw new InvalidOperationException("Form missing required fields.");
 
                 _memberController.AddMember(newMember);
-                
+
                 MessageBox.Show($"Successfully added {newMember.Fname} {newMember.Lname}.", "New Member Registered");
             }
             catch (Exception ex)
