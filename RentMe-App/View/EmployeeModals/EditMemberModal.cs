@@ -47,11 +47,20 @@ namespace RentMe_App.View
                 newMember.MemberID = _oldMember.MemberID;
 
                 _memberController.UpdateMember(_oldMember, newMember);
+
+                MessageBox.Show($"{_oldMember.Fname} {_oldMember.Lname} successfully updated.", "Success");
+
+                Close();
             }
             catch (Exception ex)
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
