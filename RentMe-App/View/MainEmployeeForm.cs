@@ -11,8 +11,16 @@ namespace RentMe_App.View
     {
         #region Data members
 
+        /// <summary>
+        /// Employee username
+        /// </summary>
         public string usernameForm;
+
+        /// <summary>
+        /// Employee name
+        /// </summary>
         public string employeeNameForm;
+
         private readonly LoginForm _loginForm;
 
         #endregion
