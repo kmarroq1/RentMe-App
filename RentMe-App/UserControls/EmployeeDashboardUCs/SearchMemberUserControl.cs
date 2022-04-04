@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -165,7 +166,8 @@ namespace RentMe_App.UserControls
                     {
                         memberActive = "Yes";
                     }
-                    else {
+                    else
+                    {
                         memberActive = "No";
                     }
 
@@ -255,6 +257,10 @@ namespace RentMe_App.UserControls
                 ShowErrorMessage("Please select a member to edit.");
                 return;
             }
+
+            Member selectedMember = memberController.GetMemberByID(Int32.Parse(Convert.ToString(searchMemberDataGridView.SelectedRows[0].Cells["Member ID"].Value)))[0];
+
+            new EditMemberModal(selectedMember).ShowDialog();
         }
 
         private void SearchMemberDataGridView_SelectionChanged(object sender, EventArgs e)

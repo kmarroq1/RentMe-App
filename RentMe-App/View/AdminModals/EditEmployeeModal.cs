@@ -104,7 +104,7 @@ namespace RentMe_App.View.AdminModals
             address2TextBox.Text = _employee.Address2;
             cityTextBox.Text = _employee.City;
 
-            var states = new List<string>() {"--Select--"};
+            var states = new List<string>() { "--Select--" };
             states.AddRange(_statesController.GetStatesList().StatesList);
             stateComboBox.DataSource = new BindingSource(states, null);
             stateComboBox.SelectedItem = _employee.State;

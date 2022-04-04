@@ -135,7 +135,7 @@ namespace RentMe_App.UserControls
                 errorLabel.Text = "No employees found...";
                 return;
             }
-            
+
             employeeSearchGridView.DataSource = null;
             employeeSearchGridView.Rows.Clear();
 

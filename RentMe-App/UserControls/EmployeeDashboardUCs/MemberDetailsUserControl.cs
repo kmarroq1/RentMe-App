@@ -90,6 +90,10 @@ namespace RentMe_App.UserControls
             stateComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Connects the parent container to access callbacks.
+        /// </summary>
+        /// <param name="container">The form component containing the user control</param>
         public void SetParentContainer(IHideErrorMessage container)
         {
             _parentContainer = container;
