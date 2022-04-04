@@ -27,6 +27,9 @@ namespace RentMe_App.View
             MemberDetailsUserControl.SetParentContainer(this);
         }
 
+        /// <summary>
+        /// Clears and hides the error message
+        /// </summary>
         public void HideErrorMessage()
         {
             ErrorMessage.Text = "";
@@ -47,11 +50,20 @@ namespace RentMe_App.View
                 newMember.MemberID = _oldMember.MemberID;
 
                 _memberController.UpdateMember(_oldMember, newMember);
+
+                MessageBox.Show($"{newMember.Fname} {newMember.Lname} successfully updated.", "Success");
+
+                Close();
             }
             catch (Exception ex)
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

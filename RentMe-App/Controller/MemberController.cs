@@ -84,6 +84,8 @@ namespace RentMe_App.Controller
 
             if (newMember.Equals(oldMember))
                 throw new Exception("No fields have been updated.");
+
+            memberDBSource.UpdateMember(oldMember, newMember);
         }
         #endregion
     }

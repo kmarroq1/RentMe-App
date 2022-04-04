@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace RentMe_App.DAL
 {
@@ -224,6 +225,125 @@ namespace RentMe_App.DAL
             }
         }
 
+        /// <summary>
+        /// Updates the given member row with the given values.
+        /// Prevents race condition by checking against old values.
+        /// </summary>
+        /// <param name="oldValues">Old contents of the row</param>
+        /// <param name="newValues">New contents to replace the old ones</param>
+        public void UpdateMember(Member oldValues, Member newValues)
+        {
+            string updateStatement = @"update storeMember
+                                       set fname = @new_fname
+                                         , lname = @new_lname
+                                         , birthDate = @new_birthDate
+                                         , address1 = @new_address1
+                                         , address2 = @new_address2
+                                         , city = @new_city
+                                         , [state] = @new_state
+                                         , zip = @new_zip
+                                         , phone = @new_phone
+                                         , active = @new_active
+                                       where memberID = @old_memberID
+                                         and fname = @old_fname
+                                         and lname = @old_lname
+                                         and birthDate = @old_birthDate
+                                         and address1 = @old_address1
+                                         and ((address2 is null and @old_address2 is null) or (address2 = @old_address2))
+                                         and city = @old_city
+                                         and [state] = @old_state
+                                         and zip = @old_zip
+                                         and phone = @old_phone
+                                         and active =  @old_active
+                                       ;";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
+                {
+                    #region Update: New Values
+                    cmd.Parameters.Add("new_fname", SqlDbType.VarChar);
+                    cmd.Parameters["new_fname"].Value = newValues.Fname;
+
+                    cmd.Parameters.Add("new_lname", SqlDbType.VarChar);
+                    cmd.Parameters["new_lname"].Value = newValues.Lname;
+
+                    cmd.Parameters.Add("new_birthDate", SqlDbType.Date);
+                    cmd.Parameters["new_birthDate"].Value = newValues.BirthDate;
+
+                    cmd.Parameters.Add("new_address1", SqlDbType.VarChar);
+                    cmd.Parameters["new_address1"].Value = newValues.BirthDate;
+
+                    cmd.Parameters.Add("new_address2", SqlDbType.VarChar);
+                    if (string.IsNullOrWhiteSpace(newValues.Address2)) cmd.Parameters["new_address2"].Value = DBNull.Value;
+                    else cmd.Parameters["new_address2"].Value = newValues.Address2;
+
+                    cmd.Parameters.Add("new_city", SqlDbType.VarChar);
+                    cmd.Parameters["new_city"].Value = newValues.City;
+
+                    cmd.Parameters.Add("new_state", SqlDbType.VarChar);
+                    cmd.Parameters["new_state"].Value = newValues.State;
+
+                    cmd.Parameters.Add("new_zip", SqlDbType.VarChar);
+                    cmd.Parameters["new_zip"].Value = newValues.Zip;
+
+                    cmd.Parameters.Add("new_phone", SqlDbType.VarChar);
+                    cmd.Parameters["new_phone"].Value = newValues.Phone;
+
+                    cmd.Parameters.Add("new_active", SqlDbType.Bit);
+                    cmd.Parameters["new_active"].Value = newValues.Active ? 1 : 0;
+                    #endregion
+
+                    #region Update: Old Values
+                    cmd.Parameters.Add("old_memberID", SqlDbType.Int);
+                    cmd.Parameters["old_memberID"].Value = oldValues.MemberID;
+
+                    cmd.Parameters.Add("old_fname", SqlDbType.VarChar);
+                    cmd.Parameters["old_fname"].Value = oldValues.Fname;
+
+                    cmd.Parameters.Add("old_lname", SqlDbType.VarChar);
+                    cmd.Parameters["old_lname"].Value = oldValues.Lname;
+
+                    cmd.Parameters.Add("old_birthDate", SqlDbType.Date);
+                    cmd.Parameters["old_birthDate"].Value = oldValues.BirthDate;
+
+                    cmd.Parameters.Add("old_address1", SqlDbType.VarChar);
+                    cmd.Parameters["old_address1"].Value = oldValues.Address1;
+
+                    cmd.Parameters.Add("old_address2", SqlDbType.VarChar);
+                    if (string.IsNullOrWhiteSpace(oldValues.Address2)) cmd.Parameters["old_address2"].Value = DBNull.Value;
+                    else cmd.Parameters["old_address2"].Value = oldValues.Address2;
+
+                    cmd.Parameters.Add("old_city", SqlDbType.VarChar);
+                    cmd.Parameters["old_city"].Value = oldValues.City;
+
+                    cmd.Parameters.Add("old_state", SqlDbType.VarChar);
+                    cmd.Parameters["old_state"].Value = oldValues.State;
+
+                    cmd.Parameters.Add("old_zip", SqlDbType.VarChar);
+                    cmd.Parameters["old_zip"].Value = oldValues.Zip;
+
+                    cmd.Parameters.Add("old_phone", SqlDbType.VarChar);
+                    cmd.Parameters["old_phone"].Value = oldValues.Phone;
+
+                    cmd.Parameters.Add("old_active", SqlDbType.Bit);
+                    cmd.Parameters["old_active"].Value = oldValues.Active ? 1 : 0;
+                    #endregion
+
+                    int effectedRows = cmd.ExecuteNonQuery();
+
+                    MessageBox.Show($"{oldValues}\n{newValues}");
+
+                    if (effectedRows <= 0)
+                        throw new Exception("Data changed via external source. Please reload Member.");
+
+                    if (effectedRows > 1)
+                        throw new Exception("Multiple rows were changed...");
+                }
+            }
+        }
         #endregion
     }
 }
