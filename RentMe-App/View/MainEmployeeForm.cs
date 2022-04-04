@@ -11,8 +11,16 @@ namespace RentMe_App.View
     {
         #region Data members
 
+        /// <summary>
+        /// Employee username
+        /// </summary>
         public string usernameForm;
+
+        /// <summary>
+        /// Employee name
+        /// </summary>
         public string employeeNameForm;
+
         private readonly LoginForm _loginForm;
 
         #endregion
@@ -47,7 +55,7 @@ namespace RentMe_App.View
         private void LogoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _loginForm.LogOut();
-            this.Hide();
+            Hide();
         }
 
         private void MainEmployeeForm_FormClosing(object sender, FormClosingEventArgs e)

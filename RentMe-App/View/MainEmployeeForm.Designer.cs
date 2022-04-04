@@ -35,6 +35,8 @@ namespace RentMe_App.View
             this.addMemberUserControl1 = new RentMe_App.UserControls.AddMemberUserControl();
             this.searchMembersTabPage = new System.Windows.Forms.TabPage();
             this.searchMemberUserControl1 = new RentMe_App.UserControls.SearchMemberUserControl();
+            this.searchFurnitureTab = new System.Windows.Forms.TabPage();
+            this.searchFurnitureUserControl1 = new RentMe_App.UserControls.SearchFurnitureUserControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.employeeNameLabel = new System.Windows.Forms.Label();
@@ -47,6 +49,7 @@ namespace RentMe_App.View
             this.mainTabControl.SuspendLayout();
             this.addMemberTabPage.SuspendLayout();
             this.searchMembersTabPage.SuspendLayout();
+            this.searchFurnitureTab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.labelFlowLayoutPanel.SuspendLayout();
@@ -57,11 +60,12 @@ namespace RentMe_App.View
             // 
             this.mainTabControl.Controls.Add(this.addMemberTabPage);
             this.mainTabControl.Controls.Add(this.searchMembersTabPage);
+            this.mainTabControl.Controls.Add(this.searchFurnitureTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.mainTabControl.Location = new System.Drawing.Point(0, 111);
+            this.mainTabControl.Location = new System.Drawing.Point(0, 107);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(836, 550);
+            this.mainTabControl.Size = new System.Drawing.Size(836, 554);
             this.mainTabControl.TabIndex = 0;
             // 
             // addMemberTabPage
@@ -70,7 +74,7 @@ namespace RentMe_App.View
             this.addMemberTabPage.Location = new System.Drawing.Point(4, 22);
             this.addMemberTabPage.Name = "addMemberTabPage";
             this.addMemberTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.addMemberTabPage.Size = new System.Drawing.Size(828, 524);
+            this.addMemberTabPage.Size = new System.Drawing.Size(828, 528);
             this.addMemberTabPage.TabIndex = 0;
             this.addMemberTabPage.Text = "Add Member";
             this.addMemberTabPage.UseVisualStyleBackColor = true;
@@ -80,7 +84,7 @@ namespace RentMe_App.View
             this.addMemberUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addMemberUserControl1.Location = new System.Drawing.Point(3, 3);
             this.addMemberUserControl1.Name = "addMemberUserControl1";
-            this.addMemberUserControl1.Size = new System.Drawing.Size(822, 518);
+            this.addMemberUserControl1.Size = new System.Drawing.Size(822, 522);
             this.addMemberUserControl1.TabIndex = 0;
             this.addMemberUserControl1.Load += new System.EventHandler(this.AddMemberUserControl1_Load);
             // 
@@ -90,7 +94,7 @@ namespace RentMe_App.View
             this.searchMembersTabPage.Location = new System.Drawing.Point(4, 22);
             this.searchMembersTabPage.Name = "searchMembersTabPage";
             this.searchMembersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.searchMembersTabPage.Size = new System.Drawing.Size(828, 524);
+            this.searchMembersTabPage.Size = new System.Drawing.Size(828, 528);
             this.searchMembersTabPage.TabIndex = 1;
             this.searchMembersTabPage.Text = "Search Members";
             this.searchMembersTabPage.UseVisualStyleBackColor = true;
@@ -100,8 +104,26 @@ namespace RentMe_App.View
             this.searchMemberUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchMemberUserControl1.Location = new System.Drawing.Point(3, 3);
             this.searchMemberUserControl1.Name = "searchMemberUserControl1";
-            this.searchMemberUserControl1.Size = new System.Drawing.Size(822, 518);
+            this.searchMemberUserControl1.Size = new System.Drawing.Size(822, 522);
             this.searchMemberUserControl1.TabIndex = 0;
+            // 
+            // searchFurnitureTab
+            // 
+            this.searchFurnitureTab.Controls.Add(this.searchFurnitureUserControl1);
+            this.searchFurnitureTab.Location = new System.Drawing.Point(4, 22);
+            this.searchFurnitureTab.Name = "searchFurnitureTab";
+            this.searchFurnitureTab.Padding = new System.Windows.Forms.Padding(3);
+            this.searchFurnitureTab.Size = new System.Drawing.Size(828, 528);
+            this.searchFurnitureTab.TabIndex = 2;
+            this.searchFurnitureTab.Text = "Search Furniture";
+            this.searchFurnitureTab.UseVisualStyleBackColor = true;
+            // 
+            // searchFurnitureUserControl1
+            // 
+            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(5, 5);
+            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
+            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(823, 523);
+            this.searchFurnitureUserControl1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -227,6 +249,7 @@ namespace RentMe_App.View
             this.mainTabControl.ResumeLayout(false);
             this.addMemberTabPage.ResumeLayout(false);
             this.searchMembersTabPage.ResumeLayout(false);
+            this.searchFurnitureTab.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -255,5 +278,7 @@ namespace RentMe_App.View
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label employeeNameValueLabel;
         private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.TabPage searchFurnitureTab;
+        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
     }
 }

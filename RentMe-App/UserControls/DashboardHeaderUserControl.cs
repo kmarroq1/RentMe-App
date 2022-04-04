@@ -8,6 +8,9 @@ namespace RentMe_App.UserControls
     /// </summary>
     public partial class DashboardHeaderUserControl : UserControl
     {
+        /// <summary>
+        /// Constructor for class
+        /// </summary>
         public DashboardHeaderUserControl()
         {
             InitializeComponent();

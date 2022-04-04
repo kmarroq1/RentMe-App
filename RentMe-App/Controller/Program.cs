@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace RentMe_App
 {
+    /// <summary>
+    /// Main method class
+    /// </summary>
     static class Program
     {
         /// <summary>

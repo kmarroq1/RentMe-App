@@ -40,7 +40,7 @@ namespace RentMe_App.Model
 
             }
 
-            this.Name = name;
+            Name = name;
 
         }
 

@@ -28,9 +28,9 @@ namespace RentMe_App.View
         public LoginForm()
         {
             InitializeComponent();
-            this.mainAdminForm = new MainAdminForm(this);
-            this.mainEmployeeForm = new MainEmployeeForm(this);
-            this.loginController = new LoginController();
+            mainAdminForm = new MainAdminForm(this);
+            mainEmployeeForm = new MainEmployeeForm(this);
+            loginController = new LoginController();
         }
 
         #endregion
@@ -41,11 +41,11 @@ namespace RentMe_App.View
         {
             try
             {
-                string username = this.usernameTextBox.Text;
-                string password = this.passwordTextBox.Text;
+                string username = usernameTextBox.Text;
+                string password = passwordTextBox.Text;
                 bool isAdmin = false;
 
-                string loginInfo = this.CheckAuthorization(username, password, isAdmin);
+                string loginInfo = CheckAuthorization(username, password, isAdmin);
 
                 if (String.IsNullOrEmpty(loginInfo) == false && String.IsNullOrEmpty(username) == false && String.IsNullOrEmpty(password) == false)
                 {
@@ -57,13 +57,13 @@ namespace RentMe_App.View
 
                     mainEmployeeForm.Show();
                     mainAdminForm.Hide();
-                    this.Hide();
+                    Hide();
                 }
             }
             catch (Exception)
             {
                 string errorMessage = "Invalid form entries";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowInvalidErrorMessage(errorMessage);
             }
         }
 
@@ -71,11 +71,11 @@ namespace RentMe_App.View
         {
             try
             {
-                string username = this.usernameTextBox.Text;
-                string password = this.passwordTextBox.Text;
+                string username = usernameTextBox.Text;
+                string password = passwordTextBox.Text;
                 bool isAdmin = true;
 
-                string loginInfo = this.CheckAuthorization(username, password, isAdmin);
+                string loginInfo = CheckAuthorization(username, password, isAdmin);
 
                 if (String.IsNullOrEmpty(loginInfo) == false && String.IsNullOrEmpty(username) == false && String.IsNullOrEmpty(password) == false)
                 {
@@ -87,13 +87,13 @@ namespace RentMe_App.View
 
                     mainAdminForm.Show();
                     mainEmployeeForm.Hide();
-                    this.Hide();
+                    Hide();
                 }
             }
             catch (Exception)
             {
                 string errorMessage = "Invalid form entries";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowInvalidErrorMessage(errorMessage);
             }
         }
 
@@ -104,24 +104,24 @@ namespace RentMe_App.View
             if (String.IsNullOrEmpty(username) == true || String.IsNullOrEmpty(password) == true)
             {
                 string errorMessage = "Fields cannot be empty";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowInvalidErrorMessage(errorMessage);
             }
             else if (isAdmin)
             {
-                loginInfo = this.loginController.GetAuthorizedAdminLoginInfo(username, password);
+                loginInfo = loginController.GetAuthorizedAdminLoginInfo(username, password);
                 if (String.IsNullOrEmpty(loginInfo) == true)
                 {
                     string errorMessage = "Employee is not active or not authorized";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowInvalidErrorMessage(errorMessage);
                 }
             }
             else
             {
-                loginInfo = this.loginController.GetAuthorizedEmployeeLoginInfo(username, password);
+                loginInfo = loginController.GetAuthorizedEmployeeLoginInfo(username, password);
                 if (String.IsNullOrEmpty(loginInfo) == true)
                 {
                     string errorMessage = "Employee is not active or not authorized";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowInvalidErrorMessage(errorMessage);
                 }
             }
             return loginInfo;
@@ -132,8 +132,8 @@ namespace RentMe_App.View
         /// </summary>
         public void LogOut()
         {
-            this.ClearForm();
-            this.Show();
+            ClearForm();
+            Show();
         }
 
         private void HideErrorMessage()
@@ -159,13 +159,13 @@ namespace RentMe_App.View
 
         private void UsernameTextBox_Enter(object sender, EventArgs e)
         {
-            this.usernameTextBox.Text = "";
+            usernameTextBox.Text = "";
             HideErrorMessage();
         }
 
         private void PasswordTextBox_Enter(object sender, EventArgs e)
         {
-            this.passwordTextBox.Text = "";
+            passwordTextBox.Text = "";
             HideErrorMessage();
         }
 
@@ -176,8 +176,8 @@ namespace RentMe_App.View
 
         private void ClearForm()
         {
-            this.usernameTextBox.Text = "";
-            this.passwordTextBox.Text = "";
+            usernameTextBox.Text = "";
+            passwordTextBox.Text = "";
         }
 
         #endregion

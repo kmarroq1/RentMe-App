@@ -136,15 +136,15 @@ namespace RentMe_App.Model
 
             }
 
-            this.FurnitureID = furnitureID;
-            this.Name = name;
-            this.Description = description;
-            this.Daily_Rental_Rate = daily_rental_rate;
-            this.Daily_Fine_Rate = daily_fine_rate;
-            this.Style_Name = style_name;
-            this.Category_Name = category_name;
-            this.Image_Small_Url = image_small_url;
-            this.Image_Large_Url = image_large_url;
+            FurnitureID = furnitureID;
+            Name = name;
+            Description = description;
+            Daily_Rental_Rate = daily_rental_rate;
+            Daily_Fine_Rate = daily_fine_rate;
+            Style_Name = style_name;
+            Category_Name = category_name;
+            Image_Small_Url = image_small_url;
+            Image_Large_Url = image_large_url;
         }
 
         #endregion
