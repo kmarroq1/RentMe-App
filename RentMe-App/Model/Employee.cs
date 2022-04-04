@@ -193,7 +193,7 @@ namespace RentMe_App.Model
         {
             get => _zip;
             set
-        {
+            {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new ArgumentNullException("Zip", "Employee zip code cannot be null or empty");
 

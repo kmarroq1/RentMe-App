@@ -165,7 +165,8 @@ namespace RentMe_App.UserControls
                     {
                         memberActive = "Yes";
                     }
-                    else {
+                    else
+                    {
                         memberActive = "No";
                     }
 

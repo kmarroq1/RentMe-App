@@ -55,7 +55,7 @@ namespace RentMe_App.View
         private void LogoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _loginForm.LogOut();
-            this.Hide();
+            Hide();
         }
 
         private void MainEmployeeForm_FormClosing(object sender, FormClosingEventArgs e)

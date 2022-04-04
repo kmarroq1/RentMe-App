@@ -15,7 +15,7 @@ namespace RentMe_App.Controller
         #endregion
 
         #region Constructor
-        
+
         /// <summary>
         /// Constructor for States class
         /// </summary>

@@ -24,9 +24,9 @@ namespace RentMe_App.DAL
                 connection.Open();
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                    using(SqlDataReader reader = selectCommand.ExecuteReader())
-                        while(reader.Read())
-                            abbreviations.Add(reader.GetString(reader.GetOrdinal("name")));
+                using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    while (reader.Read())
+                        abbreviations.Add(reader.GetString(reader.GetOrdinal("name")));
             }
 
             return abbreviations;
