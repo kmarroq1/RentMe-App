@@ -44,6 +44,8 @@ namespace RentMe_App.View
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameValueLabel = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.searchFurnitureTab = new System.Windows.Forms.TabPage();
+            this.searchFurnitureUserControl1 = new RentMe_App.UserControls.SearchFurnitureUserControl();
             this.mainTabControl.SuspendLayout();
             this.addMemberTabPage.SuspendLayout();
             this.searchMembersTabPage.SuspendLayout();
@@ -51,12 +53,14 @@ namespace RentMe_App.View
             this.flowLayoutPanel1.SuspendLayout();
             this.labelFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            this.searchFurnitureTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.addMemberTabPage);
             this.mainTabControl.Controls.Add(this.searchMembersTabPage);
+            this.mainTabControl.Controls.Add(this.searchFurnitureTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.mainTabControl.Location = new System.Drawing.Point(0, 111);
             this.mainTabControl.Name = "mainTabControl";
@@ -209,6 +213,24 @@ namespace RentMe_App.View
             this.logoPictureBox.TabIndex = 11;
             this.logoPictureBox.TabStop = false;
             // 
+            // searchFurnitureTab
+            // 
+            this.searchFurnitureTab.Controls.Add(this.searchFurnitureUserControl1);
+            this.searchFurnitureTab.Location = new System.Drawing.Point(4, 22);
+            this.searchFurnitureTab.Name = "searchFurnitureTab";
+            this.searchFurnitureTab.Padding = new System.Windows.Forms.Padding(3);
+            this.searchFurnitureTab.Size = new System.Drawing.Size(828, 524);
+            this.searchFurnitureTab.TabIndex = 2;
+            this.searchFurnitureTab.Text = "Search Furniture";
+            this.searchFurnitureTab.UseVisualStyleBackColor = true;
+            // 
+            // searchFurnitureUserControl1
+            // 
+            this.searchFurnitureUserControl1.Location = new System.Drawing.Point(5, 5);
+            this.searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
+            this.searchFurnitureUserControl1.Size = new System.Drawing.Size(800, 500);
+            this.searchFurnitureUserControl1.TabIndex = 0;
+            // 
             // MainEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +256,7 @@ namespace RentMe_App.View
             this.labelFlowLayoutPanel.ResumeLayout(false);
             this.labelFlowLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            this.searchFurnitureTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -255,5 +278,7 @@ namespace RentMe_App.View
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label employeeNameValueLabel;
         private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.TabPage searchFurnitureTab;
+        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
     }
 }
