@@ -119,7 +119,7 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Style.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.cs">
       <SubType>UserControl</SubType>
