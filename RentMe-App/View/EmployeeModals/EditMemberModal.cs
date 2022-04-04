@@ -48,7 +48,7 @@ namespace RentMe_App.View
 
                 _memberController.UpdateMember(_oldMember, newMember);
 
-                MessageBox.Show($"{_oldMember.Fname} {_oldMember.Lname} successfully updated.", "Success");
+                MessageBox.Show($"{newMember.Fname} {newMember.Lname} successfully updated.", "Success");
 
                 Close();
             }
