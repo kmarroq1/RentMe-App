@@ -27,6 +27,9 @@ namespace RentMe_App.View
             MemberDetailsUserControl.SetParentContainer(this);
         }
 
+        /// <summary>
+        /// Clears and hides the error message
+        /// </summary>
         public void HideErrorMessage()
         {
             ErrorMessage.Text = "";

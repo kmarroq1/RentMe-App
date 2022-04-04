@@ -65,6 +65,9 @@ namespace RentMe_App.UserControls
             }
         }
 
+        /// <summary>
+        /// Clears and hide the error message
+        /// </summary>
         public void HideErrorMessage()
         {
             errorMessageLabel.Text = "";
