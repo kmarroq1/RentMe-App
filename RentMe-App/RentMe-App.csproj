@@ -52,7 +52,6 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StatesController.cs" />
-    <Compile Include="Controller\StateController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
     <Compile Include="DAL\EmployeeDBDAL.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StatesDBDAL.cs" />
-    <Compile Include="DAL\StateDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\States.cs" />
@@ -119,7 +117,7 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Style.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.cs">
       <SubType>UserControl</SubType>
