@@ -1,4 +1,5 @@
 ﻿using RentMe_App.DAL;
+using RentMe_App.Model;
 using System;
 
 namespace RentMe_App.Controller
@@ -66,6 +67,16 @@ namespace RentMe_App.Controller
                 throw new ArgumentNullException("Password cannot be null or empty");
             }
             return loginDBSource.GetAuthorizedAdminLoginInfo(username, password);
+        }
+
+        /// <summary>
+        /// Calls db dal to check if username is in use, and registers the username under the employee if not in use.
+        /// </summary>
+        /// <param name="newEmployee"></param>
+        /// <returns></returns>
+        public void AddNewUsername(Employee newEmployee)
+        {
+
         }
 
         #endregion
