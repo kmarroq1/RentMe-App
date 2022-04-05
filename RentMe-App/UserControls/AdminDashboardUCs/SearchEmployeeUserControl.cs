@@ -80,6 +80,11 @@ namespace RentMe_App.UserControls
                     return;
                 }
             }
+            catch (FormatException)
+            {
+                errorLabel.Text = "Employee ID must be a positive number";
+                return;
+            }
             catch (Exception exception)
             {
                 errorLabel.Text = exception.Message;
