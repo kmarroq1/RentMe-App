@@ -139,7 +139,7 @@ namespace RentMe_App.DAL
                 {
                     updateCommand.Parameters.Add("@employeeID", System.Data.SqlDbType.Int);
                     updateCommand.Parameters["@employeeID"].Value = employee.EmployeeId;
-                    
+
                     if (employee.Username == null)
                     {
                         updateCommand.Parameters.Add("@username", SqlDbType.VarChar);

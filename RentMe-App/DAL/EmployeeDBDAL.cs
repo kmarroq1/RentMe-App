@@ -251,8 +251,8 @@ namespace RentMe_App.DAL
 
                         if (shouldUpdatePassword && shouldUpdateUsername)
                         {
-                            updateLoginStatement += usernameUpdate + ", " + passwordUpdate; 
-                        } 
+                            updateLoginStatement += usernameUpdate + ", " + passwordUpdate;
+                        }
                         else if (shouldUpdateUsername)
                         {
                             updateLoginStatement += usernameUpdate;
@@ -285,9 +285,9 @@ namespace RentMe_App.DAL
                             }
                         }
                     }
-                    
 
-                transaction.Commit();
+
+                    transaction.Commit();
                 }
             }
         }
