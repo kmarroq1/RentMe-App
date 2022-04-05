@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace RentMe_App.Model
@@ -285,6 +286,38 @@ namespace RentMe_App.Model
                 && (State == otherMember.State)
                 && (Zip == otherMember.Zip)
                 && (Active == otherMember.Active);
+        }
+
+        /// <summary>
+        /// Override default hash code to generate proper hash for Member.
+        /// </summary>
+        /// <returns>Hash used for identifying Member</returns>
+        public override int GetHashCode()
+        {
+            int hashCode = -1417705111;
+            hashCode = hashCode * -1521134295 + _memberID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_firstName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_lastName);
+            hashCode = hashCode * -1521134295 + _birthDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_phone);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_address1);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_address2);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_city);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_state);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_zip);
+            hashCode = hashCode * -1521134295 + _active.GetHashCode();
+            hashCode = hashCode * -1521134295 + MemberID.GetHashCode();
+            hashCode = hashCode * -1521134295 + BirthDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Fname);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Lname);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Phone);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address1);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address2);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(City);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(State);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Zip);
+            hashCode = hashCode * -1521134295 + Active.GetHashCode();
+            return hashCode;
         }
         #endregion
     }
