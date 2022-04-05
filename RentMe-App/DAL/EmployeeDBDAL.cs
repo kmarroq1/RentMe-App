@@ -141,7 +141,7 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeByPhone(string phone)
         {
-             List<Employee> newList = new List<Employee>();
+            List<Employee> newList = new List<Employee>();
 
             string selectStatement =
                 "SELECT * " +
@@ -263,40 +263,34 @@ namespace RentMe_App.DAL
         /// <param name="newEmployee"></param>
         public void AddEmployee(Employee newEmployee)
         {
-            try
-            {
-                using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
-                {
-                    connection.Open();
-                    var insertStatement =
-                        "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
-                        "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)";
-                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
-                    {
-                        insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
-                        insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
-                        insertCommand.Parameters.AddWithValue("@lname", newEmployee.LName);
-                        insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
-                        insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
-                        insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
-                        insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
-                        insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
-                        insertCommand.Parameters.AddWithValue("@zip", newEmployee.Zip);
-                        insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
-                        insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
 
-                        insertCommand.ExecuteNonQuery();
-                    }
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+                var insertStatement =
+                    "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
+                    "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)";
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
+                    insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
+                    insertCommand.Parameters.AddWithValue("@lname", newEmployee.LName);
+                    insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
+                    insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
+                    insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
+                    insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
+                    insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
+                    insertCommand.Parameters.AddWithValue("@zip", newEmployee.Zip);
+                    insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
+                    insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
+
+                    insertCommand.ExecuteNonQuery();
                 }
             }
-            catch (Exception)
-            {
-                throw new InvalidOperationException(
-                    "Could not add employee");
-            }
-
         }
 
-        #endregion
     }
+
+    #endregion
 }
+
