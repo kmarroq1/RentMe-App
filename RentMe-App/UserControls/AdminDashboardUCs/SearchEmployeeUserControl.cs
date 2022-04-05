@@ -126,6 +126,7 @@ namespace RentMe_App.UserControls
             AddEmployeeModal newForm = new AddEmployeeModal();
             employeeSearchGridView.DataSource = null;
             employeeSearchGridView.Rows.Clear();
+            infoLabel.Text = "";
             newForm.ShowDialog();
         }
 

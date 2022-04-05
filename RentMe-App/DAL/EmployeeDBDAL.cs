@@ -19,11 +19,6 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeById(int employeeId)
         {
-            if (employeeId < 0)
-            {
-                throw new ArgumentException("Employee ID must be a positive number");
-            }
-
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
@@ -84,11 +79,6 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeByName(string fName, string lName)
         {
-            if (string.IsNullOrEmpty(fName) || string.IsNullOrEmpty(lName))
-            {
-                throw new ArgumentException("Must enter first AND last name");
-            }
-
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
@@ -151,12 +141,7 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeByPhone(string phone)
         {
-            if (phone == null)
-            {
-                throw new ArgumentException("Invalid phone number");
-            }
-
-            List<Employee> newList = new List<Employee>();
+             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
                 "SELECT * " +
@@ -216,10 +201,6 @@ namespace RentMe_App.DAL
         /// <param name="editedEmployee"></param>
         public void UpdateEmployee(Employee oldEmployee, Employee editedEmployee)
         {
-            _ = editedEmployee ?? throw new ArgumentNullException(nameof(editedEmployee));
-            _ = oldEmployee ?? throw new ArgumentNullException(nameof(oldEmployee));
-
-
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -284,7 +265,6 @@ namespace RentMe_App.DAL
         {
             try
             {
-                _ = newEmployee ?? throw new ArgumentNullException(nameof(newEmployee));
                 using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
                 {
                     connection.Open();
