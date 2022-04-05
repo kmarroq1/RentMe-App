@@ -135,6 +135,7 @@ namespace RentMe_App.UserControls
             EditButton.Enabled = employeeSearchGridView.SelectedRows.Count == 1;
             infoLabel.Text = "";
             errorLabel.Text = "";
+            employeeSearchGridView.CurrentRow.Selected = true;
         }
 
         private void RefreshData()
@@ -212,5 +213,10 @@ namespace RentMe_App.UserControls
         }
 
         #endregion
+
+        private void EmployeeSearchGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            EditButton.Enabled = employeeSearchGridView.SelectedRows.Count == 1;
+        }
     }
 }
