@@ -114,6 +114,7 @@ namespace RentMe_App.View.AdminModals
 
             phoneTextBox.Text = _employee.Phone;
 
+            usernameTextBox.Text = _employee.Username;
             passwordTextBox.Text = "";
             confirmPasswordTextBox.Text = "";
 

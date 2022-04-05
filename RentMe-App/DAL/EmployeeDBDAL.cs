@@ -24,8 +24,9 @@ namespace RentMe_App.DAL
             string selectStatement =
                 "SELECT * " +
                 "FROM employee " +
+                "JOIN login ON login.employeeID = employee.employeeID " +
                 "WHERE " +
-                "employeeID = @employeeID";
+                "employee.employeeID = @employeeID";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -60,6 +61,7 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
+                                Username = reader["username"].ToString(),
                                 Version = (byte[])reader["version"]
                             };
                             newList.Add(employee);
