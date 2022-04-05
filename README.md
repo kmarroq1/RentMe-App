@@ -10,6 +10,7 @@ Username/Password for both Admin and Employee
 Username: Jane
 Password: test1234
 ```
+Pull from our latest Release version for Iteration 1
 
 ## To-do
 - Refactor duplicated code
