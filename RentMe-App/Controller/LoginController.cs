@@ -70,13 +70,39 @@ namespace RentMe_App.Controller
         }
 
         /// <summary>
-        /// Calls db dal to check if username is in use, and registers the username under the employee if not in use.
+        /// Calls db dal to add new employee username and password to login
         /// </summary>
         /// <param name="newEmployee"></param>
         /// <returns></returns>
-        public void AddNewUsername(Employee newEmployee)
+        public void AddLogin(Employee newEmployee)
         {
+            if (newEmployee.EmployeeId < 1)
+            {
+                throw new ArgumentException("EmployeeId cannot be less than 1");
+            }
+            if (string.IsNullOrEmpty(newEmployee.Username))
+            {
+                throw new ArgumentNullException("Username cannot be null or empty");
+            }
+            if (string.IsNullOrEmpty(newEmployee.Password))
+            {
+                throw new ArgumentNullException("Password cannot be null or empty");
+            }
+            loginDBSource.AddLogin(newEmployee);
+        }
 
+        /// <summary>
+        /// Calls db dal to update username or password changes to login
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>boolean if login record was updated</returns>
+        public bool UpdateLogin(Employee employee)
+        {
+            if (employee.EmployeeId < 1)
+            {
+                throw new ArgumentException("EmployeeId cannot be less than 1");
+            }
+            return loginDBSource.UpdateLogin(employee);
         }
 
         #endregion
