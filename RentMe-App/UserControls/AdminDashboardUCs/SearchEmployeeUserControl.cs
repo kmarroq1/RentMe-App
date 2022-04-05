@@ -108,8 +108,11 @@ namespace RentMe_App.UserControls
                 var employeeID = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
                 _selectedEmployee = _employeeList.Find(x => x.EmployeeId == employeeID);
                 EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployee);
+
                 employeeSearchGridView.DataSource = null;
                 employeeSearchGridView.Rows.Clear();
+                EditButton.Enabled = false;
+
                 newForm.ShowDialog();
             }
             catch (Exception exception)
