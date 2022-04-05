@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using RentMe_App.Model;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace RentMe_App.DAL
@@ -84,6 +85,94 @@ namespace RentMe_App.DAL
                 }
             }
             return loginInfo;
+        }
+
+        /// <summary>
+        /// Adds username and password to login
+        /// </summary>
+        /// <param name="newEmployee"></param>
+        public void AddLogin(Employee newEmployee)
+        {
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+                var insertStatement =
+                    "INSERT INTO login (employeeID, username, password) " +
+                    "VALUES (@employeeID, @username, HASHBYTES('SHA2_256', @password))";
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@employeeID", newEmployee.EmployeeId);
+                    insertCommand.Parameters.AddWithValue("@username", newEmployee.Username);
+                    insertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds username and password to login
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>boolean value if successfully updated</returns>
+        public bool UpdateLogin(Employee employee)
+        {
+
+            string updateStatement =
+                "UPDATE login SET " +
+                "employeeID = @employeeID " +
+                ", IIF(TRIM(@username) != NULL, @username, username) AS username " +
+                ", IIF(TRIM(@password) != NULL, HASHBYTES('SHA2_256', @password), password) AS password " +
+                "WHERE " +
+                "@username NOT IN ( " +
+                "   SELECT DISTINCT " +
+                "   username " +
+                "   FROM login " +
+                ") ";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.Add("@employeeID", System.Data.SqlDbType.Int);
+                    updateCommand.Parameters["@employeeID"].Value = employee.EmployeeId;
+                    
+                    if (employee.Username == null)
+                    {
+                        updateCommand.Parameters.Add("@username", SqlDbType.VarChar);
+                        updateCommand.Parameters["@username"].Value = System.DBNull.Value;
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.Add("@username", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@username"].Value = employee.Username;
+                    }
+
+                    if (employee.Password == null)
+                    {
+                        updateCommand.Parameters.Add("@password", SqlDbType.VarChar);
+                        updateCommand.Parameters["@password"].Value = System.DBNull.Value;
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.Add("@password", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@password"].Value = employee.Password;
+                    }
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
         }
 
         #endregion
