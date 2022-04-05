@@ -21,6 +21,7 @@ namespace RentMe_App.Model
         private string _city;
         private string _state;
         private string _zip;
+        private string _username;
         #endregion
 
         #region Properties
@@ -164,6 +165,11 @@ namespace RentMe_App.Model
         /// employee's password
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Employee username
+        /// </summary>
+        public string Username { get; set; }
 
         /// <summary>
         /// The row version - auto incremented when a row is updated
