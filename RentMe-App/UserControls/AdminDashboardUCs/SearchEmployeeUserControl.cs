@@ -98,6 +98,7 @@ namespace RentMe_App.UserControls
             errorLabel.Text = "";
             infoLabel.Text = "";
             employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -107,6 +108,8 @@ namespace RentMe_App.UserControls
                 var employeeID = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
                 _selectedEmployee = _employeeList.Find(x => x.EmployeeId == employeeID);
                 EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployee);
+                employeeSearchGridView.DataSource = null;
+                employeeSearchGridView.Rows.Clear();
                 newForm.ShowDialog();
             }
             catch (Exception exception)
@@ -118,6 +121,8 @@ namespace RentMe_App.UserControls
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddEmployeeModal newForm = new AddEmployeeModal();
+            employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
             newForm.ShowDialog();
         }
 
