@@ -1,9 +1,9 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -31,8 +31,8 @@ namespace RentMe_App.UserControls
         /// </summary>
         public SearchMemberUserControl()
         {
-            this.InitializeComponent();
-            this.memberController = new MemberController();
+            InitializeComponent();
+            memberController = new MemberController();
 
             ClearForm();
         }
@@ -51,7 +51,7 @@ namespace RentMe_App.UserControls
                 string firstName = firstNameTextBox.Text;
                 string lastName = lastNameTextBox.Text;
                 string phone = phoneTextBox.Text;
-                Match matchPhone = Regex.Match(phone, @"^\(\d{3}\) \d{3}-\d{4}$");
+                Match matchPhone = Regex.Match(phone, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
 
                 memberList = new List<Member>();
 
@@ -67,36 +67,45 @@ namespace RentMe_App.UserControls
                 }
                 else if (matchPhone.Success)
                 {
-                    memberList = memberController.GetMemberByPhone(phone);
+                    memberList = memberController.GetMemberByPhone(RemovePhoneSpecialCharacters(phone));
                     CheckMemberFound(memberList);
                 }
                 else if (!string.IsNullOrEmpty(phone) && !matchPhone.Success)
                 {
-                    string errorMessage = "Phone number format should be (XXX) XXX-XXXX";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    string errorMessage = "Phone number contains 10 digits";
+                    ShowErrorMessage(errorMessage);
                 }
                 else if (getMemberIDCheck == false && memberIDTextBox.Text.Length > 0)
                 {
                     string errorMessage = "Member ID must be number";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowErrorMessage(errorMessage);
                 }
                 else if ((string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName)) ||
                     (!string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(lastName)))
                 {
                     string errorMessage = "Search by name requires both values";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowErrorMessage(errorMessage);
                 }
                 else
                 {
-                    string errorMessage = "Selection must be made to return result";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowErrorMessage("Selection must be made to return result");
                 }
             }
             catch (Exception)
             {
-                string errorMessage = "Invalid Logic";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowErrorMessage("Invalid Logic");
             }
+        }
+
+        private string RemovePhoneSpecialCharacters(string phone)
+        {
+            var stringPhone = phone;
+            var charactersToRemove = new string[] { " ", ".", "-", ")", "(", "'" };
+            foreach (var c in charactersToRemove)
+            {
+                stringPhone = stringPhone.Replace(c, string.Empty);
+            }
+            return stringPhone;
         }
 
         private void CheckMemberFound(List<Member> memberList)
@@ -107,8 +116,7 @@ namespace RentMe_App.UserControls
             }
             else
             {
-                string errorMessage = "No member found";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowErrorMessage("No member found");
             }
         }
 
@@ -158,7 +166,8 @@ namespace RentMe_App.UserControls
                     {
                         memberActive = "Yes";
                     }
-                    else {
+                    else
+                    {
                         memberActive = "No";
                     }
 
@@ -176,8 +185,7 @@ namespace RentMe_App.UserControls
             }
             catch (Exception)
             {
-                string errorMessage = "Invalid Member";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowErrorMessage("Invalid Member");
             }
 
             searchMemberDataGridView.DataSource = dataTable;
@@ -185,70 +193,85 @@ namespace RentMe_App.UserControls
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            this.RefreshSearchDataGrid();
+            RefreshSearchDataGrid();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
 
         private void ClearForm()
         {
-            this.searchMemberDataGridView.DataSource = null;
-            this.memberIDTextBox.Text = "";
-            this.firstNameTextBox.Text = "";
-            this.lastNameTextBox.Text = "";
-            this.phoneTextBox.Text = "";
-            this.HideErrorMessage();
+            searchMemberDataGridView.DataSource = null;
+            ClearTextBoxes(memberIDTextBox, firstNameTextBox, lastNameTextBox, phoneTextBox);
+            HideErrorMessage();
+            editButton.Enabled = false;
         }
 
         private void HideErrorMessage()
         {
-            errorMessageLabel.Text = "";
+            errorMessageLabel.Hide();
         }
 
-        private void ShowInvalidErrorMessage(string message)
+        private void ClearTextBoxes(params TextBox[] textboxes)
         {
-            errorMessageLabel.Text = message;
-            errorMessageLabel.ForeColor = Color.Red;
+            foreach (TextBox textBox in textboxes) textBox.Clear();
         }
 
         private void MemberID_Enter(object sender, EventArgs e)
         {
-            this.firstNameTextBox.Text = "";
-            this.lastNameTextBox.Text = "";
-            this.phoneTextBox.Text = "";
+            ClearTextBoxes(firstNameTextBox, lastNameTextBox, phoneTextBox);
             HideErrorMessage();
         }
 
         private void Phone_Enter(object sender, EventArgs e)
         {
-            this.memberIDTextBox.Text = "";
-            this.firstNameTextBox.Text = "";
-            this.lastNameTextBox.Text = "";
+            ClearTextBoxes(memberIDTextBox, firstNameTextBox, lastNameTextBox);
             HideErrorMessage();
         }
 
-        private void Fname_Enter(object sender, EventArgs e)
+        private void Name_Enter(object sender, EventArgs e)
         {
-            this.memberIDTextBox.Text = "";
-            this.phoneTextBox.Text = "";
-            HideErrorMessage();
-        }
-
-        private void Lname_Enter(object sender, EventArgs e)
-        {
-            this.memberIDTextBox.Text = "";
-            this.phoneTextBox.Text = "";
+            ClearTextBoxes(memberIDTextBox, phoneTextBox);
             HideErrorMessage();
         }
 
         private void SearchMemberDataGridView_VisibleChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
 
+        private void ShowErrorMessage(string message)
+        {
+            errorMessageLabel.Text = message;
+            errorMessageLabel.Show();
+        }
+        #endregion
+
+        #region Event Handlers
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if (searchMemberDataGridView.SelectedRows.Count != 1)
+            {
+                ShowErrorMessage("Please select a member to edit.");
+                return;
+            }
+
+            Member selectedMember = memberController.GetMemberByID(Int32.Parse(Convert.ToString(searchMemberDataGridView.SelectedRows[0].Cells["Member ID"].Value)))[0];
+
+            new EditMemberModal(selectedMember).ShowDialog();
+        }
+
+        private void SearchMemberDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            editButton.Enabled = searchMemberDataGridView.SelectedRows.Count == 1;
+        }
+
+        private void SearchMemberDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            searchMemberDataGridView.CurrentRow.Selected = true;
+        }
         #endregion
     }
 }

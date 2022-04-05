@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 
 namespace RentMe_App.Model
 {
@@ -81,7 +79,7 @@ namespace RentMe_App.Model
         /// <param name="category_name">furniture category_name</param>
         /// <param name="image_small_url">furniture image_name of small url</param>
         /// <param name="image_large_url">furniture image_name of large url</param>
-        public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate, 
+        public Furniture(int? furnitureID, string name, string description, decimal daily_rental_rate,
             decimal daily_fine_rate, string style_name, string category_name, string image_small_url, string image_large_url)
         {
             if (furnitureID < 0)
@@ -138,15 +136,15 @@ namespace RentMe_App.Model
 
             }
 
-            this.FurnitureID = furnitureID;
-            this.Name = name;
-            this.Description = description;
-            this.Daily_Rental_Rate = daily_rental_rate;
-            this.Daily_Fine_Rate = daily_fine_rate;
-            this.Style_Name = style_name;
-            this.Category_Name = category_name;
-            this.Image_Small_Url = image_small_url;
-            this.Image_Large_Url = image_large_url;
+            FurnitureID = furnitureID;
+            Name = name;
+            Description = description;
+            Daily_Rental_Rate = daily_rental_rate;
+            Daily_Fine_Rate = daily_fine_rate;
+            Style_Name = style_name;
+            Category_Name = category_name;
+            Image_Small_Url = image_small_url;
+            Image_Large_Url = image_large_url;
         }
 
         #endregion

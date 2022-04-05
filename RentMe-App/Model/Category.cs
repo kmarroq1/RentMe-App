@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace RentMe_App.Model
 {
@@ -41,7 +40,7 @@ namespace RentMe_App.Model
 
             }
 
-            this.Name = name;
+            Name = name;
 
         }
 

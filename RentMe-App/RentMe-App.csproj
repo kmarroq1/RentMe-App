@@ -47,14 +47,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\StatesController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
+    <Compile Include="DAL\EmployeeDBDAL.cs" />
+    <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
+    <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
+    <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
+    <Compile Include="Interfaces\IHideErrorMessage.cs" />
+    <Compile Include="Model\States.cs" />
+    <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.Designer.cs">
+      <DependentUpon>AddMemberUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DashboardHeaderUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +88,12 @@
     <Compile Include="View\AdminModals\EditEmployeeModal.Designer.cs">
       <DependentUpon>EditEmployeeModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeeModals\EditMemberModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
+      <DependentUpon>EditMemberModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +106,7 @@
     <Compile Include="View\MainAdminForm.Designer.cs">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="SearchFurnitureTest.cs">
       <SubType>Form</SubType>
@@ -95,24 +117,30 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Style.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\SearchEmployeeUserControl.cs">
+    <Compile Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchEmployeeUserControl.Designer.cs">
+    <Compile Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.Designer.cs">
       <DependentUpon>SearchEmployeeUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.cs">
+    <Compile Include="UserControls\EmployeeDashboardUCs\MemberDetailsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.Designer.cs">
+    <Compile Include="UserControls\EmployeeDashboardUCs\MemberDetailsUserControl.Designer.cs">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchFurnitureUserControl.Designer.cs">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchMemberUserControl.cs">
+    <Compile Include="UserControls\EmployeeDashboardUCs\SearchMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchMemberUserControl.Designer.cs">
+    <Compile Include="UserControls\EmployeeDashboardUCs\SearchMemberUserControl.Designer.cs">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainEmployeeForm.cs">
@@ -121,6 +149,12 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.resx">
+      <DependentUpon>AddMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\MemberDetailsUserControl.resx">
+      <DependentUpon>MemberDetailsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\EditEmployeeModal.resx">
       <DependentUpon>EditEmployeeModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
+      <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -147,19 +184,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\SearchEmployeeUserControl.resx">
+    <EmbeddedResource Include="UserControls\AdminDashboardUCs\SearchEmployeeUserControl.resx">
       <DependentUpon>SearchEmployeeUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
+    <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainEmployeeForm.resx">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe_App.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\RentMe_App.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -175,6 +215,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Common\Images\RentMe Logo_smaller.png" />
+    <Content Include="Common\QA_Checklist.txt" />
+    <Content Include="Common\Sql\insert_furniture_part1.sql" />
+    <Content Include="Common\Sql\insert_furniture_part2.sql" />
+    <Content Include="Common\Sql\insert_furniture_part3.sql" />
+    <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

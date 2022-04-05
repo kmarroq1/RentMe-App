@@ -29,10 +29,10 @@ namespace RentMe_App.UserControls
         /// </summary>
         public SearchFurnitureUserControl()
         {
-            this.InitializeComponent();
-            this.furnitureController = new FurnitureController();
-            this.styleController = new StyleController();
-            this.categoryController = new CategoryController();
+            InitializeComponent();
+            furnitureController = new FurnitureController();
+            styleController = new StyleController();
+            categoryController = new CategoryController();
 
             ClearForm();
         }
@@ -85,7 +85,7 @@ namespace RentMe_App.UserControls
 
         private void RefreshSearchDataGrid()
         {
-            this.searchFurnitureDataGridView.DataSource = null;
+            searchFurnitureDataGridView.DataSource = null;
 
             try
             {
@@ -118,18 +118,18 @@ namespace RentMe_App.UserControls
                 else if (getFurnitureCheck == false && furnitureIDTextBox.Text.Length > 0)
                 {
                     string errorMessage = "Furniture ID must be number";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowInvalidErrorMessage(errorMessage);
                 }
                 else
                 {
                     string errorMessage = "Selection must be made to return result";
-                    this.ShowInvalidErrorMessage(errorMessage);
+                    ShowInvalidErrorMessage(errorMessage);
                 }
             }
             catch (Exception)
             {
                 string errorMessage = "Invalid Logic";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowInvalidErrorMessage(errorMessage);
             }
         }
 
@@ -151,33 +151,33 @@ namespace RentMe_App.UserControls
         {
             if (furnitureList.Count > 0)
             {
-                this.searchFurnitureDataGridView.DataSource = furnitureList;
+                searchFurnitureDataGridView.DataSource = furnitureList;
                 AdjustColumnOrder();
             }
             else
             {
                 string errorMessage = "No furniture found";
-                this.ShowInvalidErrorMessage(errorMessage);
+                ShowInvalidErrorMessage(errorMessage);
             }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            this.RefreshSearchDataGrid();
+            RefreshSearchDataGrid();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
 
         private void ClearForm()
         {
-            this.searchFurnitureDataGridView.DataSource = null;
-            this.furnitureIDTextBox.Text = "";
-            this.PopulateStyleComboBox();
-            this.PopulateCategoryComboBox();
-            this.HideErrorMessage();
+            searchFurnitureDataGridView.DataSource = null;
+            furnitureIDTextBox.Text = "";
+            PopulateStyleComboBox();
+            PopulateCategoryComboBox();
+            HideErrorMessage();
         }
 
         private void HideErrorMessage()
@@ -200,25 +200,25 @@ namespace RentMe_App.UserControls
 
         private void StyleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.furnitureIDTextBox.Text != "")
+            if (furnitureIDTextBox.Text != "")
             {
-                this.furnitureIDTextBox.Text = "";
+                furnitureIDTextBox.Text = "";
             }
             HideErrorMessage();
         }
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.furnitureIDTextBox.Text != "")
+            if (furnitureIDTextBox.Text != "")
             {
-                this.furnitureIDTextBox.Text = "";
+                furnitureIDTextBox.Text = "";
             }
             HideErrorMessage();
         }
 
         private void SearchFurnitureDataGridView_VisibleChanged(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
         }
 
         #endregion
