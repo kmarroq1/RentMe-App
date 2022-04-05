@@ -23,6 +23,7 @@ namespace RentMe_App
         public string employeeNameForm;
 
         private readonly LoginForm _loginForm;
+        private bool _killApp;
 
         #endregion
 
@@ -36,11 +37,22 @@ namespace RentMe_App
         {
             InitializeComponent();
             _loginForm = loginForm;
+            _killApp = true;
         }
 
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Logs the user out.
+        /// </summary>
+        public void Logout()
+        {
+            _killApp = false;
+            _loginForm.Show();
+            _loginForm.LogOut();
+            Close();
+        }
 
         /// <summary>
         /// method used to set the username to show on the form
@@ -54,13 +66,12 @@ namespace RentMe_App
 
         private void LogoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _loginForm.LogOut();
-            Hide();
+            Logout();
         }
 
         private void MainAdminForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _loginForm.LogOut();
+            if (_killApp) Application.Exit();
         }
 
         private void MainAdminForm_Load(object sender, System.EventArgs e)

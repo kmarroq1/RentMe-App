@@ -274,7 +274,7 @@ namespace RentMe_App.DAL
                     cmd.Parameters["new_birthDate"].Value = newValues.BirthDate;
 
                     cmd.Parameters.Add("new_address1", SqlDbType.VarChar);
-                    cmd.Parameters["new_address1"].Value = newValues.BirthDate;
+                    cmd.Parameters["new_address1"].Value = newValues.Address1;
 
                     cmd.Parameters.Add("new_address2", SqlDbType.VarChar);
                     if (string.IsNullOrWhiteSpace(newValues.Address2)) cmd.Parameters["new_address2"].Value = DBNull.Value;
@@ -333,8 +333,6 @@ namespace RentMe_App.DAL
                     #endregion
 
                     int effectedRows = cmd.ExecuteNonQuery();
-
-                    MessageBox.Show($"{oldValues}\n{newValues}");
 
                     if (effectedRows <= 0)
                         throw new Exception("Data changed via external source. Please reload Member.");

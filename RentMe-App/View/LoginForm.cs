@@ -14,8 +14,6 @@ namespace RentMe_App.View
     {
         #region Data members
 
-        private readonly MainAdminForm mainAdminForm;
-        private readonly MainEmployeeForm mainEmployeeForm;
         private readonly LoginController loginController;
 
         #endregion
@@ -28,8 +26,7 @@ namespace RentMe_App.View
         public LoginForm()
         {
             InitializeComponent();
-            mainAdminForm = new MainAdminForm(this);
-            mainEmployeeForm = new MainEmployeeForm(this);
+            
             loginController = new LoginController();
         }
 
@@ -53,11 +50,11 @@ namespace RentMe_App.View
                     string usernameForm = loginInfoArray[1];
                     string nameForm = loginInfoArray[2];
 
+                    MainEmployeeForm mainEmployeeForm = new MainEmployeeForm(this);
                     mainEmployeeForm.SetEmployeeFormInfo(usernameForm, nameForm);
 
-                    mainEmployeeForm.Show();
-                    mainAdminForm.Hide();
                     Hide();
+                    mainEmployeeForm.ShowDialog();
                 }
             }
             catch (Exception)
@@ -83,11 +80,11 @@ namespace RentMe_App.View
                     string usernameForm = loginInfoArray[1];
                     string nameForm = loginInfoArray[2];
 
+                    MainAdminForm mainAdminForm = new MainAdminForm(this);
                     mainAdminForm.SetAdminFormInfo(usernameForm, nameForm);
 
-                    mainAdminForm.Show();
-                    mainEmployeeForm.Hide();
                     Hide();
+                    mainAdminForm.ShowDialog();
                 }
             }
             catch (Exception)

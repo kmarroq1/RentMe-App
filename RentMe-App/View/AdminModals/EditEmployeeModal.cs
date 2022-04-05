@@ -58,14 +58,15 @@ namespace RentMe_App.View.AdminModals
                     BirthDate = dateTimePicker.Value,
                     Phone = RemovePhoneSpecialCharacters(phoneTextBox.Text),
                     Password = passwordTextBox.Text,
-                    IsActive = activeCheckbox.Checked
+                    IsActive = activeCheckbox.Checked,
+                    Username = usernameTextBox.Text,
                 };
                 _employeeController.UpdateEmployee(_employee, editedEmployee);
                 errorLabel.Text = "Employee updated!";
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                errorLabel.Text = exception.Message;
+                errorLabel.Text = "Unable to update employee";
             }
 
         }
@@ -114,6 +115,7 @@ namespace RentMe_App.View.AdminModals
 
             phoneTextBox.Text = _employee.Phone;
 
+            usernameTextBox.Text = _employee.Username;
             passwordTextBox.Text = "";
             confirmPasswordTextBox.Text = "";
 

@@ -1,4 +1,5 @@
 ﻿using RentMe_App.DAL;
+using RentMe_App.Model;
 using System;
 
 namespace RentMe_App.Controller
@@ -66,6 +67,42 @@ namespace RentMe_App.Controller
                 throw new ArgumentNullException("Password cannot be null or empty");
             }
             return loginDBSource.GetAuthorizedAdminLoginInfo(username, password);
+        }
+
+        /// <summary>
+        /// Calls db dal to add new employee username and password to login
+        /// </summary>
+        /// <param name="newEmployee"></param>
+        /// <returns></returns>
+        public void AddLogin(Employee newEmployee)
+        {
+            if (newEmployee.EmployeeId < 1)
+            {
+                throw new ArgumentException("EmployeeId cannot be less than 1");
+            }
+            if (string.IsNullOrEmpty(newEmployee.Username))
+            {
+                throw new ArgumentNullException("Username cannot be null or empty");
+            }
+            if (string.IsNullOrEmpty(newEmployee.Password))
+            {
+                throw new ArgumentNullException("Password cannot be null or empty");
+            }
+            loginDBSource.AddLogin(newEmployee);
+        }
+
+        /// <summary>
+        /// Calls db dal to update username or password changes to login
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>boolean if login record was updated</returns>
+        public bool UpdateLogin(Employee employee)
+        {
+            if (employee.EmployeeId < 1)
+            {
+                throw new ArgumentException("EmployeeId cannot be less than 1");
+            }
+            return loginDBSource.UpdateLogin(employee);
         }
 
         #endregion

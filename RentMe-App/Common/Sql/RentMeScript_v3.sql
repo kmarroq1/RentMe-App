@@ -115,9 +115,10 @@ GO
 CREATE TABLE [dbo].[login]
 (
 	[employeeID] int NOT NULL FOREIGN KEY ([employeeID]) REFERENCES [dbo].[employee](employeeID), 
-	[username] VARCHAR(45) NOT NULL, 
+	[username] VARCHAR(45) NOT NULL UNIQUE, 
 	[password] VARBINARY(150) NOT NULL,
-	PRIMARY KEY ([employeeID])
+	UNIQUE ([username]),
+    PRIMARY KEY ([employeeID])
 )
 GO
 

@@ -212,6 +212,7 @@ namespace RentMe_App.UserControls
             this.employeeSearchGridView.Size = new System.Drawing.Size(800, 259);
             this.employeeSearchGridView.TabIndex = 1;
             this.employeeSearchGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            this.employeeSearchGridView.SelectionChanged += new System.EventHandler(this.EmployeeSearchGridView_SelectionChanged);
             // 
             // IDColumn
             // 

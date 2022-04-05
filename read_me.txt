@@ -13,6 +13,8 @@ Password: test1234
 
 ## To-do
 - Refactor duplicated code
+- Add consistent/User-friendlier code for handling errors thrown
+- Updating customers and employees needs to not take place if no changes are made
 - Add report feature
 - Add shopping cart feature
 - Add order history feature

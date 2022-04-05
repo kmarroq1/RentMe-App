@@ -19,18 +19,14 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeById(int employeeId)
         {
-            if (employeeId < 0)
-            {
-                throw new ArgumentException("Employee ID must be a positive number");
-            }
-
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
                 "SELECT * " +
                 "FROM employee " +
+                "JOIN login ON login.employeeID = employee.employeeID " +
                 "WHERE " +
-                "employeeID = @employeeID";
+                "employee.employeeID = @employeeID";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -65,6 +61,7 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
+                                Username = reader["username"].ToString(),
                                 Version = (byte[])reader["version"]
                             };
                             newList.Add(employee);
@@ -84,11 +81,6 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeByName(string fName, string lName)
         {
-            if (string.IsNullOrEmpty(fName) || string.IsNullOrEmpty(lName))
-            {
-                throw new ArgumentException("Must enter first AND last name");
-            }
-
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
@@ -151,11 +143,6 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Employee> GetEmployeeByPhone(string phone)
         {
-            if (phone == null)
-            {
-                throw new ArgumentException("Invalid phone number");
-            }
-
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
@@ -216,10 +203,6 @@ namespace RentMe_App.DAL
         /// <param name="editedEmployee"></param>
         public void UpdateEmployee(Employee oldEmployee, Employee editedEmployee)
         {
-            _ = editedEmployee ?? throw new ArgumentNullException(nameof(editedEmployee));
-            _ = oldEmployee ?? throw new ArgumentNullException(nameof(oldEmployee));
-
-
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -253,14 +236,46 @@ namespace RentMe_App.DAL
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(editedEmployee.Password))
+
+                    if (!string.IsNullOrEmpty(editedEmployee.Password) || editedEmployee.Username != oldEmployee.Username)
                     {
                         var updateLoginStatement =
-                            "UPDATE login SET password = HASHBYTES('SHA2_256', @password) WHERE employeeID = @employeeID";
+                        "UPDATE login " +
+                        "SET ";
+
+                        var usernameUpdate = "username = @username ";
+                        var shouldUpdateUsername = editedEmployee.Username != oldEmployee.Username;
+
+                        var passwordUpdate = "password = HASHBYTES('SHA2_256', @password) ";
+                        var shouldUpdatePassword = !string.IsNullOrEmpty(editedEmployee.Password);
+
+                        if (shouldUpdatePassword && shouldUpdateUsername)
+                        {
+                            updateLoginStatement += usernameUpdate + ", " + passwordUpdate;
+                        }
+                        else if (shouldUpdateUsername)
+                        {
+                            updateLoginStatement += usernameUpdate;
+                        }
+                        else if (shouldUpdatePassword)
+                        {
+                            updateLoginStatement += passwordUpdate;
+                        }
+
+
+                        updateLoginStatement += "WHERE employeeID = @employeeID";
+
                         using (var command = new SqlCommand(updateLoginStatement, connection, transaction))
                         {
                             command.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
-                            command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                            if (shouldUpdateUsername)
+                            {
+                                command.Parameters.AddWithValue("@username", editedEmployee.Username);
+                            }
+                            if (shouldUpdatePassword)
+                            {
+                                command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                            }
 
                             var rowsAffected = command.ExecuteNonQuery();
                             if (rowsAffected != 1)
@@ -270,6 +285,7 @@ namespace RentMe_App.DAL
                             }
                         }
                     }
+
 
                     transaction.Commit();
                 }
@@ -282,16 +298,19 @@ namespace RentMe_App.DAL
         /// <param name="newEmployee"></param>
         public void AddEmployee(Employee newEmployee)
         {
-            try
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
-                _ = newEmployee ?? throw new ArgumentNullException(nameof(newEmployee));
-                using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
                 {
-                    connection.Open();
                     var insertStatement =
                         "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
-                        "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)";
-                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                        "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)" +
+                        "; SELECT SCOPE_IDENTITY()";
+                    int insertedEmployeeID;
+                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
                     {
                         insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
                         insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
@@ -305,18 +324,28 @@ namespace RentMe_App.DAL
                         insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
                         insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
 
-                        insertCommand.ExecuteNonQuery();
+                        insertedEmployeeID = Convert.ToInt32(insertCommand.ExecuteScalar());
                     }
+
+                    var loginInsertStatement =
+                        "INSERT INTO login (employeeID, username, password) " +
+                        "VALUES (@employeeID, @username, HASHBYTES('SHA2_256', @password))";
+                    using (SqlCommand loginInsertCommand = new SqlCommand(loginInsertStatement, connection, transaction))
+                    {
+                        loginInsertCommand.Parameters.AddWithValue("@employeeID", insertedEmployeeID);
+                        loginInsertCommand.Parameters.AddWithValue("@username", newEmployee.Username);
+                        loginInsertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
+
+                        loginInsertCommand.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
                 }
             }
-            catch (Exception)
-            {
-                throw new InvalidOperationException(
-                    "Could not add employee");
-            }
-
         }
 
-        #endregion
     }
+
+    #endregion
 }
+

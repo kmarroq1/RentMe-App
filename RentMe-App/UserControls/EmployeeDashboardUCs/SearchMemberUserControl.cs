@@ -75,6 +75,11 @@ namespace RentMe_App.UserControls
                     string errorMessage = "Phone number contains 10 digits";
                     ShowErrorMessage(errorMessage);
                 }
+                else if (getMemberIDCheck == true && memberID <= 0)
+                {
+                    string errorMessage = "Member ID must be greater than 0";
+                    ShowErrorMessage(errorMessage);
+                }
                 else if (getMemberIDCheck == false && memberIDTextBox.Text.Length > 0)
                 {
                     string errorMessage = "Member ID must be number";

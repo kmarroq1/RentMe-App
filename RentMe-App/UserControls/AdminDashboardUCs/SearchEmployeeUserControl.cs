@@ -80,6 +80,11 @@ namespace RentMe_App.UserControls
                     return;
                 }
             }
+            catch (FormatException)
+            {
+                errorLabel.Text = "Employee ID must be a positive number";
+                return;
+            }
             catch (Exception exception)
             {
                 errorLabel.Text = exception.Message;
@@ -98,6 +103,7 @@ namespace RentMe_App.UserControls
             errorLabel.Text = "";
             infoLabel.Text = "";
             employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
@@ -107,6 +113,11 @@ namespace RentMe_App.UserControls
                 var employeeID = int.Parse(employeeSearchGridView.SelectedRows[0].Cells["IDColumn"].Value.ToString());
                 _selectedEmployee = _employeeList.Find(x => x.EmployeeId == employeeID);
                 EditEmployeeModal newForm = new EditEmployeeModal(_selectedEmployee);
+
+                employeeSearchGridView.DataSource = null;
+                employeeSearchGridView.Rows.Clear();
+                EditButton.Enabled = false;
+
                 newForm.ShowDialog();
             }
             catch (Exception exception)
@@ -118,6 +129,9 @@ namespace RentMe_App.UserControls
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddEmployeeModal newForm = new AddEmployeeModal();
+            employeeSearchGridView.DataSource = null;
+            employeeSearchGridView.Rows.Clear();
+            infoLabel.Text = "";
             newForm.ShowDialog();
         }
 
@@ -126,6 +140,7 @@ namespace RentMe_App.UserControls
             EditButton.Enabled = employeeSearchGridView.SelectedRows.Count == 1;
             infoLabel.Text = "";
             errorLabel.Text = "";
+            employeeSearchGridView.CurrentRow.Selected = true;
         }
 
         private void RefreshData()
@@ -203,5 +218,10 @@ namespace RentMe_App.UserControls
         }
 
         #endregion
+
+        private void EmployeeSearchGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            EditButton.Enabled = employeeSearchGridView.SelectedRows.Count == 1;
+        }
     }
 }

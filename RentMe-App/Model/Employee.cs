@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace RentMe_App.Model
@@ -21,6 +22,7 @@ namespace RentMe_App.Model
         private string _city;
         private string _state;
         private string _zip;
+        private string _username;
         #endregion
 
         #region Properties
@@ -102,7 +104,7 @@ namespace RentMe_App.Model
 
                 Regex phoneRegex = new Regex(@"(^\(\d{3}\) ?\d{3}-\d{4}$)|(^\d{10}$)|(^\d{3}[.-]\d{3}[.-]\d{4}$)");
                 if (!phoneRegex.IsMatch(value))
-                    throw new ArgumentException("Phone is not in viable format. Can be (###) ###-####, ##########, ###.###.####, or ###-###-####.");
+                    throw new ArgumentException("Phone is not in valid format.");
 
                 string storedFormat = "";
 
@@ -166,6 +168,11 @@ namespace RentMe_App.Model
         public string Password { get; set; }
 
         /// <summary>
+        /// Employee username
+        /// </summary>
+        public string Username { get; set; }
+
+        /// <summary>
         /// The row version - auto incremented when a row is updated
         /// </summary>
         public byte[] Version { get; set; }
@@ -200,10 +207,81 @@ namespace RentMe_App.Model
                 Regex zipCodeRegex = new Regex(@"(^\d{5}$)|(^\d{5}-\d{4}$)");
 
                 if (!zipCodeRegex.IsMatch(value))
-                    throw new ArgumentException("Not a valid zip code. Must be in format ##### or #####-####");
+                    throw new ArgumentException("Zip code not in valid format.");
 
                 _zip = value;
             }
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Checks to see if two Employee objects have identical fields.
+        /// Cannot check passwords due to hashing strangeness.
+        /// </summary>
+        /// <param name="obj">The other object to compare this Employee to.</param>
+        /// <returns>Whether or not the two "Employees" are identical.</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Employee)) return false;
+
+            Employee otherEmployee = (Employee) obj;
+
+            return EmployeeId == otherEmployee.EmployeeId
+                && FName == otherEmployee.FName
+                && LName == otherEmployee.LName
+                && BirthDate == otherEmployee.BirthDate
+                && Sex == otherEmployee.Sex
+                && Phone == otherEmployee.Phone
+                && IsActive == otherEmployee.IsActive
+                && Address1 == otherEmployee.Address1
+                && Address2 == otherEmployee.Address2
+                && City == otherEmployee.City
+                && State == otherEmployee.State
+                && Zip == otherEmployee.Zip
+                && Username == otherEmployee.Username
+                && Version == otherEmployee.Version
+                ;
+        }
+
+        /// <summary>
+        /// Gets the hash code generated from the Employee fields for identity checking.
+        /// </summary>
+        /// <returns>The hashed value of the Employee object.</returns>
+        public override int GetHashCode()
+        {
+            int hashCode = -712575131;
+            hashCode = hashCode * -1521134295 + _employeeID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_fname);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_lname);
+            hashCode = hashCode * -1521134295 + _birthDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_sex);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_phone);
+            hashCode = hashCode * -1521134295 + _active.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_address1);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_address2);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_city);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_state);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_zip);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_username);
+            hashCode = hashCode * -1521134295 + EmployeeId.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LName);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + BirthDate.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Sex);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Phone);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address);
+            hashCode = hashCode * -1521134295 + IsActive.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address1);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Address2);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(City);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Username);
+            hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(Version);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(State);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Zip);
+            return hashCode;
         }
         #endregion
     }

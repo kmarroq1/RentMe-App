@@ -30,6 +30,7 @@ namespace RentMe_App.View.AdminModals
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
@@ -61,7 +62,8 @@ namespace RentMe_App.View.AdminModals
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.activeCheckbox = new System.Windows.Forms.CheckBox();
-            this.sexComboBox = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +74,8 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel1.Controls.Add(this.usernameTextBox, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.sexComboBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.CloseButton, 3, 13);
             this.tableLayoutPanel1.Controls.Add(this.ClearButton, 2, 13);
@@ -121,8 +125,18 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142859F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(472, 572);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(473, 570);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // sexComboBox
+            // 
+            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sexComboBox.FormattingEnabled = true;
+            this.sexComboBox.Location = new System.Drawing.Point(357, 43);
+            this.sexComboBox.Name = "sexComboBox";
+            this.sexComboBox.Size = new System.Drawing.Size(111, 21);
+            this.sexComboBox.TabIndex = 2;
+            this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.ClearError);
             // 
             // CloseButton
             // 
@@ -401,15 +415,22 @@ namespace RentMe_App.View.AdminModals
             this.activeCheckbox.UseVisualStyleBackColor = true;
             this.activeCheckbox.CheckedChanged += new System.EventHandler(this.ClearError);
             // 
-            // sexComboBox
+            // label12
             // 
-            this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sexComboBox.FormattingEnabled = true;
-            this.sexComboBox.Location = new System.Drawing.Point(357, 43);
-            this.sexComboBox.Name = "sexComboBox";
-            this.sexComboBox.Size = new System.Drawing.Size(111, 21);
-            this.sexComboBox.TabIndex = 2;
-            this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.ClearError);
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(265, 360);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Username*";
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.Location = new System.Drawing.Point(357, 363);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(93, 20);
+            this.usernameTextBox.TabIndex = 12;
             // 
             // AddEmployeeModal
             // 
@@ -463,5 +484,7 @@ namespace RentMe_App.View.AdminModals
         private System.Windows.Forms.ComboBox stateComboBox;
         private System.Windows.Forms.CheckBox activeCheckbox;
         private System.Windows.Forms.ComboBox sexComboBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox usernameTextBox;
     }
 }
