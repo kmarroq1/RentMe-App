@@ -429,7 +429,6 @@ namespace RentMe_App.View.AdminModals
             // 
             this.usernameTextBox.Location = new System.Drawing.Point(357, 363);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.PasswordChar = '*';
             this.usernameTextBox.Size = new System.Drawing.Size(93, 20);
             this.usernameTextBox.TabIndex = 12;
             // 

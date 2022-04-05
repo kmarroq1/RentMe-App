@@ -54,7 +54,8 @@ namespace RentMe_App.View.AdminModals
                     BirthDate = dateTimePicker.Value,
                     Phone = RemovePhoneSpecialCharacters(phoneTextBox.Text),
                     Password = passwordTextBox.Text,
-                    IsActive = activeCheckbox.Checked
+                    IsActive = activeCheckbox.Checked,
+                    Username = usernameTextBox.Text
                 };
                 _employeeController.AddEmployee(newEmployee);
                 errorLabel.Text = "Employee added!";

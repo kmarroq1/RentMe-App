@@ -236,14 +236,46 @@ namespace RentMe_App.DAL
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(editedEmployee.Password))
+
+                    if (!string.IsNullOrEmpty(editedEmployee.Password) || editedEmployee.Username != oldEmployee.Username)
                     {
                         var updateLoginStatement =
-                            "UPDATE login SET password = HASHBYTES('SHA2_256', @password) WHERE employeeID = @employeeID";
+                        "UPDATE login " +
+                        "SET ";
+
+                        var usernameUpdate = "username = @username ";
+                        var shouldUpdateUsername = editedEmployee.Username != oldEmployee.Username;
+
+                        var passwordUpdate = "password = HASHBYTES('SHA2_256', @password) ";
+                        var shouldUpdatePassword = !string.IsNullOrEmpty(editedEmployee.Password);
+
+                        if (shouldUpdatePassword && shouldUpdateUsername)
+                        {
+                            updateLoginStatement += usernameUpdate + ", " + passwordUpdate; 
+                        } 
+                        else if (shouldUpdateUsername)
+                        {
+                            updateLoginStatement += usernameUpdate;
+                        }
+                        else if (shouldUpdatePassword)
+                        {
+                            updateLoginStatement += passwordUpdate;
+                        }
+
+
+                        updateLoginStatement += "WHERE employeeID = @employeeID";
+
                         using (var command = new SqlCommand(updateLoginStatement, connection, transaction))
                         {
                             command.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
-                            command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                            if (shouldUpdateUsername)
+                            {
+                                command.Parameters.AddWithValue("@username", editedEmployee.Username);
+                            }
+                            if (shouldUpdatePassword)
+                            {
+                                command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                            }
 
                             var rowsAffected = command.ExecuteNonQuery();
                             if (rowsAffected != 1)
@@ -253,8 +285,9 @@ namespace RentMe_App.DAL
                             }
                         }
                     }
+                    
 
-                    transaction.Commit();
+                transaction.Commit();
                 }
             }
         }
@@ -269,24 +302,44 @@ namespace RentMe_App.DAL
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
-                var insertStatement =
-                    "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
-                    "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)";
-                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
-                {
-                    insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
-                    insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
-                    insertCommand.Parameters.AddWithValue("@lname", newEmployee.LName);
-                    insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
-                    insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
-                    insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
-                    insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
-                    insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
-                    insertCommand.Parameters.AddWithValue("@zip", newEmployee.Zip);
-                    insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
-                    insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
 
-                    insertCommand.ExecuteNonQuery();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    var insertStatement =
+                        "INSERT INTO employee (birthDate, fname, lname, phone, address1, address2, city, state, zip, active, sex) " +
+                        "VALUES (@birthDate, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @active, @sex)" +
+                        "; SELECT SCOPE_IDENTITY()";
+                    int insertedEmployeeID;
+                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection, transaction))
+                    {
+                        insertCommand.Parameters.AddWithValue("@birthDate", newEmployee.BirthDate);
+                        insertCommand.Parameters.AddWithValue("@fname", newEmployee.FName);
+                        insertCommand.Parameters.AddWithValue("@lname", newEmployee.LName);
+                        insertCommand.Parameters.AddWithValue("@phone", newEmployee.Phone);
+                        insertCommand.Parameters.AddWithValue("@address1", newEmployee.Address1);
+                        insertCommand.Parameters.AddWithValue("@address2", newEmployee.Address2);
+                        insertCommand.Parameters.AddWithValue("@city", newEmployee.City);
+                        insertCommand.Parameters.AddWithValue("@state", newEmployee.State);
+                        insertCommand.Parameters.AddWithValue("@zip", newEmployee.Zip);
+                        insertCommand.Parameters.AddWithValue("@active", newEmployee.IsActive);
+                        insertCommand.Parameters.AddWithValue("@sex", newEmployee.Sex);
+
+                        insertedEmployeeID = Convert.ToInt32(insertCommand.ExecuteScalar());
+                    }
+
+                    var loginInsertStatement =
+                        "INSERT INTO login (employeeID, username, password) " +
+                        "VALUES (@employeeID, @username, HASHBYTES('SHA2_256', @password))";
+                    using (SqlCommand loginInsertCommand = new SqlCommand(loginInsertStatement, connection, transaction))
+                    {
+                        loginInsertCommand.Parameters.AddWithValue("@employeeID", insertedEmployeeID);
+                        loginInsertCommand.Parameters.AddWithValue("@username", newEmployee.Username);
+                        loginInsertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
+
+                        loginInsertCommand.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
                 }
             }
         }
