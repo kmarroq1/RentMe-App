@@ -58,7 +58,7 @@ namespace RentMe_App.View.AdminModals
                     Username = usernameTextBox.Text
                 };
                 _employeeController.AddEmployee(newEmployee);
-                errorLabel.Text = "Employee added!";
+                errorLabel.Text = "Employee #" + newEmployee.EmployeeId + " added!";
             }
             catch (Exception exception)
             {
