@@ -72,8 +72,8 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.33051F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.66949F));
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.usernameTextBox, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.sexComboBox, 3, 1);
@@ -133,11 +133,11 @@ namespace RentMe_App.View.AdminModals
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 360);
+            this.label11.Location = new System.Drawing.Point(18, 360);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 13);
+            this.label11.Size = new System.Drawing.Size(82, 13);
             this.label11.TabIndex = 2;
-            this.label11.Text = "Username";
+            this.label11.Text = "Username (opt.)";
             // 
             // usernameTextBox
             // 
@@ -150,15 +150,15 @@ namespace RentMe_App.View.AdminModals
             // 
             this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexComboBox.FormattingEnabled = true;
-            this.sexComboBox.Location = new System.Drawing.Point(357, 43);
+            this.sexComboBox.Location = new System.Drawing.Point(367, 43);
             this.sexComboBox.Name = "sexComboBox";
-            this.sexComboBox.Size = new System.Drawing.Size(111, 21);
+            this.sexComboBox.Size = new System.Drawing.Size(102, 21);
             this.sexComboBox.TabIndex = 2;
             this.sexComboBox.SelectedIndexChanged += new System.EventHandler(this.ClearError);
             // 
             // confirmPasswordTextBox
             // 
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(357, 403);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(367, 403);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.PasswordChar = '*';
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(100, 20);
@@ -170,13 +170,13 @@ namespace RentMe_App.View.AdminModals
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Location = new System.Drawing.Point(239, 400);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
-            this.confirmPasswordLabel.Size = new System.Drawing.Size(91, 13);
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(118, 13);
             this.confirmPasswordLabel.TabIndex = 1;
-            this.confirmPasswordLabel.Text = "Confirm Password";
+            this.confirmPasswordLabel.Text = "Confirm Password (opt.)";
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(357, 523);
+            this.CloseButton.Location = new System.Drawing.Point(367, 523);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 16;
@@ -206,7 +206,7 @@ namespace RentMe_App.View.AdminModals
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(357, 363);
+            this.passwordTextBox.Location = new System.Drawing.Point(367, 363);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
@@ -283,7 +283,7 @@ namespace RentMe_App.View.AdminModals
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(277, 200);
+            this.label16.Location = new System.Drawing.Point(282, 200);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(36, 40);
             this.label16.TabIndex = 1;
@@ -293,7 +293,7 @@ namespace RentMe_App.View.AdminModals
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(280, 40);
+            this.label15.Location = new System.Drawing.Point(285, 40);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(29, 40);
             this.label15.TabIndex = 1;
@@ -320,9 +320,9 @@ namespace RentMe_App.View.AdminModals
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(239, 360);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
+            this.label10.Size = new System.Drawing.Size(105, 13);
             this.label10.TabIndex = 1;
-            this.label10.Text = "New Password";
+            this.label10.Text = "New Password (opt.)";
             // 
             // label9
             // 
@@ -417,9 +417,9 @@ namespace RentMe_App.View.AdminModals
             // 
             this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(357, 203);
+            this.stateComboBox.Location = new System.Drawing.Point(367, 203);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(111, 21);
+            this.stateComboBox.Size = new System.Drawing.Size(102, 21);
             this.stateComboBox.TabIndex = 7;
             this.stateComboBox.SelectedIndexChanged += new System.EventHandler(this.ClearError);
             // 
