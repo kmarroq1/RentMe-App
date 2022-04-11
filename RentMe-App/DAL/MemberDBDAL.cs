@@ -178,22 +178,19 @@ namespace RentMe_App.DAL
         /// </summary>
         /// <param name="newMember">The new Member to add to the Members table.</param>
         /// <returns>Whether or not the insertion was successful.</returns>
-        public bool AddMember(Member newMember)
+        public int AddMember(Member newMember)
         {
-            string insertStatement = @"INSERT INTO [storeMember] ([Fname], [Lname], [BirthDate], [Address1], [Address2], [City], [State], [Zip], [Phone], [Active])
-                                       VALUES (@Fname, @Lname, @BirthDate, @Address1, @Address2, @City, @State, @Zip, @Phone, @Active);";
-
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
+                using (SqlCommand cmd = new SqlCommand("RegisterMember", connection) { CommandType = CommandType.StoredProcedure })
                 {
-                    cmd.Parameters.Add("Fname", SqlDbType.VarChar);
-                    cmd.Parameters["Fname"].Value = newMember.Fname;
+                    cmd.Parameters.Add("FirstName", SqlDbType.VarChar);
+                    cmd.Parameters["FirstName"].Value = newMember.Fname;
 
-                    cmd.Parameters.Add("Lname", SqlDbType.VarChar);
-                    cmd.Parameters["Lname"].Value = newMember.Lname;
+                    cmd.Parameters.Add("LastName", SqlDbType.VarChar);
+                    cmd.Parameters["LastName"].Value = newMember.Lname;
 
                     cmd.Parameters.Add("BirthDate", SqlDbType.Date);
                     cmd.Parameters["BirthDate"].Value = newMember.BirthDate;
@@ -220,7 +217,7 @@ namespace RentMe_App.DAL
                     cmd.Parameters.Add("Active", SqlDbType.Bit);
                     cmd.Parameters["Active"].Value = newMember.Active ? 1 : 0;
 
-                    return cmd.ExecuteNonQuery() >= 1;
+                    return cmd.ExecuteNonQuery();
                 }
             }
         }
