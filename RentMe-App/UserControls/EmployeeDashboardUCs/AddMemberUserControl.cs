@@ -54,9 +54,9 @@ namespace RentMe_App.UserControls
                 || newMember.Zip == null
                 ) throw new InvalidOperationException("Form missing required fields.");
 
-                _memberController.AddMember(newMember);
+                newMember.MemberID = _memberController.AddMember(newMember);
 
-                MessageBox.Show($"Successfully added {newMember.Fname} {newMember.Lname}.", "New Member Registered");
+                MessageBox.Show($"Successfully added {newMember.Fname} {newMember.Lname}.\nMemberID: {newMember.MemberID}", "New Member Registered");
             }
             catch (Exception ex)
             {

@@ -67,9 +67,9 @@ namespace RentMe_App.Controller
         /// Delegates adding a new member to the MemberDAL.
         /// </summary>
         /// <param name="newMember">The new member to add.</param>
-        public void AddMember(Member newMember)
+        public int AddMember(Member newMember)
         {
-            memberDBSource.AddMember(newMember);
+            return memberDBSource.AddMember(newMember);
         }
 
         /// <summary>

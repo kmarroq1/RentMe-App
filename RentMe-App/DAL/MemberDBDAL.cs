@@ -217,7 +217,7 @@ namespace RentMe_App.DAL
                     cmd.Parameters.Add("Active", SqlDbType.Bit);
                     cmd.Parameters["Active"].Value = newMember.Active ? 1 : 0;
 
-                    return cmd.ExecuteNonQuery();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }
