@@ -293,10 +293,11 @@ namespace RentMe_App.DAL
         }
 
         /// <summary>
-        /// Adds an employee to the database
+        /// Adds an employee to the database and returns their ID
         /// </summary>
         /// <param name="newEmployee"></param>
-        public void AddEmployee(Employee newEmployee)
+        /// <returns></returns>
+        public int AddEmployee(Employee newEmployee)
         {
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
@@ -340,6 +341,7 @@ namespace RentMe_App.DAL
                     }
 
                     transaction.Commit();
+                    return insertedEmployeeID;
                 }
             }
         }

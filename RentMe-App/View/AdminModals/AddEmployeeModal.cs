@@ -57,7 +57,7 @@ namespace RentMe_App.View.AdminModals
                     IsActive = activeCheckbox.Checked,
                     Username = usernameTextBox.Text
                 };
-                _employeeController.AddEmployee(newEmployee);
+                newEmployee.EmployeeId = _employeeController.AddEmployee(newEmployee);
                 errorLabel.Text = "Employee #" + newEmployee.EmployeeId + " added!";
             }
             catch (Exception exception)
