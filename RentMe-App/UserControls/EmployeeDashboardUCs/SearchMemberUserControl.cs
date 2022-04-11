@@ -266,6 +266,8 @@ namespace RentMe_App.UserControls
             Member selectedMember = memberController.GetMemberByID(Int32.Parse(Convert.ToString(searchMemberDataGridView.SelectedRows[0].Cells["Member ID"].Value)))[0];
 
             new EditMemberModal(selectedMember).ShowDialog();
+
+            RefreshSearchDataGrid();
         }
 
         private void SearchMemberDataGridView_SelectionChanged(object sender, EventArgs e)
