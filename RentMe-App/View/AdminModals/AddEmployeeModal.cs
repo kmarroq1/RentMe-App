@@ -2,6 +2,7 @@
 using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -59,6 +60,10 @@ namespace RentMe_App.View.AdminModals
                 };
                 newEmployee.EmployeeId = _employeeController.AddEmployee(newEmployee);
                 errorLabel.Text = "Employee #" + newEmployee.EmployeeId + " added!";
+            }
+            catch (SqlException)
+            {
+                errorLabel.Text = "Username already exists";
             }
             catch (Exception exception)
             {

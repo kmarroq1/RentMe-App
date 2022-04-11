@@ -232,7 +232,7 @@ namespace RentMe_App.DAL
                         if (rowsAffected != 1)
                         {
                             throw new InvalidOperationException(
-                                "Employee update failed - employee has been updated since last search");
+                                "Employee update failed - updated since last search");
                         }
                     }
 

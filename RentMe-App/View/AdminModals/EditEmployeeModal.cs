@@ -2,6 +2,7 @@
 using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -64,9 +65,13 @@ namespace RentMe_App.View.AdminModals
                 _employeeController.UpdateEmployee(_employee, editedEmployee);
                 errorLabel.Text = "Employee updated!";
             }
-            catch (Exception)
+            catch (SqlException)
             {
-                errorLabel.Text = "Unable to update employee";
+                errorLabel.Text = "Username already exists";
+            }
+            catch (Exception exception)
+            {
+                errorLabel.Text = exception.Message;
             }
 
         }
