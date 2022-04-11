@@ -146,22 +146,25 @@ namespace RentMe_App.UserControls
             dataTable.Columns.Add(new DataColumn("Member ID", typeof(int)));
             dataTable.Columns.Add(new DataColumn("First Name", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Last Name", typeof(string)));
+            dataTable.Columns.Add(new DataColumn("Address", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Phone", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Age", typeof(int)));
+            dataTable.Columns.Add(new DataColumn("Birth Date", typeof(DateTime)));
             dataTable.Columns.Add(new DataColumn("Active", typeof(string)));
 
             try
             {
                 int age;
-                DataRow row = dataTable.NewRow();
+                memberActive = "No";
 
                 foreach (Member go in memberList)
                 {
+                    DataRow row = dataTable.NewRow();
                     Member member = new Member
                     {
                         MemberID = go.MemberID,
                         Fname = go.Fname,
                         Lname = go.Lname,
+                        Address1 = go.Address1,
                         Phone = go.Phone,
                         BirthDate = go.BirthDate,
                         Active = go.Active
@@ -171,22 +174,19 @@ namespace RentMe_App.UserControls
                     {
                         memberActive = "Yes";
                     }
-                    else
-                    {
-                        memberActive = "No";
-                    }
 
                     age = GetAge(member.BirthDate);
 
                     row["Member ID"] = member.MemberID;
                     row["First Name"] = member.Fname;
                     row["Last Name"] = member.Lname;
+                    row["Address"] = member.Address1;
                     row["Phone"] = member.Phone;
-                    row["Age"] = age;
+                    row["Birth Date"] = member.BirthDate;
                     row["Active"] = memberActive;
-                }
 
-                dataTable.Rows.Add(row);
+                    dataTable.Rows.Add(row);
+                }
             }
             catch (Exception)
             {
