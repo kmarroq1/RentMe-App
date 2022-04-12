@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace RentMe_App.DAL
 {
@@ -329,12 +330,16 @@ namespace RentMe_App.DAL
 
                     var loginInsertStatement =
                         "INSERT INTO login (employeeID, username, password) " +
-                        "VALUES (@employeeID, @username, HASHBYTES('SHA2_256', @password))";
+                        "VALUES (@employeeID, @username, @password)";
+
+                    SHA256 hash = SHA256.Create();
+                    var hashPassword = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(newEmployee.Password));
+
                     using (SqlCommand loginInsertCommand = new SqlCommand(loginInsertStatement, connection, transaction))
                     {
                         loginInsertCommand.Parameters.AddWithValue("@employeeID", insertedEmployeeID);
                         loginInsertCommand.Parameters.AddWithValue("@username", newEmployee.Username);
-                        loginInsertCommand.Parameters.AddWithValue("@password", newEmployee.Password);
+                        loginInsertCommand.Parameters.AddWithValue("@password", hashPassword);
 
                         loginInsertCommand.ExecuteNonQuery();
                     }
