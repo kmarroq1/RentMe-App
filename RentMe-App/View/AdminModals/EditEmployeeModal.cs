@@ -61,13 +61,15 @@ namespace RentMe_App.View.AdminModals
                     Password = passwordTextBox.Text,
                     IsActive = activeCheckbox.Checked,
                     Username = usernameTextBox.Text,
+                    IsAdmin = isAdminCheckbox.Checked,
                 };
                 _employeeController.UpdateEmployee(_employee, editedEmployee);
                 errorLabel.Text = "Employee updated!";
             }
-            catch (SqlException)
+            catch (SqlException exception)
             {
-                errorLabel.Text = "Username already exists";
+                errorLabel.Text = exception.Message;
+                //errorLabel.Text = "Username already exists";
             }
             catch (Exception exception)
             {
@@ -125,6 +127,7 @@ namespace RentMe_App.View.AdminModals
             confirmPasswordTextBox.Text = "";
 
             activeCheckbox.Checked = _employee.IsActive;
+            isAdminCheckbox.Checked = _employee.IsAdmin;
         }
 
         private void Validation()

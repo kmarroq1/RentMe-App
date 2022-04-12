@@ -64,6 +64,7 @@ namespace RentMe_App.View.AdminModals
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.activeCheckbox = new System.Windows.Forms.CheckBox();
+            this.isAdminCheckbox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +109,7 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.stateComboBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.activeCheckbox, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.isAdminCheckbox, 1, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 14;
@@ -144,7 +146,7 @@ namespace RentMe_App.View.AdminModals
             this.usernameTextBox.Location = new System.Drawing.Point(121, 363);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(83, 20);
-            this.usernameTextBox.TabIndex = 12;
+            this.usernameTextBox.TabIndex = 11;
             // 
             // sexComboBox
             // 
@@ -162,7 +164,7 @@ namespace RentMe_App.View.AdminModals
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.PasswordChar = '*';
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.confirmPasswordTextBox.TabIndex = 12;
+            this.confirmPasswordTextBox.TabIndex = 13;
             this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.ClearError);
             // 
             // confirmPasswordLabel
@@ -179,7 +181,7 @@ namespace RentMe_App.View.AdminModals
             this.CloseButton.Location = new System.Drawing.Point(367, 523);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 16;
+            this.CloseButton.TabIndex = 18;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -189,7 +191,7 @@ namespace RentMe_App.View.AdminModals
             this.ClearButton.Location = new System.Drawing.Point(239, 523);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 15;
+            this.ClearButton.TabIndex = 17;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -199,7 +201,7 @@ namespace RentMe_App.View.AdminModals
             this.UpdateButton.Location = new System.Drawing.Point(121, 523);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.UpdateButton.TabIndex = 14;
+            this.UpdateButton.TabIndex = 16;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -210,7 +212,7 @@ namespace RentMe_App.View.AdminModals
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 11;
+            this.passwordTextBox.TabIndex = 12;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.ClearError);
             // 
             // phoneTextBox
@@ -429,10 +431,20 @@ namespace RentMe_App.View.AdminModals
             this.activeCheckbox.Location = new System.Drawing.Point(121, 443);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(56, 17);
-            this.activeCheckbox.TabIndex = 13;
+            this.activeCheckbox.TabIndex = 15;
             this.activeCheckbox.Text = "Active";
             this.activeCheckbox.UseVisualStyleBackColor = true;
             this.activeCheckbox.CheckedChanged += new System.EventHandler(this.ClearError);
+            // 
+            // isAdminCheckbox
+            // 
+            this.isAdminCheckbox.AutoSize = true;
+            this.isAdminCheckbox.Location = new System.Drawing.Point(121, 403);
+            this.isAdminCheckbox.Name = "isAdminCheckbox";
+            this.isAdminCheckbox.Size = new System.Drawing.Size(55, 17);
+            this.isAdminCheckbox.TabIndex = 14;
+            this.isAdminCheckbox.Text = "Admin";
+            this.isAdminCheckbox.UseVisualStyleBackColor = true;
             // 
             // EditEmployeeModal
             // 
@@ -488,5 +500,6 @@ namespace RentMe_App.View.AdminModals
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.CheckBox isAdminCheckbox;
     }
 }

@@ -22,7 +22,7 @@ namespace RentMe_App.Model
         private string _city;
         private string _state;
         private string _zip;
-        private string _username;
+        private readonly string _username;
         #endregion
 
         #region Properties
@@ -127,6 +127,11 @@ namespace RentMe_App.Model
         public bool IsActive { get => _active; set => _active = value; }
 
         /// <summary>
+        /// employee admin status
+        /// </summary>
+        public bool IsAdmin { get; set; }
+
+        /// <summary>
         /// Dictates the manner in which the Employee's address' line 1 can be accessed & mutated.
         /// </summary>
         public string Address1
@@ -225,7 +230,7 @@ namespace RentMe_App.Model
         {
             if (obj.GetType() != typeof(Employee)) return false;
 
-            Employee otherEmployee = (Employee) obj;
+            Employee otherEmployee = (Employee)obj;
 
             return EmployeeId == otherEmployee.EmployeeId
                 && FName == otherEmployee.FName

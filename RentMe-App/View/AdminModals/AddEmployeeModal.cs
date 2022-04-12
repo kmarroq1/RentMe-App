@@ -56,7 +56,8 @@ namespace RentMe_App.View.AdminModals
                     Phone = RemovePhoneSpecialCharacters(phoneTextBox.Text),
                     Password = passwordTextBox.Text,
                     IsActive = activeCheckbox.Checked,
-                    Username = usernameTextBox.Text
+                    Username = usernameTextBox.Text,
+                    IsAdmin = isAdminCheckbox.Checked,
                 };
                 newEmployee.EmployeeId = _employeeController.AddEmployee(newEmployee);
                 errorLabel.Text = "Employee #" + newEmployee.EmployeeId + " added!";
