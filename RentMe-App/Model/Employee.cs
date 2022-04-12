@@ -104,7 +104,7 @@ namespace RentMe_App.Model
 
                 Regex phoneRegex = new Regex(@"(^\(\d{3}\) ?\d{3}-\d{4}$)|(^\d{10}$)|(^\d{3}[.-]\d{3}[.-]\d{4}$)");
                 if (!phoneRegex.IsMatch(value))
-                    throw new ArgumentException("Phone is not in valid format.");
+                    throw new ArgumentException("Phone is not in valid format.\nPlease use either (###) ###-#### or ###-###-####.");
 
                 string storedFormat = "";
 
@@ -212,7 +212,7 @@ namespace RentMe_App.Model
                 Regex zipCodeRegex = new Regex(@"(^\d{5}$)|(^\d{5}-\d{4}$)");
 
                 if (!zipCodeRegex.IsMatch(value))
-                    throw new ArgumentException("Zip code not in valid format.");
+                    throw new ArgumentException("Zip code not in valid format.\nPlease use either ##### or #####-####.");
 
                 _zip = value;
             }

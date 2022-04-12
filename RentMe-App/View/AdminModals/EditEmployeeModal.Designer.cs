@@ -91,7 +91,7 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.Controls.Add(this.address1TextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lNameTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.fNameTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.errorLabel, 2, 12);
+            this.tableLayoutPanel1.Controls.Add(this.errorLabel, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.label16, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label15, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 13);
@@ -274,8 +274,9 @@ namespace RentMe_App.View.AdminModals
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.errorLabel, 2);
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(239, 480);
+            this.errorLabel.Location = new System.Drawing.Point(121, 480);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(13, 13);
             this.errorLabel.TabIndex = 1;
