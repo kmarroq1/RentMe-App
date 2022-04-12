@@ -251,7 +251,9 @@ namespace RentMe_App.DAL
                         var usernameUpdate = "username = @username ";
                         var shouldUpdateUsername = editedEmployee.Username != oldEmployee.Username;
 
-                        var passwordUpdate = "password = HASHBYTES('SHA2_256', @password) ";
+                        SHA256 hash = SHA256.Create();
+                        var hashPassword = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(editedEmployee.Password));
+                        var passwordUpdate = "password = @password ";
                         var shouldUpdatePassword = !string.IsNullOrEmpty(editedEmployee.Password);
 
                         if (shouldUpdatePassword && shouldUpdateUsername)
@@ -279,7 +281,7 @@ namespace RentMe_App.DAL
                             }
                             if (shouldUpdatePassword)
                             {
-                                command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                                command.Parameters.AddWithValue("@password", hashPassword);
                             }
 
                             var rowsAffected = command.ExecuteNonQuery();
