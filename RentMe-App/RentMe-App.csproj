@@ -76,11 +76,11 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCart.cs">
+    <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCart.Designer.cs">
-      <DependentUpon>RentalsReturnsCart.cs</DependentUpon>
+    <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.Designer.cs">
+      <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
@@ -176,8 +176,8 @@
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCart.resx">
-      <DependentUpon>RentalsReturnsCart.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
+      <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>

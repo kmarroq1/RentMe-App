@@ -2,9 +2,9 @@
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
 {
-    public partial class RentalsReturnsCart : UserControl
+    public partial class RentalsReturnsCartUserControl : UserControl
     {
-        public RentalsReturnsCart()
+        public RentalsReturnsCartUserControl()
         {
             InitializeComponent();
         }

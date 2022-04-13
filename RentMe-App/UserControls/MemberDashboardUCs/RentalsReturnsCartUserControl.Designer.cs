@@ -1,7 +1,7 @@
 ﻿
 namespace RentMe_App.UserControls.MemberDashboardUCs
 {
-    partial class RentalsReturnsCart
+    partial class RentalsReturnsCartUserControl
     {
         /// <summary> 
         /// Required designer variable.
