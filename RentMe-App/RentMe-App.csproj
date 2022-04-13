@@ -76,6 +76,12 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeModals\ViewOrderModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeModals\ViewOrderModal.Designer.cs">
+      <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
