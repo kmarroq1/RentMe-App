@@ -22,7 +22,7 @@ namespace RentMe_App.Model
         private string _city;
         private string _state;
         private string _zip;
-        private string _username;
+        private readonly string _username;
         #endregion
 
         #region Properties
@@ -104,7 +104,7 @@ namespace RentMe_App.Model
 
                 Regex phoneRegex = new Regex(@"(^\(\d{3}\) ?\d{3}-\d{4}$)|(^\d{10}$)|(^\d{3}[.-]\d{3}[.-]\d{4}$)");
                 if (!phoneRegex.IsMatch(value))
-                    throw new ArgumentException("Phone is not in valid format.");
+                    throw new ArgumentException("Phone is not in valid format.\nPlease use either (###) ###-#### or ###-###-####.");
 
                 string storedFormat = "";
 
@@ -125,6 +125,11 @@ namespace RentMe_App.Model
         /// Dictates the manner in which the Employee's active status can be accessed & mutated.
         /// </summary>
         public bool IsActive { get => _active; set => _active = value; }
+
+        /// <summary>
+        /// employee admin status
+        /// </summary>
+        public bool IsAdmin { get; set; }
 
         /// <summary>
         /// Dictates the manner in which the Employee's address' line 1 can be accessed & mutated.
@@ -207,7 +212,7 @@ namespace RentMe_App.Model
                 Regex zipCodeRegex = new Regex(@"(^\d{5}$)|(^\d{5}-\d{4}$)");
 
                 if (!zipCodeRegex.IsMatch(value))
-                    throw new ArgumentException("Zip code not in valid format.");
+                    throw new ArgumentException("Zip code not in valid format.\nPlease use either ##### or #####-####.");
 
                 _zip = value;
             }
@@ -225,7 +230,7 @@ namespace RentMe_App.Model
         {
             if (obj.GetType() != typeof(Employee)) return false;
 
-            Employee otherEmployee = (Employee) obj;
+            Employee otherEmployee = (Employee)obj;
 
             return EmployeeId == otherEmployee.EmployeeId
                 && FName == otherEmployee.FName

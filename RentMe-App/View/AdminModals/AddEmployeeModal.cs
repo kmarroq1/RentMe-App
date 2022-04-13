@@ -2,7 +2,7 @@
 using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace RentMe_App.View.AdminModals
@@ -55,10 +55,15 @@ namespace RentMe_App.View.AdminModals
                     Phone = RemovePhoneSpecialCharacters(phoneTextBox.Text),
                     Password = passwordTextBox.Text,
                     IsActive = activeCheckbox.Checked,
-                    Username = usernameTextBox.Text
+                    Username = usernameTextBox.Text,
+                    IsAdmin = isAdminCheckbox.Checked,
                 };
-                _employeeController.AddEmployee(newEmployee);
-                errorLabel.Text = "Employee added!";
+                newEmployee.EmployeeId = _employeeController.AddEmployee(newEmployee);
+                errorLabel.Text = "Employee #" + newEmployee.EmployeeId + " added!";
+            }
+            catch (SqlException)
+            {
+                errorLabel.Text = "Username already exists";
             }
             catch (Exception exception)
             {
@@ -115,26 +120,9 @@ namespace RentMe_App.View.AdminModals
             {
                 throw new ArgumentException("Must populate required fields");
             }
-            else if (!IsPhoneNumber(phoneTextBox.Text))
-            {
-                throw new ArgumentException("Invalid phone number");
-            }
             else if (passwordTextBox.Text != "" && passwordTextBox.Text != confirmPasswordTextBox.Text)
             {
                 throw new ArgumentException("Make sure your password fields match");
-            }
-        }
-
-        private static bool IsPhoneNumber(string phone)
-        {
-            if (string.IsNullOrEmpty(phone))
-            {
-                throw new ArgumentException("Invalid phone number");
-            }
-            else
-            {
-                Match phoneMatch = Regex.Match(phone, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$");
-                return phoneMatch.Success;
             }
         }
 
