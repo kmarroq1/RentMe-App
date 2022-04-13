@@ -363,9 +363,11 @@ namespace RentMe_App.View.MemberModals
             this.Controls.Add(this.HorizontalRule);
             this.Controls.Add(this.ReceiptDetailsFlowLayoutPanel);
             this.Controls.Add(this.HeaderFlowLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReceiptModal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe: ";
             this.HeaderFlowLayoutPanel.ResumeLayout(false);
             this.HeaderFlowLayoutPanel.PerformLayout();
