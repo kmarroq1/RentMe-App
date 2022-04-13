@@ -64,6 +64,7 @@
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\States.cs" />
+    <Compile Include="SharedFormInfo.cs" />
     <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +150,12 @@
     <Compile Include="View\MainEmployeeForm.Designer.cs">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MainMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainMemberForm.Designer.cs">
+      <DependentUpon>MainMemberForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +205,9 @@
     <EmbeddedResource Include="View\MainEmployeeForm.resx">
       <DependentUpon>MainEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MainMemberForm.resx">
+      <DependentUpon>MainMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe_App.Model.Employee.datasource" />
     <None Include="Properties\DataSources\RentMe_App.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
@@ -219,6 +229,9 @@
     <Content Include="Common\Sql\insert_furniture_part1.sql" />
     <Content Include="Common\Sql\insert_furniture_part2.sql" />
     <Content Include="Common\Sql\insert_furniture_part3.sql" />
+    <Content Include="Common\Sql\insert_inventory_part1.sql" />
+    <Content Include="Common\Sql\insert_inventory_part2.sql" />
+    <Content Include="Common\Sql\insert_inventory_part3.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />

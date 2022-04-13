@@ -270,6 +270,30 @@ namespace RentMe_App.UserControls
             RefreshSearchDataGrid();
         }
 
+        private void SelectMemberButton_Click(object sender, EventArgs e)
+        {
+            if (searchMemberDataGridView.SelectedRows.Count != 1)
+            {
+                ShowErrorMessage("Please select a member to edit.");
+                return;
+            }
+
+            Member selectedMember = memberController.GetMemberByID(Int32.Parse(Convert.ToString(searchMemberDataGridView.SelectedRows[0].Cells["Member ID"].Value)))[0];
+
+            if (selectedMember.Active == false)
+            {
+                ShowErrorMessage("Member must be active to process orders");
+            }
+            else
+            {
+                MainMemberForm mainMemberForm = new MainMemberForm(SharedFormInfo.MainEmployeeForm);
+                SharedFormInfo.MemberIDForm = (int)selectedMember.MemberID;
+                mainMemberForm.ShowDialog();
+            }            
+
+            RefreshSearchDataGrid();
+        }
+
         private void SearchMemberDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             editButton.Enabled = searchMemberDataGridView.SelectedRows.Count == 1;
