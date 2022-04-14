@@ -182,6 +182,9 @@
     <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeModals\ViewOrderModal.resx">
+      <DependentUpon>ViewOrderModal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

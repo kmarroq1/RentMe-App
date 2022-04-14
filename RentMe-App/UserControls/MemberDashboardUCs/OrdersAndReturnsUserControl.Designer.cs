@@ -38,10 +38,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.yearsComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.orderHistoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.ViewButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.TransactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ViewButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -167,56 +167,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.RowTemplate.Height = 46;
             this.orderHistoryDataGridView.Size = new System.Drawing.Size(2530, 1011);
             this.orderHistoryDataGridView.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.Controls.Add(this.ViewButton, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.ClearButton, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.errorMsgLabel, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 1273);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(2526, 147);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // ViewButton
-            // 
-            this.ViewButton.Location = new System.Drawing.Point(843, 76);
-            this.ViewButton.Name = "ViewButton";
-            this.ViewButton.Size = new System.Drawing.Size(179, 59);
-            this.ViewButton.TabIndex = 0;
-            this.ViewButton.Text = "View";
-            this.ViewButton.UseVisualStyleBackColor = true;
-            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Location = new System.Drawing.Point(1263, 76);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(207, 59);
-            this.ClearButton.TabIndex = 1;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // errorMsgLabel
-            // 
-            this.errorMsgLabel.AutoSize = true;
-            this.errorMsgLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMsgLabel.Location = new System.Drawing.Point(843, 0);
-            this.errorMsgLabel.Name = "errorMsgLabel";
-            this.errorMsgLabel.Size = new System.Drawing.Size(35, 37);
-            this.errorMsgLabel.TabIndex = 2;
-            this.errorMsgLabel.Text = "  ";
+            this.orderHistoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
             // TransactionId
             // 
@@ -282,6 +233,56 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.Balance.Name = "Balance";
             this.Balance.ReadOnly = true;
             this.Balance.Width = 300;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.Controls.Add(this.ViewButton, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.ClearButton, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.errorMsgLabel, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 1273);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(2526, 147);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // ViewButton
+            // 
+            this.ViewButton.Location = new System.Drawing.Point(843, 76);
+            this.ViewButton.Name = "ViewButton";
+            this.ViewButton.Size = new System.Drawing.Size(179, 59);
+            this.ViewButton.TabIndex = 0;
+            this.ViewButton.Text = "View";
+            this.ViewButton.UseVisualStyleBackColor = true;
+            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(1263, 76);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(207, 59);
+            this.ClearButton.TabIndex = 1;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // errorMsgLabel
+            // 
+            this.errorMsgLabel.AutoSize = true;
+            this.errorMsgLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMsgLabel.Location = new System.Drawing.Point(843, 0);
+            this.errorMsgLabel.Name = "errorMsgLabel";
+            this.errorMsgLabel.Size = new System.Drawing.Size(35, 37);
+            this.errorMsgLabel.TabIndex = 2;
+            this.errorMsgLabel.Text = "  ";
             // 
             // OrdersAndReturnsUserControl
             // 

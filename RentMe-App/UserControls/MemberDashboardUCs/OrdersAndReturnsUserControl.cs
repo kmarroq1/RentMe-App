@@ -36,6 +36,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             //_orderList = _ordersController.getOrderHistory();
             _currentMemberID = memberID;
 
+            ViewButton.Enabled = false;
             PopulateDataGridView();
             PopulateComboBox();
         }
@@ -74,10 +75,16 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void ViewButton_Click(object sender, EventArgs e)
         {
-            ViewOrderModal newForm = new ViewOrderModal(/*_selectedOrder*/);
+            var selectedOrderID = int.Parse(orderHistoryDataGridView.SelectedRows[0].Cells["ID"].Value.ToString());
+            var selectedOrderType = orderHistoryDataGridView.SelectedRows[1].Cells["Type"].Value.ToString();
+            //var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
+
+            ViewOrderModal newForm = new ViewOrderModal(/*selectedOrder*/);
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
             errorMsgLabel.Text = "";
+            ViewButton.Enabled = false;
+
             _ = newForm.ShowDialog();
         }
 
@@ -89,6 +96,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
             errorMsgLabel.Text = "";
+            ViewButton.Enabled = false;
+        }
+
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ViewButton.Enabled = orderHistoryDataGridView.SelectedRows.Count == 1;
+            errorMsgLabel.Text = "";
+            orderHistoryDataGridView.CurrentRow.Selected = true;
         }
 
         private void PopulateComboBox()
