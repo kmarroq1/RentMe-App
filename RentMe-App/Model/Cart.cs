@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace RentMe_App.Model
 {
@@ -8,41 +8,16 @@ namespace RentMe_App.Model
     /// </summary>
     public static class Cart
     {
-        #region Fields
-        private static readonly List<Rental> _rentals = new List<Rental>();
-        private static readonly List<Return> _returns = new List<Return>();
-        #endregion
-
         #region Properties
         /// <summary>
-        /// Obtains the list of Rentals from the cart.
+        /// Obtains the Rental Transaction from the cart.
         /// </summary>
-        public static List<Rental> Rentals { get => _rentals; }
+        public static Rental Rental { get; set; }
 
         /// <summary>
-        /// Obtains the list of Returns from the cart.
+        /// Obtains the Return Transaction from the cart.
         /// </summary>
-        public static List<Return> Returns { get => _returns; }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// Add a new Rental to the Rentals portion of the cart.
-        /// </summary>
-        /// <param name="newRental">The new Rental</param>
-        public static void AddRental(Rental newRental)
-        {
-            _rentals.Add(newRental);
-        }
-
-        /// <summary>
-        /// Add a new Return to the Returns portion of the cart.
-        /// </summary>
-        /// <param name="newReturn">The new Return</param>
-        public static void AddReturn(Return newReturn)
-        {
-            _returns.Add(newReturn);
-        }
+        public static Return Return { get; set; }
         #endregion
     }
 }
