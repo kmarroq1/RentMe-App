@@ -23,9 +23,10 @@ namespace RentMe_App.DAL
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
-                "SELECT * " +
+                "SELECT employee.employeeID as employeeID, birthDate, fname, lname, sex, phone, address1, address2, city, state, zip, active, username, version, admin.employeeID as adminID " +
                 "FROM employee " +
                 "JOIN login ON login.employeeID = employee.employeeID " +
+                "LEFT JOIN admin ON admin.employeeID = employee.employeeID " +
                 "WHERE " +
                 "employee.employeeID = @employeeID";
 
@@ -63,7 +64,8 @@ namespace RentMe_App.DAL
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
                                 Username = reader["username"].ToString(),
-                                Version = (byte[])reader["version"]
+                                Version = (byte[])reader["version"],
+                                IsAdmin = reader["adminID"] == DBNull.Value ? false : true,
                             };
                             newList.Add(employee);
                         }
@@ -85,8 +87,9 @@ namespace RentMe_App.DAL
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
-                "SELECT * " +
+                "SELECT employee.employeeID as employeeID, birthDate, fname, lname, sex, phone, address1, address2, city, state, zip, active, username, version, admin.employeeID as adminID " +
                 "FROM employee " +
+                "LEFT JOIN admin ON admin.employeeID = employee.employeeID " +
                 "WHERE " +
                 "LOWER(fname) = @fName " +
                 "AND LOWER(lname) = @lName " +
@@ -147,8 +150,9 @@ namespace RentMe_App.DAL
             List<Employee> newList = new List<Employee>();
 
             string selectStatement =
-                "SELECT * " +
+                "SELECT employee.employeeID as employeeID, birthDate, fname, lname, sex, phone, address1, address2, city, state, zip, active, username, version, admin.employeeID as adminID " +
                 "FROM employee " +
+                "LEFT JOIN admin ON admin.employeeID = employee.employeeID " +
                 "WHERE " +
                 "phone = @phone " +
                 "ORDER BY employeeID";
@@ -233,7 +237,7 @@ namespace RentMe_App.DAL
                         if (rowsAffected != 1)
                         {
                             throw new InvalidOperationException(
-                                "Employee update failed - employee has been updated since last search");
+                                "Employee update failed - updated since last search");
                         }
                     }
 
@@ -247,7 +251,9 @@ namespace RentMe_App.DAL
                         var usernameUpdate = "username = @username ";
                         var shouldUpdateUsername = editedEmployee.Username != oldEmployee.Username;
 
-                        var passwordUpdate = "password = HASHBYTES('SHA2_256', @password) ";
+                        SHA256 hash = SHA256.Create();
+                        var hashPassword = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(editedEmployee.Password));
+                        var passwordUpdate = "password = @password ";
                         var shouldUpdatePassword = !string.IsNullOrEmpty(editedEmployee.Password);
 
                         if (shouldUpdatePassword && shouldUpdateUsername)
@@ -275,7 +281,7 @@ namespace RentMe_App.DAL
                             }
                             if (shouldUpdatePassword)
                             {
-                                command.Parameters.AddWithValue("@password", editedEmployee.Password);
+                                command.Parameters.AddWithValue("@password", hashPassword);
                             }
 
                             var rowsAffected = command.ExecuteNonQuery();
@@ -287,6 +293,37 @@ namespace RentMe_App.DAL
                         }
                     }
 
+                    if (oldEmployee.IsAdmin != editedEmployee.IsAdmin)
+                    {
+                        var employeeStatusInsertStatement = "INSERT INTO ";
+                        var employeeStatusDeleteStatement = "DELETE FROM ";
+                        if (editedEmployee.IsAdmin)
+                        {
+                            employeeStatusInsertStatement += "admin (employeeID) ";
+                            employeeStatusDeleteStatement += "regularEmployee ";
+                        }
+                        else
+                        {
+                            employeeStatusInsertStatement += "regularEmployee (employeeID) ";
+                            employeeStatusDeleteStatement += "admin ";
+                        }
+
+                        employeeStatusDeleteStatement += "WHERE employeeID = @employeeID ";
+                        using (SqlCommand statusDeleteCommand = new SqlCommand(employeeStatusDeleteStatement, connection, transaction))
+                        {
+                            statusDeleteCommand.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
+
+                            statusDeleteCommand.ExecuteNonQuery();
+                        }
+
+                        employeeStatusInsertStatement += "VALUES (@employeeID)";
+                        using (SqlCommand statusInsertCommand = new SqlCommand(employeeStatusInsertStatement, connection, transaction))
+                        {
+                            statusInsertCommand.Parameters.AddWithValue("@employeeID", oldEmployee.EmployeeId);
+
+                            statusInsertCommand.ExecuteNonQuery();
+                        }
+                    }
 
                     transaction.Commit();
                 }
@@ -294,10 +331,11 @@ namespace RentMe_App.DAL
         }
 
         /// <summary>
-        /// Adds an employee to the database
+        /// Adds an employee to the database and returns their ID
         /// </summary>
         /// <param name="newEmployee"></param>
-        public void AddEmployee(Employee newEmployee)
+        /// <returns></returns>
+        public int AddEmployee(Employee newEmployee)
         {
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
@@ -344,7 +382,26 @@ namespace RentMe_App.DAL
                         loginInsertCommand.ExecuteNonQuery();
                     }
 
+                    var employeeStatusInsertStatement = "INSERT INTO ";
+                    if (newEmployee.IsAdmin)
+                    {
+                        employeeStatusInsertStatement += "admin (employeeID) ";
+                    }
+                    else
+                    {
+                        employeeStatusInsertStatement += "regularEmployee (employeeID) ";
+                    }
+
+                    employeeStatusInsertStatement += "VALUES (@employeeID)";
+                    using (SqlCommand statusInsertCommand = new SqlCommand(employeeStatusInsertStatement, connection, transaction))
+                    {
+                        statusInsertCommand.Parameters.AddWithValue("@employeeID", insertedEmployeeID);
+
+                        statusInsertCommand.ExecuteNonQuery();
+                    }
+
                     transaction.Commit();
+                    return insertedEmployeeID;
                 }
             }
         }

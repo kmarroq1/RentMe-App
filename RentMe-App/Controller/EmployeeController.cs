@@ -45,14 +45,15 @@ namespace RentMe_App.Controller
         }
 
         /// <summary>
-        /// Adds a new employee to the database
+        /// Adds new employee to the database
         /// </summary>
         /// <param name="newEmployee"></param>
-        public void AddEmployee(Employee newEmployee)
+        /// <returns></returns>
+        public int AddEmployee(Employee newEmployee)
         {
             newEmployee = newEmployee ?? throw new ArgumentNullException("Invalid employee");
 
-            _employeeDbdal.AddEmployee(newEmployee);
+            return _employeeDbdal.AddEmployee(newEmployee);
         }
 
         /// <summary>

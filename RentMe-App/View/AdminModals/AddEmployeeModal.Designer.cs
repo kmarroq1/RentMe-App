@@ -30,6 +30,8 @@ namespace RentMe_App.View.AdminModals
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
@@ -62,8 +64,7 @@ namespace RentMe_App.View.AdminModals
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.activeCheckbox = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.isAdminCheckbox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,14 +75,14 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
-            this.tableLayoutPanel1.Controls.Add(this.usernameTextBox, 3, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label12, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.usernameTextBox, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.sexComboBox, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.CloseButton, 3, 13);
             this.tableLayoutPanel1.Controls.Add(this.ClearButton, 2, 13);
             this.tableLayoutPanel1.Controls.Add(this.AddButton, 1, 13);
-            this.tableLayoutPanel1.Controls.Add(this.passwordTextBox, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.confirmPasswordTextBox, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.passwordTextBox, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.confirmPasswordTextBox, 3, 10);
             this.tableLayoutPanel1.Controls.Add(this.phoneTextBox, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.zipTextBox, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.cityTextBox, 1, 5);
@@ -89,13 +90,13 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.Controls.Add(this.address1TextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lNameTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.fNameTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.errorLabel, 2, 12);
+            this.tableLayoutPanel1.Controls.Add(this.errorLabel, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.label16, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label15, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 2, 10);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 6);
@@ -108,6 +109,7 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.stateComboBox, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.activeCheckbox, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.isAdminCheckbox, 1, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 14;
@@ -128,6 +130,23 @@ namespace RentMe_App.View.AdminModals
             this.tableLayoutPanel1.Size = new System.Drawing.Size(473, 570);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.Location = new System.Drawing.Point(121, 363);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(93, 20);
+            this.usernameTextBox.TabIndex = 11;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(29, 360);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Username*";
+            // 
             // sexComboBox
             // 
             this.sexComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -143,7 +162,7 @@ namespace RentMe_App.View.AdminModals
             this.CloseButton.Location = new System.Drawing.Point(357, 523);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 16;
+            this.CloseButton.TabIndex = 18;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -153,7 +172,7 @@ namespace RentMe_App.View.AdminModals
             this.ClearButton.Location = new System.Drawing.Point(239, 523);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 15;
+            this.ClearButton.TabIndex = 17;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -163,27 +182,27 @@ namespace RentMe_App.View.AdminModals
             this.AddButton.Location = new System.Drawing.Point(121, 523);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 14;
+            this.AddButton.TabIndex = 16;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(121, 363);
+            this.passwordTextBox.Location = new System.Drawing.Point(357, 363);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 11;
+            this.passwordTextBox.TabIndex = 12;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.ClearError);
             // 
             // confirmPasswordTextBox
             // 
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(121, 403);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(357, 403);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.PasswordChar = '*';
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.confirmPasswordTextBox.TabIndex = 12;
+            this.confirmPasswordTextBox.TabIndex = 13;
             this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.ClearError);
             // 
             // phoneTextBox
@@ -245,11 +264,13 @@ namespace RentMe_App.View.AdminModals
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.errorLabel, 2);
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(239, 480);
+            this.errorLabel.Location = new System.Drawing.Point(121, 480);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorLabel.Size = new System.Drawing.Size(10, 13);
             this.errorLabel.TabIndex = 1;
+            this.errorLabel.Text = " ";
             // 
             // label16
             // 
@@ -290,7 +311,7 @@ namespace RentMe_App.View.AdminModals
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 400);
+            this.label11.Location = new System.Drawing.Point(239, 400);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(95, 13);
             this.label11.TabIndex = 1;
@@ -299,7 +320,7 @@ namespace RentMe_App.View.AdminModals
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 360);
+            this.label10.Location = new System.Drawing.Point(239, 360);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 1;
@@ -410,27 +431,20 @@ namespace RentMe_App.View.AdminModals
             this.activeCheckbox.Location = new System.Drawing.Point(121, 443);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(56, 17);
-            this.activeCheckbox.TabIndex = 13;
+            this.activeCheckbox.TabIndex = 15;
             this.activeCheckbox.Text = "Active";
             this.activeCheckbox.UseVisualStyleBackColor = true;
             this.activeCheckbox.CheckedChanged += new System.EventHandler(this.ClearError);
             // 
-            // label12
+            // isAdminCheckbox
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(265, 360);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Username*";
-            // 
-            // usernameTextBox
-            // 
-            this.usernameTextBox.Location = new System.Drawing.Point(357, 363);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(93, 20);
-            this.usernameTextBox.TabIndex = 12;
+            this.isAdminCheckbox.AutoSize = true;
+            this.isAdminCheckbox.Location = new System.Drawing.Point(121, 403);
+            this.isAdminCheckbox.Name = "isAdminCheckbox";
+            this.isAdminCheckbox.Size = new System.Drawing.Size(55, 17);
+            this.isAdminCheckbox.TabIndex = 14;
+            this.isAdminCheckbox.Text = "Admin";
+            this.isAdminCheckbox.UseVisualStyleBackColor = true;
             // 
             // AddEmployeeModal
             // 
@@ -486,5 +500,6 @@ namespace RentMe_App.View.AdminModals
         private System.Windows.Forms.ComboBox sexComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.CheckBox isAdminCheckbox;
     }
 }
