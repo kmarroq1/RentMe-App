@@ -77,6 +77,12 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.Designer.cs">
+      <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.resx">
+      <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +242,7 @@
     <Content Include="Common\Sql\insert_inventory_part1.sql" />
     <Content Include="Common\Sql\insert_inventory_part2.sql" />
     <Content Include="Common\Sql\insert_inventory_part3.sql" />
+	<Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />
