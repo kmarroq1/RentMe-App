@@ -63,7 +63,11 @@
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
+    <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\Rental.cs" />
+    <Compile Include="Model\Return.cs" />
     <Compile Include="Model\States.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
