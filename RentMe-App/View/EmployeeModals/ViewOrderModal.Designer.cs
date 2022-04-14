@@ -29,166 +29,179 @@ namespace RentMe_App.View.EmployeeModals
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.topLableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.typeTitleLabel = new System.Windows.Forms.Label();
             this.transactionTypeLabel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.dueDateTitleLabel = new System.Windows.Forms.Label();
             this.dueDateLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.amtPaidTitleLabel = new System.Windows.Forms.Label();
             this.amountPaidLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.balanceTitleLabel = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.errorLabel = new System.Windows.Forms.Label();
             this.RentAgainButton = new System.Windows.Forms.Button();
             this.ReturnButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.furnitureOrderedDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.topLableLayoutPanel.SuspendLayout();
+            this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // topLableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.60151F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.39849F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.transactionTypeLabel, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dueDateLabel, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.amountPaidLabel, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.balanceLabel, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(23, 14);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.4657F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 435);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.topLableLayoutPanel.ColumnCount = 2;
+            this.topLableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.60151F));
+            this.topLableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.39849F));
+            this.topLableLayoutPanel.Controls.Add(this.titleLabel, 0, 0);
+            this.topLableLayoutPanel.Controls.Add(this.typeTitleLabel, 0, 1);
+            this.topLableLayoutPanel.Controls.Add(this.transactionTypeLabel, 1, 1);
+            this.topLableLayoutPanel.Controls.Add(this.dueDateTitleLabel, 0, 2);
+            this.topLableLayoutPanel.Controls.Add(this.dueDateLabel, 1, 2);
+            this.topLableLayoutPanel.Controls.Add(this.amtPaidTitleLabel, 0, 3);
+            this.topLableLayoutPanel.Controls.Add(this.amountPaidLabel, 1, 3);
+            this.topLableLayoutPanel.Controls.Add(this.balanceTitleLabel, 0, 4);
+            this.topLableLayoutPanel.Controls.Add(this.balanceLabel, 1, 4);
+            this.topLableLayoutPanel.Location = new System.Drawing.Point(7, 5);
+            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.topLableLayoutPanel.Name = "topLableLayoutPanel";
+            this.topLableLayoutPanel.RowCount = 5;
+            this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.4657F));
+            this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
+            this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
+            this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
+            this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
+            this.topLableLayoutPanel.Size = new System.Drawing.Size(252, 153);
+            this.topLableLayoutPanel.TabIndex = 0;
             // 
-            // label1
+            // titleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Order Details";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Location = new System.Drawing.Point(1, 0);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(68, 13);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Order Details";
             // 
-            // label3
+            // typeTitleLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(274, 37);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Transaction Type:";
+            this.typeTitleLabel.AutoSize = true;
+            this.typeTitleLabel.Location = new System.Drawing.Point(1, 45);
+            this.typeTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.typeTitleLabel.Name = "typeTitleLabel";
+            this.typeTitleLabel.Size = new System.Drawing.Size(93, 13);
+            this.typeTitleLabel.TabIndex = 2;
+            this.typeTitleLabel.Text = "Transaction Type:";
             // 
             // transactionTypeLabel
             // 
             this.transactionTypeLabel.AutoSize = true;
-            this.transactionTypeLabel.Location = new System.Drawing.Point(327, 128);
+            this.transactionTypeLabel.Location = new System.Drawing.Point(103, 45);
+            this.transactionTypeLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.transactionTypeLabel.Name = "transactionTypeLabel";
-            this.transactionTypeLabel.Size = new System.Drawing.Size(35, 37);
+            this.transactionTypeLabel.Size = new System.Drawing.Size(13, 13);
             this.transactionTypeLabel.TabIndex = 4;
             this.transactionTypeLabel.Text = "  ";
             // 
-            // label5
+            // dueDateTitleLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 204);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 37);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Due Date:";
+            this.dueDateTitleLabel.AutoSize = true;
+            this.dueDateTitleLabel.Location = new System.Drawing.Point(1, 71);
+            this.dueDateTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.dueDateTitleLabel.Name = "dueDateTitleLabel";
+            this.dueDateTitleLabel.Size = new System.Drawing.Size(56, 13);
+            this.dueDateTitleLabel.TabIndex = 5;
+            this.dueDateTitleLabel.Text = "Due Date:";
             // 
             // dueDateLabel
             // 
             this.dueDateLabel.AutoSize = true;
-            this.dueDateLabel.Location = new System.Drawing.Point(327, 204);
+            this.dueDateLabel.Location = new System.Drawing.Point(103, 71);
+            this.dueDateLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.dueDateLabel.Name = "dueDateLabel";
-            this.dueDateLabel.Size = new System.Drawing.Size(35, 37);
+            this.dueDateLabel.Size = new System.Drawing.Size(13, 13);
             this.dueDateLabel.TabIndex = 6;
             this.dueDateLabel.Text = "  ";
             // 
-            // label7
+            // amtPaidTitleLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 280);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(211, 37);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Amount Paid:";
+            this.amtPaidTitleLabel.AutoSize = true;
+            this.amtPaidTitleLabel.Location = new System.Drawing.Point(1, 97);
+            this.amtPaidTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.amtPaidTitleLabel.Name = "amtPaidTitleLabel";
+            this.amtPaidTitleLabel.Size = new System.Drawing.Size(70, 13);
+            this.amtPaidTitleLabel.TabIndex = 7;
+            this.amtPaidTitleLabel.Text = "Amount Paid:";
             // 
             // amountPaidLabel
             // 
             this.amountPaidLabel.AutoSize = true;
-            this.amountPaidLabel.Location = new System.Drawing.Point(327, 280);
+            this.amountPaidLabel.Location = new System.Drawing.Point(103, 97);
+            this.amountPaidLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.amountPaidLabel.Name = "amountPaidLabel";
-            this.amountPaidLabel.Size = new System.Drawing.Size(35, 37);
+            this.amountPaidLabel.Size = new System.Drawing.Size(13, 13);
             this.amountPaidLabel.TabIndex = 8;
             this.amountPaidLabel.Text = "  ";
             // 
-            // label9
+            // balanceTitleLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 356);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 37);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Balance:";
+            this.balanceTitleLabel.AutoSize = true;
+            this.balanceTitleLabel.Location = new System.Drawing.Point(1, 123);
+            this.balanceTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.balanceTitleLabel.Name = "balanceTitleLabel";
+            this.balanceTitleLabel.Size = new System.Drawing.Size(49, 13);
+            this.balanceTitleLabel.TabIndex = 9;
+            this.balanceTitleLabel.Text = "Balance:";
             // 
             // balanceLabel
             // 
             this.balanceLabel.AutoSize = true;
-            this.balanceLabel.Location = new System.Drawing.Point(327, 356);
+            this.balanceLabel.Location = new System.Drawing.Point(103, 123);
+            this.balanceLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(35, 37);
+            this.balanceLabel.Size = new System.Drawing.Size(13, 13);
             this.balanceLabel.TabIndex = 10;
             this.balanceLabel.Text = "  ";
             // 
-            // tableLayoutPanel2
+            // bottomTableLayoutPanel
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.errorLabel, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.RentAgainButton, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.ReturnButton, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.CloseButton, 2, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 1166);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.06202F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.93798F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(2543, 153);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.bottomTableLayoutPanel.ColumnCount = 3;
+            this.bottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.bottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.bottomTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.bottomTableLayoutPanel.Controls.Add(this.errorLabel, 1, 0);
+            this.bottomTableLayoutPanel.Controls.Add(this.RentAgainButton, 0, 1);
+            this.bottomTableLayoutPanel.Controls.Add(this.ReturnButton, 1, 1);
+            this.bottomTableLayoutPanel.Controls.Add(this.CloseButton, 2, 1);
+            this.bottomTableLayoutPanel.Location = new System.Drawing.Point(1, 410);
+            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.bottomTableLayoutPanel.Name = "bottomTableLayoutPanel";
+            this.bottomTableLayoutPanel.RowCount = 2;
+            this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.06202F));
+            this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.93798F));
+            this.bottomTableLayoutPanel.Size = new System.Drawing.Size(783, 54);
+            this.bottomTableLayoutPanel.TabIndex = 1;
             // 
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(850, 0);
+            this.errorLabel.Location = new System.Drawing.Point(262, 0);
+            this.errorLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(35, 37);
+            this.errorLabel.Size = new System.Drawing.Size(13, 13);
             this.errorLabel.TabIndex = 0;
             this.errorLabel.Text = "  ";
             // 
             // RentAgainButton
             // 
             this.RentAgainButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.RentAgainButton.Location = new System.Drawing.Point(284, 76);
+            this.RentAgainButton.Location = new System.Drawing.Point(86, 26);
+            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.RentAgainButton.Name = "RentAgainButton";
-            this.RentAgainButton.Size = new System.Drawing.Size(279, 64);
+            this.RentAgainButton.Size = new System.Drawing.Size(88, 22);
             this.RentAgainButton.TabIndex = 1;
             this.RentAgainButton.Text = "Rent Again";
             this.RentAgainButton.UseVisualStyleBackColor = true;
@@ -197,9 +210,10 @@ namespace RentMe_App.View.EmployeeModals
             // ReturnButton
             // 
             this.ReturnButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ReturnButton.Location = new System.Drawing.Point(1166, 76);
+            this.ReturnButton.Location = new System.Drawing.Point(358, 26);
+            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.ReturnButton.Name = "ReturnButton";
-            this.ReturnButton.Size = new System.Drawing.Size(209, 64);
+            this.ReturnButton.Size = new System.Drawing.Size(66, 22);
             this.ReturnButton.TabIndex = 2;
             this.ReturnButton.Text = "Return Item";
             this.ReturnButton.UseVisualStyleBackColor = true;
@@ -208,9 +222,10 @@ namespace RentMe_App.View.EmployeeModals
             // CloseButton
             // 
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CloseButton.Location = new System.Drawing.Point(2001, 76);
+            this.CloseButton.Location = new System.Drawing.Point(615, 26);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(235, 64);
+            this.CloseButton.Size = new System.Drawing.Size(74, 22);
             this.CloseButton.TabIndex = 3;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -219,30 +234,32 @@ namespace RentMe_App.View.EmployeeModals
             // furnitureOrderedDataGridView
             // 
             this.furnitureOrderedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(2, 455);
+            this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(1, 160);
+            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.furnitureOrderedDataGridView.Name = "furnitureOrderedDataGridView";
             this.furnitureOrderedDataGridView.RowHeadersWidth = 123;
             this.furnitureOrderedDataGridView.RowTemplate.Height = 46;
-            this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(2531, 684);
+            this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(783, 240);
             this.furnitureOrderedDataGridView.TabIndex = 2;
             // 
             // ViewOrderModal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2549, 1324);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.furnitureOrderedDataGridView);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.bottomTableLayoutPanel);
+            this.Controls.Add(this.topLableLayoutPanel);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewOrderModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Details";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.topLableLayoutPanel.ResumeLayout(false);
+            this.topLableLayoutPanel.PerformLayout();
+            this.bottomTableLayoutPanel.ResumeLayout(false);
+            this.bottomTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -250,17 +267,17 @@ namespace RentMe_App.View.EmployeeModals
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel topLableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel bottomTableLayoutPanel;
         private System.Windows.Forms.DataGridView furnitureOrderedDataGridView;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label typeTitleLabel;
         private System.Windows.Forms.Label transactionTypeLabel;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label dueDateTitleLabel;
         private System.Windows.Forms.Label dueDateLabel;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label amtPaidTitleLabel;
         private System.Windows.Forms.Label amountPaidLabel;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label balanceTitleLabel;
         private System.Windows.Forms.Label balanceLabel;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button RentAgainButton;
