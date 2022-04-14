@@ -241,6 +241,7 @@
     <Content Include="Common\Sql\insert_inventory_part1.sql" />
     <Content Include="Common\Sql\insert_inventory_part2.sql" />
     <Content Include="Common\Sql\insert_inventory_part3.sql" />
+	<Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />
