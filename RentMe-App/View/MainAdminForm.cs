@@ -54,16 +54,6 @@ namespace RentMe_App
             Close();
         }
 
-        /// <summary>
-        /// method used to set the username to show on the form
-        /// </summary>
-        /// <param name="username">username of person logging in</param>
-        public void SetAdminFormInfo(string username, string name)
-        {
-            usernameForm = username;
-            employeeNameForm = name;
-        }
-
         private void LogoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Logout();
@@ -76,8 +66,8 @@ namespace RentMe_App
 
         private void MainAdminForm_Load(object sender, System.EventArgs e)
         {
-            usernameValueLabel.Text = usernameForm;
-            employeeNameValueLabel.Text = employeeNameForm;
+            usernameValueLabel.Text = SharedFormInfo.UsernameForm;
+            employeeNameValueLabel.Text = SharedFormInfo.EmployeeNameForm;
         }
 
         #endregion

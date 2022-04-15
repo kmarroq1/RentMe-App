@@ -63,6 +63,10 @@ IF OBJECT_ID('dbo.furniture', 'U') IS NOT NULL
   DROP TABLE dbo.furniture
 GO
 
+IF OBJECT_ID('dbo.inventory', 'U') IS NOT NULL
+  DROP TABLE dbo.inventory
+GO
+
 IF OBJECT_ID('dbo.style', 'U') IS NOT NULL
   DROP TABLE dbo.style
 GO
@@ -184,6 +188,15 @@ CREATE TABLE [dbo].[furniture]
 	[category_name] VARCHAR(45) NOT NULL FOREIGN KEY REFERENCES [dbo].[category](name),
 	[image_small_url] VARCHAR(200),
   [image_large_url] VARCHAR(200),
+    PRIMARY KEY ([furnitureID])
+)
+GO
+
+-- Inventory
+CREATE TABLE [dbo].[inventory]
+(
+	[furnitureID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[furniture](furnitureID), 
+	[quantity] int NOT NULL DEFAULT 0, 
     PRIMARY KEY ([furnitureID])
 )
 GO
