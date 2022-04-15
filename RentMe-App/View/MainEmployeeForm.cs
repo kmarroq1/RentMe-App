@@ -21,7 +21,11 @@ namespace RentMe_App.View
         /// </summary>
         public string employeeNameForm;
 
-        private readonly LoginForm _loginForm;
+        /// <summary>
+        /// Login Instance
+        /// </summary>
+        public LoginForm loginForm;
+        
         private bool _killApp;
 
         #endregion
@@ -35,7 +39,8 @@ namespace RentMe_App.View
         public MainEmployeeForm(LoginForm loginForm)
         {
             InitializeComponent();
-            _loginForm = loginForm;
+            this.loginForm = loginForm;
+            SharedFormInfo.LoginForm = loginForm;
             _killApp = true;
         }
 
@@ -48,8 +53,7 @@ namespace RentMe_App.View
         public void Logout()
         {
             _killApp = false;
-            _loginForm.Show();
-            _loginForm.LogOut();
+            this.loginForm.LogOut();
             Close();
         }
 
@@ -77,8 +81,10 @@ namespace RentMe_App.View
 
         private void MainEmployeeForm_Load(object sender, System.EventArgs e)
         {
-            usernameValueLabel.Text = usernameForm;
-            employeeNameValueLabel.Text = employeeNameForm;
+            usernameValueLabel.Text = SharedFormInfo.UsernameForm;
+            employeeNameValueLabel.Text = SharedFormInfo.EmployeeNameForm;
+
+            SharedFormInfo.MainEmployeeForm = this;
         }
 
         private void AddMemberUserControl1_Load(object sender, System.EventArgs e)

@@ -48,10 +48,12 @@ namespace RentMe_App.View
                 {
                     string[] loginInfoArray = loginInfo.Split('^');
                     string usernameForm = loginInfoArray[1];
-                    string nameForm = loginInfoArray[2];
+                    string employeeNameForm = loginInfoArray[2];
+
+                    SharedFormInfo.UsernameForm = usernameForm;
+                    SharedFormInfo.EmployeeNameForm = employeeNameForm;
 
                     MainEmployeeForm mainEmployeeForm = new MainEmployeeForm(this);
-                    mainEmployeeForm.SetEmployeeFormInfo(usernameForm, nameForm);
 
                     Hide();
                     mainEmployeeForm.ShowDialog();
@@ -78,10 +80,12 @@ namespace RentMe_App.View
                 {
                     string[] loginInfoArray = loginInfo.Split('^');
                     string usernameForm = loginInfoArray[1];
-                    string nameForm = loginInfoArray[2];
+                    string employeeNameForm = loginInfoArray[2];
+
+                    SharedFormInfo.UsernameForm = usernameForm;
+                    SharedFormInfo.EmployeeNameForm = employeeNameForm;
 
                     MainAdminForm mainAdminForm = new MainAdminForm(this);
-                    mainAdminForm.SetAdminFormInfo(usernameForm, nameForm);
 
                     Hide();
                     mainAdminForm.ShowDialog();

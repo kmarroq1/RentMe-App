@@ -45,11 +45,14 @@ namespace RentMe_App.UserControls
             this.phoneLabel = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.bottomButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.editButton = new System.Windows.Forms.Button();
+            this.selectMemberButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.searchMemberDataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.bottomButtonsTableLayoutPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,10 +87,10 @@ namespace RentMe_App.UserControls
             this.searchMemberDataGridView.AllowUserToOrderColumns = true;
             this.searchMemberDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.searchMemberDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchMemberDataGridView.Location = new System.Drawing.Point(3, 176);
+            this.searchMemberDataGridView.Location = new System.Drawing.Point(3, 184);
             this.searchMemberDataGridView.Name = "searchMemberDataGridView";
             this.searchMemberDataGridView.ReadOnly = true;
-            this.searchMemberDataGridView.Size = new System.Drawing.Size(797, 290);
+            this.searchMemberDataGridView.Size = new System.Drawing.Size(794, 272);
             this.searchMemberDataGridView.TabIndex = 36;
             this.searchMemberDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchMemberDataGridView_CellClick);
             this.searchMemberDataGridView.SelectionChanged += new System.EventHandler(this.SearchMemberDataGridView_SelectionChanged);
@@ -144,7 +147,7 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.errorMessageLabel, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 471);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(21, 462);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -223,26 +226,51 @@ namespace RentMe_App.UserControls
             // 
             this.bottomButtonsTableLayoutPanel.ColumnCount = 1;
             this.bottomButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bottomButtonsTableLayoutPanel.Controls.Add(this.editButton, 0, 0);
-            this.bottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(21, 496);
+            this.bottomButtonsTableLayoutPanel.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.bottomButtonsTableLayoutPanel.Location = new System.Drawing.Point(21, 487);
             this.bottomButtonsTableLayoutPanel.Name = "bottomButtonsTableLayoutPanel";
             this.bottomButtonsTableLayoutPanel.RowCount = 1;
             this.bottomButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.bottomButtonsTableLayoutPanel.Size = new System.Drawing.Size(763, 31);
             this.bottomButtonsTableLayoutPanel.TabIndex = 47;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.editButton);
+            this.flowLayoutPanel1.Controls.Add(this.selectMemberButton);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(269, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(225, 25);
+            this.flowLayoutPanel1.TabIndex = 47;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
             // editButton
             // 
             this.editButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.editButton.AutoSize = true;
             this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.editButton.Location = new System.Drawing.Point(344, 3);
+            this.editButton.Location = new System.Drawing.Point(3, 3);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 48;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // selectMemberButton
+            // 
+            this.selectMemberButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectMemberButton.AutoSize = true;
+            this.selectMemberButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.selectMemberButton.Location = new System.Drawing.Point(84, 3);
+            this.selectMemberButton.Name = "selectMemberButton";
+            this.selectMemberButton.Size = new System.Drawing.Size(138, 23);
+            this.selectMemberButton.TabIndex = 49;
+            this.selectMemberButton.Text = "Select Member";
+            this.selectMemberButton.UseVisualStyleBackColor = true;
+            this.selectMemberButton.Click += new System.EventHandler(this.SelectMemberButton_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -290,6 +318,8 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.PerformLayout();
             this.bottomButtonsTableLayoutPanel.ResumeLayout(false);
             this.bottomButtonsTableLayoutPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -314,7 +344,9 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.TableLayoutPanel bottomButtonsTableLayoutPanel;
-        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button selectMemberButton;
     }
 }

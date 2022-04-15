@@ -68,6 +68,7 @@
     <Compile Include="Model\Return.cs" />
     <Compile Include="Model\States.cs" />
     <Compile Include="Model\Transaction.cs" />
+    <Compile Include="SharedFormInfo.cs" />
     <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +86,12 @@
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.Designer.cs">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.Designer.cs">
+      <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
@@ -171,6 +178,12 @@
     <Compile Include="View\MemberModals\ReceiptModal.Designer.cs">
       <DependentUpon>ReceiptModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MainMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainMemberForm.Designer.cs">
+      <DependentUpon>MainMemberForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.resx">
+      <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
@@ -229,6 +245,9 @@
     <EmbeddedResource Include="View\MemberModals\ReceiptModal.resx">
       <DependentUpon>ReceiptModal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MainMemberForm.resx">
+      <DependentUpon>MainMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe_App.Model.Employee.datasource" />
     <None Include="Properties\DataSources\RentMe_App.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
@@ -251,6 +270,10 @@
     <Content Include="Common\Sql\insert_furniture_part2.sql" />
     <Content Include="Common\Sql\insert_furniture_part3.sql" />
     <Content Include="Common\Sql\RegisterMember.sql" />
+    <Content Include="Common\Sql\insert_inventory_part1.sql" />
+    <Content Include="Common\Sql\insert_inventory_part2.sql" />
+    <Content Include="Common\Sql\insert_inventory_part3.sql" />
+	<Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />
