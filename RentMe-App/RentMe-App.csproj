@@ -49,6 +49,7 @@
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\InventoryController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StatesController.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="DAL\EmployeeDBDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
+    <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
@@ -64,6 +66,8 @@
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\FurnitureInventory.cs" />
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Rental.cs" />
     <Compile Include="Model\Return.cs" />
     <Compile Include="Model\States.cs" />
@@ -84,9 +88,9 @@
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-	  <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
-		  <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -205,9 +209,9 @@
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
-		  <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,7 +295,7 @@
     <Content Include="Common\Sql\insert_inventory_part1.sql" />
     <Content Include="Common\Sql\insert_inventory_part2.sql" />
     <Content Include="Common\Sql\insert_inventory_part3.sql" />
-	<Content Include="Common\Sql\RegisterMember.sql" />
+    <Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />

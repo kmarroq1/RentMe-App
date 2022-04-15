@@ -29,7 +29,7 @@ namespace RentMe_App.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchFurnitureDataGridView = new System.Windows.Forms.DataGridView();
+            this.searchInventoryDataGridView = new System.Windows.Forms.DataGridView();
             this.searchHeaderLabel = new System.Windows.Forms.Label();
             this.categoryLabel = new System.Windows.Forms.Label();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
@@ -44,24 +44,24 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.itemDetailsButton = new System.Windows.Forms.Button();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.searchFurnitureDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchInventoryDataGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttonFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // searchFurnitureDataGridView
+            // searchInventoryDataGridView
             // 
-            this.searchFurnitureDataGridView.AllowUserToAddRows = false;
-            this.searchFurnitureDataGridView.AllowUserToDeleteRows = false;
-            this.searchFurnitureDataGridView.AllowUserToOrderColumns = true;
-            this.searchFurnitureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.searchFurnitureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchFurnitureDataGridView.Location = new System.Drawing.Point(16, 96);
-            this.searchFurnitureDataGridView.Name = "searchFurnitureDataGridView";
-            this.searchFurnitureDataGridView.ReadOnly = true;
-            this.searchFurnitureDataGridView.Size = new System.Drawing.Size(797, 319);
-            this.searchFurnitureDataGridView.TabIndex = 30;
+            this.searchInventoryDataGridView.AllowUserToAddRows = false;
+            this.searchInventoryDataGridView.AllowUserToDeleteRows = false;
+            this.searchInventoryDataGridView.AllowUserToOrderColumns = true;
+            this.searchInventoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.searchInventoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchInventoryDataGridView.Location = new System.Drawing.Point(16, 96);
+            this.searchInventoryDataGridView.Name = "searchInventoryDataGridView";
+            this.searchInventoryDataGridView.ReadOnly = true;
+            this.searchInventoryDataGridView.Size = new System.Drawing.Size(797, 319);
+            this.searchInventoryDataGridView.TabIndex = 30;
             // 
             // searchHeaderLabel
             // 
@@ -95,6 +95,7 @@ namespace RentMe_App.UserControls
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(100, 21);
             this.categoryComboBox.TabIndex = 5;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // styleLabel
             // 
@@ -116,6 +117,7 @@ namespace RentMe_App.UserControls
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(100, 21);
             this.styleComboBox.TabIndex = 3;
+            this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.StyleComboBox_SelectedIndexChanged);
             // 
             // furnitureIDTextBox
             // 
@@ -125,6 +127,7 @@ namespace RentMe_App.UserControls
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
             this.furnitureIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.furnitureIDTextBox.TabIndex = 7;
+            this.furnitureIDTextBox.Enter += new System.EventHandler(this.FurnitureID_Enter);
             // 
             // furnitureIDLabel
             // 
@@ -147,6 +150,7 @@ namespace RentMe_App.UserControls
             this.clearSearchButton.TabIndex = 32;
             this.clearSearchButton.Text = "Clear Search";
             this.clearSearchButton.UseVisualStyleBackColor = true;
+            this.clearSearchButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // searchButton
             // 
@@ -158,6 +162,7 @@ namespace RentMe_App.UserControls
             this.searchButton.TabIndex = 31;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // errorMessageLabel
             // 
@@ -239,12 +244,12 @@ namespace RentMe_App.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonFlowLayoutPanel);
-            this.Controls.Add(this.searchFurnitureDataGridView);
+            this.Controls.Add(this.searchInventoryDataGridView);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SearchInventoryUserControl";
             this.Size = new System.Drawing.Size(828, 502);
-            ((System.ComponentModel.ISupportInitialize)(this.searchFurnitureDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchInventoryDataGridView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -258,7 +263,7 @@ namespace RentMe_App.UserControls
 
         #endregion
 
-        private System.Windows.Forms.DataGridView searchFurnitureDataGridView;
+        private System.Windows.Forms.DataGridView searchInventoryDataGridView;
         private System.Windows.Forms.Label searchHeaderLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label categoryLabel;
