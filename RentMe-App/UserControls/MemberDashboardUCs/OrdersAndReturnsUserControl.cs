@@ -138,7 +138,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             foreach (var order in _orderList)
             {
-                orderHistoryDataGridView.Rows.Add(/*[add columns here]*/);
+                orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
             }
         }
 

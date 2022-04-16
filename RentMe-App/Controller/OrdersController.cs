@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentMe_App.DAL;
+using System;
 using System.Collections.Generic;
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
@@ -11,6 +12,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         #region Data Members
 
         private int memberID;
+        private readonly OrderDBDAL orderDBDAL;
 
         #endregion
 
@@ -23,6 +25,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public OrdersController(int memberID)
         {
             this.memberID = memberID;
+            this.orderDBDAL = new OrderDBDAL();
         }
 
         #endregion
@@ -31,12 +34,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         internal List<Order> getOrderHistory()
         {
-            throw new NotImplementedException();
+            return orderDBDAL.getOrderHistory(memberID);
         }
 
-        internal List<Order> getOrdersByTransactionId(int currentMemberID, int v)
+        internal List<Order> getOrdersByTransactionId(int currentMemberID, int transactionID)
         {
-            throw new NotImplementedException();
+            return orderDBDAL.getOrdersByTransactionId(currentMemberID, transactionID);
         }
 
         internal List<Order> getOrdersByYear(string v)
