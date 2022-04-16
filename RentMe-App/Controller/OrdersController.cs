@@ -1,4 +1,5 @@
 ﻿using RentMe_App.DAL;
+using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
 
@@ -45,6 +46,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         internal List<Order> GetOrdersByYear(string year)
         {
             throw new NotImplementedException();
+        }
+
+        internal Order GetOrderFurnitureList(Order currentOrder)
+        {
+            return orderDBDAL.GetOrderFurnitureList(currentOrder);
         }
 
         #endregion

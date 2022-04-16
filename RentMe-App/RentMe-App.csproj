@@ -120,10 +120,10 @@
     <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.Designer.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.Designer.cs">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
@@ -226,7 +226,7 @@
     <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmployeeModals\ViewOrderModal.resx">
+    <EmbeddedResource Include="View\MemberModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">

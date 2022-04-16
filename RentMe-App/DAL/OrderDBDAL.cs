@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Model;
 using RentMe_App.UserControls.MemberDashboardUCs;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -38,8 +39,6 @@ namespace RentMe_App.DAL
 
                         while (reader.Read())
                         {
-                            List<Furniture> furnitureList = new List<Furniture>();
-
                             Order order = new Order
                             {
                                 TransactionID = 0,
@@ -50,7 +49,6 @@ namespace RentMe_App.DAL
                                 OrderTotal = 0,
                                 Status = false,
                                 Balance = 0,
-                                FurnitureList = null,
                             };
                             orderList.Add(order);
                         }
@@ -59,6 +57,16 @@ namespace RentMe_App.DAL
             }*/
 
             return orderList;
+        }
+
+        /// <summary>
+        /// Updates furniture list in a given order
+        /// </summary>
+        /// <param name="currentOrder"></param>
+        /// <returns></returns>
+        public Order GetOrderFurnitureList(Order currentOrder)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -89,8 +97,6 @@ namespace RentMe_App.DAL
 
                         while (reader.Read())
                         {
-                            List<Furniture> furnitureList = new List<Furniture>();
-
                             Order order = new Order
                             {
                                 TransactionID = 0,
@@ -101,7 +107,6 @@ namespace RentMe_App.DAL
                                 OrderTotal = 0,
                                 Status = false,
                                 Balance = 0,
-                                FurnitureList = null,
                             };
                             orderList.Add(order);
                         }
