@@ -33,7 +33,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             InitializeComponent();
 
             _ordersController = new OrdersController(memberID);
-            _orderList = _ordersController.getOrderHistory();
+            _orderList = _ordersController.GetOrderHistory();
             _currentMemberID = memberID;
 
             ViewButton.Enabled = false;
@@ -62,7 +62,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }*/
                 else
                 {
-                    _orderList = _ordersController.getOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
+                    _orderList = _ordersController.GetOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
                 }
             }
             catch (Exception)
@@ -116,7 +116,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void YearsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             errorMsgLabel.Text = "";
-            _orderList = _ordersController.getOrdersByYear(yearsComboBox.SelectedValue.ToString());
+            _orderList = _ordersController.GetOrdersByYear(yearsComboBox.SelectedValue.ToString());
             RefreshData();
         }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RentMe_App.Model;
+using System;
+using System.Collections.Generic;
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
 {
@@ -17,6 +19,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public double OrderTotal { get; set; }
         public bool Status { get; set; }
         public double Balance { get; set; }
+        public List<Furniture> FurnitureList { get; set; }
 
         #endregion
     }

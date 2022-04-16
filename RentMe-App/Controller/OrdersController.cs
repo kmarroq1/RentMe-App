@@ -32,17 +32,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         #region Methods
 
-        internal List<Order> getOrderHistory()
+        internal List<Order> GetOrderHistory()
         {
-            return orderDBDAL.getOrderHistory(memberID);
+            return orderDBDAL.GetOrderHistory(memberID);
         }
 
-        internal List<Order> getOrdersByTransactionId(int currentMemberID, int transactionID)
+        internal List<Order> GetOrdersByTransactionId(int currentMemberID, int transactionID)
         {
-            return orderDBDAL.getOrdersByTransactionId(currentMemberID, transactionID);
+            return orderDBDAL.GetOrdersByTransactionId(currentMemberID, transactionID);
         }
 
-        internal List<Order> getOrdersByYear(string v)
+        internal List<Order> GetOrdersByYear(string year)
         {
             throw new NotImplementedException();
         }
