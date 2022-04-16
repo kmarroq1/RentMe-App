@@ -23,18 +23,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         /// <summary>
         /// Constructor for class.
         /// </summary>
-        public OrdersAndReturnsUserControl(int memberID)
+        public OrdersAndReturnsUserControl()
         {
-            if (memberID < 0)
-            {
-                throw new ArgumentException("Invalid member");
-            }
-
             InitializeComponent();
 
-            _ordersController = new OrdersController(memberID);
+            _currentMemberID = SharedFormInfo.MemberIDForm;
+            _ordersController = new OrdersController(_currentMemberID);
             _orderList = _ordersController.GetOrderHistory();
-            _currentMemberID = memberID;
 
             ViewButton.Enabled = false;
             PopulateDataGridView();
@@ -116,7 +111,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void YearsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             errorMsgLabel.Text = "";
-            _orderList = _ordersController.GetOrdersByYear(yearsComboBox.SelectedValue.ToString());
+            //_orderList = _ordersController.GetOrdersByYear(yearsComboBox.SelectedValue.ToString());
             RefreshData();
         }
 

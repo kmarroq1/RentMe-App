@@ -12,11 +12,16 @@ namespace RentMe_App.DAL
     {
         #region Queries
 
-        internal List<Order> GetOrderHistory(int memberID)
+        /// <summary>
+        /// Gets all order history
+        /// </summary>
+        /// <param name="memberID"></param>
+        /// <returns></returns>
+        public List<Order> GetOrderHistory(int memberID)
         {
             List<Order> orderList = new List<Order>();
 
-            string selectStatement = "";
+            /*string selectStatement = "";
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -33,6 +38,8 @@ namespace RentMe_App.DAL
 
                         while (reader.Read())
                         {
+                            List<Furniture> furnitureList = new List<Furniture>();
+
                             Order order = new Order
                             {
                                 TransactionID = 0,
@@ -49,17 +56,22 @@ namespace RentMe_App.DAL
                         }
                     }
                 }
-            }
+            }*/
 
             return orderList;
         }
 
-        internal List<Order> GetOrdersByTransactionId(int memberID, int transactionID)
+        /// <summary>
+        /// Gets all orders by given transaction id
+        /// </summary>
+        /// <param name="memberID"></param>
+        /// <param name="transactionID"></param>
+        /// <returns></returns>
+        public List<Order> GetOrdersByTransactionId(int memberID, int transactionID)
         {
             List<Order> orderList = new List<Order>();
-            List<Furniture> furnitureList = new List<Furniture>();
 
-            string selectStatement = "";
+           /* string selectStatement = "";
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -77,6 +89,8 @@ namespace RentMe_App.DAL
 
                         while (reader.Read())
                         {
+                            List<Furniture> furnitureList = new List<Furniture>();
+
                             Order order = new Order
                             {
                                 TransactionID = 0,
@@ -93,7 +107,7 @@ namespace RentMe_App.DAL
                         }
                     }
                 }
-            }
+            }*/
 
             return orderList;
         }
