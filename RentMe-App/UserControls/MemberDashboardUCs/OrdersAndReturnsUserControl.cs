@@ -12,8 +12,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
     {
         #region Data Members
 
-        //private readonly OrdersController _ordersController;
-        //private List<Order> _orderList;
+        private readonly OrdersController _ordersController;
+        private List<Order> _orderList;
         private readonly int _currentMemberID;
 
         #endregion
@@ -32,8 +32,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
             InitializeComponent();
 
-            //_ordersController = new OrdersController(memberID);
-            //_orderList = _ordersController.getOrderHistory();
+            _ordersController = new OrdersController(memberID);
+            _orderList = _ordersController.getOrderHistory();
             _currentMemberID = memberID;
 
             ViewButton.Enabled = false;
@@ -56,13 +56,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                     return;
                 }
                 //is this where we want this conditional to go?
-                else if (pendingOrdersCheckbox.Checked)
+                /*else if (pendingOrdersCheckbox.Checked)
                 {
                     //_orderList = _ordersController.getPendingOrders(_currentMemberID);
-                }
+                }*/
                 else
                 {
-                    //_orderList = _ordersController.getOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
+                    _orderList = _ordersController.getOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
                 }
             }
             catch (Exception)
@@ -77,9 +77,9 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             var selectedOrderID = int.Parse(orderHistoryDataGridView.SelectedRows[0].Cells["ID"].Value.ToString());
             var selectedOrderType = orderHistoryDataGridView.SelectedRows[1].Cells["Type"].Value.ToString();
-            //var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
+            var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
 
-            ViewOrderModal newForm = new ViewOrderModal(/*selectedOrder*/);
+            ViewOrderModal newForm = new ViewOrderModal(selectedOrder);
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
             errorMsgLabel.Text = "";
@@ -116,17 +116,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void YearsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             errorMsgLabel.Text = "";
-            //_orderList = _ordersController.getOrdersByYear(yearsComboBox.SelectedValue.ToString());
+            _orderList = _ordersController.getOrdersByYear(yearsComboBox.SelectedValue.ToString());
             RefreshData();
         }
 
         private void RefreshData()
         {
-            //if (_orderList == null || _orderList.Count = 0)
-            //{
-            //errorMsgLabel.Text = "No orders found...";
-            //return;
-            //}
+            if (_orderList.Count == 0)
+            {
+                errorMsgLabel.Text = "No orders found...";
+                return;
+            }
 
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
@@ -136,12 +136,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void PopulateDataGridView()
         {
-            /*
-              foreach (Order order in _orderList)
-                {
-                    orderHistoryDataGridView.Rows.Add([add columns here]);
-                }
-             */
+            foreach (var order in _orderList)
+            {
+                orderHistoryDataGridView.Rows.Add(/*[add columns here]*/);
+            }
         }
 
         #endregion

@@ -20,7 +20,7 @@ namespace RentMe_App.View.EmployeeModals
         /// <summary>
         /// Constructor
         /// </summary>
-        public ViewOrderModal(/*Order selectedOrder*/)
+        public ViewOrderModal(/*Order selectedOrder*/UserControls.MemberDashboardUCs.Order selectedOrder)
         {
             InitializeComponent();
             PopulateGridView();

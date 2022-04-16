@@ -59,6 +59,7 @@
     <Compile Include="DAL\FurnitureDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
+    <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
@@ -81,12 +82,14 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Order.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-	  <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
-		  <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\OrdersController.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -205,9 +208,9 @@
     <EmbeddedResource Include="UserControls\DashboardHeaderUserControl.resx">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
-		  <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
-	  </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,7 +294,7 @@
     <Content Include="Common\Sql\insert_inventory_part1.sql" />
     <Content Include="Common\Sql\insert_inventory_part2.sql" />
     <Content Include="Common\Sql\insert_inventory_part3.sql" />
-	<Content Include="Common\Sql\RegisterMember.sql" />
+    <Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
   </ItemGroup>
   <ItemGroup />
