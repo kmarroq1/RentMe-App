@@ -42,7 +42,6 @@ namespace RentMe_App.UserControls
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.itemDetailsButton = new System.Windows.Forms.Button();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.searchInventoryDataGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -144,7 +143,7 @@ namespace RentMe_App.UserControls
             // 
             this.clearSearchButton.AutoSize = true;
             this.clearSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.clearSearchButton.Location = new System.Drawing.Point(165, 3);
+            this.clearSearchButton.Location = new System.Drawing.Point(84, 3);
             this.clearSearchButton.Name = "clearSearchButton";
             this.clearSearchButton.Size = new System.Drawing.Size(78, 23);
             this.clearSearchButton.TabIndex = 32;
@@ -213,29 +212,17 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 30);
             this.tableLayoutPanel1.TabIndex = 33;
             // 
-            // itemDetailsButton
-            // 
-            this.itemDetailsButton.AutoSize = true;
-            this.itemDetailsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.itemDetailsButton.Location = new System.Drawing.Point(84, 3);
-            this.itemDetailsButton.Name = "itemDetailsButton";
-            this.itemDetailsButton.Size = new System.Drawing.Size(75, 23);
-            this.itemDetailsButton.TabIndex = 35;
-            this.itemDetailsButton.Text = "Item Details";
-            this.itemDetailsButton.UseVisualStyleBackColor = true;
-            // 
             // buttonFlowLayoutPanel
             // 
             this.buttonFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonFlowLayoutPanel.AutoSize = true;
             this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonFlowLayoutPanel.Controls.Add(this.searchButton);
-            this.buttonFlowLayoutPanel.Controls.Add(this.itemDetailsButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.clearSearchButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(287, 457);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(329, 457);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(246, 29);
+            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(165, 29);
             this.buttonFlowLayoutPanel.TabIndex = 36;
             this.buttonFlowLayoutPanel.WrapContents = false;
             // 
@@ -276,7 +263,6 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button itemDetailsButton;
         private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
     }
 }

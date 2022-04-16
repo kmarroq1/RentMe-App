@@ -4,7 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace RentMe_App.UserControls
 {
@@ -142,13 +146,13 @@ namespace RentMe_App.UserControls
             dataTable = new DataTable();
 
             dataTable.Columns.Add(new DataColumn("Furniture ID", typeof(int)));
-            dataTable.Columns.Add(new DataColumn("Image", typeof(string)));
+            //dataTable.Columns.Add(new DataColumn("Image", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Description", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Style", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Category", typeof(string)));
             dataTable.Columns.Add(new DataColumn("Qty in Stock", typeof(int)));
-            dataTable.Columns.Add(new DataColumn("Daily Rental Rate", typeof(decimal)));
+            dataTable.Columns.Add(new DataColumn("Daily Rental Rate", typeof(string)));
 
             try
             {
@@ -168,21 +172,27 @@ namespace RentMe_App.UserControls
                         Daily_Rental_Rate = go.Daily_Rental_Rate
                     };
 
+                    //PictureBox pictureBox = new PictureBox();
+                    //string stringPath = furnitureInventory.Image_Small_Url;
+
+                    //pictureBox.Image = new Bitmap(stringPath);
+                    //singleImageBox.SizeMode = PictureBoxSizeMode.AutoSize;
+
                     row["Furniture ID"] = furnitureInventory.FurnitureID;
-                    row["Image"] = furnitureInventory.Image_Small_Url;
+                    //row["Image"] = null;
                     row["Name"] = furnitureInventory.Name;
                     row["Description"] = furnitureInventory.Description;
                     row["Style"] = furnitureInventory.Style_Name;
                     row["Category"] = furnitureInventory.Category_Name;
                     row["Qty in Stock"] = furnitureInventory.Quantity;
-                    row["Daily Rental Rate"] = furnitureInventory.Daily_Rental_Rate;
+                    row["Daily Rental Rate"] = furnitureInventory.Daily_Rental_Rate.ToString("C");
 
                     dataTable.Rows.Add(row);
                 }
             }
             catch (Exception)
             {
-                ShowInvalidErrorMessage("Invalid Member");
+                ShowInvalidErrorMessage("Invalid Search");
             }
 
             searchInventoryDataGridView.DataSource = dataTable;
@@ -235,7 +245,7 @@ namespace RentMe_App.UserControls
         private void ShowInvalidErrorMessage(string message)
         {
             errorMessageLabel.Text = message;
-            errorMessageLabel.ForeColor = Color.Red;
+            errorMessageLabel.ForeColor = System.Drawing.Color.Red;
         }
 
         private void FurnitureID_Enter(object sender, EventArgs e)
