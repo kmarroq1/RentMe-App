@@ -49,5 +49,33 @@ namespace RentMe_App.Model
         /// </summary>
         public List<Furniture> RentedFurniture { get => _rentedFurniture; }
         #endregion
+
+        #region Methods
+        /// <summary>
+        /// Returns the total number of items in the cart.
+        /// </summary>
+        public int TotalItemsInCart
+        {
+            get
+            {
+                return _rentedFurniture.Count;
+            }
+        }
+
+        /// <summary>
+        /// Returns the total rental rate of the items in the cart.
+        /// </summary>
+        public decimal TotalRentalRate
+        {
+            get
+            {
+                decimal totalRentalRate = 0.0M;
+
+                foreach (Furniture furniture in _rentedFurniture) totalRentalRate += furniture.Daily_Rental_Rate;
+
+                return totalRentalRate;
+            }
+        }
+        #endregion
     }
 }
