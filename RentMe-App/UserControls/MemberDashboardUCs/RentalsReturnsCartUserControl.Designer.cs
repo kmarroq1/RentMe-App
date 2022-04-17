@@ -574,15 +574,16 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.RentalDeleteButtonColumn.Name = "RentalDeleteButtonColumn";
             this.RentalDeleteButtonColumn.ReadOnly = true;
             // 
-            // RentalsReturnsCart
+            // RentalsReturnsCartUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.GridViewsTableLayoutPanel);
             this.Controls.Add(this.HeadersTableLayoutPanel);
             this.Controls.Add(this.ButtonGroupsTableLayoutPanel);
-            this.Name = "RentalsReturnsCart";
+            this.Name = "RentalsReturnsCartUserControl";
             this.Size = new System.Drawing.Size(849, 426);
+            this.Load += new System.EventHandler(this.RentalsReturnsCartUserControl_Load);
             this.ButtonGroupsTableLayoutPanel.ResumeLayout(false);
             this.ButtonGroupsTableLayoutPanel.PerformLayout();
             this.ReturnButtonsFlowLayoutPanel.ResumeLayout(false);

@@ -103,6 +103,7 @@ namespace RentMe_App.View
             this.cartsTabPage.TabIndex = 2;
             this.cartsTabPage.Text = "Carts";
             this.cartsTabPage.UseVisualStyleBackColor = true;
+            this.cartsTabPage.Enter += new System.EventHandler(this.CartsTabPage_Enter);
             // 
             // tableLayoutPanel1
             // 
