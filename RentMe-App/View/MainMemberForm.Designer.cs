@@ -32,9 +32,9 @@ namespace RentMe_App.View
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMemberForm));
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.inventoryTabPage = new System.Windows.Forms.TabPage();
+            this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
             this.orderAndReturnsTabPage = new System.Windows.Forms.TabPage();
-            this.rentalCartTabPage = new System.Windows.Forms.TabPage();
-            this.returnCartTabPage = new System.Windows.Forms.TabPage();
+            this.cartsTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.employeeNameLabel = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@ namespace RentMe_App.View
             this.memberIDFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDValueLabel = new System.Windows.Forms.Label();
-            this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
             this.mainTabControl.SuspendLayout();
             this.inventoryTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,8 +62,7 @@ namespace RentMe_App.View
             // 
             this.mainTabControl.Controls.Add(this.inventoryTabPage);
             this.mainTabControl.Controls.Add(this.orderAndReturnsTabPage);
-            this.mainTabControl.Controls.Add(this.rentalCartTabPage);
-            this.mainTabControl.Controls.Add(this.returnCartTabPage);
+            this.mainTabControl.Controls.Add(this.cartsTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.mainTabControl.Location = new System.Drawing.Point(0, 133);
             this.mainTabControl.Name = "mainTabControl";
@@ -83,6 +81,13 @@ namespace RentMe_App.View
             this.inventoryTabPage.Text = "Inventory";
             this.inventoryTabPage.UseVisualStyleBackColor = true;
             // 
+            // searchInventoryUserControl1
+            // 
+            this.searchInventoryUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.searchInventoryUserControl1.Name = "searchInventoryUserControl1";
+            this.searchInventoryUserControl1.Size = new System.Drawing.Size(828, 502);
+            this.searchInventoryUserControl1.TabIndex = 0;
+            // 
             // orderAndReturnsTabPage
             // 
             this.orderAndReturnsTabPage.Location = new System.Drawing.Point(4, 22);
@@ -93,24 +98,15 @@ namespace RentMe_App.View
             this.orderAndReturnsTabPage.Text = "Orders & Returns";
             this.orderAndReturnsTabPage.UseVisualStyleBackColor = true;
             // 
-            // rentalCartTabPage
+            // cartsTabPage
             // 
-            this.rentalCartTabPage.Location = new System.Drawing.Point(4, 22);
-            this.rentalCartTabPage.Name = "rentalCartTabPage";
-            this.rentalCartTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.rentalCartTabPage.Size = new System.Drawing.Size(828, 502);
-            this.rentalCartTabPage.TabIndex = 2;
-            this.rentalCartTabPage.Text = "Rental Cart";
-            this.rentalCartTabPage.UseVisualStyleBackColor = true;
-            // 
-            // returnCartTabPage
-            // 
-            this.returnCartTabPage.Location = new System.Drawing.Point(4, 22);
-            this.returnCartTabPage.Name = "returnCartTabPage";
-            this.returnCartTabPage.Size = new System.Drawing.Size(828, 502);
-            this.returnCartTabPage.TabIndex = 3;
-            this.returnCartTabPage.Text = "Return Cart";
-            this.returnCartTabPage.UseVisualStyleBackColor = true;
+            this.cartsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.cartsTabPage.Name = "cartsTabPage";
+            this.cartsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.cartsTabPage.Size = new System.Drawing.Size(828, 502);
+            this.cartsTabPage.TabIndex = 2;
+            this.cartsTabPage.Text = "Carts";
+            this.cartsTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -264,13 +260,6 @@ namespace RentMe_App.View
             this.memberIDValueLabel.TabIndex = 4;
             this.memberIDValueLabel.Text = "  ";
             // 
-            // searchInventoryUserControl1
-            // 
-            this.searchInventoryUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.searchInventoryUserControl1.Name = "searchInventoryUserControl1";
-            this.searchInventoryUserControl1.Size = new System.Drawing.Size(828, 502);
-            this.searchInventoryUserControl1.TabIndex = 0;
-            // 
             // MainMemberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +298,7 @@ namespace RentMe_App.View
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage inventoryTabPage;
         private System.Windows.Forms.TabPage orderAndReturnsTabPage;
-        private System.Windows.Forms.TabPage rentalCartTabPage;
+        private System.Windows.Forms.TabPage cartsTabPage;
         private System.Windows.Forms.PictureBox logoPictureBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -319,7 +308,6 @@ namespace RentMe_App.View
         private System.Windows.Forms.FlowLayoutPanel labelFlowLayoutPanel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label usernameValueLabel;
-        private System.Windows.Forms.TabPage returnCartTabPage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel memberIDFlowLayoutPanel;
         private System.Windows.Forms.Label memberIDLabel;
