@@ -1,5 +1,4 @@
 ﻿using RentMe_App.DAL;
-using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
 
@@ -26,29 +25,29 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public OrdersController(int memberID)
         {
             this.memberID = memberID;
-            this.orderDBDAL = new OrderDBDAL();
+            orderDBDAL = new OrderDBDAL();
         }
 
         #endregion
 
         #region Methods
 
-        internal List<Order> GetOrderHistory()
+        public List<Order> GetOrderHistory()
         {
             return orderDBDAL.GetOrderHistory(memberID);
         }
 
-        internal List<Order> GetOrdersByTransactionId(int currentMemberID, int transactionID)
+        public List<Order> GetOrdersByTransactionId(int currentMemberID, int transactionID)
         {
             return orderDBDAL.GetOrdersByTransactionId(currentMemberID, transactionID);
         }
 
-        internal List<Order> GetOrdersByYear(string year)
+        public List<Order> GetOrdersByYear(string year)
         {
             throw new NotImplementedException();
         }
 
-        internal Order GetOrderFurnitureList(Order currentOrder)
+        public Order GetOrderFurnitureList(Order currentOrder)
         {
             return orderDBDAL.GetOrderFurnitureList(currentOrder);
         }

@@ -204,7 +204,7 @@ GO
 -- Rental Transactions
 CREATE TABLE [dbo].[rentalTransaction]
 (
-	[transactionID] int NOT NULL,  
+	[transactionID] int NOT NULL IDENTITY(1,1),  
 	[employeeID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[employee](employeeID),
 	[memberID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[storeMember](memberID),
 	[transaction_date] DATETIME,
@@ -216,7 +216,7 @@ GO
 -- Return Transactions
 CREATE TABLE [dbo].[returnTransaction]
 (
-	[transactionID] int NOT NULL,  
+	[transactionID] int NOT NULL IDENTITY(1,1),  
 	[employeeID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[employee](employeeID) ON DELETE CASCADE ON UPDATE CASCADE,
 	[return_date] DATE,
     PRIMARY KEY ([transactionID])

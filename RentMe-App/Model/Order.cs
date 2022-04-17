@@ -15,7 +15,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public string OrderType { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DueDate { get; set; }
-        public DateTime DateReturned { get; set; }
+        public DateTime? DateReturned { get; set; }
         public double OrderTotal { get; set; }
         public bool Status { get; set; }
         public double Balance { get; set; }
