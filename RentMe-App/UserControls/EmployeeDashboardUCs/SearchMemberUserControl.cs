@@ -212,6 +212,7 @@ namespace RentMe_App.UserControls
             ClearTextBoxes(memberIDTextBox, firstNameTextBox, lastNameTextBox, phoneTextBox);
             HideErrorMessage();
             editButton.Enabled = false;
+            selectMemberButton.Enabled = false;
         }
 
         private void HideErrorMessage()
@@ -297,11 +298,14 @@ namespace RentMe_App.UserControls
         private void SearchMemberDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             editButton.Enabled = searchMemberDataGridView.SelectedRows.Count == 1;
+            selectMemberButton.Enabled = searchMemberDataGridView.SelectedRows.Count == 1;
         }
 
         private void SearchMemberDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            selectMemberButton.Enabled = true;
             searchMemberDataGridView.CurrentRow.Selected = true;
+            HideErrorMessage();
         }
         #endregion
     }

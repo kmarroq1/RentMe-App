@@ -48,9 +48,9 @@ namespace RentMe_App.View
             this.memberIDFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDValueLabel = new System.Windows.Forms.Label();
+            this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
             this.ordersAndReturnsUserControl1 = new RentMe_App.UserControls.MemberDashboardUCs.OrdersAndReturnsUserControl();
             this.mainTabControl.SuspendLayout();
-            this.orderAndReturnsTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.labelFlowLayoutPanel.SuspendLayout();
@@ -74,6 +74,7 @@ namespace RentMe_App.View
             // 
             // inventoryTabPage
             // 
+            this.inventoryTabPage.Controls.Add(this.searchInventoryUserControl1);
             this.inventoryTabPage.Location = new System.Drawing.Point(4, 22);
             this.inventoryTabPage.Name = "inventoryTabPage";
             this.inventoryTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -264,14 +265,6 @@ namespace RentMe_App.View
             this.memberIDValueLabel.TabIndex = 4;
             this.memberIDValueLabel.Text = "  ";
             // 
-            // ordersAndReturnsUserControl1
-            // 
-            this.ordersAndReturnsUserControl1.Location = new System.Drawing.Point(5, 5);
-            this.ordersAndReturnsUserControl1.Margin = new System.Windows.Forms.Padding(1);
-            this.ordersAndReturnsUserControl1.Name = "ordersAndReturnsUserControl1";
-            this.ordersAndReturnsUserControl1.Size = new System.Drawing.Size(819, 493);
-            this.ordersAndReturnsUserControl1.TabIndex = 0;
-            // 
             // MainMemberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +282,6 @@ namespace RentMe_App.View
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMemberForm_FormClosing);
             this.Load += new System.EventHandler(this.MainMemberForm_Load);
             this.mainTabControl.ResumeLayout(false);
-            this.orderAndReturnsTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -325,6 +317,5 @@ namespace RentMe_App.View
         private System.Windows.Forms.FlowLayoutPanel memberIDFlowLayoutPanel;
         private System.Windows.Forms.Label memberIDLabel;
         private System.Windows.Forms.Label memberIDValueLabel;
-        private UserControls.MemberDashboardUCs.OrdersAndReturnsUserControl ordersAndReturnsUserControl1;
     }
 }

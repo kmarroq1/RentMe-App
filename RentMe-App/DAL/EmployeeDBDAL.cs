@@ -9,7 +9,7 @@ namespace RentMe_App.DAL
     /// <summary>
     /// Employee data access layer
     /// </summary>
-    class EmployeeDBDAL
+    public class EmployeeDBDAL
     {
         #region Queries
 

@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,11 +45,13 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\InventoryController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StatesController.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="DAL\EmployeeDBDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
+    <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
     <Compile Include="DAL\OrderDBDAL.cs" />
@@ -65,6 +69,8 @@
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\FurnitureInventory.cs" />
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Rental.cs" />
     <Compile Include="Model\Return.cs" />
     <Compile Include="Model\States.cs" />
@@ -85,6 +91,9 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
@@ -125,6 +134,12 @@
     </Compile>
     <Compile Include="View\MemberModals\ViewOrderModal.Designer.cs">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InventoryModals\AddRentalItemModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InventoryModals\AddRentalItemModal.Designer.cs">
+      <DependentUpon>AddRentalItemModal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -228,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InventoryModals\AddRentalItemModal.resx">
+      <DependentUpon>AddRentalItemModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
