@@ -115,13 +115,21 @@ namespace RentMe_App.UserControls
                     furnitureList = furnitureController.GetFurnitureByCategoryStyle(selectedCategoryName, selectedStyleName);
                     CheckFurnitureFound(furnitureList);
                 }
+                else if (getFurnitureCheck == true && furnitureID <= 0)
+                {
+                    ClearDataGridView();
+                    string errorMessage = "Furniture ID must be number greater than 0";
+                    ShowInvalidErrorMessage(errorMessage);
+                }
                 else if (getFurnitureCheck == false && furnitureIDTextBox.Text.Length > 0)
                 {
+                    ClearDataGridView();
                     string errorMessage = "Furniture ID must be number";
                     ShowInvalidErrorMessage(errorMessage);
                 }
                 else
                 {
+                    ClearDataGridView();
                     string errorMessage = "Selection must be made to return result";
                     ShowInvalidErrorMessage(errorMessage);
                 }
@@ -173,11 +181,18 @@ namespace RentMe_App.UserControls
 
         private void ClearForm()
         {
-            searchFurnitureDataGridView.DataSource = null;
+            searchFurnitureDataGridView.Rows.Clear();
+            searchFurnitureDataGridView.Refresh();
             furnitureIDTextBox.Text = "";
             PopulateStyleComboBox();
             PopulateCategoryComboBox();
             HideErrorMessage();
+        }
+
+        private void ClearDataGridView()
+        {
+            searchFurnitureDataGridView.Rows.Clear();
+            searchFurnitureDataGridView.Refresh();
         }
 
         private void HideErrorMessage()
