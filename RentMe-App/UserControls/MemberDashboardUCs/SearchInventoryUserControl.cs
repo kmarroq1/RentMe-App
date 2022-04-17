@@ -1,14 +1,9 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View.InventoryModals;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Net;
 using System.Windows.Forms;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace RentMe_App.UserControls
 {
@@ -24,7 +19,6 @@ namespace RentMe_App.UserControls
         private readonly InventoryController inventoryController;
         private readonly StyleController styleController;
         private readonly CategoryController categoryController;
-        private DataTable dataTable;
 
         #endregion
 
@@ -121,21 +115,29 @@ namespace RentMe_App.UserControls
                     inventoryList = inventoryController.GetInventoryByCategoryStyle(selectedCategoryName, selectedStyleName);
                     CheckFurnitureFound(inventoryList);
                 }
+                else if (getFurnitureCheck == true && furnitureID <= 0)
+                {
+                    ClearDataGridView();
+                    string errorMessage = "Furniture ID must be number greater than 0";
+                    ShowErrorMessage(errorMessage);
+                }
                 else if (getFurnitureCheck == false && furnitureIDTextBox.Text.Length > 0)
                 {
+                    ClearDataGridView();
                     string errorMessage = "Furniture ID must be number";
-                    ShowInvalidErrorMessage(errorMessage);
+                    ShowErrorMessage(errorMessage);
                 }
                 else
                 {
+                    ClearDataGridView();
                     string errorMessage = "Selection must be made to return result";
-                    ShowInvalidErrorMessage(errorMessage);
+                    ShowErrorMessage(errorMessage);
                 }
             }
             catch (Exception)
             {
                 string errorMessage = "Invalid Logic";
-                ShowInvalidErrorMessage(errorMessage);
+                ShowErrorMessage(errorMessage);
             }
         }
 
@@ -143,23 +145,64 @@ namespace RentMe_App.UserControls
         {
             searchInventoryDataGridView.DataSource = null;
             searchInventoryDataGridView.Columns.Clear();
-            dataTable = new DataTable();
+            searchInventoryDataGridView.Enabled = true;
+            searchInventoryDataGridView.AutoGenerateColumns = false;
 
-            dataTable.Columns.Add(new DataColumn("Furniture ID", typeof(int)));
-            //dataTable.Columns.Add(new DataColumn("Image", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Name", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Description", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Style", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Category", typeof(string)));
-            dataTable.Columns.Add(new DataColumn("Qty in Stock", typeof(int)));
-            dataTable.Columns.Add(new DataColumn("Daily Rental Rate", typeof(string)));
+            DataGridViewTextBoxColumn furnitureIDColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Furniture ID",
+                Name = "furnitureIDColumn"
+            };
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Name",
+                Name = "nameColumn"
+            };
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Decription",
+                Name = "descriptionColumn"
+            };
+
+            DataGridViewTextBoxColumn styleColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Style",
+                Name = "styleColumn"
+            };
+
+            DataGridViewTextBoxColumn categoryColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Category",
+                Name = "categoryColumn"
+            };
+
+            DataGridViewTextBoxColumn quantityInStockColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Qty in Stock",
+                Name = "quantityInStockColumn"
+            };
+
+            DataGridViewTextBoxColumn dailyRentalRateColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Daily Rental Rate",
+                Name = "dailyRentalRateColumn"
+            };
+
+            searchInventoryDataGridView.Columns.Add(furnitureIDColumn);
+            searchInventoryDataGridView.Columns.Add(nameColumn);
+            searchInventoryDataGridView.Columns.Add(descriptionColumn);
+            searchInventoryDataGridView.Columns.Add(styleColumn);
+            searchInventoryDataGridView.Columns.Add(categoryColumn);
+            searchInventoryDataGridView.Columns.Add(quantityInStockColumn);
+            searchInventoryDataGridView.Columns.Add(dailyRentalRateColumn);
 
             try
             {
 
                 foreach (FurnitureInventory go in inventoryList)
                 {
-                    DataRow row = dataTable.NewRow();
                     FurnitureInventory furnitureInventory = new FurnitureInventory
                     {
                         FurnitureID = go.FurnitureID,
@@ -178,43 +221,71 @@ namespace RentMe_App.UserControls
                     //pictureBox.Image = new Bitmap(stringPath);
                     //singleImageBox.SizeMode = PictureBoxSizeMode.AutoSize;
 
-                    row["Furniture ID"] = furnitureInventory.FurnitureID;
-                    //row["Image"] = null;
-                    row["Name"] = furnitureInventory.Name;
-                    row["Description"] = furnitureInventory.Description;
-                    row["Style"] = furnitureInventory.Style_Name;
-                    row["Category"] = furnitureInventory.Category_Name;
-                    row["Qty in Stock"] = furnitureInventory.Quantity;
-                    row["Daily Rental Rate"] = furnitureInventory.Daily_Rental_Rate.ToString("C");
+                    int n = searchInventoryDataGridView.Rows.Add();
 
-                    dataTable.Rows.Add(row);
+                    searchInventoryDataGridView.Rows[n].Cells[0].Value = furnitureInventory.FurnitureID.ToString();
+                    searchInventoryDataGridView.Rows[n].Cells[1].Value = furnitureInventory.Name;
+                    searchInventoryDataGridView.Rows[n].Cells[2].Value = furnitureInventory.Description;
+                    searchInventoryDataGridView.Rows[n].Cells[3].Value = furnitureInventory.Style_Name;
+                    searchInventoryDataGridView.Rows[n].Cells[4].Value = furnitureInventory.Category_Name;
+                    searchInventoryDataGridView.Rows[n].Cells[5].Value = furnitureInventory.Quantity.ToString();
+                    searchInventoryDataGridView.Rows[n].Cells[6].Value = furnitureInventory.Daily_Rental_Rate.ToString("C");
+
+                    n++;
                 }
             }
             catch (Exception)
             {
-                ShowInvalidErrorMessage("Invalid Search");
+                ShowErrorMessage("Invalid Search");
+            }
+        }
+
+        private void SearchInventoryDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            selectRentalItemButton.Enabled = searchInventoryDataGridView.SelectedRows.Count == 1;
+        }
+
+        private void SearchInventoryDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectRentalItemButton.Enabled = true;
+            searchInventoryDataGridView.CurrentRow.Selected = true;
+            HideErrorMessage();
+        }
+
+        private void SelectRentalItemButton_Click(object sender, EventArgs e)
+        {
+            if (searchInventoryDataGridView.SelectedRows.Count != 1)
+            {
+                ShowErrorMessage("Please select an item to add to cart");
+                return;
             }
 
-            searchInventoryDataGridView.DataSource = dataTable;
+            int selectedrowindex = searchInventoryDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = searchInventoryDataGridView.Rows[selectedrowindex];
+            int selectedFurnitureID = Convert.ToInt32(selectedRow.Cells[0].Value);
 
-            DataGridViewButtonColumn addButton = new DataGridViewButtonColumn();
-            addButton.Name = "addButton";
-            addButton.HeaderText = "";
-            addButton.Text = "Add";
-            addButton.UseColumnTextForButtonValue = true;
-            searchInventoryDataGridView.Columns.Add(addButton);
+            List<FurnitureInventory> selectedRentalItem = inventoryController.GetInventoryByID(selectedFurnitureID);
+
+            AddRentalItemModal modal = new AddRentalItemModal(selectedRentalItem[0]);
+
+            modal.ShowDialog();
+
+            RefreshSearchDataGrid();
+                        
         }
 
         private void CheckFurnitureFound(List<FurnitureInventory> inventoryList)
         {
             if (inventoryList.Count > 0)
             {
+                selectRentalItemButton.Enabled = false;
                 BuildDataGridView(inventoryList);
             }
             else
             {
+                ClearForm();
                 string errorMessage = "No furniture found";
-                ShowInvalidErrorMessage(errorMessage);
+                ShowErrorMessage(errorMessage);
             }
         }
 
@@ -230,11 +301,19 @@ namespace RentMe_App.UserControls
 
         private void ClearForm()
         {
-            searchInventoryDataGridView.DataSource = null;
+            searchInventoryDataGridView.Rows.Clear();
+            searchInventoryDataGridView.Refresh();
             furnitureIDTextBox.Text = "";
             PopulateStyleComboBox();
             PopulateCategoryComboBox();
             HideErrorMessage();
+            selectRentalItemButton.Enabled = false;
+        }
+
+        private void ClearDataGridView()
+        {
+            searchInventoryDataGridView.Rows.Clear();
+            searchInventoryDataGridView.Refresh();
         }
 
         private void HideErrorMessage()
@@ -242,7 +321,7 @@ namespace RentMe_App.UserControls
             errorMessageLabel.Text = "";
         }
 
-        private void ShowInvalidErrorMessage(string message)
+        private void ShowErrorMessage(string message)
         {
             errorMessageLabel.Text = message;
             errorMessageLabel.ForeColor = System.Drawing.Color.Red;

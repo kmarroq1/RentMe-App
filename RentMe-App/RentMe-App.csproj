@@ -129,6 +129,12 @@
     <Compile Include="View\EmployeeModals\ViewOrderModal.Designer.cs">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\InventoryModals\AddRentalItemModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InventoryModals\AddRentalItemModal.Designer.cs">
+      <DependentUpon>AddRentalItemModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InventoryModals\AddRentalItemModal.resx">
+      <DependentUpon>AddRentalItemModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

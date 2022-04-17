@@ -43,6 +43,7 @@ namespace RentMe_App.UserControls
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.selectRentalItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.searchInventoryDataGridView)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,6 +62,8 @@ namespace RentMe_App.UserControls
             this.searchInventoryDataGridView.ReadOnly = true;
             this.searchInventoryDataGridView.Size = new System.Drawing.Size(797, 319);
             this.searchInventoryDataGridView.TabIndex = 30;
+            this.searchInventoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SearchInventoryDataGridView_CellClick);
+            this.searchInventoryDataGridView.SelectionChanged += new System.EventHandler(this.SearchInventoryDataGridView_SelectionChanged);
             // 
             // searchHeaderLabel
             // 
@@ -143,7 +146,7 @@ namespace RentMe_App.UserControls
             // 
             this.clearSearchButton.AutoSize = true;
             this.clearSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.clearSearchButton.Location = new System.Drawing.Point(84, 3);
+            this.clearSearchButton.Location = new System.Drawing.Point(194, 3);
             this.clearSearchButton.Name = "clearSearchButton";
             this.clearSearchButton.Size = new System.Drawing.Size(78, 23);
             this.clearSearchButton.TabIndex = 32;
@@ -218,13 +221,26 @@ namespace RentMe_App.UserControls
             this.buttonFlowLayoutPanel.AutoSize = true;
             this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonFlowLayoutPanel.Controls.Add(this.searchButton);
+            this.buttonFlowLayoutPanel.Controls.Add(this.selectRentalItemButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.clearSearchButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(329, 457);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(293, 457);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(165, 29);
+            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(275, 29);
             this.buttonFlowLayoutPanel.TabIndex = 36;
             this.buttonFlowLayoutPanel.WrapContents = false;
+            // 
+            // selectRentalItemButton
+            // 
+            this.selectRentalItemButton.AutoSize = true;
+            this.selectRentalItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.selectRentalItemButton.Location = new System.Drawing.Point(84, 3);
+            this.selectRentalItemButton.Name = "selectRentalItemButton";
+            this.selectRentalItemButton.Size = new System.Drawing.Size(104, 23);
+            this.selectRentalItemButton.TabIndex = 33;
+            this.selectRentalItemButton.Text = "Select Rental Item";
+            this.selectRentalItemButton.UseVisualStyleBackColor = true;
+            this.selectRentalItemButton.Click += new System.EventHandler(this.SelectRentalItemButton_Click);
             // 
             // SearchInventoryUserControl
             // 
@@ -264,5 +280,6 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
+        private System.Windows.Forms.Button selectRentalItemButton;
     }
 }
