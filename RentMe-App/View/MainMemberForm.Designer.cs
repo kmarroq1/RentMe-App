@@ -32,6 +32,7 @@ namespace RentMe_App.View
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMemberForm));
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.inventoryTabPage = new System.Windows.Forms.TabPage();
+            this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
             this.orderAndReturnsTabPage = new System.Windows.Forms.TabPage();
             this.rentalCartTabPage = new System.Windows.Forms.TabPage();
             this.returnCartTabPage = new System.Windows.Forms.TabPage();
@@ -48,9 +49,10 @@ namespace RentMe_App.View
             this.memberIDFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDValueLabel = new System.Windows.Forms.Label();
-            this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
+            this.rentalCartUserControl1 = new RentMe_App.UserControls.MemberDashboardUCs.RentalCartUserControl();
             this.mainTabControl.SuspendLayout();
             this.inventoryTabPage.SuspendLayout();
+            this.rentalCartTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.labelFlowLayoutPanel.SuspendLayout();
@@ -83,6 +85,13 @@ namespace RentMe_App.View
             this.inventoryTabPage.Text = "Inventory";
             this.inventoryTabPage.UseVisualStyleBackColor = true;
             // 
+            // searchInventoryUserControl1
+            // 
+            this.searchInventoryUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.searchInventoryUserControl1.Name = "searchInventoryUserControl1";
+            this.searchInventoryUserControl1.Size = new System.Drawing.Size(828, 502);
+            this.searchInventoryUserControl1.TabIndex = 0;
+            // 
             // orderAndReturnsTabPage
             // 
             this.orderAndReturnsTabPage.Location = new System.Drawing.Point(4, 22);
@@ -95,6 +104,7 @@ namespace RentMe_App.View
             // 
             // rentalCartTabPage
             // 
+            this.rentalCartTabPage.Controls.Add(this.rentalCartUserControl1);
             this.rentalCartTabPage.Location = new System.Drawing.Point(4, 22);
             this.rentalCartTabPage.Name = "rentalCartTabPage";
             this.rentalCartTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -264,12 +274,12 @@ namespace RentMe_App.View
             this.memberIDValueLabel.TabIndex = 4;
             this.memberIDValueLabel.Text = "  ";
             // 
-            // searchInventoryUserControl1
+            // rentalCartUserControl1
             // 
-            this.searchInventoryUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.searchInventoryUserControl1.Name = "searchInventoryUserControl1";
-            this.searchInventoryUserControl1.Size = new System.Drawing.Size(828, 502);
-            this.searchInventoryUserControl1.TabIndex = 0;
+            this.rentalCartUserControl1.Location = new System.Drawing.Point(-3, 0);
+            this.rentalCartUserControl1.Name = "rentalCartUserControl1";
+            this.rentalCartUserControl1.Size = new System.Drawing.Size(828, 502);
+            this.rentalCartUserControl1.TabIndex = 0;
             // 
             // MainMemberForm
             // 
@@ -289,6 +299,7 @@ namespace RentMe_App.View
             this.Load += new System.EventHandler(this.MainMemberForm_Load);
             this.mainTabControl.ResumeLayout(false);
             this.inventoryTabPage.ResumeLayout(false);
+            this.rentalCartTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -325,5 +336,6 @@ namespace RentMe_App.View
         private System.Windows.Forms.Label memberIDLabel;
         private System.Windows.Forms.Label memberIDValueLabel;
         private UserControls.SearchInventoryUserControl searchInventoryUserControl1;
+        private UserControls.MemberDashboardUCs.RentalCartUserControl rentalCartUserControl1;
     }
 }
