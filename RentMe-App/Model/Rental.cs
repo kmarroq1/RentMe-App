@@ -10,7 +10,7 @@ namespace RentMe_App.Model
     {
         #region Fields
         private int _memberID;
-        private readonly List<Furniture> _rentedFurniture;
+        private readonly List<FurnitureInventory> _rentedFurniture;
         #endregion
 
         #region Constructor
@@ -19,7 +19,7 @@ namespace RentMe_App.Model
         /// </summary>
         public Rental() : base()
         {
-            _rentedFurniture = new List<Furniture>();
+            _rentedFurniture = new List<FurnitureInventory>();
         }
         #endregion
 
@@ -47,7 +47,11 @@ namespace RentMe_App.Model
         /// <summary>
         /// Dictates how the Rented Furniture List can be accessed.
         /// </summary>
-        public List<Furniture> RentedFurniture { get => _rentedFurniture; }
+        public List<FurnitureInventory> RentedFurniture
+        {
+            get => _rentedFurniture;
+        }
+
         #endregion
     }
 }
