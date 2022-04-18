@@ -99,6 +99,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.CompleteReturnButton.TabIndex = 0;
             this.CompleteReturnButton.Text = "Complete Return";
             this.CompleteReturnButton.UseVisualStyleBackColor = true;
+            this.CompleteReturnButton.Click += new System.EventHandler(this.CompleteReturnButton_Click);
             // 
             // ViewReturnItemButton
             // 

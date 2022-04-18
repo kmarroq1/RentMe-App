@@ -34,5 +34,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             Cart.ClearReturns();
             UpdateElements();
         }
+
+        private void CompleteReturnButton_Click(object sender, System.EventArgs e)
+        {
+            MessageBox.Show("Return successfully processed.", "Success");
+            Cart.ClearReturns();
+            UpdateElements();
+        }
     }
 }
