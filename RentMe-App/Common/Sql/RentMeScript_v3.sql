@@ -459,13 +459,13 @@ VALUES
     ;
 GO
 
-INSERT INTO [rentalTransaction] (transactionID, employeeID, memberID, transaction_date, return_date)
+INSERT INTO [rentalTransaction] (employeeID, memberID, transaction_date, return_date)
 VALUES
-(1, 1, 1, '4/16/2022', '4/17/2022'),
-(2, 1, 1, '4/15/2022', '4/16/2022'),
-(3, 1, 1, '4/14/2022', '4/15/2022'),
-(4, 1, 1, '4/13/2022', '4/14/2022'),
-(5, 1, 1, '4/12/2022', '4/13/2022')
+(1, 1, '4/16/2022', '4/17/2022'),
+(1, 1, '4/15/2022', '4/16/2022'),
+(1, 1, '4/14/2022', '4/15/2022'),
+(1, 1, '4/13/2022', '4/14/2022'),
+(1, 1, '4/12/2022', '4/13/2022')
 ;
 GO
 

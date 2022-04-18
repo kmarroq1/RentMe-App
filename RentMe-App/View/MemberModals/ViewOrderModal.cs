@@ -45,7 +45,9 @@ namespace RentMe_App.View.EmployeeModals
 
         private void ReturnButton_Click(object sender, System.EventArgs e)
         {
-            //Add to return cart
+            //add condition for if item has already been returned
+            //add option to choose quantity to return
+
         }
 
         private void CloseButton_Click(object sender, System.EventArgs e)

@@ -115,15 +115,14 @@ namespace RentMe_App.Model
             try
             {
                 bool addedToCart = false;
-                if (returnItem != null && RentalList.Count == 0)
+                if (returnItem != null && ReturnList.Count == 0)
                 {
                     ReturnList.Add(returnItem);
                     addedToCart = true;
-                    Console.WriteLine(RentalList[0].Quantity.ToString());
                 }
                 else if (ReturnList.Count > 0)
                 {
-                    if (ReturnList.Any(item => item.FurnitureID == returnItem.FurnitureID))
+                    if (ItemInReturnCart(returnItem.FurnitureID))
                     {
                         var cartItem = ReturnList.FirstOrDefault(o => o.FurnitureID == returnItem.FurnitureID);
                         if (cartItem != null && returnItem.Quantity <= quantityInStock - cartItem.Quantity)
