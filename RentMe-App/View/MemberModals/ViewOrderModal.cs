@@ -63,7 +63,8 @@ namespace RentMe_App.View.EmployeeModals
                 {
                     furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, 0, 0, furniture.Daily_Rental_Rate, currentOrder.Balance);
                 }
-            } catch (Exception exception)
+            }
+            catch (Exception exception)
             {
                 var error = exception.Message;
             }
