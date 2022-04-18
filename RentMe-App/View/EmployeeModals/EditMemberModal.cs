@@ -4,7 +4,7 @@ using RentMe_App.Model;
 using System;
 using System.Windows.Forms;
 
-namespace RentMe_App.View
+namespace RentMe_App.View.EmployeeModals
 {
     /// <summary>
     /// Displays the dialog to edit the selected Member.
