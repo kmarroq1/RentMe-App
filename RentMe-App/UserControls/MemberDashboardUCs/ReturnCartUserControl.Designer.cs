@@ -104,12 +104,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.ViewReturnItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ViewReturnItemButton.AutoSize = true;
+            this.ViewReturnItemButton.Enabled = false;
             this.ViewReturnItemButton.Location = new System.Drawing.Point(105, 3);
             this.ViewReturnItemButton.Name = "ViewReturnItemButton";
             this.ViewReturnItemButton.Size = new System.Drawing.Size(75, 23);
             this.ViewReturnItemButton.TabIndex = 1;
             this.ViewReturnItemButton.Text = "View Item";
             this.ViewReturnItemButton.UseVisualStyleBackColor = true;
+            this.ViewReturnItemButton.Visible = false;
             // 
             // ClearReturnsButton
             // 
