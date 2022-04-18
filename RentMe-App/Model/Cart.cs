@@ -14,6 +14,7 @@ namespace RentMe_App.Model
         static Cart()
         {
             RentalList = new List<FurnitureInventory>();
+            Return = new Return();
         }
 
         #region Properties

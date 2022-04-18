@@ -30,6 +30,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void InitializeComponent()
         {
             this.PrimaryTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ReturnButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.CompleteReturnButton = new System.Windows.Forms.Button();
+            this.ViewReturnItemButton = new System.Windows.Forms.Button();
+            this.ClearReturnsButton = new System.Windows.Forms.Button();
             this.ReturnSumsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ReturnCountFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ReturnCountLabelLabel = new System.Windows.Forms.Label();
@@ -45,16 +49,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnBalanceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnDeleteButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.ReturnButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CompleteReturnButton = new System.Windows.Forms.Button();
-            this.ViewReturnItemButton = new System.Windows.Forms.Button();
-            this.ClearReturnsButton = new System.Windows.Forms.Button();
             this.PrimaryTableLayoutPanel.SuspendLayout();
+            this.ReturnButtonsFlowLayoutPanel.SuspendLayout();
             this.ReturnSumsFlowLayoutPanel.SuspendLayout();
             this.ReturnCountFlowLayoutPanel.SuspendLayout();
             this.ReturnBalanceFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReturnsDataGridView)).BeginInit();
-            this.ReturnButtonsFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrimaryTableLayoutPanel
@@ -76,6 +76,51 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.PrimaryTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.PrimaryTableLayoutPanel.Size = new System.Drawing.Size(380, 358);
             this.PrimaryTableLayoutPanel.TabIndex = 0;
+            // 
+            // ReturnButtonsFlowLayoutPanel
+            // 
+            this.ReturnButtonsFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ReturnButtonsFlowLayoutPanel.AutoSize = true;
+            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.CompleteReturnButton);
+            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.ViewReturnItemButton);
+            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.ClearReturnsButton);
+            this.ReturnButtonsFlowLayoutPanel.Location = new System.Drawing.Point(55, 313);
+            this.ReturnButtonsFlowLayoutPanel.Name = "ReturnButtonsFlowLayoutPanel";
+            this.ReturnButtonsFlowLayoutPanel.Size = new System.Drawing.Size(270, 29);
+            this.ReturnButtonsFlowLayoutPanel.TabIndex = 10;
+            // 
+            // CompleteReturnButton
+            // 
+            this.CompleteReturnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CompleteReturnButton.AutoSize = true;
+            this.CompleteReturnButton.Location = new System.Drawing.Point(3, 3);
+            this.CompleteReturnButton.Name = "CompleteReturnButton";
+            this.CompleteReturnButton.Size = new System.Drawing.Size(96, 23);
+            this.CompleteReturnButton.TabIndex = 0;
+            this.CompleteReturnButton.Text = "Complete Return";
+            this.CompleteReturnButton.UseVisualStyleBackColor = true;
+            // 
+            // ViewReturnItemButton
+            // 
+            this.ViewReturnItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ViewReturnItemButton.AutoSize = true;
+            this.ViewReturnItemButton.Location = new System.Drawing.Point(105, 3);
+            this.ViewReturnItemButton.Name = "ViewReturnItemButton";
+            this.ViewReturnItemButton.Size = new System.Drawing.Size(75, 23);
+            this.ViewReturnItemButton.TabIndex = 1;
+            this.ViewReturnItemButton.Text = "View Item";
+            this.ViewReturnItemButton.UseVisualStyleBackColor = true;
+            // 
+            // ClearReturnsButton
+            // 
+            this.ClearReturnsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ClearReturnsButton.AutoSize = true;
+            this.ClearReturnsButton.Location = new System.Drawing.Point(186, 3);
+            this.ClearReturnsButton.Name = "ClearReturnsButton";
+            this.ClearReturnsButton.Size = new System.Drawing.Size(81, 23);
+            this.ClearReturnsButton.TabIndex = 2;
+            this.ClearReturnsButton.Text = "Clear Returns";
+            this.ClearReturnsButton.UseVisualStyleBackColor = true;
             // 
             // ReturnSumsFlowLayoutPanel
             // 
@@ -230,51 +275,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ErrorMessage.Text = "Error Message";
             this.ErrorMessage.Visible = false;
             // 
-            // ReturnButtonsFlowLayoutPanel
-            // 
-            this.ReturnButtonsFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ReturnButtonsFlowLayoutPanel.AutoSize = true;
-            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.CompleteReturnButton);
-            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.ViewReturnItemButton);
-            this.ReturnButtonsFlowLayoutPanel.Controls.Add(this.ClearReturnsButton);
-            this.ReturnButtonsFlowLayoutPanel.Location = new System.Drawing.Point(55, 313);
-            this.ReturnButtonsFlowLayoutPanel.Name = "ReturnButtonsFlowLayoutPanel";
-            this.ReturnButtonsFlowLayoutPanel.Size = new System.Drawing.Size(270, 29);
-            this.ReturnButtonsFlowLayoutPanel.TabIndex = 10;
-            // 
-            // CompleteReturnButton
-            // 
-            this.CompleteReturnButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CompleteReturnButton.AutoSize = true;
-            this.CompleteReturnButton.Location = new System.Drawing.Point(3, 3);
-            this.CompleteReturnButton.Name = "CompleteReturnButton";
-            this.CompleteReturnButton.Size = new System.Drawing.Size(96, 23);
-            this.CompleteReturnButton.TabIndex = 0;
-            this.CompleteReturnButton.Text = "Complete Return";
-            this.CompleteReturnButton.UseVisualStyleBackColor = true;
-            // 
-            // ViewReturnItemButton
-            // 
-            this.ViewReturnItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ViewReturnItemButton.AutoSize = true;
-            this.ViewReturnItemButton.Location = new System.Drawing.Point(105, 3);
-            this.ViewReturnItemButton.Name = "ViewReturnItemButton";
-            this.ViewReturnItemButton.Size = new System.Drawing.Size(75, 23);
-            this.ViewReturnItemButton.TabIndex = 1;
-            this.ViewReturnItemButton.Text = "View Item";
-            this.ViewReturnItemButton.UseVisualStyleBackColor = true;
-            // 
-            // ClearReturnsButton
-            // 
-            this.ClearReturnsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearReturnsButton.AutoSize = true;
-            this.ClearReturnsButton.Location = new System.Drawing.Point(186, 3);
-            this.ClearReturnsButton.Name = "ClearReturnsButton";
-            this.ClearReturnsButton.Size = new System.Drawing.Size(81, 23);
-            this.ClearReturnsButton.TabIndex = 2;
-            this.ClearReturnsButton.Text = "Clear Returns";
-            this.ClearReturnsButton.UseVisualStyleBackColor = true;
-            // 
             // ReturnCartUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,8 +282,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.Controls.Add(this.PrimaryTableLayoutPanel);
             this.Name = "ReturnCartUserControl";
             this.Size = new System.Drawing.Size(380, 358);
+            this.Load += new System.EventHandler(this.ReturnCartUserControl_Load);
             this.PrimaryTableLayoutPanel.ResumeLayout(false);
             this.PrimaryTableLayoutPanel.PerformLayout();
+            this.ReturnButtonsFlowLayoutPanel.ResumeLayout(false);
+            this.ReturnButtonsFlowLayoutPanel.PerformLayout();
             this.ReturnSumsFlowLayoutPanel.ResumeLayout(false);
             this.ReturnSumsFlowLayoutPanel.PerformLayout();
             this.ReturnCountFlowLayoutPanel.ResumeLayout(false);
@@ -291,8 +294,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnBalanceFlowLayoutPanel.ResumeLayout(false);
             this.ReturnBalanceFlowLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReturnsDataGridView)).EndInit();
-            this.ReturnButtonsFlowLayoutPanel.ResumeLayout(false);
-            this.ReturnButtonsFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
