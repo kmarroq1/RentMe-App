@@ -27,12 +27,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             InitializeComponent();
 
-            _currentMemberID = SharedFormInfo.MemberIDForm;
-            _ordersController = new OrdersController(_currentMemberID);
-            _orderList = _ordersController.GetOrderHistory();
+            _ordersController = new OrdersController();
 
             ViewButton.Enabled = false;
-            PopulateDataGridView();
+            //PopulateDataGridView();
             PopulateComboBox();
         }
 
@@ -117,12 +115,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void RefreshData()
         {
-            if (_orderList.Count == 0)
-            {
-                errorMsgLabel.Text = "No orders found...";
-                return;
-            }
-
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
 
@@ -131,12 +123,29 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void PopulateDataGridView()
         {
-            foreach (var order in _orderList)
+            try
             {
-                orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                _orderList = _ordersController.GetOrderHistory(1);
+                if (_orderList == null || _orderList.Count == 0)
+                {
+                    throw new Exception("No orders");
+                }
+                foreach (var order in _orderList)
+                {
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                }
+            }
+            catch (Exception exception)
+            {
+                errorMsgLabel.Text = exception.Message;
             }
         }
 
         #endregion
+
+        private void OrderHistoryLoad(object sender, EventArgs e)
+        {
+            PopulateDataGridView();
+        }
     }
 }

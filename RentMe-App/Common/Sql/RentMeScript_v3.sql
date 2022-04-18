@@ -459,6 +459,44 @@ VALUES
     ;
 GO
 
+INSERT INTO [rentalTransaction] (transactionID, employeeID, memberID, transaction_date, return_date)
+VALUES
+(1, 1, 1, '4/16/2022', '4/17/2022'),
+(2, 1, 1, '4/15/2022', '4/16/2022'),
+(3, 1, 1, '4/14/2022', '4/15/2022'),
+(4, 1, 1, '4/13/2022', '4/14/2022'),
+(5, 1, 1, '4/12/2022', '4/13/2022')
+;
+GO
+
+INSERT INTO [furnitureRented] (furnitureID, rental_transactionID, quantity)
+VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 1),
+(5, 3, 2),
+(1, 4, 1),
+(2, 5, 2);
+
+INSERT INTO [returnTransaction] (employeeID, return_date)
+VALUES
+(1, '4/16/2022'),
+(1, '4/16/2022')
+;
+GO
+
+INSERT INTO [furnitureReturned] (furnitureID, rental_transactionID, return_transactionID, quantity)
+VALUES
+(4, 2, 1, 1),
+(5, 3, 2, 1)
+;
+GO
+
+-- =========================================
+-- Login logic
+-- =========================================
+
 USE [cs6232-g5]
 GO
 DROP FUNCTION IF EXISTS sfGetAuthorizedAdminLoginInfo;

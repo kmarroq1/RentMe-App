@@ -27,7 +27,7 @@ namespace RentMe_App.View.EmployeeModals
         public ViewOrderModal(Order selectedOrder)
         {
             InitializeComponent();
-            ordersController = new OrdersController(memberID);
+            ordersController = new OrdersController();
             currentOrder = selectedOrder;
             PopulateGridView();
         }

@@ -21,7 +21,7 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT returns.transactionID as returnTransactionId, returns.employeeID, returns.return_date as return_date" +
+            string returnSelectStatement = "SELECT returns.transactionID as returnTransactionId, returns.employeeID, returns.return_date as return_date " +
                 "FROM returnTransaction AS returns " +
                 "JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "JOIN rentalTransaction ON rentalTransaction.transactionID = furnitureReturned.rental_transactionID " +
@@ -42,11 +42,6 @@ namespace RentMe_App.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (!reader.HasRows)
-                        {
-                            return null;
-                        }
-
                         while (reader.Read())
                         {
                             Order order = new Order
@@ -71,11 +66,6 @@ namespace RentMe_App.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (!reader.HasRows)
-                        {
-                            return null;
-                        }
-
                         while (reader.Read())
                         {
                             Order order = new Order
