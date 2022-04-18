@@ -4,10 +4,13 @@ using System.Collections.Generic;
 namespace RentMe_App.Model
 {
     /// <summary>
+    /// Keeps track of a return and all of the furniture associated with it.
+    /// </summary>
+    /// <summary>
     /// Models a return transaction
     /// </summary>
     public class Return : Transaction
-    {
+    {        
         #region Fields
 
         private int _memberID;
@@ -52,6 +55,36 @@ namespace RentMe_App.Model
         public List<FurnitureInventory> ReturnedFurniture
         {
             get => _returnedFurniture;
+        }
+
+        /// <summary>
+        /// Returns the total count of items (including quantities)
+        /// </summary>
+        public int TotalItems
+        {
+            get
+            {
+                int count = 0;
+
+                foreach (FurnitureInventory furniture in _returnedFurniture) count += furniture.Quantity;
+
+                return count;
+            }
+        }
+
+        /// <summary>
+        /// Returns the total daily rental rate of items
+        /// </summary>
+        public decimal TotalRate
+        {
+            get
+            {
+                decimal total = 0.0M;
+
+                foreach (FurnitureInventory furniture in _returnedFurniture) total += furniture.Daily_Rental_Rate;
+
+                return total;
+            }
         }
 
         #endregion

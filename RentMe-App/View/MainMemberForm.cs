@@ -86,5 +86,10 @@ namespace RentMe_App.View
         }
 
         #endregion
+
+        private void ReturnCartTabPage_Enter(object sender, System.EventArgs e)
+        {
+            ReturnCartUserControl.UpdateElements();
+        }
     }
 }

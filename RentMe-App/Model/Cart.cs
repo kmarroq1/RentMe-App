@@ -15,6 +15,7 @@ namespace RentMe_App.Model
         {
             RentalList = new List<FurnitureInventory>();
             ReturnList = new List<FurnitureInventory>();
+            Return = new Return();
         }
 
         #region Properties
@@ -155,6 +156,14 @@ namespace RentMe_App.Model
         public static bool ItemInReturnCart(int furnitureID)
         {
             return ReturnList.Any(item => item.FurnitureID == furnitureID);
+        }
+
+        /// <summary>
+        /// Removes all items from the return transaction.
+        /// </summary>
+        public static void ClearReturns()
+        {
+            Return = new Return();
         }
 
         #endregion
