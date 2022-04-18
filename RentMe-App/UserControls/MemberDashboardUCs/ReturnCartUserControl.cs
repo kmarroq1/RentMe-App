@@ -28,5 +28,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             UpdateElements();
         }
+
+        private void ClearReturnsButton_Click(object sender, System.EventArgs e)
+        {
+            Cart.ClearReturns();
+            UpdateElements();
+        }
     }
 }

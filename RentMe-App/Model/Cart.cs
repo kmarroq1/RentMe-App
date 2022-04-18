@@ -100,6 +100,14 @@ namespace RentMe_App.Model
             return RentalList.Any(item => item.FurnitureID == furnitureID);
         }
 
+        /// <summary>
+        /// Removes all items from the return transaction.
+        /// </summary>
+        public static void ClearReturns()
+        {
+            Return = new Return();
+        }
+
         #endregion
     }
 }

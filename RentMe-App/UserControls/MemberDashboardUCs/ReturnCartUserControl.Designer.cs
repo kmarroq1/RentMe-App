@@ -121,6 +121,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ClearReturnsButton.TabIndex = 2;
             this.ClearReturnsButton.Text = "Clear Returns";
             this.ClearReturnsButton.UseVisualStyleBackColor = true;
+            this.ClearReturnsButton.Click += new System.EventHandler(this.ClearReturnsButton_Click);
             // 
             // ReturnSumsFlowLayoutPanel
             // 
