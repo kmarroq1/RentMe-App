@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Model;
 using RentMe_App.UserControls.MemberDashboardUCs;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -54,10 +55,17 @@ namespace RentMe_App.View.EmployeeModals
 
         private void PopulateGridView()
         {
-            _furnitureList = ordersController.GetOrderFurnitureList(currentOrder).FurnitureList;
-            foreach (Furniture furniture in _furnitureList)
+            try
             {
-                //furnitureOrderedDataGridView.Rows.Add([add columns here]);
+                Order updatedOrder = ordersController.GetOrderFurnitureList(currentOrder);
+                _furnitureList = updatedOrder.FurnitureList;
+                foreach (var furniture in _furnitureList)
+                {
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, 0, 0, furniture.Daily_Rental_Rate, currentOrder.Balance);
+                }
+            } catch (Exception exception)
+            {
+                var error = exception.Message;
             }
         }
 

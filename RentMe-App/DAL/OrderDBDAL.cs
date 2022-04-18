@@ -1,4 +1,5 @@
-﻿using RentMe_App.UserControls.MemberDashboardUCs;
+﻿using RentMe_App.Model;
+using RentMe_App.UserControls.MemberDashboardUCs;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -176,12 +177,65 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public Order GetOrderFurnitureList(Order currentOrder)
         {
-            var selectStatement = "SELECT transactionID, SUM(quantity * daily_rental_rate) as price " +
-                "FROM rentalTransaction rtLEFT " +
-                "JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionIDLEFT " +
-                "JOIN furniture ON furniture.furnitureID = fr.furnitureID " +
+            List<Furniture> furnitureList = new List<Furniture>();
+
+            var selectOrderTotalStatement = "SELECT transactionID, SUM(quantity * daily_rental_rate) as orderTotal " +
+                "FROM rentalTransaction rt" +
+                "LEFT JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionID" +
+                "LEFT JOIN furniture ON furniture.furnitureID = fr.furnitureID " +
                 "GROUP BY transactionID";
-            throw new NotImplementedException();
+
+            // add conditional statemnent for order type i.e. if rental, join rental table, etc..
+            string furnitureSelectStatement = "SELECT furniture.furnitureID, name, description, daily_rental_rate, daily_fine_rate " +
+                "FROM furniture ";
+            if (currentOrder.OrderType == "rental")
+            {
+                furnitureSelectStatement += "LEFT JOIN furnitureRented ON furnitureRented.furnitureID = furniture.furnitureID " +
+                    "WHERE rental_transactionID = @transactionID";
+            }
+            else
+            {
+                furnitureSelectStatement += "LEFT JOIN furnitureReturned ON furnitureReturned.furnitureID = furniture.furnitureID " +
+                    "WHERE return_transactionID = @transactionID";
+            }
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(furnitureSelectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@transactionID", currentOrder.TransactionID);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture
+                            {
+                                FurnitureID = (int)reader["rentalTransactionId"],
+                                Name = "",
+                                Daily_Rental_Rate = 0,
+                                Daily_Fine_Rate = 0,
+                                Description = "",
+                            };
+                            furnitureList.Add(furniture);
+                        }
+                    }
+                }
+
+                using (SqlCommand selectCommand = new SqlCommand(selectOrderTotalStatement, connection))
+                {
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        currentOrder.OrderTotal = (int)reader["orderTotal"];
+                    }
+                }
+
+            }
+            currentOrder.FurnitureList = furnitureList;
+            return currentOrder;
         }
 
         #endregion

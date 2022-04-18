@@ -74,7 +74,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void ViewButton_Click(object sender, EventArgs e)
         {
             var selectedOrderID = int.Parse(orderHistoryDataGridView.SelectedRows[0].Cells["ID"].Value.ToString());
-            var selectedOrderType = orderHistoryDataGridView.SelectedRows[1].Cells["Type"].Value.ToString();
+            var selectedOrderType = orderHistoryDataGridView.SelectedRows[0].Cells["Type"].Value.ToString();
             var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
 
             ViewOrderModal newForm = new ViewOrderModal(selectedOrder);
