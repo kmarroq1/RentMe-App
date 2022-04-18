@@ -70,5 +70,12 @@ namespace RentMe_App.View.EmployeeModals
         }
 
         #endregion
+
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            errorLabel.Text = "";
+            ReturnButton.Enabled = true;
+            furnitureOrderedDataGridView.CurrentRow.Selected = true;
+        }
     }
 }

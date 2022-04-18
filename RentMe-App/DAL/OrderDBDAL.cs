@@ -179,14 +179,15 @@ namespace RentMe_App.DAL
         {
             List<Furniture> furnitureList = new List<Furniture>();
 
-            var selectOrderTotalStatement = "SELECT transactionID, SUM(quantity * daily_rental_rate) as orderTotal " +
+           /* var selectOrderTotalStatement = "SELECT rt.transactionID, SUM(quantity * daily_rental_rate) as orderTotal " +
                 "FROM rentalTransaction rt" +
-                "LEFT JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionID" +
+                "LEFT JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionID " +
                 "LEFT JOIN furniture ON furniture.furnitureID = fr.furnitureID " +
-                "GROUP BY transactionID";
+                "WHERE rt.transactionID = @transactionID " +
+                "GROUP BY rt.transactionID";*/
 
-            // add conditional statemnent for order type i.e. if rental, join rental table, etc..
-            string furnitureSelectStatement = "SELECT furniture.furnitureID, name, description, daily_rental_rate, daily_fine_rate " +
+            // need to get quantities
+            string furnitureSelectStatement = "SELECT furniture.furnitureID as furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url " +
                 "FROM furniture ";
             if (currentOrder.OrderType == "rental")
             {
@@ -213,25 +214,30 @@ namespace RentMe_App.DAL
                         {
                             Furniture furniture = new Furniture
                             {
-                                FurnitureID = (int)reader["rentalTransactionId"],
-                                Name = "",
-                                Daily_Rental_Rate = 0,
-                                Daily_Fine_Rate = 0,
-                                Description = "",
+                                FurnitureID = (int)reader["furnitureID"],
+                                Name = reader["name"].ToString(),
+                                Description = reader["description"].ToString(),
+                                Daily_Rental_Rate = (decimal)reader["daily_rental_rate"],
+                                Daily_Fine_Rate = (decimal)reader["daily_fine_rate"],
+                                Style_Name = reader["style_name"].ToString(),
+                                Category_Name = reader["category_name"].ToString(),
+                                Image_Small_Url = reader["image_small_url"].ToString(),
+                                Image_Large_Url = reader["image_large_url"].ToString(),
                             };
                             furnitureList.Add(furniture);
                         }
                     }
                 }
-
-                using (SqlCommand selectCommand = new SqlCommand(selectOrderTotalStatement, connection))
+                //Figure out order total query bug. Maybe make it its own query
+             /* using (SqlCommand selectCommand = new SqlCommand(selectOrderTotalStatement, connection))
                 {
+                    selectCommand.Parameters.AddWithValue("@transactionID", currentOrder.TransactionID);
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         currentOrder.OrderTotal = (int)reader["orderTotal"];
                     }
-                }
+                }*/
 
             }
             currentOrder.FurnitureList = furnitureList;
