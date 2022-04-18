@@ -43,6 +43,7 @@ namespace RentMe_App.UserControls
 
         private void RefreshSearchDataGrid()
         {
+            HideErrorMessage();
             searchMemberDataGridView.DataSource = null;
 
             try
@@ -264,9 +265,15 @@ namespace RentMe_App.UserControls
                 return;
             }
 
-            Member selectedMember = memberController.GetMemberByID(Int32.Parse(Convert.ToString(searchMemberDataGridView.SelectedRows[0].Cells["Member ID"].Value)))[0];
+            int selectedrowindex = searchMemberDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = searchMemberDataGridView.Rows[selectedrowindex];
+            int selectedMemberID = Convert.ToInt32(selectedRow.Cells[0].Value);
 
-            new EditMemberModal(selectedMember).ShowDialog();
+            List<Member> selectedMember = memberController.GetMemberByID(selectedMemberID);
+
+            EditMemberModal modal = new EditMemberModal(selectedMember[0]);
+
+            modal.ShowDialog();
 
             RefreshSearchDataGrid();
         }
@@ -283,7 +290,9 @@ namespace RentMe_App.UserControls
 
             if (selectedMember.Active == false)
             {
+                selectMemberButton.Enabled = searchMemberDataGridView.SelectedRows.Count == 1;
                 ShowErrorMessage("Member must be active to process orders");
+                return;
             }
             else
             {
