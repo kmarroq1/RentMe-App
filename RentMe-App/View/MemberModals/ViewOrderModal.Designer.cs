@@ -45,6 +45,14 @@ namespace RentMe_App.View.EmployeeModals
             this.ReturnButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.furnitureOrderedDataGridView = new System.Windows.Forms.DataGridView();
+            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
@@ -65,7 +73,7 @@ namespace RentMe_App.View.EmployeeModals
             this.topLableLayoutPanel.Controls.Add(this.balanceTitleLabel, 0, 4);
             this.topLableLayoutPanel.Controls.Add(this.balanceLabel, 1, 4);
             this.topLableLayoutPanel.Location = new System.Drawing.Point(7, 5);
-            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
             this.topLableLayoutPanel.Name = "topLableLayoutPanel";
             this.topLableLayoutPanel.RowCount = 5;
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.4657F));
@@ -177,7 +185,7 @@ namespace RentMe_App.View.EmployeeModals
             this.bottomTableLayoutPanel.Controls.Add(this.ReturnButton, 1, 1);
             this.bottomTableLayoutPanel.Controls.Add(this.CloseButton, 2, 1);
             this.bottomTableLayoutPanel.Location = new System.Drawing.Point(1, 410);
-            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
             this.bottomTableLayoutPanel.Name = "bottomTableLayoutPanel";
             this.bottomTableLayoutPanel.RowCount = 2;
             this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.06202F));
@@ -198,8 +206,9 @@ namespace RentMe_App.View.EmployeeModals
             // RentAgainButton
             // 
             this.RentAgainButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.RentAgainButton.Enabled = false;
             this.RentAgainButton.Location = new System.Drawing.Point(86, 26);
-            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1);
             this.RentAgainButton.Name = "RentAgainButton";
             this.RentAgainButton.Size = new System.Drawing.Size(88, 22);
             this.RentAgainButton.TabIndex = 1;
@@ -210,12 +219,12 @@ namespace RentMe_App.View.EmployeeModals
             // ReturnButton
             // 
             this.ReturnButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ReturnButton.Location = new System.Drawing.Point(358, 26);
-            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ReturnButton.Location = new System.Drawing.Point(331, 26);
+            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1);
             this.ReturnButton.Name = "ReturnButton";
-            this.ReturnButton.Size = new System.Drawing.Size(66, 22);
+            this.ReturnButton.Size = new System.Drawing.Size(121, 22);
             this.ReturnButton.TabIndex = 2;
-            this.ReturnButton.Text = "Return Item";
+            this.ReturnButton.Text = "Add to Return Cart";
             this.ReturnButton.UseVisualStyleBackColor = true;
             this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
@@ -223,7 +232,7 @@ namespace RentMe_App.View.EmployeeModals
             // 
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CloseButton.Location = new System.Drawing.Point(615, 26);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(74, 22);
             this.CloseButton.TabIndex = 3;
@@ -233,14 +242,76 @@ namespace RentMe_App.View.EmployeeModals
             // 
             // furnitureOrderedDataGridView
             // 
+            this.furnitureOrderedDataGridView.AllowUserToAddRows = false;
+            this.furnitureOrderedDataGridView.AllowUserToDeleteRows = false;
             this.furnitureOrderedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.furnitureOrderedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FurnitureID,
+            this.Image,
+            this.FurnitureName,
+            this.RentalDate,
+            this.QtyRented,
+            this.QtyReturned,
+            this.RentalRate,
+            this.Balance});
             this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(1, 160);
-            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1);
             this.furnitureOrderedDataGridView.Name = "furnitureOrderedDataGridView";
+            this.furnitureOrderedDataGridView.ReadOnly = true;
+            this.furnitureOrderedDataGridView.RowHeadersVisible = false;
             this.furnitureOrderedDataGridView.RowHeadersWidth = 123;
             this.furnitureOrderedDataGridView.RowTemplate.Height = 46;
             this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(783, 240);
             this.furnitureOrderedDataGridView.TabIndex = 2;
+            this.furnitureOrderedDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            // 
+            // FurnitureID
+            // 
+            this.FurnitureID.HeaderText = "Furniture ID";
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.ReadOnly = true;
+            // 
+            // Image
+            // 
+            this.Image.HeaderText = "Image";
+            this.Image.Name = "Image";
+            this.Image.ReadOnly = true;
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
+            // 
+            // RentalDate
+            // 
+            this.RentalDate.HeaderText = "RentalDate";
+            this.RentalDate.Name = "RentalDate";
+            this.RentalDate.ReadOnly = true;
+            // 
+            // QtyRented
+            // 
+            this.QtyRented.HeaderText = "Qty Rented";
+            this.QtyRented.Name = "QtyRented";
+            this.QtyRented.ReadOnly = true;
+            // 
+            // QtyReturned
+            // 
+            this.QtyReturned.HeaderText = "Qty Returned";
+            this.QtyReturned.Name = "QtyReturned";
+            this.QtyReturned.ReadOnly = true;
+            // 
+            // RentalRate
+            // 
+            this.RentalRate.HeaderText = "RentalRate";
+            this.RentalRate.Name = "RentalRate";
+            this.RentalRate.ReadOnly = true;
+            // 
+            // Balance
+            // 
+            this.Balance.HeaderText = "Balance";
+            this.Balance.Name = "Balance";
+            this.Balance.ReadOnly = true;
             // 
             // ViewOrderModal
             // 
@@ -250,7 +321,7 @@ namespace RentMe_App.View.EmployeeModals
             this.Controls.Add(this.furnitureOrderedDataGridView);
             this.Controls.Add(this.bottomTableLayoutPanel);
             this.Controls.Add(this.topLableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewOrderModal";
@@ -283,5 +354,13 @@ namespace RentMe_App.View.EmployeeModals
         private System.Windows.Forms.Button RentAgainButton;
         private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RentalDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
     }
 }

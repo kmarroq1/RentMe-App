@@ -63,6 +63,7 @@
     <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
+    <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
@@ -87,12 +88,17 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Order.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\OrdersController.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,10 +129,10 @@
     <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.Designer.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.Designer.cs">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InventoryModals\AddRentalItemModal.cs">
@@ -235,7 +241,7 @@
     <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmployeeModals\ViewOrderModal.resx">
+    <EmbeddedResource Include="View\MemberModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InventoryModals\AddRentalItemModal.resx">
