@@ -45,12 +45,12 @@ namespace RentMe_App.View.InventoryModals
             this.styleValueLabel = new System.Windows.Forms.Label();
             this.categoryValueLabel = new System.Windows.Forms.Label();
             this.dailyRentalRateValueLabel = new System.Windows.Forms.Label();
+            this.quantityInStockValueLabel = new System.Windows.Forms.Label();
+            this.quantityInStockLabel = new System.Windows.Forms.Label();
             this.quantityToRentLabel = new System.Windows.Forms.Label();
             this.quantityToRentNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.quantityInStockLabel = new System.Windows.Forms.Label();
-            this.quantityInStockValueLabel = new System.Windows.Forms.Label();
             this.buttonFlowLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quantityToRentNumericUpDown)).BeginInit();
@@ -65,6 +65,7 @@ namespace RentMe_App.View.InventoryModals
             this.addToCartButton.TabIndex = 0;
             this.addToCartButton.Text = "Add to Cart";
             this.addToCartButton.UseVisualStyleBackColor = true;
+            this.addToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
             // 
             // buttonFlowLayoutPanel
             // 
@@ -241,6 +242,26 @@ namespace RentMe_App.View.InventoryModals
             this.dailyRentalRateValueLabel.TabIndex = 13;
             this.dailyRentalRateValueLabel.Text = "  ";
             // 
+            // quantityInStockValueLabel
+            // 
+            this.quantityInStockValueLabel.AutoSize = true;
+            this.quantityInStockValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityInStockValueLabel.Location = new System.Drawing.Point(160, 294);
+            this.quantityInStockValueLabel.Name = "quantityInStockValueLabel";
+            this.quantityInStockValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.quantityInStockValueLabel.TabIndex = 15;
+            this.quantityInStockValueLabel.Text = "  ";
+            // 
+            // quantityInStockLabel
+            // 
+            this.quantityInStockLabel.AutoSize = true;
+            this.quantityInStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityInStockLabel.Location = new System.Drawing.Point(3, 294);
+            this.quantityInStockLabel.Name = "quantityInStockLabel";
+            this.quantityInStockLabel.Size = new System.Drawing.Size(106, 13);
+            this.quantityInStockLabel.TabIndex = 14;
+            this.quantityInStockLabel.Text = "Quantity In Stock";
+            // 
             // quantityToRentLabel
             // 
             this.quantityToRentLabel.AutoSize = true;
@@ -257,6 +278,7 @@ namespace RentMe_App.View.InventoryModals
             this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
             this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.quantityToRentNumericUpDown.TabIndex = 9;
+            this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.quantityToRentNumericUpDown_ValueChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -282,26 +304,6 @@ namespace RentMe_App.View.InventoryModals
             this.errorMessageLabel.TabIndex = 26;
             this.errorMessageLabel.Text = "   ";
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // quantityInStockLabel
-            // 
-            this.quantityInStockLabel.AutoSize = true;
-            this.quantityInStockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityInStockLabel.Location = new System.Drawing.Point(3, 294);
-            this.quantityInStockLabel.Name = "quantityInStockLabel";
-            this.quantityInStockLabel.Size = new System.Drawing.Size(106, 13);
-            this.quantityInStockLabel.TabIndex = 14;
-            this.quantityInStockLabel.Text = "Quantity In Stock";
-            // 
-            // quantityInStockValueLabel
-            // 
-            this.quantityInStockValueLabel.AutoSize = true;
-            this.quantityInStockValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityInStockValueLabel.Location = new System.Drawing.Point(160, 294);
-            this.quantityInStockValueLabel.Name = "quantityInStockValueLabel";
-            this.quantityInStockValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.quantityInStockValueLabel.TabIndex = 15;
-            this.quantityInStockValueLabel.Text = "  ";
             // 
             // AddRentalItemModal
             // 
