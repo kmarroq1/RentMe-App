@@ -1,10 +1,13 @@
 ﻿using RentMe_App.Model;
+using System.Data;
 using System.Windows.Forms;
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
 {
     public partial class ReturnCartUserControl : UserControl
     {
+        private DataTable _DataTable;
+
         public ReturnCartUserControl()
         {
             InitializeComponent();
@@ -12,16 +15,41 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         public void UpdateElements()
         {
+            Cart.Return.MemberID = SharedFormInfo.MemberIDForm;
+
+            ReturnsDataGridView.DataSource = null;
+
+            _DataTable = new DataTable();
+
+            _DataTable.Columns.Add(new DataColumn("ID", typeof(int)));
+            _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
+            _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
+            _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(decimal)));
+
             if (Cart.Return != null)
             {
                 ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString();
                 ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString();
+
+                foreach (FurnitureInventory item in Cart.Return.ReturnedFurniture)
+                {
+                    DataRow row = _DataTable.NewRow();
+
+                    row["ID"] = item.FurnitureID;
+                    row["Name"] = item.Name;
+                    row["Qty to Return"] = item.Quantity;
+                    row["Balance/Fine"] = item.Daily_Rental_Rate;
+
+                    _DataTable.Rows.Add(row);
+                }
             }
             else
             {
                 ReturnCountValueLabel.Text = "";
                 ReturnBalanceValueLabel.Text = "";
             }
+
+            ReturnsDataGridView.DataSource = _DataTable;
         }
 
         private void ReturnCartUserControl_Load(object sender, System.EventArgs e)
@@ -39,6 +67,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             MessageBox.Show("Return successfully processed.", "Success");
             Cart.ClearReturns();
+            UpdateElements();
+        }
+
+        private void ViewReturnItemButton_Click(object sender, System.EventArgs e)
+        {
+            Cart.Return.ReturnedFurniture.Add(new FurnitureInventory
+            { FurnitureID = 1
+            , Name = "Test furniture"
+            , Quantity = 3
+            , Daily_Rental_Rate = 10.0M
+            });
             UpdateElements();
         }
     }

@@ -42,12 +42,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnBalanceLabelLabel = new System.Windows.Forms.Label();
             this.ReturnBalanceValueLabel = new System.Windows.Forms.Label();
             this.ReturnsDataGridView = new System.Windows.Forms.DataGridView();
-            this.ReturnIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ReturnNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnBalanceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnDeleteButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ErrorMessage = new System.Windows.Forms.Label();
             this.PrimaryTableLayoutPanel.SuspendLayout();
             this.ReturnButtonsFlowLayoutPanel.SuspendLayout();
@@ -105,14 +99,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.ViewReturnItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ViewReturnItemButton.AutoSize = true;
-            this.ViewReturnItemButton.Enabled = false;
             this.ViewReturnItemButton.Location = new System.Drawing.Point(105, 3);
             this.ViewReturnItemButton.Name = "ViewReturnItemButton";
             this.ViewReturnItemButton.Size = new System.Drawing.Size(75, 23);
             this.ViewReturnItemButton.TabIndex = 1;
             this.ViewReturnItemButton.Text = "View Item";
             this.ViewReturnItemButton.UseVisualStyleBackColor = true;
-            this.ViewReturnItemButton.Visible = false;
+            this.ViewReturnItemButton.Click += new System.EventHandler(this.ViewReturnItemButton_Click);
             // 
             // ClearReturnsButton
             // 
@@ -206,66 +199,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnsDataGridView.AllowUserToAddRows = false;
             this.ReturnsDataGridView.AllowUserToDeleteRows = false;
             this.ReturnsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ReturnsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ReturnIDColumn,
-            this.ReturnImageColumn,
-            this.ReturnNameColumn,
-            this.ReturnQuantityColumn,
-            this.ReturnBalanceColumn,
-            this.ReturnDeleteButtonColumn});
             this.ReturnsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ReturnsDataGridView.Location = new System.Drawing.Point(3, 47);
             this.ReturnsDataGridView.Name = "ReturnsDataGridView";
             this.ReturnsDataGridView.ReadOnly = true;
             this.ReturnsDataGridView.Size = new System.Drawing.Size(374, 234);
             this.ReturnsDataGridView.TabIndex = 8;
-            // 
-            // ReturnIDColumn
-            // 
-            this.ReturnIDColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReturnIDColumn.HeaderText = "ID";
-            this.ReturnIDColumn.Name = "ReturnIDColumn";
-            this.ReturnIDColumn.ReadOnly = true;
-            this.ReturnIDColumn.ToolTipText = "ID of the furniture";
-            this.ReturnIDColumn.Width = 43;
-            // 
-            // ReturnImageColumn
-            // 
-            this.ReturnImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReturnImageColumn.HeaderText = "Image";
-            this.ReturnImageColumn.Name = "ReturnImageColumn";
-            this.ReturnImageColumn.ReadOnly = true;
-            this.ReturnImageColumn.Width = 42;
-            // 
-            // ReturnNameColumn
-            // 
-            this.ReturnNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReturnNameColumn.HeaderText = "Name";
-            this.ReturnNameColumn.Name = "ReturnNameColumn";
-            this.ReturnNameColumn.ReadOnly = true;
-            this.ReturnNameColumn.Width = 60;
-            // 
-            // ReturnQuantityColumn
-            // 
-            this.ReturnQuantityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReturnQuantityColumn.HeaderText = "Qty to Return";
-            this.ReturnQuantityColumn.Name = "ReturnQuantityColumn";
-            this.ReturnQuantityColumn.ReadOnly = true;
-            this.ReturnQuantityColumn.Width = 95;
-            // 
-            // ReturnBalanceColumn
-            // 
-            this.ReturnBalanceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReturnBalanceColumn.HeaderText = "Balance/Fine";
-            this.ReturnBalanceColumn.Name = "ReturnBalanceColumn";
-            this.ReturnBalanceColumn.ReadOnly = true;
-            this.ReturnBalanceColumn.Width = 96;
-            // 
-            // ReturnDeleteButtonColumn
-            // 
-            this.ReturnDeleteButtonColumn.HeaderText = "";
-            this.ReturnDeleteButtonColumn.Name = "ReturnDeleteButtonColumn";
-            this.ReturnDeleteButtonColumn.ReadOnly = true;
             // 
             // ErrorMessage
             // 
@@ -313,12 +252,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.Label ReturnBalanceLabelLabel;
         private System.Windows.Forms.Label ReturnBalanceValueLabel;
         private System.Windows.Forms.DataGridView ReturnsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnIDColumn;
-        private System.Windows.Forms.DataGridViewImageColumn ReturnImageColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnQuantityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnBalanceColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn ReturnDeleteButtonColumn;
         private System.Windows.Forms.Label ErrorMessage;
         private System.Windows.Forms.FlowLayoutPanel ReturnButtonsFlowLayoutPanel;
         private System.Windows.Forms.Button CompleteReturnButton;
