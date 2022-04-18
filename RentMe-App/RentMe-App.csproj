@@ -99,6 +99,12 @@
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.Designer.cs">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.Designer.cs">
+      <DependentUpon>ReturnCartUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.resx">
+      <DependentUpon>ReturnCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.resx">
       <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
