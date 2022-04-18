@@ -47,6 +47,7 @@ namespace RentMe_App.View.EmployeeModals
             //add condition for if item has already been returned
             //add option to choose quantity to return
             Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
+            errorLabel.Text = "Added to cart!";
         }
 
         private FurnitureInventory CreateReturnItem()
