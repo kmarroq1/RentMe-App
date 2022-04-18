@@ -1,5 +1,5 @@
 ﻿
-namespace RentMe_App.View
+namespace RentMe_App.View.EmployeeModals
 {
     partial class EditMemberModal
     {

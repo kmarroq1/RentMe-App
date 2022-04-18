@@ -258,6 +258,7 @@ namespace RentMe_App.UserControls
             this.editButton.TabIndex = 48;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // selectMemberButton
             // 
