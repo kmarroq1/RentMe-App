@@ -38,8 +38,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.yearsComboBox = new System.Windows.Forms.ComboBox();
             this.transactionLabel = new System.Windows.Forms.Label();
             this.orderHistoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.TransactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +50,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ViewButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.errorMsgLabel = new System.Windows.Forms.Label();
+            this.ViewAllButton = new System.Windows.Forms.Button();
             this.topTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -71,6 +72,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.topTableLayoutPanel.Controls.Add(this.pendingOrdersCheckbox, 3, 1);
             this.topTableLayoutPanel.Controls.Add(this.yearsComboBox, 5, 1);
             this.topTableLayoutPanel.Controls.Add(this.transactionLabel, 0, 1);
+            this.topTableLayoutPanel.Controls.Add(this.ViewAllButton, 2, 0);
             this.topTableLayoutPanel.Location = new System.Drawing.Point(1, 1);
             this.topTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
             this.topTableLayoutPanel.Name = "topTableLayoutPanel";
@@ -124,6 +126,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // pendingOrdersCheckbox
             // 
             this.pendingOrdersCheckbox.AutoSize = true;
+            this.pendingOrdersCheckbox.Enabled = false;
             this.pendingOrdersCheckbox.Location = new System.Drawing.Point(400, 44);
             this.pendingOrdersCheckbox.Margin = new System.Windows.Forms.Padding(1);
             this.pendingOrdersCheckbox.Name = "pendingOrdersCheckbox";
@@ -134,13 +137,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             // yearsComboBox
             // 
+            this.yearsComboBox.Enabled = false;
             this.yearsComboBox.FormattingEnabled = true;
             this.yearsComboBox.Location = new System.Drawing.Point(673, 44);
             this.yearsComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.yearsComboBox.Name = "yearsComboBox";
             this.yearsComboBox.Size = new System.Drawing.Size(75, 21);
             this.yearsComboBox.TabIndex = 6;
-            this.yearsComboBox.SelectedIndexChanged += new System.EventHandler(this.YearsComboBox_SelectedIndexChanged);
             // 
             // transactionLabel
             // 
@@ -160,8 +163,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.AllowUserToOrderColumns = true;
             this.orderHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderHistoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TransactionId,
-            this.TransactionType,
+            this.ID,
+            this.Type,
             this.OrderDate,
             this.DueDate,
             this.DateReturned,
@@ -180,18 +183,18 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.TabIndex = 1;
             this.orderHistoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
-            // TransactionId
+            // ID
             // 
-            this.TransactionId.HeaderText = "ID";
-            this.TransactionId.Name = "TransactionId";
-            this.TransactionId.ReadOnly = true;
-            this.TransactionId.ToolTipText = "Transaction ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.ToolTipText = "Transaction ID";
             // 
-            // TransactionType
+            // Type
             // 
-            this.TransactionType.HeaderText = "Type";
-            this.TransactionType.Name = "TransactionType";
-            this.TransactionType.ReadOnly = true;
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
             // 
             // OrderDate
             // 
@@ -283,6 +286,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.errorMsgLabel.TabIndex = 2;
             this.errorMsgLabel.Text = "  ";
             // 
+            // ViewAllButton
+            // 
+            this.ViewAllButton.BackColor = System.Drawing.Color.LightBlue;
+            this.ViewAllButton.Location = new System.Drawing.Point(269, 3);
+            this.ViewAllButton.Name = "ViewAllButton";
+            this.ViewAllButton.Size = new System.Drawing.Size(127, 23);
+            this.ViewAllButton.TabIndex = 7;
+            this.ViewAllButton.Text = "View All Orders";
+            this.ViewAllButton.UseVisualStyleBackColor = false;
+            this.ViewAllButton.Click += new System.EventHandler(this.ViewAllButton_Click);
+            // 
             // OrdersAndReturnsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +307,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "OrdersAndReturnsUserControl";
             this.Size = new System.Drawing.Size(800, 500);
-            this.Load += new System.EventHandler(this.OrderHistoryLoad);
             this.topTableLayoutPanel.ResumeLayout(false);
             this.topTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).EndInit();
@@ -318,13 +331,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.Button ViewButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label errorMsgLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
+        private System.Windows.Forms.Button ViewAllButton;
     }
 }

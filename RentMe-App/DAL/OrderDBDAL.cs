@@ -97,35 +97,39 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public List<Order> GetOrdersByTransactionId(int memberID, int transactionID)
         {
-            throw new NotImplementedException();
-
             List<Order> orderList = new List<Order>();
 
-            string selectStatement = "";
+            string returnSelectStatement = "SELECT returns.transactionID as returnTransactionId, returns.employeeID, returns.return_date as return_date " +
+                "FROM returnTransaction AS returns " +
+                "JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
+                "JOIN rentalTransaction ON rentalTransaction.transactionID = furnitureReturned.rental_transactionID " +
+                "WHERE rentalTransaction.memberId = @memberId AND returns.transactionID = @transactionID";
+
+            //some items that have been rented may have been returned - need to make sure DateReturned and status reflects that
+            string rentalSelectStatement = "SELECT transactionID as rentalTransactionId, employeeID, memberID, transaction_date, return_date " +
+                "FROM rentalTransaction " +
+                "WHERE memberID = @memberID AND transactionID = @transactionID";
+
+            //add error handling i.e. check to make sure you can't return more than what was rented out
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                using (SqlCommand selectCommand = new SqlCommand(returnSelectStatement, connection))
                 {
                     selectCommand.Parameters.AddWithValue("@memberID", memberID);
                     selectCommand.Parameters.AddWithValue("@transactionID", transactionID);
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        if (!reader.HasRows)
-                        {
-                            return null;
-                        }
-
                         while (reader.Read())
                         {
                             Order order = new Order
                             {
-                                TransactionID = 0,
-                                OrderType = "",
-                                //OrderDate = 0,
-                                //DueDate = 0,
-                                //DateReturned = 0,
+                                TransactionID = (int)reader["returnTransactionId"],
+                                OrderType = "return",
+                                OrderDate = (DateTime)reader["return_date"],
+                                DueDate = (DateTime)reader["return_date"],
+                                DateReturned = (DateTime)reader["return_date"],
                                 OrderTotal = 0,
                                 Status = false,
                                 Balance = 0,
@@ -134,6 +138,32 @@ namespace RentMe_App.DAL
                         }
                     }
                 }
+
+                using (SqlCommand selectCommand = new SqlCommand(rentalSelectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@memberID", memberID);
+                    selectCommand.Parameters.AddWithValue("@transactionID", transactionID);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Order order = new Order
+                            {
+                                TransactionID = (int)reader["rentalTransactionId"],
+                                OrderType = "rental",
+                                OrderDate = (DateTime)reader["transaction_date"],
+                                DueDate = (DateTime)reader["return_date"],
+                                DateReturned = null,
+                                OrderTotal = 0,
+                                Status = true,
+                                Balance = 0,
+                            };
+                            orderList.Add(order);
+                        }
+                    }
+                }
+
             }
 
             return orderList;

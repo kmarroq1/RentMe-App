@@ -14,7 +14,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private readonly OrdersController _ordersController;
         private List<Order> _orderList;
-        private readonly int _currentMemberID;
+        private int _currentMemberID;
 
         #endregion
 
@@ -28,9 +28,9 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             InitializeComponent();
 
             _ordersController = new OrdersController();
-
+            errorMsgLabel.Text = "";
+            _currentMemberID = 0;
             ViewButton.Enabled = false;
-            //PopulateDataGridView();
             PopulateComboBox();
         }
 
@@ -40,13 +40,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            _currentMemberID = int.Parse(SharedFormInfo.MemberIDForm.ToString());
             errorMsgLabel.Text = "";
             try
             {
                 if (!string.IsNullOrEmpty(transactionIdTextBox.Text) && int.Parse(transactionIdTextBox.Text) < 0)
                 {
-                    errorMsgLabel.Text = "Transaction ID must be a positive number";
-                    return;
+                    throw new Exception("Transaction ID must be a positive number");
+                }
+                else if (string.IsNullOrEmpty(transactionIdTextBox.Text))
+                {
+                    throw new Exception("Must enter a transaction ID");
                 }
                 //is this where we want this conditional to go?
                 /*else if (pendingOrdersCheckbox.Checked)
@@ -56,11 +60,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 else
                 {
                     _orderList = _ordersController.GetOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
+                    RefreshData();
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                errorMsgLabel.Text = "Search failed";
+                errorMsgLabel.Text = exception.Message;
             }
 
             RefreshData();
@@ -78,7 +83,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             errorMsgLabel.Text = "";
             ViewButton.Enabled = false;
 
-            _ = newForm.ShowDialog();
+            newForm.ShowDialog();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -94,7 +99,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewButton.Enabled = orderHistoryDataGridView.SelectedRows.Count == 1;
+            ViewButton.Enabled = true;
             errorMsgLabel.Text = "";
             orderHistoryDataGridView.CurrentRow.Selected = true;
         }
@@ -103,14 +108,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             var years = new List<string>() { "--Select--", "2022", "2021", "2020" };
             yearsComboBox.DataSource = new BindingSource(years, null);
-            yearsComboBox.SelectedIndex = -1;
-        }
-
-        private void YearsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            errorMsgLabel.Text = "";
-            //_orderList = _ordersController.GetOrdersByYear(yearsComboBox.SelectedValue.ToString());
-            RefreshData();
+            yearsComboBox.SelectedIndex = 1;
         }
 
         private void RefreshData()
@@ -118,14 +116,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
 
-            PopulateDataGridView();
-        }
-
-        private void PopulateDataGridView()
-        {
             try
             {
-                _orderList = _ordersController.GetOrderHistory(1);
                 if (_orderList == null || _orderList.Count == 0)
                 {
                     throw new Exception("No orders");
@@ -141,11 +133,32 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             }
         }
 
-        #endregion
+        private void PopulateDataGridView()
+        {
+            try
+            {
+                _currentMemberID = int.Parse(SharedFormInfo.MemberIDForm.ToString());
+                _orderList = _ordersController.GetOrderHistory(_currentMemberID);
+                if (_orderList == null || _orderList.Count == 0)
+                {
+                    throw new Exception("No orders");
+                }
+                foreach (var order in _orderList)
+                {
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                }
+            }
+            catch (Exception exception)
+            {
+                errorMsgLabel.Text = exception.Message;
+            }
+        }
 
-        private void OrderHistoryLoad(object sender, EventArgs e)
+        private void ViewAllButton_Click(object sender, EventArgs e)
         {
             PopulateDataGridView();
         }
+
+        #endregion
     }
 }
