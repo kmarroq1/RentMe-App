@@ -1,20 +1,60 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RentMe_App.Model
 {
     /// <summary>
     /// Keeps track of a return and all of the furniture associated with it.
     /// </summary>
+    /// <summary>
+    /// Models a return transaction
+    /// </summary>
     public class Return : Transaction
-    {
-        public List<FurnitureInventory> ReturnItems { get; set; }
+    {        
+        #region Fields
+
+        private int _memberID;
+        private readonly List<FurnitureInventory> _returnedFurniture;
+
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Initializes an empty List of Furniture to return.
+        /// </summary>
+        public Return() : base()
+        {
+            _returnedFurniture = new List<FurnitureInventory>();
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Dictates how MemberID can be accessed and mutated.
+        /// </summary>
+        public int MemberID
+        {
+            get => _memberID;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("MemberID", "MemberID must be a positive number");
+
+                _memberID = value;
+            }
+        }
 
         /// <summary>
-        /// Initializes the list of return items.
+        /// Dictates how the TransactionDate can be accessed and mutated.
         /// </summary>
-        public Return()
+        public DateTime TransactionDate { get; set; }
+
+        /// <summary>
+        /// Dictates how the Returned Furniture List can be accessed.
+        /// </summary>
+        public List<FurnitureInventory> ReturnedFurniture
         {
-            ReturnItems = new List<FurnitureInventory>();
+            get => _returnedFurniture;
         }
 
         /// <summary>
@@ -26,7 +66,7 @@ namespace RentMe_App.Model
             {
                 int count = 0;
 
-                foreach (FurnitureInventory furniture in ReturnItems) count += furniture.Quantity;
+                foreach (FurnitureInventory furniture in _returnedFurniture) count += furniture.Quantity;
 
                 return count;
             }
@@ -41,10 +81,12 @@ namespace RentMe_App.Model
             {
                 decimal total = 0.0M;
 
-                foreach (FurnitureInventory furniture in ReturnItems) total += furniture.Daily_Rental_Rate;
+                foreach (FurnitureInventory furniture in _returnedFurniture) total += furniture.Daily_Rental_Rate;
 
                 return total;
             }
         }
+
+        #endregion
     }
 }

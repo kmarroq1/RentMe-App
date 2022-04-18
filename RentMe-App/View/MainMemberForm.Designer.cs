@@ -34,6 +34,7 @@ namespace RentMe_App.View
             this.inventoryTabPage = new System.Windows.Forms.TabPage();
             this.searchInventoryUserControl1 = new RentMe_App.UserControls.SearchInventoryUserControl();
             this.orderAndReturnsTabPage = new System.Windows.Forms.TabPage();
+            this.ordersAndReturnsUserControl1 = new RentMe_App.UserControls.MemberDashboardUCs.OrdersAndReturnsUserControl();
             this.rentalCartTabPage = new System.Windows.Forms.TabPage();
             this.returnCartTabPage = new System.Windows.Forms.TabPage();
             this.ReturnCartUserControl = new RentMe_App.UserControls.MemberDashboardUCs.ReturnCartUserControl();
@@ -52,6 +53,7 @@ namespace RentMe_App.View
             this.memberIDValueLabel = new System.Windows.Forms.Label();
             this.mainTabControl.SuspendLayout();
             this.inventoryTabPage.SuspendLayout();
+            this.orderAndReturnsTabPage.SuspendLayout();
             this.returnCartTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -94,6 +96,7 @@ namespace RentMe_App.View
             // 
             // orderAndReturnsTabPage
             // 
+            this.orderAndReturnsTabPage.Controls.Add(this.ordersAndReturnsUserControl1);
             this.orderAndReturnsTabPage.Location = new System.Drawing.Point(4, 22);
             this.orderAndReturnsTabPage.Name = "orderAndReturnsTabPage";
             this.orderAndReturnsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -101,6 +104,14 @@ namespace RentMe_App.View
             this.orderAndReturnsTabPage.TabIndex = 1;
             this.orderAndReturnsTabPage.Text = "Orders & Returns";
             this.orderAndReturnsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ordersAndReturnsUserControl1
+            // 
+            this.ordersAndReturnsUserControl1.Location = new System.Drawing.Point(0, 2);
+            this.ordersAndReturnsUserControl1.Margin = new System.Windows.Forms.Padding(1);
+            this.ordersAndReturnsUserControl1.Name = "ordersAndReturnsUserControl1";
+            this.ordersAndReturnsUserControl1.Size = new System.Drawing.Size(822, 500);
+            this.ordersAndReturnsUserControl1.TabIndex = 0;
             // 
             // rentalCartTabPage
             // 
@@ -301,6 +312,7 @@ namespace RentMe_App.View
             this.Load += new System.EventHandler(this.MainMemberForm_Load);
             this.mainTabControl.ResumeLayout(false);
             this.inventoryTabPage.ResumeLayout(false);
+            this.orderAndReturnsTabPage.ResumeLayout(false);
             this.returnCartTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -337,6 +349,7 @@ namespace RentMe_App.View
         private System.Windows.Forms.FlowLayoutPanel memberIDFlowLayoutPanel;
         private System.Windows.Forms.Label memberIDLabel;
         private System.Windows.Forms.Label memberIDValueLabel;
+        private UserControls.MemberDashboardUCs.OrdersAndReturnsUserControl ordersAndReturnsUserControl1;
         private UserControls.SearchInventoryUserControl searchInventoryUserControl1;
         private UserControls.MemberDashboardUCs.ReturnCartUserControl ReturnCartUserControl;
     }

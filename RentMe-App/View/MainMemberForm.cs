@@ -80,6 +80,7 @@ namespace RentMe_App.View
             usernameValueLabel.Text = SharedFormInfo.UsernameForm;
             employeeNameValueLabel.Text = SharedFormInfo.EmployeeNameForm;
             memberIDValueLabel.Text = SharedFormInfo.MemberIDForm.ToString();
+            this.memberIDForm = int.Parse(memberIDValueLabel.Text);
 
             SharedFormInfo.MainEmployeeForm.Hide();
         }

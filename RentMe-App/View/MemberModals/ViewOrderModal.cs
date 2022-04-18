@@ -1,4 +1,6 @@
 ﻿using RentMe_App.Model;
+using RentMe_App.UserControls.MemberDashboardUCs;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -12,6 +14,9 @@ namespace RentMe_App.View.EmployeeModals
         #region Data Members
 
         private List<Furniture> _furnitureList;
+        private OrdersController ordersController;
+        private readonly int memberID = SharedFormInfo.MemberIDForm;
+        private Order currentOrder;
 
         #endregion
 
@@ -20,9 +25,11 @@ namespace RentMe_App.View.EmployeeModals
         /// <summary>
         /// Constructor
         /// </summary>
-        public ViewOrderModal(/*Order selectedOrder*/)
+        public ViewOrderModal(Order selectedOrder)
         {
             InitializeComponent();
+            ordersController = new OrdersController();
+            currentOrder = selectedOrder;
             PopulateGridView();
         }
 
@@ -48,12 +55,28 @@ namespace RentMe_App.View.EmployeeModals
 
         private void PopulateGridView()
         {
-            foreach (Furniture furniture in _furnitureList)
+            try
             {
-                //furnitureOrderedDataGridView.Rows.Add([add columns here]);
+                Order updatedOrder = ordersController.GetOrderFurnitureList(currentOrder);
+                _furnitureList = updatedOrder.FurnitureList;
+                foreach (var furniture in _furnitureList)
+                {
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, 0, 0, furniture.Daily_Rental_Rate, currentOrder.Balance);
+                }
+            }
+            catch (Exception exception)
+            {
+                var error = exception.Message;
             }
         }
 
         #endregion
+
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            errorLabel.Text = "";
+            ReturnButton.Enabled = true;
+            furnitureOrderedDataGridView.CurrentRow.Selected = true;
+        }
     }
 }

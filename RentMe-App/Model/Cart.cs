@@ -14,6 +14,7 @@ namespace RentMe_App.Model
         static Cart()
         {
             RentalList = new List<FurnitureInventory>();
+            ReturnList = new List<FurnitureInventory>();
             Return = new Return();
         }
 
@@ -27,6 +28,11 @@ namespace RentMe_App.Model
         /// Obtains the list of Rental Transactions currently in cart.
         /// </summary>
         public static List<FurnitureInventory> RentalList { get; set; }
+
+        /// <summary>
+        /// Obtains the list of Return Transactions currently in cart.
+        /// </summary>
+        public static List<FurnitureInventory> ReturnList { get; set; }
 
         /// <summary>
         /// Obtains the Return Transaction from the cart.
@@ -91,13 +97,65 @@ namespace RentMe_App.Model
         }
 
         /// <summary>
-        /// check if item exists in cart already
+        /// check if item exists in rental cart already
         /// </summary>
         /// <param name="furnitureID">furniture ID of item to check in cart already</param>
         /// <returns>boolean if item exists in cart</returns>
-        public static bool ItemInCart(int furnitureID)
+        public static bool ItemInRentalCart(int furnitureID)
         {
             return RentalList.Any(item => item.FurnitureID == furnitureID);
+        }
+
+        /// <summary>
+        /// Method used to create return cart list
+        /// </summary>
+        /// <param name="returnItem">item to add to return cart</param>
+        /// <returns>boolean if added</returns>
+        public static bool AddReturnItem(FurnitureInventory returnItem, int quantityInStock)
+        {
+            try
+            {
+                bool addedToCart = false;
+                if (returnItem != null && RentalList.Count == 0)
+                {
+                    ReturnList.Add(returnItem);
+                    addedToCart = true;
+                    Console.WriteLine(RentalList[0].Quantity.ToString());
+                }
+                else if (ReturnList.Count > 0)
+                {
+                    if (ReturnList.Any(item => item.FurnitureID == returnItem.FurnitureID))
+                    {
+                        var cartItem = ReturnList.FirstOrDefault(o => o.FurnitureID == returnItem.FurnitureID);
+                        if (cartItem != null && returnItem.Quantity <= quantityInStock - cartItem.Quantity)
+                        {
+                            cartItem.Quantity = cartItem.Quantity + returnItem.Quantity;
+                            addedToCart = true;
+                        }
+                    }
+                    else
+                    {
+                        ReturnList.Add(returnItem);
+                        addedToCart = true;
+                    }
+                }
+                return addedToCart;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed: did not add to return cart");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// check if item exists in return cart already
+        /// </summary>
+        /// <param name="furnitureID">furniture ID of item to check in cart already</param>
+        /// <returns>boolean if item exists in cart</returns>
+        public static bool ItemInReturnCart(int furnitureID)
+        {
+            return ReturnList.Any(item => item.FurnitureID == furnitureID);
         }
 
         /// <summary>
