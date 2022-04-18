@@ -1,6 +1,7 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
 using RentMe_App.View;
+using RentMe_App.View.EmployeeModals;
 using System;
 using System.Collections.Generic;
 using System.Data;
