@@ -352,9 +352,10 @@ namespace RentMe_App.UserControls
             HideErrorMessage();
         }
 
-        private void SearchFurnitureDataGridView_VisibleChanged(object sender, EventArgs e)
+        private void SearchInventoryUserControl_VisibleChanged(object sender, EventArgs e)
         {
             ClearForm();
+            ClearDataGridView();
         }
 
         #endregion
