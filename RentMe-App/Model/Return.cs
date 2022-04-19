@@ -15,6 +15,7 @@ namespace RentMe_App.Model
 
         private int _memberID;
         private readonly List<FurnitureInventory> _returnedFurniture;
+        private int _rentalID;
 
         #endregion
 
@@ -55,6 +56,21 @@ namespace RentMe_App.Model
         public List<FurnitureInventory> ReturnedFurniture
         {
             get => _returnedFurniture;
+        }
+
+        /// <summary>
+        /// Dictates how RentalID can be accessed and mutated.
+        /// </summary>
+        public int RentalID
+        {
+            get => _rentalID;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("RentalID", "RentalID must be a positive number");
+
+                _rentalID = value;
+            }
         }
 
         /// <summary>

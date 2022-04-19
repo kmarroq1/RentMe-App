@@ -25,11 +25,12 @@ namespace RentMe_App.DAL
                 {
                     string returnTransactionInsertStatement = @"INSERT INTO [returnTransaction]
                                                                     ( employeeID, return_date )
+                                                                OUTPUT INSERTED.transactionID
                                                                 VALUES
                                                                     ( @EmployeeID, @ReturnDate )
                                                                 ;";
 
-                    int newRentalID = -1;
+                    int newReturnID = -1;
 
                     using (SqlCommand cmd = new SqlCommand(returnTransactionInsertStatement, connection, transaction))
                     {
@@ -39,16 +40,34 @@ namespace RentMe_App.DAL
                         cmd.Parameters.Add("ReturnDate", SqlDbType.Date);
                         cmd.Parameters["ReturnDate"].Value = DateTime.Now;
 
-                        newRentalID = Convert.ToInt32(cmd.ExecuteScalar());
+                        newReturnID = Convert.ToInt32(cmd.ExecuteScalar());
                     }
+
+                    Console.WriteLine(newReturnID);
 
                     foreach (FurnitureInventory furniture in returnToComplete.ReturnedFurniture)
                     {
-                        string furnitureReturnedInsertStatement = "";
+                        string furnitureReturnedInsertStatement = @"INSERT INTO [furnitureReturned]
+	                                                                    (furnitureID, rental_transactionID, return_transactionID, quantity)
+                                                                    VALUES
+	                                                                    (@FurnitureID, @RentalID, @ReturnID, @Quantity)
+                                                                    ;";
 
                         using (SqlCommand cmd = new SqlCommand(furnitureReturnedInsertStatement, connection, transaction))
                         {
+                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
+                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
 
+                            cmd.Parameters.Add("RentalID", SqlDbType.Int);
+                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
+
+                            cmd.Parameters.Add("ReturnID", SqlDbType.Int);
+                            cmd.Parameters["ReturnID"].Value = newReturnID;
+
+                            cmd.Parameters.Add("Quantity", SqlDbType.Int);
+                            cmd.Parameters["Quantity"].Value = furniture.Quantity;
+
+                            cmd.ExecuteNonQuery();
                         }
 
                         string furnitureRentedDeleteStatement = "";

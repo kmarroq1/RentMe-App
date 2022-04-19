@@ -23,6 +23,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
             Cart.Return.EmployeeID = 1; // FIXME!!!
 
+            Cart.Return.RentalID = 1; // FIXME!!!
+
             Cart.Return.MemberID = SharedFormInfo.MemberIDForm;
 
             ReturnsDataGridView.DataSource = null;
