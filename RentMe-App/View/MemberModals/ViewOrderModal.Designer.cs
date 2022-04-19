@@ -53,9 +53,12 @@ namespace RentMe_App.View.EmployeeModals
             this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyReturnNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // topLableLayoutPanel
@@ -313,11 +316,29 @@ namespace RentMe_App.View.EmployeeModals
             this.Balance.Name = "Balance";
             this.Balance.ReadOnly = true;
             // 
+            // qtyReturnNumericUpDown
+            // 
+            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
+            this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
+            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
+            this.qtyReturnNumericUpDown.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Return how many?";
+            // 
             // ViewOrderModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.qtyReturnNumericUpDown);
             this.Controls.Add(this.furnitureOrderedDataGridView);
             this.Controls.Add(this.bottomTableLayoutPanel);
             this.Controls.Add(this.topLableLayoutPanel);
@@ -332,7 +353,9 @@ namespace RentMe_App.View.EmployeeModals
             this.bottomTableLayoutPanel.ResumeLayout(false);
             this.bottomTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qtyReturnNumericUpDown)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -362,5 +385,7 @@ namespace RentMe_App.View.EmployeeModals
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
+        private System.Windows.Forms.NumericUpDown qtyReturnNumericUpDown;
+        private System.Windows.Forms.Label label1;
     }
 }
