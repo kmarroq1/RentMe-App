@@ -72,8 +72,28 @@ namespace RentMe_App.DAL
                             cmd.ExecuteNonQuery();
                         }
 
+                        // TODO: if the user returns all items, delete instead of update
+
+                        string furnitureRentedUpdateStatement = @"UPDATE [furnitureRented]
+                                                                  SET [quantity] = [quantity] - @Quantity
+                                                                  WHERE [furnitureID] = @FurnitureID
+                                                                    AND [rental_transactionID] = @RentalID;";
+
+                        using (SqlCommand cmd = new SqlCommand(furnitureRentedUpdateStatement, connection, transaction))
+                        {
+                            cmd.Parameters.Add("Quantity", SqlDbType.Int);
+                            cmd.Parameters["Quantity"].Value = furniture.Quantity;
+
+                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
+                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
+
+                            cmd.Parameters.Add("RentalID", SqlDbType.Int);
+                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
+
+                            cmd.ExecuteNonQuery();
+                        }
+
                         /*
-                        // TODO: if user not returning all items, update rather than delete
                         string furnitureRentedDeleteStatement = @"DELETE FROM [furnitureRented]
                                                                   WHERE [rental_transactionID] = @RentalID
 	                                                                  AND [furnitureID] = @FurnitureID
@@ -93,7 +113,7 @@ namespace RentMe_App.DAL
 
                         string furnitureInventoryUpdateStatement = @"UPDATE [inventory]
                                                                      SET [quantity] = [quantity] + @Quantity
-                                                                     WHERE [furnitureID] = @FurnitureID";
+                                                                     WHERE [furnitureID] = @FurnitureID;";
 
                         using (SqlCommand cmd = new SqlCommand(furnitureInventoryUpdateStatement, connection, transaction))
                         {
