@@ -25,7 +25,7 @@ namespace RentMe_App.Controller
         /// <param name="returnToComplete">The Return to write to the DB</param>
         public void CompleteReturn(Return returnToComplete)
         {
-
+            _returnDataAccess.CompleteReturn(returnToComplete);
         }
     }
 }

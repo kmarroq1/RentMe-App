@@ -14,11 +14,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public ReturnCartUserControl()
         {
             InitializeComponent();
+            _ReturnController = new ReturnController();
         }
 
         public void UpdateElements()
         {
             ErrorMessage.Hide();
+
+            Cart.Return.EmployeeID = 1; // FIXME!!!
 
             Cart.Return.MemberID = SharedFormInfo.MemberIDForm;
 

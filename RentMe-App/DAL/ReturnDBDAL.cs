@@ -1,5 +1,7 @@
 ﻿using RentMe_App.Model;
 using System.Data.SqlClient;
+using System.Data;
+using System;
 
 namespace RentMe_App.DAL
 {
@@ -21,11 +23,23 @@ namespace RentMe_App.DAL
 
                 using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    string returnTransactionInsertStatement = "";
+                    string returnTransactionInsertStatement = @"INSERT INTO [returnTransaction]
+                                                                    ( employeeID, return_date )
+                                                                VALUES
+                                                                    ( @EmployeeID, @ReturnDate )
+                                                                ;";
+
+                    int newRentalID = -1;
 
                     using (SqlCommand cmd = new SqlCommand(returnTransactionInsertStatement, connection, transaction))
                     {
+                        cmd.Parameters.Add("EmployeeID", SqlDbType.Int);
+                        cmd.Parameters["EmployeeID"].Value = returnToComplete.EmployeeID;
 
+                        cmd.Parameters.Add("ReturnDate", SqlDbType.Date);
+                        cmd.Parameters["ReturnDate"].Value = DateTime.Now;
+
+                        newRentalID = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
                     foreach (FurnitureInventory furniture in returnToComplete.ReturnedFurniture)
