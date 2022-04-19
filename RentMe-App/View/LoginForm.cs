@@ -47,9 +47,12 @@ namespace RentMe_App.View
                 if (String.IsNullOrEmpty(loginInfo) == false && String.IsNullOrEmpty(username) == false && String.IsNullOrEmpty(password) == false)
                 {
                     string[] loginInfoArray = loginInfo.Split('^');
+                    string employeeIDForm = loginInfoArray[0];
                     string usernameForm = loginInfoArray[1];
                     string employeeNameForm = loginInfoArray[2];
 
+                    Int32.TryParse(employeeIDForm, out int employeeID);
+                    SharedFormInfo.EmployeeIDForm = employeeID;
                     SharedFormInfo.UsernameForm = usernameForm;
                     SharedFormInfo.EmployeeNameForm = employeeNameForm;
 
@@ -79,9 +82,12 @@ namespace RentMe_App.View
                 if (String.IsNullOrEmpty(loginInfo) == false && String.IsNullOrEmpty(username) == false && String.IsNullOrEmpty(password) == false)
                 {
                     string[] loginInfoArray = loginInfo.Split('^');
+                    string employeeIDForm = loginInfoArray[0];
                     string usernameForm = loginInfoArray[1];
                     string employeeNameForm = loginInfoArray[2];
 
+                    Int32.TryParse(employeeIDForm, out int employeeID);
+                    SharedFormInfo.EmployeeIDForm = employeeID;
                     SharedFormInfo.UsernameForm = usernameForm;
                     SharedFormInfo.EmployeeNameForm = employeeNameForm;
 
