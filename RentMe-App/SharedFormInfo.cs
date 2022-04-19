@@ -20,6 +20,11 @@ namespace RentMe_App
         public static string EmployeeNameForm;
 
         /// <summary>
+        /// form employeeID
+        /// </summary>
+        public static int EmployeeIDForm;
+
+        /// <summary>
         /// login form instance
         /// </summary>
         public static LoginForm LoginForm;

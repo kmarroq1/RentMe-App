@@ -54,6 +54,7 @@
     <Compile Include="Controller\InventoryController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\RentalController.cs" />
     <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="Controller\StatesController.cs" />
     <Compile Include="Controller\StyleController.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
+    <Compile Include="DAL\RentalDBDAL.cs" />
     <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\ReturnDBDAL.cs" />
@@ -101,6 +103,12 @@
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\OrdersController.cs" />
+    <Compile Include="UserControls\MemberDashboardUCs\RentalCartUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\RentalCartUserControl.Designer.cs">
+      <DependentUpon>RentalCartUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -163,12 +171,6 @@
     </Compile>
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
-    <Compile Include="SearchFurnitureTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SearchFurnitureTest.Designer.cs">
-      <DependentUpon>SearchFurnitureTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Style.cs" />
@@ -234,6 +236,9 @@
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.resx">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalCartUserControl.resx">
+      <DependentUpon>RentalCartUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,9 +268,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainAdminForm.resx">
       <DependentUpon>MainAdminForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SearchFurnitureTest.resx">
-      <DependentUpon>SearchFurnitureTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

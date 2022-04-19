@@ -300,7 +300,7 @@ namespace RentMe_App.UserControls
                 MainMemberForm mainMemberForm = new MainMemberForm(SharedFormInfo.MainEmployeeForm);
                 SharedFormInfo.MemberIDForm = (int)selectedMember.MemberID;
                 mainMemberForm.ShowDialog();
-            }            
+            }
 
             RefreshSearchDataGrid();
         }

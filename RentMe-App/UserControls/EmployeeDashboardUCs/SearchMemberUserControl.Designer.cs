@@ -1,5 +1,4 @@
-﻿
-namespace RentMe_App.UserControls
+﻿namespace RentMe_App.UserControls
 {
     partial class SearchMemberUserControl
     {

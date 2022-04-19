@@ -55,58 +55,6 @@ namespace RentMe_App.Model
         public static bool HasReturn() { return Return != null; }
 
         /// <summary>
-        /// method used to create rental cart list
-        /// </summary>
-        /// <param name="rentalItem">item to add to rental cart</param>
-        /// <returns>boolean if added</returns>
-        public static bool AddRentalItem(FurnitureInventory rentalItem, int quantityInStock)
-        {
-            try
-            {
-                bool addedToCart = false;
-                if (rentalItem != null && RentalList.Count == 0)
-                {
-                    RentalList.Add(rentalItem);
-                    addedToCart = true;
-                    Console.WriteLine(RentalList[0].Quantity.ToString());
-                }
-                else if (RentalList.Count > 0)
-                {
-                    if (RentalList.Any(item => item.FurnitureID == rentalItem.FurnitureID))
-                    {
-                        var cartItem = RentalList.FirstOrDefault(o => o.FurnitureID == rentalItem.FurnitureID);
-                        if (cartItem != null && rentalItem.Quantity <= quantityInStock - cartItem.Quantity)
-                        {
-                            cartItem.Quantity = cartItem.Quantity + rentalItem.Quantity;
-                            addedToCart = true;
-                        }
-                    }
-                    else
-                    {
-                        RentalList.Add(rentalItem);
-                        addedToCart = true;
-                    }
-                }
-                return addedToCart;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("bad update");
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// check if item exists in rental cart already
-        /// </summary>
-        /// <param name="furnitureID">furniture ID of item to check in cart already</param>
-        /// <returns>boolean if item exists in cart</returns>
-        public static bool ItemInRentalCart(int furnitureID)
-        {
-            return RentalList.Any(item => item.FurnitureID == furnitureID);
-        }
-
-        /// <summary>
         /// Method used to create return cart list
         /// </summary>
         /// <param name="returnItem">item to add to return cart</param>
@@ -163,6 +111,58 @@ namespace RentMe_App.Model
         public static void ClearReturns()
         {
             Return = new Return();
+        }
+
+        /// <summary>
+        /// method used to create rental cart list
+        /// </summary>
+        /// <param name="rentalItem">item to add to rental cart</param>
+        /// <returns>boolean if added</returns>
+        public static bool AddRentalItem(FurnitureInventory rentalItem, int quantityInStock)
+        {
+            try
+            {
+                bool addedToCart = false;
+                if (rentalItem != null && RentalList.Count == 0)
+                {
+                    RentalList.Add(rentalItem);
+                    addedToCart = true;
+                    Console.WriteLine(RentalList[0].Quantity.ToString());
+                }
+                else if (RentalList.Count > 0)
+                {
+                    if (RentalList.Any(item => item.FurnitureID == rentalItem.FurnitureID))
+                    {
+                        var cartItem = RentalList.FirstOrDefault(o => o.FurnitureID == rentalItem.FurnitureID);
+                        if (cartItem != null && rentalItem.Quantity <= quantityInStock - cartItem.Quantity)
+                        {
+                            cartItem.Quantity = cartItem.Quantity + rentalItem.Quantity;
+                            addedToCart = true;
+                        }
+                    }
+                    else
+                    {
+                        RentalList.Add(rentalItem);
+                        addedToCart = true;
+                    }
+                }
+                return addedToCart;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("bad update");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// check if item exists in cart already
+        /// </summary>
+        /// <param name="furnitureID">furniture ID of item to check in cart already</param>
+        /// <returns>boolean if item exists in cart</returns>
+        public static bool ItemInCart(int furnitureID)
+        {
+            return RentalList.Any(item => item.FurnitureID == furnitureID);
         }
 
         #endregion

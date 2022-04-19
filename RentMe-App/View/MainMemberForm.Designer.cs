@@ -51,10 +51,12 @@ namespace RentMe_App.View
             this.memberIDFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDValueLabel = new System.Windows.Forms.Label();
+            this.rentalCartUserControl1 = new RentMe_App.UserControls.MemberDashboardUCs.RentalCartUserControl();
             this.mainTabControl.SuspendLayout();
             this.inventoryTabPage.SuspendLayout();
             this.orderAndReturnsTabPage.SuspendLayout();
             this.returnCartTabPage.SuspendLayout();
+            this.rentalCartTabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.labelFlowLayoutPanel.SuspendLayout();
@@ -115,6 +117,7 @@ namespace RentMe_App.View
             // 
             // rentalCartTabPage
             // 
+            this.rentalCartTabPage.Controls.Add(this.rentalCartUserControl1);
             this.rentalCartTabPage.Location = new System.Drawing.Point(4, 22);
             this.rentalCartTabPage.Name = "rentalCartTabPage";
             this.rentalCartTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -294,6 +297,13 @@ namespace RentMe_App.View
             this.memberIDValueLabel.TabIndex = 4;
             this.memberIDValueLabel.Text = "  ";
             // 
+            // rentalCartUserControl1
+            // 
+            this.rentalCartUserControl1.Location = new System.Drawing.Point(-3, 0);
+            this.rentalCartUserControl1.Name = "rentalCartUserControl1";
+            this.rentalCartUserControl1.Size = new System.Drawing.Size(828, 502);
+            this.rentalCartUserControl1.TabIndex = 0;
+            // 
             // MainMemberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +322,7 @@ namespace RentMe_App.View
             this.Load += new System.EventHandler(this.MainMemberForm_Load);
             this.mainTabControl.ResumeLayout(false);
             this.inventoryTabPage.ResumeLayout(false);
+            this.rentalCartTabPage.ResumeLayout(false);
             this.orderAndReturnsTabPage.ResumeLayout(false);
             this.returnCartTabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -351,6 +362,7 @@ namespace RentMe_App.View
         private System.Windows.Forms.Label memberIDValueLabel;
         private UserControls.MemberDashboardUCs.OrdersAndReturnsUserControl ordersAndReturnsUserControl1;
         private UserControls.SearchInventoryUserControl searchInventoryUserControl1;
+        private UserControls.MemberDashboardUCs.RentalCartUserControl rentalCartUserControl1;
         private UserControls.MemberDashboardUCs.ReturnCartUserControl ReturnCartUserControl;
     }
 }

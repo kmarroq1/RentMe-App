@@ -31,7 +31,7 @@ namespace RentMe_App.View.InventoryModals
         {
             this.addToCartButton = new System.Windows.Forms.Button();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.furnitureIDLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.furnitureIDValueLabel = new System.Windows.Forms.Label();
@@ -72,22 +72,22 @@ namespace RentMe_App.View.InventoryModals
             this.buttonFlowLayoutPanel.AutoSize = true;
             this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonFlowLayoutPanel.Controls.Add(this.addToCartButton);
-            this.buttonFlowLayoutPanel.Controls.Add(this.cancelButton);
+            this.buttonFlowLayoutPanel.Controls.Add(this.closeButton);
             this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(132, 434);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
             this.buttonFlowLayoutPanel.TabIndex = 1;
             this.buttonFlowLayoutPanel.WrapContents = false;
             // 
-            // cancelButton
+            // closeButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(84, 3);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.closeButton.Location = new System.Drawing.Point(84, 3);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // furnitureIDLabel
             // 
@@ -278,7 +278,7 @@ namespace RentMe_App.View.InventoryModals
             this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
             this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.quantityToRentNumericUpDown.TabIndex = 9;
-            this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.quantityToRentNumericUpDown_ValueChanged);
+            this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.QuantityToRentNumericUpDown_ValueChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -335,7 +335,7 @@ namespace RentMe_App.View.InventoryModals
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button addToCartButton;
         private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label furnitureIDLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label nameLabel;
