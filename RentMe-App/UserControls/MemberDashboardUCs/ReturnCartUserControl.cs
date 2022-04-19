@@ -1,4 +1,6 @@
-﻿using RentMe_App.Model;
+﻿using RentMe_App.Controller;
+using RentMe_App.Model;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -7,14 +9,22 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
     public partial class ReturnCartUserControl : UserControl
     {
         private DataTable _DataTable;
+        private readonly ReturnController _ReturnController;
 
         public ReturnCartUserControl()
         {
             InitializeComponent();
+            _ReturnController = new ReturnController();
         }
 
         public void UpdateElements()
         {
+            ErrorMessage.Hide();
+
+            Cart.Return.EmployeeID = 1; // FIXME!!!
+
+            Cart.Return.RentalID = 1; // FIXME!!!
+
             Cart.Return.MemberID = SharedFormInfo.MemberIDForm;
 
             ReturnsDataGridView.DataSource = null;
@@ -52,25 +62,34 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             ReturnsDataGridView.DataSource = _DataTable;
         }
 
-        private void ReturnCartUserControl_Load(object sender, System.EventArgs e)
+        private void ReturnCartUserControl_Load(object sender, EventArgs e)
         {
             UpdateElements();
         }
 
-        private void ClearReturnsButton_Click(object sender, System.EventArgs e)
+        private void ClearReturnsButton_Click(object sender, EventArgs e)
         {
             Cart.ClearReturns();
             UpdateElements();
         }
 
-        private void CompleteReturnButton_Click(object sender, System.EventArgs e)
+        private void CompleteReturnButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Return successfully processed.", "Success");
-            Cart.ClearReturns();
-            UpdateElements();
+            try
+            {
+                _ReturnController.CompleteReturn(Cart.Return);
+                MessageBox.Show("Return successfully processed.", "Success");
+                Cart.ClearReturns();
+                UpdateElements();
+            }
+            catch (Exception err)
+            {
+                ErrorMessage.Text = err.Message;
+                ErrorMessage.Show();
+            }
         }
 
-        private void ViewReturnItemButton_Click(object sender, System.EventArgs e)
+        private void ViewReturnItemButton_Click(object sender, EventArgs e)
         {
             Cart.Return.ReturnedFurniture.Add(new FurnitureInventory
             { FurnitureID = 1
