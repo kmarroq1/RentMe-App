@@ -46,17 +46,8 @@ namespace RentMe_App.View.EmployeeModals
         {
             //add condition for if item has already been returned
             //add option to choose quantity to return
-            //right now defaults to returning 1 furniture item
-            /*            if (currentOrder.Open)
-                        {*/
             Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
-            Cart.Return.RentalID = (int)currentOrder.RentalTransactionID;
             errorLabel.Text = "Added to cart!";
-            /* }
-             else
-             {
-                 errorLabel.Text = "This item has already been returned.";
-             }*/
 
             //update datagridview - subtract quantity shown
         }

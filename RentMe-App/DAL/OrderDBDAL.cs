@@ -193,8 +193,6 @@ namespace RentMe_App.DAL
         {
             List<FurnitureInventory> furnitureList = new List<FurnitureInventory>();
 
-            // query for quantity rented and quantity returned
-
             /* var selectOrderTotalStatement = "SELECT rt.transactionID, SUM(quantity * daily_rental_rate) as orderTotal " +
                  "FROM rentalTransaction rt" +
                  "LEFT JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionID " +
