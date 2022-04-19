@@ -217,7 +217,7 @@ GO
 -- Rental Transactions
 CREATE TABLE [dbo].[rentalTransaction]
 (
-	[transactionID] int NOT NULL,  
+	[transactionID] int NOT NULL IDENTITY(1,1),  
 	[employeeID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[employee](employeeID),
 	[memberID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[storeMember](memberID),
 	[transaction_date] DATETIME,
@@ -229,7 +229,7 @@ GO
 -- Return Transactions
 CREATE TABLE [dbo].[returnTransaction]
 (
-	[transactionID] int NOT NULL,  
+	[transactionID] int NOT NULL IDENTITY(1,1),  
 	[employeeID] int NOT NULL FOREIGN KEY REFERENCES [dbo].[employee](employeeID) ON DELETE CASCADE ON UPDATE CASCADE,
 	[return_date] DATE,
     PRIMARY KEY ([transactionID])
@@ -458,6 +458,44 @@ VALUES
     , (11,'Kelly',HASHBYTES('SHA2_256','Passw0rd!'))
     ;
 GO
+
+INSERT INTO [rentalTransaction] (employeeID, memberID, transaction_date, return_date)
+VALUES
+(1, 1, '4/16/2022', '4/17/2022'),
+(1, 1, '4/15/2022', '4/16/2022'),
+(1, 1, '4/14/2022', '4/15/2022'),
+(1, 1, '4/13/2022', '4/14/2022'),
+(1, 1, '4/12/2022', '4/13/2022')
+;
+GO
+
+INSERT INTO [furnitureRented] (furnitureID, rental_transactionID, quantity)
+VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 2, 1),
+(5, 3, 2),
+(1, 4, 1),
+(2, 5, 2);
+
+INSERT INTO [returnTransaction] (employeeID, return_date)
+VALUES
+(1, '4/16/2022'),
+(1, '4/16/2022')
+;
+GO
+
+INSERT INTO [furnitureReturned] (furnitureID, rental_transactionID, return_transactionID, quantity)
+VALUES
+(4, 2, 1, 1),
+(5, 3, 2, 1)
+;
+GO
+
+-- =========================================
+-- Login logic
+-- =========================================
 
 USE [cs6232-g5]
 GO

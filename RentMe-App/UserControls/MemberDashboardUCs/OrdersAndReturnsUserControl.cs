@@ -12,9 +12,9 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
     {
         #region Data Members
 
-        //private readonly OrdersController _ordersController;
-        //private List<Order> _orderList;
-        private readonly int _currentMemberID;
+        private readonly OrdersController _ordersController;
+        private List<Order> _orderList;
+        private int _currentMemberID;
 
         #endregion
 
@@ -23,21 +23,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         /// <summary>
         /// Constructor for class.
         /// </summary>
-        public OrdersAndReturnsUserControl(int memberID)
+        public OrdersAndReturnsUserControl()
         {
-            if (memberID < 0)
-            {
-                throw new ArgumentException("Invalid member");
-            }
-
             InitializeComponent();
 
-            //_ordersController = new OrdersController(memberID);
-            //_orderList = _ordersController.getOrderHistory();
-            _currentMemberID = memberID;
-
+            _ordersController = new OrdersController();
+            errorMsgLabel.Text = "";
+            _currentMemberID = 0;
             ViewButton.Enabled = false;
-            PopulateDataGridView();
             PopulateComboBox();
         }
 
@@ -47,27 +40,32 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            _currentMemberID = int.Parse(SharedFormInfo.MemberIDForm.ToString());
             errorMsgLabel.Text = "";
             try
             {
                 if (!string.IsNullOrEmpty(transactionIdTextBox.Text) && int.Parse(transactionIdTextBox.Text) < 0)
                 {
-                    errorMsgLabel.Text = "Transaction ID must be a positive number";
-                    return;
+                    throw new Exception("Transaction ID must be a positive number");
+                }
+                else if (string.IsNullOrEmpty(transactionIdTextBox.Text))
+                {
+                    throw new Exception("Must enter a transaction ID");
                 }
                 //is this where we want this conditional to go?
-                else if (pendingOrdersCheckbox.Checked)
+                /*else if (pendingOrdersCheckbox.Checked)
                 {
                     //_orderList = _ordersController.getPendingOrders(_currentMemberID);
-                }
+                }*/
                 else
                 {
-                    //_orderList = _ordersController.getOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
+                    _orderList = _ordersController.GetOrdersByTransactionId(_currentMemberID, int.Parse(transactionIdTextBox.Text));
+                    RefreshData();
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                errorMsgLabel.Text = "Search failed";
+                errorMsgLabel.Text = exception.Message;
             }
 
             RefreshData();
@@ -76,16 +74,16 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void ViewButton_Click(object sender, EventArgs e)
         {
             var selectedOrderID = int.Parse(orderHistoryDataGridView.SelectedRows[0].Cells["ID"].Value.ToString());
-            var selectedOrderType = orderHistoryDataGridView.SelectedRows[1].Cells["Type"].Value.ToString();
-            //var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
+            var selectedOrderType = orderHistoryDataGridView.SelectedRows[0].Cells["Type"].Value.ToString();
+            var selectedOrder = _orderList.Find(x => x.TransactionID == selectedOrderID && x.OrderType == selectedOrderType);
 
-            ViewOrderModal newForm = new ViewOrderModal(/*selectedOrder*/);
+            ViewOrderModal newForm = new ViewOrderModal(selectedOrder);
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
             errorMsgLabel.Text = "";
             ViewButton.Enabled = false;
 
-            _ = newForm.ShowDialog();
+            newForm.ShowDialog();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -101,7 +99,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewButton.Enabled = orderHistoryDataGridView.SelectedRows.Count == 1;
+            ViewButton.Enabled = true;
             errorMsgLabel.Text = "";
             orderHistoryDataGridView.CurrentRow.Selected = true;
         }
@@ -110,38 +108,55 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             var years = new List<string>() { "--Select--", "2022", "2021", "2020" };
             yearsComboBox.DataSource = new BindingSource(years, null);
-            yearsComboBox.SelectedIndex = -1;
-        }
-
-        private void YearsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            errorMsgLabel.Text = "";
-            //_orderList = _ordersController.getOrdersByYear(yearsComboBox.SelectedValue.ToString());
-            RefreshData();
+            yearsComboBox.SelectedIndex = 1;
         }
 
         private void RefreshData()
         {
-            //if (_orderList == null || _orderList.Count = 0)
-            //{
-            //errorMsgLabel.Text = "No orders found...";
-            //return;
-            //}
-
             orderHistoryDataGridView.DataSource = null;
             orderHistoryDataGridView.Rows.Clear();
 
-            PopulateDataGridView();
+            try
+            {
+                if (_orderList == null || _orderList.Count == 0)
+                {
+                    throw new Exception("No orders");
+                }
+                foreach (var order in _orderList)
+                {
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                }
+            }
+            catch (Exception exception)
+            {
+                errorMsgLabel.Text = exception.Message;
+            }
         }
 
         private void PopulateDataGridView()
         {
-            /*
-              foreach (Order order in _orderList)
+            try
+            {
+                _currentMemberID = int.Parse(SharedFormInfo.MemberIDForm.ToString());
+                _orderList = _ordersController.GetOrderHistory(_currentMemberID);
+                if (_orderList == null || _orderList.Count == 0)
                 {
-                    orderHistoryDataGridView.Rows.Add([add columns here]);
+                    throw new Exception("No orders");
                 }
-             */
+                foreach (var order in _orderList)
+                {
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                }
+            }
+            catch (Exception exception)
+            {
+                errorMsgLabel.Text = exception.Message;
+            }
+        }
+
+        private void ViewAllButton_Click(object sender, EventArgs e)
+        {
+            PopulateDataGridView();
         }
 
         #endregion

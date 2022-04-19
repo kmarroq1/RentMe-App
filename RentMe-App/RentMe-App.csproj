@@ -54,6 +54,7 @@
     <Compile Include="Controller\InventoryController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="Controller\StatesController.cs" />
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
@@ -63,7 +64,9 @@
     <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
+    <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
+    <Compile Include="DAL\ReturnDBDAL.cs" />
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
@@ -87,12 +90,17 @@
     <Compile Include="UserControls\DashboardHeaderUserControl.Designer.cs">
       <DependentUpon>DashboardHeaderUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Order.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
+      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\OrdersController.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\RentalCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +112,12 @@
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.Designer.cs">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.Designer.cs">
+      <DependentUpon>ReturnCartUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.cs">
       <SubType>UserControl</SubType>
@@ -129,10 +143,10 @@
     <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EmployeeModals\ViewOrderModal.Designer.cs">
+    <Compile Include="View\MemberModals\ViewOrderModal.Designer.cs">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\InventoryModals\AddRentalItemModal.cs">
@@ -226,6 +240,9 @@
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\RentalsReturnsCartUserControl.resx">
       <DependentUpon>RentalsReturnsCartUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MemberDashboardUCs\ReturnCartUserControl.resx">
+      <DependentUpon>ReturnCartUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.resx">
       <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,7 +255,7 @@
     <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmployeeModals\ViewOrderModal.resx">
+    <EmbeddedResource Include="View\MemberModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\InventoryModals\AddRentalItemModal.resx">
