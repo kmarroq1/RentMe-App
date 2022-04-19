@@ -50,7 +50,7 @@ namespace RentMe_App.View.EmployeeModals
             /*            if (currentOrder.Open)
                         {*/
             Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
-            Cart.Return.RentalID = (int)currentOrder.RentalTransactionID;
+            Cart.Return.RentalID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID ;
             errorLabel.Text = "Added to cart!";
             /* }
              else
