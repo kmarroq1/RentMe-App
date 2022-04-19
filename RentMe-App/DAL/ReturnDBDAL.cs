@@ -47,6 +47,8 @@ namespace RentMe_App.DAL
 
                     foreach (FurnitureInventory furniture in returnToComplete.ReturnedFurniture)
                     {
+                        // TODO: if partial furniture return exists, update instead of insert
+
                         string furnitureReturnedInsertStatement = @"INSERT INTO [furnitureReturned]
 	                                                                    (furnitureID, rental_transactionID, return_transactionID, quantity)
                                                                     VALUES
@@ -70,12 +72,24 @@ namespace RentMe_App.DAL
                             cmd.ExecuteNonQuery();
                         }
 
-                        string furnitureRentedDeleteStatement = "";
+                        /*
+                        // TODO: if user not returning all items, update rather than delete
+                        string furnitureRentedDeleteStatement = @"DELETE FROM [furnitureRented]
+                                                                  WHERE [rental_transactionID] = @RentalID
+	                                                                  AND [furnitureID] = @FurnitureID
+                                                                  ;";
 
                         using (SqlCommand cmd = new SqlCommand(furnitureRentedDeleteStatement, connection, transaction))
                         {
+                            cmd.Parameters.Add("RentalID", SqlDbType.Int);
+                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
 
+                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
+                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
+
+                            cmd.ExecuteNonQuery();
                         }
+                        */
                     }
 
                     string furnitureInventoryUpdateStatement = "";
