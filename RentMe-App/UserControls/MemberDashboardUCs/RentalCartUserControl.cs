@@ -40,13 +40,22 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             rentalCartList = Cart.RentalList;
             RefreshRentalCartDataGrid();
+            HideErrorMessage();
         }
 
         private void RefreshRentalCartDataGrid()
         {
             if (rentalCartList.Count > 0)
             {
+                completeRentalButton.Enabled = true;
                 BuildDataGridView(rentalCartList);
+                int totalItemsInCart = 0;
+                for (int count = 0; count < rentalCartList.Count; count++)
+                {
+                    totalItemsInCart += rentalCartList[count].Quantity;
+                }
+
+                totalItemsInCartValuelabel.Text = totalItemsInCart.ToString();
             }
             else
             {
@@ -155,15 +164,67 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             rentalCartDataGridView.Refresh();
         }
 
+        private void DueDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            int totalDaysRented = (int)(dueDateTimePicker.Value - DateTime.Today).TotalDays;
+            decimal totalCost = 0;
+
+            for (int count = 0; count < rentalCartList.Count; count++)
+            {
+                totalCost += rentalCartList[count].Daily_Rental_Rate * totalDaysRented;
+            }
+            currentTotalValueLabel.Text = totalCost.ToString("C");
+        }
+
+        private void ClearForm()
+        {
+
+            totalItemsInCartValuelabel.Text = "";
+            currentTotalValueLabel.Text = "";
+            dueDateTimePicker.Value = DateTime.Today;
+            HideErrorMessage();
+            completeRentalButton.Enabled = false;
+        }
+
         private void CompleteRentalButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(SharedFormInfo.MemberIDForm.ToString());
-            Console.WriteLine(SharedFormInfo.EmployeeIDForm.ToString());
-            Console.WriteLine(DateTime.Today.ToString());
-            Console.WriteLine(dueDateTimePicker.Value.ToString());
-            Console.WriteLine(Cart.RentalList[0].FurnitureID.ToString());
+            if ((int)(dueDateTimePicker.Value - DateTime.Today).TotalDays == 0)
+            {
+                ShowErrorMessage("You must choose a rental date in the future");
+            }
+            else
+            {
+                HideErrorMessage();
+                bool transactionCompleted = false;
+                transactionCompleted = rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Now, DateTime.Parse(dueDateTimePicker.Value.ToString("MM/dd/yyyy")), Cart.RentalList);
 
-            rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Today, dueDateTimePicker.Value, Cart.RentalList);
+                if (transactionCompleted)
+                {
+                    Cart.RentalList.Clear();
+                    RefreshRentalCartDataGrid();
+                    ClearDataGridView();
+                    ClearForm();
+                    ShowErrorMessage("Transaction Completed");
+
+                }
+                else
+                {
+                    ShowErrorMessage("Please review transaction");
+                }
+            }
+        }
+
+        private void ClearRentalsButton_Click(object sender, EventArgs e)
+        {
+            Cart.RentalList.Clear();
+            RefreshRentalCartDataGrid();
+            ClearDataGridView();
+            ClearForm();
+        }
+
+        private void RentalCartUserControl_VisibleChanged(object sender, EventArgs e)
+        {
+            HideErrorMessage();
         }
 
         #endregion

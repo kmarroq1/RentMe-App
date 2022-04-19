@@ -252,6 +252,7 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SearchInventoryUserControl";
             this.Size = new System.Drawing.Size(828, 502);
+            this.VisibleChanged += new System.EventHandler(this.SearchInventoryUserControl_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.searchInventoryDataGridView)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

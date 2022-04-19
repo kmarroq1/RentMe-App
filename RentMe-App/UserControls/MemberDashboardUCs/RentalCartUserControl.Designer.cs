@@ -96,6 +96,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.clearRentalsButton.TabIndex = 32;
             this.clearRentalsButton.Text = "Clear Rentals";
             this.clearRentalsButton.UseVisualStyleBackColor = true;
+            this.clearRentalsButton.Click += new System.EventHandler(this.ClearRentalsButton_Click);
             // 
             // errorMessageLabel
             // 
@@ -197,6 +198,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.dueDateTimePicker.Name = "dueDateTimePicker";
             this.dueDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dueDateTimePicker.TabIndex = 42;
+            this.dueDateTimePicker.ValueChanged += new System.EventHandler(this.DueDateTimePicker_ValueChanged);
             // 
             // dueDateLabel
             // 
@@ -222,6 +224,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.Name = "RentalCartUserControl";
             this.Size = new System.Drawing.Size(828, 502);
             this.Load += new System.EventHandler(this.RentalCartUserControl_Load);
+            this.VisibleChanged += new System.EventHandler(this.RentalCartUserControl_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.rentalCartDataGridView)).EndInit();
             this.buttonFlowLayoutPanel.ResumeLayout(false);
             this.buttonFlowLayoutPanel.PerformLayout();
