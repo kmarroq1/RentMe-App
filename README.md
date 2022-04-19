@@ -12,7 +12,7 @@ Password: test1234
 ```
 ### Notes
 ```bash
-Pull from our latest Release version for Iteration 1
+Pull from our latest Release version for Iteration 2
 DB has been updated - zip contains updated export
 Only Meber ID 1 has transactions in DB
 ```
