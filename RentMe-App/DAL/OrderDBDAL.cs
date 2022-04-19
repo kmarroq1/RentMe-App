@@ -113,7 +113,6 @@ namespace RentMe_App.DAL
                 "LEFT JOIN rentalTransaction AS rentals ON furnitureRented.rental_transactionID = rentals.transactionID " +
                 "WHERE memberId = @memberId AND returns.transactionID = @transactionID";
 
-            //add error handling i.e. check to make sure you can't return more than what was rented out
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -147,9 +146,9 @@ namespace RentMe_App.DAL
                 string rentalSelectStatement = "SELECT rentalTransaction.transactionID as rentalTransactionId, rentalTransaction.employeeID as employeeID, transaction_date as date_ordered, rentalTransaction.return_date as due_date, returnTransaction.return_date as return_date, furnitureRented.quantity - furnitureReturned.quantity as openQuantity " +
                     "FROM rentalTransaction " +
                     "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID " +
-                    "LEFT JOIN returnTransaction ON furnitureReturned.return_transactionID = returnTransaction.transactionID" +
+                    "LEFT JOIN returnTransaction ON furnitureReturned.return_transactionID = returnTransaction.transactionID " +
                     "LEFT JOIN furnitureRented ON returnTransaction.transactionID = furnitureRented.rental_transactionID " +
-                    "WHERE memberID = @memberID AND rentalTransaction.transactionID = @transactionID";
+                    "WHERE memberId = @memberId AND rentalTransaction.transactionID = @transactionID";
 
                 using (SqlCommand selectCommand = new SqlCommand(rentalSelectStatement, connection))
                 {
@@ -166,7 +165,7 @@ namespace RentMe_App.DAL
                                 OrderType = "rental",
                                 OrderDate = (DateTime)reader["date_ordered"],
                                 DueDate = (DateTime)reader["due_date"],
-                                DateReturned = (DateTime)reader["return_date"],
+                                DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"],
                                 OrderTotal = 0,
                                 Open = reader["openQuantity"] == DBNull.Value ? true : (int)reader["openQuantity"] > 0,
                                 Balance = 0,
