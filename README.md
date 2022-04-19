@@ -10,9 +10,12 @@ Username/Password for both Admin and Employee
 Username: Jane
 Password: test1234
 ```
+### Notes
+```bash
 Pull from our latest Release version for Iteration 1
-Only Meber ID 1 has transactions.
-
+DB has been updated - zip contains updated export
+Only Meber ID 1 has transactions in DB
+```
 ## To-do
 - Can only return 1 item at a time - change so that user can adjust quantity to return
 - OrderDBDAL queries must be updated to reflect appropriate quantities
