@@ -20,9 +20,7 @@ Only Meber ID 1 has transactions in DB
 - Can only return 1 item at a time - change so that user can adjust quantity to return
 - OrderDBDAL queries must be updated to reflect appropriate quantities
 - Balance is not calculated
-- Refactor duplicated code
-- Add consistent/User-friendlier code for handling errors thrown
+- Second rental transactions crash the app
+- Member changing feature without logging out will be added
 - Updating customers and employees needs to not take place if no changes are made
 - Add report feature
-- Add shopping cart feature
-- Add order history feature
