@@ -127,7 +127,6 @@ namespace RentMe_App.Model
                 {
                     RentalList.Add(rentalItem);
                     addedToCart = true;
-                    Console.WriteLine(RentalList[0].Quantity.ToString());
                 }
                 else if (RentalList.Count > 0)
                 {

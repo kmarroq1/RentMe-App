@@ -100,7 +100,7 @@ namespace RentMe_App.DAL
 
             //insert furniture into furnitureRented
             int rentalFurnitureCount = rentalFurnitureList.Count();
-
+            furnitureRentedValues = "";
             for (int count = 0; count < rentalFurnitureCount; count++)
             {
                 if (count != rentalFurnitureCount - 1)
@@ -140,6 +140,7 @@ namespace RentMe_App.DAL
             }
 
             //update inventory
+            inventoryValues = "";
             for (int count = 0; count < rentalFurnitureCount; count++)
             {
                 inventoryValues += "UPDATE inventory "
