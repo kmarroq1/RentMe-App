@@ -12,14 +12,16 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         #region Data Members
 
         public int TransactionID { get; set; }
+        public int EmployeeID { get; set; }
+        public int MemberID { get; set; }
         public string OrderType { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime? DateReturned { get; set; }
         public double OrderTotal { get; set; }
-        public bool Status { get; set; }
+        public bool Open { get; set; }
         public double Balance { get; set; }
-        public List<Furniture> FurnitureList { get; set; }
+        public List<FurnitureInventory> FurnitureList { get; set; }
 
         #endregion
     }
