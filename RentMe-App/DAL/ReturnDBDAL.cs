@@ -90,13 +90,21 @@ namespace RentMe_App.DAL
                             cmd.ExecuteNonQuery();
                         }
                         */
-                    }
 
-                    string furnitureInventoryUpdateStatement = "";
+                        string furnitureInventoryUpdateStatement = @"UPDATE [inventory]
+                                                                     SET [quantity] = [quantity] + @Quantity
+                                                                     WHERE [furnitureID] = @FurnitureID";
 
-                    using (SqlCommand cmd = new SqlCommand(furnitureInventoryUpdateStatement, connection, transaction))
-                    {
+                        using (SqlCommand cmd = new SqlCommand(furnitureInventoryUpdateStatement, connection, transaction))
+                        {
+                            cmd.Parameters.Add("Quantity", SqlDbType.Int);
+                            cmd.Parameters["Quantity"].Value = furniture.Quantity;
 
+                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
+                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
                     transaction.Commit();
