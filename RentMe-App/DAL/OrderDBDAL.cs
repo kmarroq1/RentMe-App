@@ -22,7 +22,7 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
@@ -42,6 +42,7 @@ namespace RentMe_App.DAL
                         {
                             Order order = new Order
                             {
+                                RentalTransactionID = (int?)reader["rentalTransactionId"],
                                 TransactionID = (int)reader["returnTransactionId"],
                                 OrderType = "return",
                                 OrderDate = (DateTime)reader["date_ordered"],
@@ -106,7 +107,7 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
@@ -127,6 +128,7 @@ namespace RentMe_App.DAL
                         {
                             Order order = new Order
                             {
+                                RentalTransactionID = (int?)reader["rentalTransactionId"],
                                 TransactionID = (int)reader["returnTransactionId"],
                                 OrderType = "return",
                                 OrderDate = (DateTime)reader["date_ordered"],

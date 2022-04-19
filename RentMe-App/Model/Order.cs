@@ -22,6 +22,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public bool Open { get; set; }
         public double Balance { get; set; }
         public List<FurnitureInventory> FurnitureList { get; set; }
+        public int? RentalTransactionID { get; set; }
 
         #endregion
     }
