@@ -13,7 +13,7 @@ namespace RentMe_App.View.EmployeeModals
     {
         #region Data Members
 
-        private List<Furniture> _furnitureList;
+        private List<FurnitureInventory> _furnitureList;
         private readonly OrdersController ordersController;
         private readonly Order currentOrder;
 
@@ -48,6 +48,8 @@ namespace RentMe_App.View.EmployeeModals
             //add option to choose quantity to return
             Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
             errorLabel.Text = "Added to cart!";
+
+            //update datagridview - subtract quantity shown
         }
 
         private FurnitureInventory CreateReturnItem()

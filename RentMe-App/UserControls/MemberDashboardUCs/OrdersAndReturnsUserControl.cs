@@ -40,6 +40,15 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            errorMsgLabel.Text = "";
+            ViewButton.Enabled = false;
+            orderHistoryDataGridView.DataSource = null;
+            orderHistoryDataGridView.Rows.Clear();
+            if (_orderList != null)
+            {
+                _orderList.Clear();
+            }
+
             _currentMemberID = int.Parse(SharedFormInfo.MemberIDForm.ToString());
             errorMsgLabel.Text = "";
             try
@@ -124,7 +133,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 foreach (var order in _orderList)
                 {
-                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Open, order.Balance);
                 }
             }
             catch (Exception exception)
@@ -145,7 +154,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 foreach (var order in _orderList)
                 {
-                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Status, order.Balance);
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Open, order.Balance);
                 }
             }
             catch (Exception exception)
@@ -156,6 +165,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void ViewAllButton_Click(object sender, EventArgs e)
         {
+            errorMsgLabel.Text = "";
+            ViewButton.Enabled = false;
+            orderHistoryDataGridView.DataSource = null;
+            orderHistoryDataGridView.Rows.Clear();
+            if (_orderList != null)
+            {
+                _orderList.Clear();
+            }
             PopulateDataGridView();
         }
 
