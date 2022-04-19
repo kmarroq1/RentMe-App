@@ -35,7 +35,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.clearRentalsButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectRentalItemButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.totalItemsInCartLabel = new System.Windows.Forms.Label();
@@ -85,12 +84,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.completeRentalButton.TabIndex = 31;
             this.completeRentalButton.Text = "Complete Rental";
             this.completeRentalButton.UseVisualStyleBackColor = true;
+            this.completeRentalButton.Click += new System.EventHandler(this.CompleteRentalButton_Click);
             // 
             // clearRentalsButton
             // 
             this.clearRentalsButton.AutoSize = true;
             this.clearRentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.clearRentalsButton.Location = new System.Drawing.Point(223, 3);
+            this.clearRentalsButton.Location = new System.Drawing.Point(104, 3);
             this.clearRentalsButton.Name = "clearRentalsButton";
             this.clearRentalsButton.Size = new System.Drawing.Size(80, 23);
             this.clearRentalsButton.TabIndex = 32;
@@ -116,25 +116,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.buttonFlowLayoutPanel.AutoSize = true;
             this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonFlowLayoutPanel.Controls.Add(this.completeRentalButton);
-            this.buttonFlowLayoutPanel.Controls.Add(this.selectRentalItemButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.clearRentalsButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(266, 458);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(326, 458);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(306, 29);
+            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(187, 29);
             this.buttonFlowLayoutPanel.TabIndex = 40;
             this.buttonFlowLayoutPanel.WrapContents = false;
-            // 
-            // selectRentalItemButton
-            // 
-            this.selectRentalItemButton.AutoSize = true;
-            this.selectRentalItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.selectRentalItemButton.Location = new System.Drawing.Point(104, 3);
-            this.selectRentalItemButton.Name = "selectRentalItemButton";
-            this.selectRentalItemButton.Size = new System.Drawing.Size(113, 23);
-            this.selectRentalItemButton.TabIndex = 33;
-            this.selectRentalItemButton.Text = "Select Rental Item";
-            this.selectRentalItemButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -254,7 +242,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.Button clearRentalsButton;
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
-        private System.Windows.Forms.Button selectRentalItemButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label currentTotalValueLabel;

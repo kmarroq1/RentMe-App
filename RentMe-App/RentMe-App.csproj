@@ -54,6 +54,7 @@
     <Compile Include="Controller\InventoryController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\RentalController.cs" />
     <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="Controller\StatesController.cs" />
     <Compile Include="Controller\StyleController.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
     <Compile Include="DAL\MemberDBDAL.cs" />
+    <Compile Include="DAL\RentalDBDAL.cs" />
     <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
     <Compile Include="DAL\ReturnDBDAL.cs" />

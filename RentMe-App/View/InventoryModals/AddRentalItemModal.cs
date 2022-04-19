@@ -46,7 +46,7 @@ namespace RentMe_App.View.InventoryModals
             quantityInStockValueLabel.Text = rentalItem.Quantity.ToString();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -62,7 +62,7 @@ namespace RentMe_App.View.InventoryModals
             errorMessageLabel.ForeColor = System.Drawing.Color.Red;
         }
 
-        private void quantityToRentNumericUpDown_ValueChanged(object sender, EventArgs e)
+        private void QuantityToRentNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (quantityToRentNumericUpDown.Value > 0)
             {

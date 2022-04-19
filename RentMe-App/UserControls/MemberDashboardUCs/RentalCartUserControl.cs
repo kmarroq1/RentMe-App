@@ -1,4 +1,5 @@
-﻿using RentMe_App.Model;
+﻿using RentMe_App.Controller;
+using RentMe_App.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -12,7 +13,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
     /// </summary>
     public partial class RentalCartUserControl : UserControl
     {
+        #region Data Members
+
         private List<FurnitureInventory> rentalCartList;
+        private readonly RentalController rentalController;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// constructor used to create the rental cart controls
@@ -21,7 +29,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             InitializeComponent();
             rentalCartList = new List<FurnitureInventory>();
+            rentalController = new RentalController();
         }
+
+        #endregion
+
+        #region Methods
 
         private void RentalCartUserControl_Load(object sender, System.EventArgs e)
         {
@@ -33,7 +46,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             if (rentalCartList.Count > 0)
             {
-                selectRentalItemButton.Enabled = false;
                 BuildDataGridView(rentalCartList);
             }
             else
@@ -133,7 +145,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void RentalCartDataGridView_VisibleChanged(object sender, EventArgs e)
         {
-            dueDateTimePicker.MinDate = DateTime.Today.AddDays(1);
+            dueDateTimePicker.MinDate = DateTime.Today;
             RefreshRentalCartDataGrid();
         }
 
@@ -142,5 +154,18 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             rentalCartDataGridView.Rows.Clear();
             rentalCartDataGridView.Refresh();
         }
+
+        private void CompleteRentalButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(SharedFormInfo.MemberIDForm.ToString());
+            Console.WriteLine(SharedFormInfo.EmployeeIDForm.ToString());
+            Console.WriteLine(DateTime.Today.ToString());
+            Console.WriteLine(dueDateTimePicker.Value.ToString());
+            Console.WriteLine(Cart.RentalList[0].FurnitureID.ToString());
+
+            rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Today, dueDateTimePicker.Value, Cart.RentalList);
+        }
+
+        #endregion
     }
 }
