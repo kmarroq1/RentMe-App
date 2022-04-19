@@ -37,20 +37,20 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.pendingOrdersCheckbox = new System.Windows.Forms.CheckBox();
             this.yearsComboBox = new System.Windows.Forms.ComboBox();
             this.transactionLabel = new System.Windows.Forms.Label();
+            this.ViewAllButton = new System.Windows.Forms.Button();
             this.orderHistoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ViewButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Open = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ViewButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.errorMsgLabel = new System.Windows.Forms.Label();
-            this.ViewAllButton = new System.Windows.Forms.Button();
             this.topTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -156,6 +156,17 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.transactionLabel.TabIndex = 1;
             this.transactionLabel.Text = "Transaction ID";
             // 
+            // ViewAllButton
+            // 
+            this.ViewAllButton.BackColor = System.Drawing.Color.LightBlue;
+            this.ViewAllButton.Location = new System.Drawing.Point(269, 3);
+            this.ViewAllButton.Name = "ViewAllButton";
+            this.ViewAllButton.Size = new System.Drawing.Size(127, 23);
+            this.ViewAllButton.TabIndex = 7;
+            this.ViewAllButton.Text = "View All Orders";
+            this.ViewAllButton.UseVisualStyleBackColor = false;
+            this.ViewAllButton.Click += new System.EventHandler(this.ViewAllButton_Click);
+            // 
             // orderHistoryDataGridView
             // 
             this.orderHistoryDataGridView.AllowUserToAddRows = false;
@@ -169,7 +180,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DueDate,
             this.DateReturned,
             this.OrderTotal,
-            this.Status,
+            this.Open,
             this.Balance});
             this.orderHistoryDataGridView.Location = new System.Drawing.Point(0, 90);
             this.orderHistoryDataGridView.Margin = new System.Windows.Forms.Padding(1);
@@ -182,55 +193,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.Size = new System.Drawing.Size(799, 355);
             this.orderHistoryDataGridView.TabIndex = 1;
             this.orderHistoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.ToolTipText = "Transaction ID";
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "Order Date";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "Due Date";
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            // 
-            // DateReturned
-            // 
-            this.DateReturned.HeaderText = "Date Returned";
-            this.DateReturned.Name = "DateReturned";
-            this.DateReturned.ReadOnly = true;
-            // 
-            // OrderTotal
-            // 
-            this.OrderTotal.HeaderText = "Order Total";
-            this.OrderTotal.Name = "OrderTotal";
-            this.OrderTotal.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Balance
-            // 
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
-            this.Balance.ReadOnly = true;
             // 
             // bottomTableLayoutPanel
             // 
@@ -286,16 +248,54 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.errorMsgLabel.TabIndex = 2;
             this.errorMsgLabel.Text = "  ";
             // 
-            // ViewAllButton
+            // ID
             // 
-            this.ViewAllButton.BackColor = System.Drawing.Color.LightBlue;
-            this.ViewAllButton.Location = new System.Drawing.Point(269, 3);
-            this.ViewAllButton.Name = "ViewAllButton";
-            this.ViewAllButton.Size = new System.Drawing.Size(127, 23);
-            this.ViewAllButton.TabIndex = 7;
-            this.ViewAllButton.Text = "View All Orders";
-            this.ViewAllButton.UseVisualStyleBackColor = false;
-            this.ViewAllButton.Click += new System.EventHandler(this.ViewAllButton_Click);
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.ToolTipText = "Transaction ID";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "Order Date";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // DateReturned
+            // 
+            this.DateReturned.HeaderText = "Date Returned";
+            this.DateReturned.Name = "DateReturned";
+            this.DateReturned.ReadOnly = true;
+            // 
+            // OrderTotal
+            // 
+            this.OrderTotal.HeaderText = "Order Total";
+            this.OrderTotal.Name = "OrderTotal";
+            this.OrderTotal.ReadOnly = true;
+            // 
+            // Open
+            // 
+            this.Open.HeaderText = "Open";
+            this.Open.Name = "Open";
+            this.Open.ReadOnly = true;
+            // 
+            // Balance
+            // 
+            this.Balance.HeaderText = "Balance";
+            this.Balance.Name = "Balance";
+            this.Balance.ReadOnly = true;
             // 
             // OrdersAndReturnsUserControl
             // 
@@ -331,14 +331,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.Button ViewButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label errorMsgLabel;
+        private System.Windows.Forms.Button ViewAllButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Open;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
-        private System.Windows.Forms.Button ViewAllButton;
     }
 }
