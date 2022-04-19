@@ -10,11 +10,17 @@ Username/Password for both Admin and Employee
 Username: Jane
 Password: test1234
 ```
-
+### Notes
+```bash
+Pull from our latest Release version for Iteration 2
+DB has been updated - zip contains updated export
+Only Meber ID 1 has transactions in DB
+```
 ## To-do
-- Refactor duplicated code
-- Add consistent/User-friendlier code for handling errors thrown
+- Can only return 1 item at a time - change so that user can adjust quantity to return
+- OrderDBDAL queries must be updated to reflect appropriate quantities
+- Balance is not calculated
+- Second rental transactions crash the app
+- Member changing feature without logging out will be added
 - Updating customers and employees needs to not take place if no changes are made
 - Add report feature
-- Add shopping cart feature
-- Add order history feature
