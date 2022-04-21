@@ -30,6 +30,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             InitializeComponent();
             rentalCartList = new List<FurnitureInventory>();
             rentalController = new RentalController();
+
+            currentTotalValueLabel.Text = "$0.00";
         }
 
         #endregion
@@ -179,8 +181,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void ClearForm()
         {
 
-            totalItemsInCartValuelabel.Text = "";
-            currentTotalValueLabel.Text = "";
+            totalItemsInCartValuelabel.Text = "0";
+            currentTotalValueLabel.Text = "$0.00";
             dueDateTimePicker.Value = DateTime.Today;
             HideErrorMessage();
             completeRentalButton.Enabled = false;
