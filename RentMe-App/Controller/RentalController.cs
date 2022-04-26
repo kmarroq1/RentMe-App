@@ -44,7 +44,7 @@ namespace RentMe_App.Controller
         public bool CreateRentalTransaction(int memberID, int employeeID, DateTime transactionDate, 
             DateTime returnDate, List<FurnitureInventory> rentalFurnitureList)
         {
-            return rentalDBDAL.CreateRentalTransaction(memberID, employeeID, transactionDate, returnDate, rentalFurnitureList);
+            return rentalDBDAL.CreateRentalTransaction(memberID, employeeID, returnDate, rentalFurnitureList);
         }
 
         #endregion
