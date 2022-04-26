@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View.InventoryModals;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
     {
         #region Data Members
 
+        private readonly InventoryController inventoryController;
         private List<FurnitureInventory> rentalCartList;
         private readonly RentalController rentalController;
 
@@ -28,6 +30,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public RentalCartUserControl()
         {
             InitializeComponent();
+            inventoryController = new InventoryController();
             rentalCartList = new List<FurnitureInventory>();
             rentalController = new RentalController();
 
@@ -190,29 +193,97 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void CompleteRentalButton_Click(object sender, EventArgs e)
         {
-            if ((int)(dueDateTimePicker.Value - DateTime.Today).TotalDays == 0)
+            try
             {
-                ShowErrorMessage("You must choose a rental date in the future");
-            }
-            else
-            {
-                HideErrorMessage();
-                bool transactionCompleted = false;
-                transactionCompleted = rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Now, DateTime.Parse(dueDateTimePicker.Value.ToString("MM/dd/yyyy")), Cart.RentalList);
-
-                if (transactionCompleted)
+                if ((int)(dueDateTimePicker.Value - DateTime.Today).TotalDays == 0)
                 {
-                    Cart.RentalList.Clear();
-                    RefreshRentalCartDataGrid();
-                    ClearDataGridView();
-                    ClearForm();
-                    ShowErrorMessage("Transaction Completed");
-
+                    ShowErrorMessage("You must choose a rental date in the future");
                 }
                 else
                 {
-                    ShowErrorMessage("Please review transaction");
+                    HideErrorMessage();
+                    bool transactionCompleted = false;
+                    transactionCompleted = rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Now, DateTime.Parse(dueDateTimePicker.Value.ToString("MM/dd/yyyy")), Cart.RentalList);
+
+                    if (transactionCompleted)
+                    {
+                        Cart.RentalList.Clear();
+                        RefreshRentalCartDataGrid();
+                        ClearDataGridView();
+                        ClearForm();
+                        ShowErrorMessage("Transaction Completed");
+
+                    }
+                    else
+                    {
+                        ShowErrorMessage("Please review transaction");
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                ShowErrorMessage("Invalid Complete Cart");
+            }
+        }
+
+        private void RentalCartDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            updateItemButton.Enabled = rentalCartDataGridView.SelectedRows.Count == 1;
+            deleteItemButton.Enabled = rentalCartDataGridView.SelectedRows.Count == 1;
+        }
+
+        private void RentalCartDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            updateItemButton.Enabled = true;
+            deleteItemButton.Enabled = true;
+            rentalCartDataGridView.CurrentRow.Selected = true;
+            HideErrorMessage();
+        }
+
+        private void UpdateItemButton_Click(object sender, EventArgs e)
+        {
+            if (rentalCartDataGridView.SelectedRows.Count != 1)
+            {
+                ShowErrorMessage("Please select an item to update");
+                return;
+            }
+
+            int selectedrowindex = rentalCartDataGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = rentalCartDataGridView.Rows[selectedrowindex];
+            int selectedFurnitureID = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+            List<FurnitureInventory> selectedRentalItem = inventoryController.GetInventoryByID(selectedFurnitureID);
+
+            UpdateRentalItemModal modal = new UpdateRentalItemModal(selectedrowindex, selectedRentalItem[0]);
+
+            modal.ShowDialog();
+
+            RefreshRentalCartDataGrid();
+        }
+
+        private void DeleteItemButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int currentSelectedIndex = rentalCartDataGridView.CurrentCell.RowIndex;
+                bool deleteCompleted = Cart.DeleteRentalItem(currentSelectedIndex);
+
+                if (Cart.RentalList.Count > 0 && deleteCompleted)
+                {
+                    RefreshRentalCartDataGrid();
+                    ShowErrorMessage("Item was deleted");
+                }
+                else if (Cart.RentalList.Count == 0 && deleteCompleted)
+                {
+                    RefreshRentalCartDataGrid();
+                    ClearDataGridView();
+                    ClearForm();
+                    ShowErrorMessage("Item was deleted");
+                }
+            }
+            catch (Exception)
+            {
+                ShowErrorMessage("Invalid Delete");
             }
         }
 

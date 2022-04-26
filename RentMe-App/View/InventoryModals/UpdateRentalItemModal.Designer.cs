@@ -1,7 +1,7 @@
 ﻿
 namespace RentMe_App.View.InventoryModals
 {
-    partial class AddRentalItemModal
+    partial class UpdateRentalItemModal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@ namespace RentMe_App.View.InventoryModals
         /// </summary>
         private void InitializeComponent()
         {
-            this.addToCartButton = new System.Windows.Forms.Button();
-            this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.closeButton = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.quantityToRentNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.quantityToRentLabel = new System.Windows.Forms.Label();
             this.furnitureIDLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.furnitureIDValueLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
@@ -47,47 +47,46 @@ namespace RentMe_App.View.InventoryModals
             this.dailyRentalRateValueLabel = new System.Windows.Forms.Label();
             this.quantityInStockValueLabel = new System.Windows.Forms.Label();
             this.quantityInStockLabel = new System.Windows.Forms.Label();
-            this.quantityToRentLabel = new System.Windows.Forms.Label();
-            this.quantityToRentNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.buttonFlowLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.updateItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.quantityToRentNumericUpDown)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.buttonFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // addToCartButton
+            // errorMessageLabel
             // 
-            this.addToCartButton.Location = new System.Drawing.Point(3, 3);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(75, 23);
-            this.addToCartButton.TabIndex = 0;
-            this.addToCartButton.Text = "Add to Cart";
-            this.addToCartButton.UseVisualStyleBackColor = true;
-            this.addToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
+            this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.errorMessageLabel.Location = new System.Drawing.Point(198, 8);
+            this.errorMessageLabel.MaximumSize = new System.Drawing.Size(400, 0);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(16, 13);
+            this.errorMessageLabel.TabIndex = 26;
+            this.errorMessageLabel.Text = "   ";
+            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // buttonFlowLayoutPanel
+            // quantityToRentNumericUpDown
             // 
-            this.buttonFlowLayoutPanel.AutoSize = true;
-            this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonFlowLayoutPanel.Controls.Add(this.addToCartButton);
-            this.buttonFlowLayoutPanel.Controls.Add(this.closeButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(132, 434);
-            this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
-            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
-            this.buttonFlowLayoutPanel.TabIndex = 1;
-            this.buttonFlowLayoutPanel.WrapContents = false;
+            this.quantityToRentNumericUpDown.Location = new System.Drawing.Point(124, 366);
+            this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
+            this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.quantityToRentNumericUpDown.TabIndex = 38;
+            this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.QuantityToRentNumericUpDown_ValueChanged);
             // 
-            // closeButton
+            // quantityToRentLabel
             // 
-            this.closeButton.Location = new System.Drawing.Point(84, 3);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
-            this.closeButton.TabIndex = 1;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.quantityToRentLabel.AutoSize = true;
+            this.quantityToRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityToRentLabel.Location = new System.Drawing.Point(15, 368);
+            this.quantityToRentLabel.Name = "quantityToRentLabel";
+            this.quantityToRentLabel.Size = new System.Drawing.Size(100, 13);
+            this.quantityToRentLabel.TabIndex = 37;
+            this.quantityToRentLabel.Text = "Quantity to Rent";
             // 
             // furnitureIDLabel
             // 
@@ -99,38 +98,17 @@ namespace RentMe_App.View.InventoryModals
             this.furnitureIDLabel.TabIndex = 2;
             this.furnitureIDLabel.Text = "Rental FurnitureID:";
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel2
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.01453F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.98547F));
-            this.tableLayoutPanel1.Controls.Add(this.furnitureIDValueLabel, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.furnitureIDLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.nameLabel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.descriptionLabel, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.styleLabel, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.categoryLabel, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dailyRentalRateLabel, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.nameValueLabel, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.descriptionValueLabel, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.styleValueLabel, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.categoryValueLabel, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.dailyRentalRateValueLabel, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.quantityInStockValueLabel, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.quantityInStockLabel, 0, 7);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 22);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.17391F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.82609F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 151F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(413, 326);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.errorMessageLabel, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 395);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(413, 30);
+            this.tableLayoutPanel2.TabIndex = 39;
             // 
             // furnitureIDValueLabel
             // 
@@ -262,69 +240,93 @@ namespace RentMe_App.View.InventoryModals
             this.quantityInStockLabel.TabIndex = 14;
             this.quantityInStockLabel.Text = "Quantity In Stock";
             // 
-            // quantityToRentLabel
+            // closeButton
             // 
-            this.quantityToRentLabel.AutoSize = true;
-            this.quantityToRentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityToRentLabel.Location = new System.Drawing.Point(15, 368);
-            this.quantityToRentLabel.Name = "quantityToRentLabel";
-            this.quantityToRentLabel.Size = new System.Drawing.Size(100, 13);
-            this.quantityToRentLabel.TabIndex = 8;
-            this.quantityToRentLabel.Text = "Quantity to Rent";
+            this.closeButton.Location = new System.Drawing.Point(84, 3);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // quantityToRentNumericUpDown
+            // tableLayoutPanel1
             // 
-            this.quantityToRentNumericUpDown.Location = new System.Drawing.Point(124, 366);
-            this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
-            this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.quantityToRentNumericUpDown.TabIndex = 9;
-            this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.QuantityToRentNumericUpDown_ValueChanged);
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.01453F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.98547F));
+            this.tableLayoutPanel1.Controls.Add(this.furnitureIDValueLabel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.furnitureIDLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.nameLabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.descriptionLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.styleLabel, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.categoryLabel, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dailyRentalRateLabel, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.nameValueLabel, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.descriptionValueLabel, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.styleValueLabel, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.categoryValueLabel, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dailyRentalRateValueLabel, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.quantityInStockValueLabel, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.quantityInStockLabel, 0, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 22);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.17391F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.82609F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(413, 326);
+            this.tableLayoutPanel1.TabIndex = 36;
             // 
-            // tableLayoutPanel2
+            // buttonFlowLayoutPanel
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.errorMessageLabel, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 395);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(413, 30);
-            this.tableLayoutPanel2.TabIndex = 34;
+            this.buttonFlowLayoutPanel.AutoSize = true;
+            this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonFlowLayoutPanel.Controls.Add(this.updateItemButton);
+            this.buttonFlowLayoutPanel.Controls.Add(this.closeButton);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(132, 434);
+            this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
+            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(162, 29);
+            this.buttonFlowLayoutPanel.TabIndex = 35;
+            this.buttonFlowLayoutPanel.WrapContents = false;
             // 
-            // errorMessageLabel
+            // updateItemButton
             // 
-            this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.errorMessageLabel.AutoSize = true;
-            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.errorMessageLabel.Location = new System.Drawing.Point(198, 8);
-            this.errorMessageLabel.MaximumSize = new System.Drawing.Size(400, 0);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(16, 13);
-            this.errorMessageLabel.TabIndex = 26;
-            this.errorMessageLabel.Text = "   ";
-            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.updateItemButton.Location = new System.Drawing.Point(3, 3);
+            this.updateItemButton.Name = "updateItemButton";
+            this.updateItemButton.Size = new System.Drawing.Size(75, 23);
+            this.updateItemButton.TabIndex = 0;
+            this.updateItemButton.Text = "Update Item";
+            this.updateItemButton.UseVisualStyleBackColor = true;
+            this.updateItemButton.Click += new System.EventHandler(this.UpdateItemButton_Click);
             // 
-            // addRentalItemModal
+            // UpdateRentalItemModal
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 478);
-            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.quantityToRentNumericUpDown);
+            this.Controls.Add(this.quantityToRentLabel);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonFlowLayoutPanel);
-            this.Controls.Add(this.quantityToRentLabel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "addRentalItemModal";
+            this.Name = "UpdateRentalItemModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RentMe: Rent Furniture";
-            this.Load += new System.EventHandler(this.AddRentalItemModal_Load);
-            this.buttonFlowLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Text = "RentMe: Update Rental Furniture";
+            this.Load += new System.EventHandler(this.UpdateRentalItemModal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.quantityToRentNumericUpDown)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.buttonFlowLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,21 +334,17 @@ namespace RentMe_App.View.InventoryModals
 
         #endregion
 
-        private System.Windows.Forms.Button addToCartButton;
-        private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
-        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.NumericUpDown quantityToRentNumericUpDown;
+        private System.Windows.Forms.Label quantityToRentLabel;
         private System.Windows.Forms.Label furnitureIDLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label furnitureIDValueLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Label styleLabel;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Label dailyRentalRateLabel;
-        private System.Windows.Forms.Label quantityToRentLabel;
-        private System.Windows.Forms.NumericUpDown quantityToRentNumericUpDown;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label errorMessageLabel;
-        private System.Windows.Forms.Label furnitureIDValueLabel;
         private System.Windows.Forms.Label nameValueLabel;
         private System.Windows.Forms.Label descriptionValueLabel;
         private System.Windows.Forms.Label styleValueLabel;
@@ -354,5 +352,9 @@ namespace RentMe_App.View.InventoryModals
         private System.Windows.Forms.Label dailyRentalRateValueLabel;
         private System.Windows.Forms.Label quantityInStockValueLabel;
         private System.Windows.Forms.Label quantityInStockLabel;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel buttonFlowLayoutPanel;
+        private System.Windows.Forms.Button updateItemButton;
     }
 }
