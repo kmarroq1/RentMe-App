@@ -79,7 +79,7 @@ namespace RentMe_App.View.InventoryModals
 
         private void UpdateItemButton_Click(object sender, EventArgs e)
         {
-            bool updatedInCart = Cart.UpdateRentalItem(indexInCart, CreateRentalItem());
+            Cart.UpdateRentalItem(indexInCart, CreateRentalItem());
             ShowErrorMessage("Item updated in cart");
         }
 

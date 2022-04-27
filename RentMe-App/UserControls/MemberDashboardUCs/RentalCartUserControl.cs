@@ -171,12 +171,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void DueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            int totalDaysRented = (int)(dueDateTimePicker.Value - DateTime.Today).TotalDays;
+            int totalDaysRented = (int)(Convert.ToDateTime(dueDateTimePicker.Value) - DateTime.Now).TotalDays;
             decimal totalCost = 0;
 
             for (int count = 0; count < rentalCartList.Count; count++)
             {
-                totalCost += rentalCartList[count].Daily_Rental_Rate * totalDaysRented;
+                totalCost += rentalCartList[count].Quantity * (rentalCartList[count].Daily_Rental_Rate * totalDaysRented);
             }
             currentTotalValueLabel.Text = totalCost.ToString("C");
         }
@@ -202,16 +202,19 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 else
                 {
                     HideErrorMessage();
-                    bool transactionCompleted = false;
-                    transactionCompleted = rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Now, DateTime.Parse(dueDateTimePicker.Value.ToString("MM/dd/yyyy")), Cart.RentalList);
+                    int transactionID = -1;
+                    transactionID = rentalController.CreateRentalTransaction(SharedFormInfo.MemberIDForm, SharedFormInfo.EmployeeIDForm, DateTime.Parse(dueDateTimePicker.Value.ToString("MM/dd/yyyy")), Cart.RentalList);
 
-                    if (transactionCompleted)
+                    if (transactionID > 0)
                     {
+                        RentalReceiptModal modal = new RentalReceiptModal(transactionID);
+
+                        modal.ShowDialog();
+
                         Cart.RentalList.Clear();
                         RefreshRentalCartDataGrid();
                         ClearDataGridView();
                         ClearForm();
-                        ShowErrorMessage("Transaction Completed");
 
                     }
                     else
