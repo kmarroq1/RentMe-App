@@ -62,6 +62,16 @@ namespace RentMe_App.Model
         /// </summary>
         public int Quantity { get; set; }
 
+        /// <summary>
+        /// Amount of furniture rented
+        /// </summary>
+        public int? QuantityRented { get; set; }
+
+        /// <summary>
+        /// Amount of furniture returned
+        /// </summary>
+        public int? QuantityReturned { get; set; }
+
         #endregion
 
         #region Constructors
