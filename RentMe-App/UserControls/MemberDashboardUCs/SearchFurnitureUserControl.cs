@@ -181,8 +181,7 @@ namespace RentMe_App.UserControls
 
         private void ClearForm()
         {
-            searchFurnitureDataGridView.Rows.Clear();
-            searchFurnitureDataGridView.Refresh();
+            searchFurnitureDataGridView.DataSource = null;
             furnitureIDTextBox.Text = "";
             PopulateStyleComboBox();
             PopulateCategoryComboBox();
