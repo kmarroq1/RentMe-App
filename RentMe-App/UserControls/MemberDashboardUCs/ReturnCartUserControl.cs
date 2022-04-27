@@ -94,17 +94,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             if (ReturnsDataGridView.SelectedRows.Count != 1)
                 throw new ArgumentException("Please select a row");
 
-            FurnitureInventory selectedItem = new FurnitureInventory
-            { FurnitureID = 1
-            , Name = "Test Furniture"
-            , Description = "Just a test Chic Bed"
-            , Style_Name = "Chic"
-            , Category_Name = "Bed"
-            , Daily_Rental_Rate = 10.0M
-            , Quantity = 4
-            };
-
-            return selectedItem;
+            return Cart.Return.GetItemByID(Convert.ToInt32(ReturnsDataGridView.SelectedRows[0].Cells["ID"].Value));
         }
         #endregion
 
