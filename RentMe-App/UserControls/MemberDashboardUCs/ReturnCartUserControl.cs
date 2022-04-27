@@ -9,15 +9,20 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 {
     public partial class ReturnCartUserControl : UserControl
     {
+        #region Fields
         private DataTable _DataTable;
         private readonly ReturnController _ReturnController;
+        #endregion
 
+        #region Constructors
         public ReturnCartUserControl()
         {
             InitializeComponent();
             _ReturnController = new ReturnController();
         }
+        #endregion
 
+        #region Methods
         public void UpdateElements()
         {
             ErrorMessage.Hide();
@@ -62,7 +67,9 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
             ReturnsDataGridView.DataSource = _DataTable;
         }
+        #endregion
 
+        #region Event Listeners
         private void ReturnCartUserControl_Load(object sender, EventArgs e)
         {
             UpdateElements();
@@ -115,5 +122,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ErrorMessage.Hide();
             }
         }
+        #endregion
     }
 }
