@@ -211,7 +211,7 @@ namespace RentMe_App.DAL
                 "FROM furniture ";
             if (currentOrder.OrderType == "rental")
             {
-                furnitureSelectStatement += "LEFT JOIN furnitureRented ON furnitureRented.furnitureID = furniture.furnitureID " +
+                furnitureSelectStatement += "LEFT JOIN furnitureRented ON furniture.furnitureID = furnitureRented.furnitureID " +
                     "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                     "WHERE furnitureRented.rental_transactionID = @transactionID";
             }
@@ -245,8 +245,8 @@ namespace RentMe_App.DAL
                                 Category_Name = reader["category_name"].ToString(),
                                 Image_Small_Url = reader["image_small_url"].ToString(),
                                 Image_Large_Url = reader["image_large_url"].ToString(),
-                                QuantityRented = (int)reader["qty_rented"],
-                                QuantityReturned = (int)reader["qty_returned"],
+                                QuantityRented = reader["qty_rented"] == DBNull.Value ? null : (int?)reader["qty_rented"],
+                                QuantityReturned = reader["qty_returned"] == DBNull.Value ? 0 : (int?)reader["qty_returned"],
                             };
                             furnitureList.Add(furniture);
                         }

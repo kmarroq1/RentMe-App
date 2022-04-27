@@ -88,7 +88,7 @@ namespace RentMe_App.View.EmployeeModals
         private void PopulateData()
         {
             transactionTypeLabel.Text = currentOrder.OrderType;
-            dueDateLabel.Text = currentOrder.DueDate.ToString();
+            dueDateLabel.Text = currentOrder.DueDate.ToShortDateString();
             amountPaidLabel.Text = currentOrder.OrderTotal.ToString();
             balanceLabel.Text = "0";
         }
@@ -101,12 +101,12 @@ namespace RentMe_App.View.EmployeeModals
                 _furnitureList = updatedOrder.FurnitureList;
                 foreach (var furniture in _furnitureList)
                 {
-                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, 0);
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, 0);
                 }
             }
             catch (Exception exception)
             {
-                var error = exception.Message;
+                errorLabel.Text = exception.Message;
             }
         }
 
