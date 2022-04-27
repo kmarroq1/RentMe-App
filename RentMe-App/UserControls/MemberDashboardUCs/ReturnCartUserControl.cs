@@ -32,6 +32,15 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Sets the Error Message to the given value and shows it.
+        /// </summary>
+        /// <param name="message">The message to display.</param>
+        public void ShowErrorMessage(string message)
+        {
+            ErrorMessage.Text = message;
+            ErrorMessage.Show();
+        }
 
         /// <summary>
         /// Sync grid to cart & hide error message.
@@ -79,6 +88,24 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             }
 
         }
+
+        private FurnitureInventory GetSelectedItem()
+        {
+            if (ReturnsDataGridView.SelectedRows.Count != 1)
+                throw new ArgumentException("Please select a row");
+
+            FurnitureInventory selectedItem = new FurnitureInventory
+            { FurnitureID = 1
+            , Name = "Test Furniture"
+            , Description = "Just a test Chic Bed"
+            , Style_Name = "Chic"
+            , Category_Name = "Bed"
+            , Daily_Rental_Rate = 10.0M
+            , Quantity = 4
+            };
+
+            return selectedItem;
+        }
         #endregion
 
         #region Event Listeners
@@ -111,18 +138,22 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void UpdateItemButton_Click(object sender, EventArgs e)
         {
-            FurnitureInventory selectedItem = new FurnitureInventory
-            { FurnitureID = 1
-            , Name = "Test Furniture"
-            , Description = "Just a test Chic Bed"
-            , Style_Name = "Chic"
-            , Category_Name = "Bed"
-            , Daily_Rental_Rate = 10.0M
-            , Quantity = 4
-            };
-            (new ItemDetailsModal(selectedItem, true)).ShowDialog();
+            if (ReturnsDataGridView.SelectedRows.Count != 1)
+            {
+                UpdateItemButton.Enabled = false;
 
-            UpdateElements();
+                return;
+            }
+
+            try
+            {
+                new ItemDetailsModal(GetSelectedItem(), true).ShowDialog();
+                UpdateElements();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
         }
 
         private void ReturnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -132,6 +163,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 UpdateItemButton.Enabled = true;
                 ReturnsDataGridView.CurrentRow.Selected = true;
                 ErrorMessage.Hide();
+                UpdateItemButton.Enabled = true;
+                DeleteItemButton.Enabled = true;
             }
         }
         #endregion

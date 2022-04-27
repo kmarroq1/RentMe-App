@@ -32,6 +32,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.PrimaryTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ReturnButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.UpdateItemButton = new System.Windows.Forms.Button();
+            this.DeleteItemButton = new System.Windows.Forms.Button();
             this.CompleteReturnButton = new System.Windows.Forms.Button();
             this.ClearReturnsButton = new System.Windows.Forms.Button();
             this.ReturnSumsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,7 +44,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnBalanceValueLabel = new System.Windows.Forms.Label();
             this.ReturnsDataGridView = new System.Windows.Forms.DataGridView();
             this.ErrorMessage = new System.Windows.Forms.Label();
-            this.DeleteItemButton = new System.Windows.Forms.Button();
             this.PrimaryTableLayoutPanel.SuspendLayout();
             this.ReturnButtonsFlowLayoutPanel.SuspendLayout();
             this.ReturnSumsFlowLayoutPanel.SuspendLayout();
@@ -89,6 +89,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.UpdateItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UpdateItemButton.AutoSize = true;
+            this.UpdateItemButton.Enabled = false;
             this.UpdateItemButton.Location = new System.Drawing.Point(3, 3);
             this.UpdateItemButton.Name = "UpdateItemButton";
             this.UpdateItemButton.Size = new System.Drawing.Size(75, 23);
@@ -96,6 +97,19 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.UpdateItemButton.Text = "Update Item";
             this.UpdateItemButton.UseVisualStyleBackColor = true;
             this.UpdateItemButton.Click += new System.EventHandler(this.UpdateItemButton_Click);
+            // 
+            // DeleteItemButton
+            // 
+            this.DeleteItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DeleteItemButton.AutoSize = true;
+            this.DeleteItemButton.Enabled = false;
+            this.DeleteItemButton.Location = new System.Drawing.Point(84, 3);
+            this.DeleteItemButton.Name = "DeleteItemButton";
+            this.DeleteItemButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteItemButton.TabIndex = 3;
+            this.DeleteItemButton.Text = "Delete Item";
+            this.DeleteItemButton.UseVisualStyleBackColor = true;
+            this.DeleteItemButton.Visible = false;
             // 
             // CompleteReturnButton
             // 
@@ -220,19 +234,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ErrorMessage.TabIndex = 9;
             this.ErrorMessage.Text = "Error Message";
             this.ErrorMessage.Visible = false;
-            // 
-            // DeleteItemButton
-            // 
-            this.DeleteItemButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DeleteItemButton.AutoSize = true;
-            this.DeleteItemButton.Enabled = false;
-            this.DeleteItemButton.Location = new System.Drawing.Point(84, 3);
-            this.DeleteItemButton.Name = "DeleteItemButton";
-            this.DeleteItemButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteItemButton.TabIndex = 3;
-            this.DeleteItemButton.Text = "Delete Item";
-            this.DeleteItemButton.UseVisualStyleBackColor = true;
-            this.DeleteItemButton.Visible = false;
             // 
             // ReturnCartUserControl
             // 
