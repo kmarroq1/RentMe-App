@@ -7,6 +7,11 @@ using System.Windows.Forms;
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
 {
+    /// <summary>
+    /// Displays the items queued to be returned.
+    /// Allows the user to update the item quantities,
+    /// remove items, and complete the return transaction.
+    /// </summary>
     public partial class ReturnCartUserControl : UserControl
     {
         #region Fields
@@ -15,6 +20,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Creates the ReturnCart UserControl,
+        /// initializing its components & controller.
+        /// </summary>
         public ReturnCartUserControl()
         {
             InitializeComponent();
@@ -23,13 +32,15 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Sync grid to cart & hide error message.
+        /// </summary>
         public void UpdateElements()
         {
             ErrorMessage.Hide();
 
-            Cart.Return.EmployeeID = 1; // FIXME!!!
-
-            Cart.Return.RentalID = 1; // FIXME!!!
+            Cart.Return.EmployeeID = SharedFormInfo.EmployeeIDForm;
 
             Cart.Return.MemberID = SharedFormInfo.MemberIDForm;
 
@@ -58,6 +69,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
                     _DataTable.Rows.Add(row);
                 }
+
+                ReturnsDataGridView.DataSource = _DataTable;
             }
             else
             {
@@ -65,7 +78,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ReturnBalanceValueLabel.Text = "";
             }
 
-            ReturnsDataGridView.DataSource = _DataTable;
         }
         #endregion
 
