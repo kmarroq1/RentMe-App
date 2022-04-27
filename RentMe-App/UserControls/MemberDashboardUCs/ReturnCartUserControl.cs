@@ -1,5 +1,6 @@
 ﻿using RentMe_App.Controller;
 using RentMe_App.Model;
+using RentMe_App.View.MemberModals;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -89,15 +90,30 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             }
         }
 
-        private void ViewReturnItemButton_Click(object sender, EventArgs e)
+        private void UpdateItemButton_Click(object sender, EventArgs e)
         {
-            Cart.Return.ReturnedFurniture.Add(new FurnitureInventory
+            FurnitureInventory selectedItem = new FurnitureInventory
             { FurnitureID = 1
-            , Name = "Test furniture"
-            , Quantity = 3
+            , Name = "Test Furniture"
+            , Description = "Just a test Chic Bed"
+            , Style_Name = "Chic"
+            , Category_Name = "Bed"
             , Daily_Rental_Rate = 10.0M
-            });
+            , Quantity = 4
+            };
+            (new ItemDetailsModal(selectedItem, true)).ShowDialog();
+
             UpdateElements();
+        }
+
+        private void ReturnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ReturnsDataGridView.CurrentRow != null)
+            {
+                UpdateItemButton.Enabled = true;
+                ReturnsDataGridView.CurrentRow.Selected = true;
+                ErrorMessage.Hide();
+            }
         }
     }
 }

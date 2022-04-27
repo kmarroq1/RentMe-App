@@ -31,7 +31,8 @@ namespace RentMe_App.View.MemberModals
         {
             this.HeaderFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TransactionTypeLabel = new System.Windows.Forms.Label();
-            this.FurnitureIDLabel = new System.Windows.Forms.Label();
+            this.FurnitureIDLabelLabel = new System.Windows.Forms.Label();
+            this.NBSP = new System.Windows.Forms.Label();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.NameGroupBox = new System.Windows.Forms.GroupBox();
             this.NameLabel = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@ namespace RentMe_App.View.MemberModals
             this.CancelButton = new System.Windows.Forms.Button();
             this.ContentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.QuantityFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.NBSP = new System.Windows.Forms.Label();
+            this.FurnitureIDValueLabel = new System.Windows.Forms.Label();
             this.HeaderFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             this.NameGroupBox.SuspendLayout();
@@ -71,7 +72,8 @@ namespace RentMe_App.View.MemberModals
             // 
             this.HeaderFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.HeaderFlowLayoutPanel.Controls.Add(this.TransactionTypeLabel);
-            this.HeaderFlowLayoutPanel.Controls.Add(this.FurnitureIDLabel);
+            this.HeaderFlowLayoutPanel.Controls.Add(this.FurnitureIDLabelLabel);
+            this.HeaderFlowLayoutPanel.Controls.Add(this.FurnitureIDValueLabel);
             this.HeaderFlowLayoutPanel.Controls.Add(this.NBSP);
             this.HeaderFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -85,28 +87,38 @@ namespace RentMe_App.View.MemberModals
             this.TransactionTypeLabel.AutoSize = true;
             this.TransactionTypeLabel.Location = new System.Drawing.Point(3, 16);
             this.TransactionTypeLabel.Name = "TransactionTypeLabel";
-            this.TransactionTypeLabel.Size = new System.Drawing.Size(93, 13);
+            this.TransactionTypeLabel.Size = new System.Drawing.Size(90, 13);
             this.TransactionTypeLabel.TabIndex = 0;
-            this.TransactionTypeLabel.Text = "[ Rental | Return ]:";
+            this.TransactionTypeLabel.Text = "[ Rental | Return ]";
             // 
-            // FurnitureIDLabel
+            // FurnitureIDLabelLabel
             // 
-            this.FurnitureIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.FurnitureIDLabel.AutoSize = true;
-            this.FurnitureIDLabel.Location = new System.Drawing.Point(102, 16);
-            this.FurnitureIDLabel.Name = "FurnitureIDLabel";
-            this.FurnitureIDLabel.Size = new System.Drawing.Size(62, 13);
-            this.FurnitureIDLabel.TabIndex = 1;
-            this.FurnitureIDLabel.Text = "Furniture ID";
+            this.FurnitureIDLabelLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.FurnitureIDLabelLabel.AutoSize = true;
+            this.FurnitureIDLabelLabel.Location = new System.Drawing.Point(99, 16);
+            this.FurnitureIDLabelLabel.Name = "FurnitureIDLabelLabel";
+            this.FurnitureIDLabelLabel.Size = new System.Drawing.Size(65, 13);
+            this.FurnitureIDLabelLabel.TabIndex = 1;
+            this.FurnitureIDLabelLabel.Text = "Furniture ID:";
+            // 
+            // NBSP
+            // 
+            this.NBSP.Location = new System.Drawing.Point(241, 0);
+            this.NBSP.Name = "NBSP";
+            this.NBSP.Size = new System.Drawing.Size(10, 46);
+            this.NBSP.TabIndex = 2;
             // 
             // ImagePictureBox
             // 
+            this.ImagePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImagePictureBox.Enabled = false;
             this.ImagePictureBox.Location = new System.Drawing.Point(3, 3);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ContentTableLayoutPanel.SetRowSpan(this.ImagePictureBox, 5);
             this.ImagePictureBox.Size = new System.Drawing.Size(234, 234);
             this.ImagePictureBox.TabIndex = 1;
             this.ImagePictureBox.TabStop = false;
+            this.ImagePictureBox.Visible = false;
             // 
             // NameGroupBox
             // 
@@ -266,6 +278,7 @@ namespace RentMe_App.View.MemberModals
             // SubmitButton
             // 
             this.SubmitButton.AutoSize = true;
+            this.SubmitButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SubmitButton.Location = new System.Drawing.Point(3, 3);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(135, 23);
@@ -281,6 +294,7 @@ namespace RentMe_App.View.MemberModals
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ContentTableLayoutPanel
             // 
@@ -312,6 +326,7 @@ namespace RentMe_App.View.MemberModals
             this.QuantityFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.QuantityFlowLayoutPanel.AutoSize = true;
             this.QuantityFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ContentTableLayoutPanel.SetColumnSpan(this.QuantityFlowLayoutPanel, 2);
             this.QuantityFlowLayoutPanel.Controls.Add(this.QuantityLabel);
             this.QuantityFlowLayoutPanel.Controls.Add(this.QuantityNumericUpDown);
             this.QuantityFlowLayoutPanel.Location = new System.Drawing.Point(3, 245);
@@ -319,12 +334,15 @@ namespace RentMe_App.View.MemberModals
             this.QuantityFlowLayoutPanel.Size = new System.Drawing.Size(102, 26);
             this.QuantityFlowLayoutPanel.TabIndex = 11;
             // 
-            // NBSP
+            // FurnitureIDValueLabel
             // 
-            this.NBSP.Location = new System.Drawing.Point(170, 0);
-            this.NBSP.Name = "NBSP";
-            this.NBSP.Size = new System.Drawing.Size(10, 46);
-            this.NBSP.TabIndex = 2;
+            this.FurnitureIDValueLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.FurnitureIDValueLabel.AutoSize = true;
+            this.FurnitureIDValueLabel.Location = new System.Drawing.Point(170, 16);
+            this.FurnitureIDValueLabel.Name = "FurnitureIDValueLabel";
+            this.FurnitureIDValueLabel.Size = new System.Drawing.Size(65, 13);
+            this.FurnitureIDValueLabel.TabIndex = 3;
+            this.FurnitureIDValueLabel.Text = "[FurnitureID]";
             // 
             // ItemDetailsModal
             // 
@@ -370,7 +388,7 @@ namespace RentMe_App.View.MemberModals
 
         private System.Windows.Forms.FlowLayoutPanel HeaderFlowLayoutPanel;
         private System.Windows.Forms.Label TransactionTypeLabel;
-        private System.Windows.Forms.Label FurnitureIDLabel;
+        private System.Windows.Forms.Label FurnitureIDLabelLabel;
         private System.Windows.Forms.PictureBox ImagePictureBox;
         private System.Windows.Forms.GroupBox NameGroupBox;
         private System.Windows.Forms.Label NameLabel;
@@ -392,5 +410,6 @@ namespace RentMe_App.View.MemberModals
         private System.Windows.Forms.TableLayoutPanel ContentTableLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel QuantityFlowLayoutPanel;
         private System.Windows.Forms.Label NBSP;
+        private System.Windows.Forms.Label FurnitureIDValueLabel;
     }
 }
