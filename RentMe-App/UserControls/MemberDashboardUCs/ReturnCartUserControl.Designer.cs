@@ -109,7 +109,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DeleteItemButton.TabIndex = 3;
             this.DeleteItemButton.Text = "Delete Item";
             this.DeleteItemButton.UseVisualStyleBackColor = true;
-            this.DeleteItemButton.Visible = false;
+            this.DeleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
             // 
             // CompleteReturnButton
             // 

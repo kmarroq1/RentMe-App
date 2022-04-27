@@ -48,6 +48,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public void UpdateElements()
         {
             ErrorMessage.Hide();
+            UpdateItemButton.Enabled = false;
+            DeleteItemButton.Enabled = false;
 
             Cart.Return.EmployeeID = SharedFormInfo.EmployeeIDForm;
 
@@ -98,7 +100,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         }
         #endregion
 
-        #region Event Listeners
+        #region Event Handlers
         private void ReturnCartUserControl_Load(object sender, EventArgs e)
         {
             UpdateElements();
@@ -126,6 +128,18 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             }
         }
 
+        private void ReturnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ReturnsDataGridView.CurrentRow != null)
+            {
+                UpdateItemButton.Enabled = true;
+                ReturnsDataGridView.CurrentRow.Selected = true;
+                ErrorMessage.Hide();
+                UpdateItemButton.Enabled = true;
+                DeleteItemButton.Enabled = true;
+            }
+        }
+
         private void UpdateItemButton_Click(object sender, EventArgs e)
         {
             if (ReturnsDataGridView.SelectedRows.Count != 1)
@@ -145,18 +159,27 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ShowErrorMessage(ex.Message);
             }
         }
-
-        private void ReturnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void DeleteItemButton_Click(object sender, EventArgs e)
         {
-            if (ReturnsDataGridView.CurrentRow != null)
+            if (ReturnsDataGridView.SelectedRows.Count != 1)
             {
-                UpdateItemButton.Enabled = true;
-                ReturnsDataGridView.CurrentRow.Selected = true;
-                ErrorMessage.Hide();
-                UpdateItemButton.Enabled = true;
-                DeleteItemButton.Enabled = true;
+                DeleteItemButton.Enabled = false;
+
+                return;
+            }
+
+            try
+            {
+                Cart.Return.ReturnedFurniture.Remove(GetSelectedItem());
+                UpdateElements();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
             }
         }
         #endregion
+
     }
 }
