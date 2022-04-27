@@ -50,7 +50,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Open = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.topTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -180,8 +179,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DueDate,
             this.DateReturned,
             this.OrderTotal,
-            this.Open,
-            this.Balance});
+            this.Open});
             this.orderHistoryDataGridView.Location = new System.Drawing.Point(0, 90);
             this.orderHistoryDataGridView.Margin = new System.Windows.Forms.Padding(1);
             this.orderHistoryDataGridView.MultiSelect = false;
@@ -291,12 +289,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.Open.Name = "Open";
             this.Open.ReadOnly = true;
             // 
-            // Balance
-            // 
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
-            this.Balance.ReadOnly = true;
-            // 
             // OrdersAndReturnsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,6 +331,5 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Open;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
     }
 }

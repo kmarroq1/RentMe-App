@@ -59,12 +59,19 @@ namespace RentMe_App.DAL
                     }
                 }
 
-                string rentalSelectStatement = "SELECT rentalTransaction.transactionID as rentalTransactionId, rentalTransaction.employeeID as employeeID, transaction_date as date_ordered, rentalTransaction.return_date as due_date, returnTransaction.return_date as return_date, furnitureRented.quantity - furnitureReturned.quantity as openQuantity " +
+                string rentalSelectStatement = "SELECT rentalTransaction.transactionID as rentalTransactionId, " +
+                        "MAX(rentalTransaction.employeeID) as employeeID, transaction_date as date_ordered, " +
+                        "MIN(rentalTransaction.return_date) as due_date, " +
+                        "(CASE WHEN MAX(CASE WHEN returnTransaction.return_date IS NULL THEN 1 ELSE 0 END) = 0 THEN MAX(returnTransaction.return_date) END) as return_date, " +
+                        "SUM(furnitureRented.quantity * furniture.daily_rental_rate) as order_total, " +
+                        "MAX(CASE WHEN (furnitureRented.quantity - (CASE WHEN furnitureReturned.quantity IS NULL THEN 0 ELSE furnitureReturned.quantity END)) > 0 THEN 1 ELSE 0 END) as open_status " +
                     "FROM rentalTransaction " +
-                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID " +
-                    "LEFT JOIN returnTransaction ON furnitureReturned.return_transactionID = returnTransaction.transactionID " +
-                    "LEFT JOIN furnitureRented ON returnTransaction.transactionID = furnitureRented.rental_transactionID " +
-                    "WHERE memberID = @memberID";
+                    "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = rentalTransaction.transactionID " +
+                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                    "LEFT JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
+                    "LEFT JOIN furniture ON furnitureRented.furnitureID = furniture.furnitureID " +
+                    "WHERE memberID = @memberID " +
+                    "GROUP BY rentalTransaction.transactionID, transaction_date";
 
                 using (SqlCommand selectCommand = new SqlCommand(rentalSelectStatement, connection))
                 {
@@ -74,6 +81,7 @@ namespace RentMe_App.DAL
                     {
                         while (reader.Read())
                         {
+                            double.TryParse(reader["order_total"].ToString(), out double result);
                             Order order = new Order
                             {
                                 TransactionID = (int)reader["rentalTransactionId"],
@@ -81,8 +89,8 @@ namespace RentMe_App.DAL
                                 OrderDate = (DateTime)reader["date_ordered"],
                                 DueDate = (DateTime)reader["due_date"],
                                 DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"],
-                                OrderTotal = 0,
-                                Open = reader["openQuantity"] == DBNull.Value ? true : (int)reader["openQuantity"] > 0,
+                                OrderTotal = result,
+                                Open = (int)reader["open_status"] == 1,
                                 Balance = 0,
                                 MemberID = memberID,
                                 EmployeeID = (int)reader["employeeID"],
@@ -136,7 +144,6 @@ namespace RentMe_App.DAL
                                 DateReturned = (DateTime)reader["return_date"],
                                 OrderTotal = 0,
                                 Open = false,
-                                Balance = 0,
                                 MemberID = memberID,
                                 EmployeeID = (int)reader["employeeID"],
                             };
@@ -145,12 +152,19 @@ namespace RentMe_App.DAL
                     }
                 }
 
-                string rentalSelectStatement = "SELECT rentalTransaction.transactionID as rentalTransactionId, rentalTransaction.employeeID as employeeID, transaction_date as date_ordered, rentalTransaction.return_date as due_date, returnTransaction.return_date as return_date, furnitureRented.quantity - furnitureReturned.quantity as openQuantity " +
+                string rentalSelectStatement = "SELECT rentalTransaction.transactionID as rentalTransactionId, " +
+                        "MAX(rentalTransaction.employeeID) as employeeID, transaction_date as date_ordered, " +
+                        "MIN(rentalTransaction.return_date) as due_date, " +
+                        "(CASE WHEN MAX(CASE WHEN returnTransaction.return_date IS NULL THEN 1 ELSE 0 END) = 0 THEN MAX(returnTransaction.return_date) END) as return_date, " +
+                        "SUM(furnitureRented.quantity * furniture.daily_rental_rate) as order_total, " +
+                        "MAX(CASE WHEN (furnitureRented.quantity - (CASE WHEN furnitureReturned.quantity IS NULL THEN 0 ELSE furnitureReturned.quantity END)) > 0 THEN 1 ELSE 0 END) as open_status " +
                     "FROM rentalTransaction " +
-                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID " +
-                    "LEFT JOIN returnTransaction ON furnitureReturned.return_transactionID = returnTransaction.transactionID " +
-                    "LEFT JOIN furnitureRented ON returnTransaction.transactionID = furnitureRented.rental_transactionID " +
-                    "WHERE memberId = @memberId AND rentalTransaction.transactionID = @transactionID";
+                    "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = rentalTransaction.transactionID " +
+                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                    "LEFT JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
+                    "LEFT JOIN furniture ON furnitureRented.furnitureID = furniture.furnitureID " +
+                    "WHERE memberId = @memberId AND rentalTransaction.transactionID = @transactionID " +
+                    "GROUP BY rentalTransaction.transactionID, transaction_date";
 
                 using (SqlCommand selectCommand = new SqlCommand(rentalSelectStatement, connection))
                 {
@@ -161,6 +175,7 @@ namespace RentMe_App.DAL
                     {
                         while (reader.Read())
                         {
+                            double.TryParse(reader["order_total"].ToString(), out double result);
                             Order order = new Order
                             {
                                 TransactionID = (int)reader["rentalTransactionId"],
@@ -168,9 +183,8 @@ namespace RentMe_App.DAL
                                 OrderDate = (DateTime)reader["date_ordered"],
                                 DueDate = (DateTime)reader["due_date"],
                                 DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"],
-                                OrderTotal = 0,
-                                Open = reader["openQuantity"] == DBNull.Value ? true : (int)reader["openQuantity"] > 0,
-                                Balance = 0,
+                                OrderTotal = result,
+                                Open = (int)reader["open_status"] == 1,
                                 MemberID = memberID,
                                 EmployeeID = (int)reader["employeeID"],
                             };
@@ -193,26 +207,18 @@ namespace RentMe_App.DAL
         {
             List<FurnitureInventory> furnitureList = new List<FurnitureInventory>();
 
-            // query for quantity rented and quantity returned
-
-            /* var selectOrderTotalStatement = "SELECT rt.transactionID, SUM(quantity * daily_rental_rate) as orderTotal " +
-                 "FROM rentalTransaction rt" +
-                 "LEFT JOIN furnitureRented fr ON rt.transactionID = fr.rental_transactionID " +
-                 "LEFT JOIN furniture ON furniture.furnitureID = fr.furnitureID " +
-                 "WHERE rt.transactionID = @transactionID " +
-                 "GROUP BY rt.transactionID";*/
-
-            // need to get quantities
-            string furnitureSelectStatement = "SELECT furniture.furnitureID as furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url, quantity " +
+            string furnitureSelectStatement = "SELECT furniture.furnitureID as furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url, furnitureRented.quantity as qty_rented, furnitureReturned.quantity as qty_returned " +
                 "FROM furniture ";
             if (currentOrder.OrderType == "rental")
             {
                 furnitureSelectStatement += "LEFT JOIN furnitureRented ON furnitureRented.furnitureID = furniture.furnitureID " +
-                    "WHERE rental_transactionID = @transactionID";
+                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                    "WHERE furnitureRented.rental_transactionID = @transactionID";
             }
             else
             {
                 furnitureSelectStatement += "LEFT JOIN furnitureReturned ON furnitureReturned.furnitureID = furniture.furnitureID " +
+                    "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = furnitureReturned.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                     "WHERE return_transactionID = @transactionID";
             }
 
@@ -239,22 +245,13 @@ namespace RentMe_App.DAL
                                 Category_Name = reader["category_name"].ToString(),
                                 Image_Small_Url = reader["image_small_url"].ToString(),
                                 Image_Large_Url = reader["image_large_url"].ToString(),
-                                Quantity = (int)reader["quantity"],
+                                QuantityRented = (int)reader["qty_rented"],
+                                QuantityReturned = (int)reader["qty_returned"],
                             };
                             furnitureList.Add(furniture);
                         }
                     }
                 }
-                //Figure out order total query bug. Maybe make it its own query
-                /* using (SqlCommand selectCommand = new SqlCommand(selectOrderTotalStatement, connection))
-                   {
-                       selectCommand.Parameters.AddWithValue("@transactionID", currentOrder.TransactionID);
-
-                       using (SqlDataReader reader = selectCommand.ExecuteReader())
-                       {
-                           currentOrder.OrderTotal = (int)reader["orderTotal"];
-                       }
-                   }*/
 
             }
             currentOrder.FurnitureList = furnitureList;

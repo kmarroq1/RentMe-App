@@ -29,6 +29,7 @@ namespace RentMe_App.View.EmployeeModals
             InitializeComponent();
             ordersController = new OrdersController();
             currentOrder = selectedOrder;
+            PopulateData();
             PopulateGridView();
         }
 
@@ -84,6 +85,14 @@ namespace RentMe_App.View.EmployeeModals
             DialogResult = DialogResult.OK;
         }
 
+        private void PopulateData()
+        {
+            transactionTypeLabel.Text = currentOrder.OrderType;
+            dueDateLabel.Text = currentOrder.DueDate.ToString();
+            amountPaidLabel.Text = currentOrder.OrderTotal.ToString();
+            balanceLabel.Text = "0";
+        }
+
         private void PopulateGridView()
         {
             try
@@ -92,7 +101,7 @@ namespace RentMe_App.View.EmployeeModals
                 _furnitureList = updatedOrder.FurnitureList;
                 foreach (var furniture in _furnitureList)
                 {
-                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, 0, 0, furniture.Daily_Rental_Rate, currentOrder.Balance);
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate, furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, 0);
                 }
             }
             catch (Exception exception)
