@@ -30,15 +30,15 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
             ReturnsDataGridView.DataSource = null;
 
-            _DataTable = new DataTable();
-
-            _DataTable.Columns.Add(new DataColumn("ID", typeof(int)));
-            _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
-            _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
-            _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(decimal)));
-
-            if (Cart.Return != null)
+            if (Cart.Return != null && Cart.Return.ReturnedFurniture.Count > 0)
             {
+                _DataTable = new DataTable();
+
+                _DataTable.Columns.Add(new DataColumn("ID", typeof(int)));
+                _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
+                _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
+                _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(decimal)));
+
                 ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString();
                 ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString();
 
