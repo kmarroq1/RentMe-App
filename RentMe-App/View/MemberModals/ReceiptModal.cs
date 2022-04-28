@@ -3,6 +3,11 @@ using System.Windows.Forms;
 
 namespace RentMe_App.View.MemberModals
 {
+    /// <summary>
+    /// Displays a transation receipt.
+    /// 
+    /// Currently only used for Returns...
+    /// </summary>
     public partial class ReceiptModal : Form
     {
         #region Fields
@@ -10,6 +15,11 @@ namespace RentMe_App.View.MemberModals
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Constructs a Receipt modal.
+        /// Initializing its components and dynamic fields.
+        /// </summary>
+        /// <param name="transaction">The transaction to display.</param>
         public ReceiptModal(Return transaction)
         {
             _transaction = transaction;
