@@ -114,9 +114,10 @@ namespace RentMe_App.Model
         }
 
         /// <summary>
-        /// method used to create rental cart list
+        /// method used to add item to rental cart list
         /// </summary>
         /// <param name="rentalItem">item to add to rental cart</param>
+        /// <param name="quantityInStock">quantity of item in stock</param>
         /// <returns>boolean if added</returns>
         public static bool AddRentalItem(FurnitureInventory rentalItem, int quantityInStock)
         {
@@ -146,6 +147,45 @@ namespace RentMe_App.Model
                     }
                 }
                 return addedToCart;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid Add");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// method used to delete rental cart item
+        /// </summary>
+        /// <param name="index">index in rental list</param>
+        /// <returns>boolean if added</returns>
+        public static bool DeleteRentalItem(int index)
+        {
+            try
+            {
+                RentalList.RemoveAt(index);
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("bad update");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// method used to update rental cart item
+        /// </summary>
+        /// <param name="index">index in rental list</param>
+        /// <param name="rentalItem">item to add to rental cart</param>
+        /// <returns>boolean if updated</returns>
+        public static bool UpdateRentalItem(int index, FurnitureInventory rentalItem)
+        {
+            try
+            {
+                RentalList[index] = rentalItem;
+                return true;
             }
             catch (Exception)
             {

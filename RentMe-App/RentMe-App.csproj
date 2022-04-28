@@ -145,6 +145,18 @@
     <Compile Include="View\EmployeeModals\EditMemberModal.Designer.cs">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\InventoryModals\RentalReceiptModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InventoryModals\RentalReceiptModal.Designer.cs">
+      <DependentUpon>RentalReceiptModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InventoryModals\UpdateRentalItemModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InventoryModals\UpdateRentalItemModal.Designer.cs">
+      <DependentUpon>UpdateRentalItemModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MemberModals\ViewOrderModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +268,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeModals\EditMemberModal.resx">
       <DependentUpon>EditMemberModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InventoryModals\RentalReceiptModal.resx">
+      <DependentUpon>RentalReceiptModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InventoryModals\UpdateRentalItemModal.resx">
+      <DependentUpon>UpdateRentalItemModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberModals\ViewOrderModal.resx">
       <DependentUpon>ViewOrderModal.cs</DependentUpon>

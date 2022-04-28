@@ -37,12 +37,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.buttonFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.totalItemsInCartLabel = new System.Windows.Forms.Label();
-            this.totalItemsInCartValuelabel = new System.Windows.Forms.Label();
-            this.currentTotalLabel = new System.Windows.Forms.Label();
             this.currentTotalValueLabel = new System.Windows.Forms.Label();
+            this.currentTotalLabel = new System.Windows.Forms.Label();
+            this.totalItemsInCartValuelabel = new System.Windows.Forms.Label();
+            this.totalItemsInCartLabel = new System.Windows.Forms.Label();
             this.dueDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dueDateLabel = new System.Windows.Forms.Label();
+            this.deleteItemButton = new System.Windows.Forms.Button();
+            this.updateItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentalCartDataGridView)).BeginInit();
             this.buttonFlowLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,6 +63,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.rentalCartDataGridView.ReadOnly = true;
             this.rentalCartDataGridView.Size = new System.Drawing.Size(797, 265);
             this.rentalCartDataGridView.TabIndex = 37;
+            this.rentalCartDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalCartDataGridView_CellClick);
+            this.rentalCartDataGridView.SelectionChanged += new System.EventHandler(this.RentalCartDataGridView_SelectionChanged);
             this.rentalCartDataGridView.VisibleChanged += new System.EventHandler(this.RentalCartDataGridView_VisibleChanged);
             // 
             // rentalCartHeaderLabel
@@ -78,7 +82,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.completeRentalButton.AutoSize = true;
             this.completeRentalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.completeRentalButton.Location = new System.Drawing.Point(3, 3);
+            this.completeRentalButton.Location = new System.Drawing.Point(175, 3);
             this.completeRentalButton.Name = "completeRentalButton";
             this.completeRentalButton.Size = new System.Drawing.Size(95, 23);
             this.completeRentalButton.TabIndex = 31;
@@ -90,7 +94,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.clearRentalsButton.AutoSize = true;
             this.clearRentalsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.clearRentalsButton.Location = new System.Drawing.Point(104, 3);
+            this.clearRentalsButton.Location = new System.Drawing.Point(276, 3);
             this.clearRentalsButton.Name = "clearRentalsButton";
             this.clearRentalsButton.Size = new System.Drawing.Size(80, 23);
             this.clearRentalsButton.TabIndex = 32;
@@ -116,12 +120,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.buttonFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonFlowLayoutPanel.AutoSize = true;
             this.buttonFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonFlowLayoutPanel.Controls.Add(this.updateItemButton);
+            this.buttonFlowLayoutPanel.Controls.Add(this.deleteItemButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.completeRentalButton);
             this.buttonFlowLayoutPanel.Controls.Add(this.clearRentalsButton);
-            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(326, 458);
+            this.buttonFlowLayoutPanel.Location = new System.Drawing.Point(229, 458);
             this.buttonFlowLayoutPanel.Name = "buttonFlowLayoutPanel";
             this.buttonFlowLayoutPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(187, 29);
+            this.buttonFlowLayoutPanel.Size = new System.Drawing.Size(359, 29);
             this.buttonFlowLayoutPanel.TabIndex = 40;
             this.buttonFlowLayoutPanel.WrapContents = false;
             // 
@@ -154,24 +160,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.tableLayoutPanel2.Size = new System.Drawing.Size(357, 60);
             this.tableLayoutPanel2.TabIndex = 41;
             // 
-            // totalItemsInCartLabel
+            // currentTotalValueLabel
             // 
-            this.totalItemsInCartLabel.AutoSize = true;
-            this.totalItemsInCartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalItemsInCartLabel.Location = new System.Drawing.Point(3, 0);
-            this.totalItemsInCartLabel.Name = "totalItemsInCartLabel";
-            this.totalItemsInCartLabel.Size = new System.Drawing.Size(115, 13);
-            this.totalItemsInCartLabel.TabIndex = 42;
-            this.totalItemsInCartLabel.Text = "Total Items in Cart:";
-            // 
-            // totalItemsInCartValuelabel
-            // 
-            this.totalItemsInCartValuelabel.AutoSize = true;
-            this.totalItemsInCartValuelabel.Location = new System.Drawing.Point(138, 0);
-            this.totalItemsInCartValuelabel.Name = "totalItemsInCartValuelabel";
-            this.totalItemsInCartValuelabel.Size = new System.Drawing.Size(13, 13);
-            this.totalItemsInCartValuelabel.TabIndex = 43;
-            this.totalItemsInCartValuelabel.Text = "  ";
+            this.currentTotalValueLabel.AutoSize = true;
+            this.currentTotalValueLabel.Location = new System.Drawing.Point(139, 30);
+            this.currentTotalValueLabel.Name = "currentTotalValueLabel";
+            this.currentTotalValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.currentTotalValueLabel.TabIndex = 45;
+            this.currentTotalValueLabel.Text = "  ";
             // 
             // currentTotalLabel
             // 
@@ -183,14 +179,24 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.currentTotalLabel.TabIndex = 44;
             this.currentTotalLabel.Text = "Current Total:";
             // 
-            // currentTotalValueLabel
+            // totalItemsInCartValuelabel
             // 
-            this.currentTotalValueLabel.AutoSize = true;
-            this.currentTotalValueLabel.Location = new System.Drawing.Point(138, 30);
-            this.currentTotalValueLabel.Name = "currentTotalValueLabel";
-            this.currentTotalValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.currentTotalValueLabel.TabIndex = 45;
-            this.currentTotalValueLabel.Text = "  ";
+            this.totalItemsInCartValuelabel.AutoSize = true;
+            this.totalItemsInCartValuelabel.Location = new System.Drawing.Point(139, 0);
+            this.totalItemsInCartValuelabel.Name = "totalItemsInCartValuelabel";
+            this.totalItemsInCartValuelabel.Size = new System.Drawing.Size(13, 13);
+            this.totalItemsInCartValuelabel.TabIndex = 43;
+            this.totalItemsInCartValuelabel.Text = "  ";
+            // 
+            // totalItemsInCartLabel
+            // 
+            this.totalItemsInCartLabel.AutoSize = true;
+            this.totalItemsInCartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalItemsInCartLabel.Location = new System.Drawing.Point(3, 0);
+            this.totalItemsInCartLabel.Name = "totalItemsInCartLabel";
+            this.totalItemsInCartLabel.Size = new System.Drawing.Size(115, 13);
+            this.totalItemsInCartLabel.TabIndex = 42;
+            this.totalItemsInCartLabel.Text = "Total Items in Cart:";
             // 
             // dueDateTimePicker
             // 
@@ -209,6 +215,30 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.dueDateLabel.Size = new System.Drawing.Size(65, 13);
             this.dueDateLabel.TabIndex = 45;
             this.dueDateLabel.Text = "Due Date:";
+            // 
+            // deleteItemButton
+            // 
+            this.deleteItemButton.AutoSize = true;
+            this.deleteItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.deleteItemButton.Location = new System.Drawing.Point(89, 3);
+            this.deleteItemButton.Name = "deleteItemButton";
+            this.deleteItemButton.Size = new System.Drawing.Size(80, 23);
+            this.deleteItemButton.TabIndex = 33;
+            this.deleteItemButton.Text = "Delete Item";
+            this.deleteItemButton.UseVisualStyleBackColor = true;
+            this.deleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
+            // 
+            // updateItemButton
+            // 
+            this.updateItemButton.AutoSize = true;
+            this.updateItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.updateItemButton.Location = new System.Drawing.Point(3, 3);
+            this.updateItemButton.Name = "updateItemButton";
+            this.updateItemButton.Size = new System.Drawing.Size(80, 23);
+            this.updateItemButton.TabIndex = 34;
+            this.updateItemButton.Text = "Update Item";
+            this.updateItemButton.UseVisualStyleBackColor = true;
+            this.updateItemButton.Click += new System.EventHandler(this.UpdateItemButton_Click);
             // 
             // RentalCartUserControl
             // 
@@ -253,5 +283,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.Label totalItemsInCartLabel;
         private System.Windows.Forms.DateTimePicker dueDateTimePicker;
         private System.Windows.Forms.Label dueDateLabel;
+        private System.Windows.Forms.Button updateItemButton;
+        private System.Windows.Forms.Button deleteItemButton;
     }
 }
