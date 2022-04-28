@@ -32,6 +32,7 @@ namespace RentMe_App.View.MemberModals
             this.HeaderFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TransactionTypeLabel = new System.Windows.Forms.Label();
             this.FurnitureIDLabelLabel = new System.Windows.Forms.Label();
+            this.FurnitureIDValueLabel = new System.Windows.Forms.Label();
             this.NBSP = new System.Windows.Forms.Label();
             this.ImagePictureBox = new System.Windows.Forms.PictureBox();
             this.NameGroupBox = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@ namespace RentMe_App.View.MemberModals
             this.CancelButton = new System.Windows.Forms.Button();
             this.ContentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.QuantityFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.FurnitureIDValueLabel = new System.Windows.Forms.Label();
             this.HeaderFlowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             this.NameGroupBox.SuspendLayout();
@@ -100,6 +100,16 @@ namespace RentMe_App.View.MemberModals
             this.FurnitureIDLabelLabel.Size = new System.Drawing.Size(65, 13);
             this.FurnitureIDLabelLabel.TabIndex = 1;
             this.FurnitureIDLabelLabel.Text = "Furniture ID:";
+            // 
+            // FurnitureIDValueLabel
+            // 
+            this.FurnitureIDValueLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.FurnitureIDValueLabel.AutoSize = true;
+            this.FurnitureIDValueLabel.Location = new System.Drawing.Point(170, 16);
+            this.FurnitureIDValueLabel.Name = "FurnitureIDValueLabel";
+            this.FurnitureIDValueLabel.Size = new System.Drawing.Size(65, 13);
+            this.FurnitureIDValueLabel.TabIndex = 3;
+            this.FurnitureIDValueLabel.Text = "[FurnitureID]";
             // 
             // NBSP
             // 
@@ -285,6 +295,7 @@ namespace RentMe_App.View.MemberModals
             this.SubmitButton.TabIndex = 0;
             this.SubmitButton.Text = "[ Rent | Return | Update ]";
             this.SubmitButton.UseVisualStyleBackColor = true;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // CancelButton
             // 
@@ -333,16 +344,6 @@ namespace RentMe_App.View.MemberModals
             this.QuantityFlowLayoutPanel.Name = "QuantityFlowLayoutPanel";
             this.QuantityFlowLayoutPanel.Size = new System.Drawing.Size(102, 26);
             this.QuantityFlowLayoutPanel.TabIndex = 11;
-            // 
-            // FurnitureIDValueLabel
-            // 
-            this.FurnitureIDValueLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.FurnitureIDValueLabel.AutoSize = true;
-            this.FurnitureIDValueLabel.Location = new System.Drawing.Point(170, 16);
-            this.FurnitureIDValueLabel.Name = "FurnitureIDValueLabel";
-            this.FurnitureIDValueLabel.Size = new System.Drawing.Size(65, 13);
-            this.FurnitureIDValueLabel.TabIndex = 3;
-            this.FurnitureIDValueLabel.Text = "[FurnitureID]";
             // 
             // ItemDetailsModal
             // 

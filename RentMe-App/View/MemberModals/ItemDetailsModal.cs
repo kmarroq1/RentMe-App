@@ -78,6 +78,23 @@ namespace RentMe_App.View.MemberModals
         #endregion
 
         #region Event Handlers
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (QuantityNumericUpDown.Value == _furniture.Quantity)
+                    throw new ArgumentException("Quantity not changed. Nothing to update.");
+
+                _furniture.Quantity = (int) QuantityNumericUpDown.Value;
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
+
+            Close();
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
