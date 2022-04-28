@@ -214,6 +214,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.ReturnsDataGridView.AllowUserToAddRows = false;
             this.ReturnsDataGridView.AllowUserToDeleteRows = false;
+            this.ReturnsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ReturnsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReturnsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ReturnsDataGridView.Location = new System.Drawing.Point(3, 47);
