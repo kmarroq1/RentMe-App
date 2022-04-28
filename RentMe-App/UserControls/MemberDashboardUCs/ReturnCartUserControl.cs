@@ -64,10 +64,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 _DataTable.Columns.Add(new DataColumn("ID", typeof(int)));
                 _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
                 _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
-                _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(decimal)));
+                _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(string)));
 
-                ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString();
-                ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString();
+                ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString("C");
+                ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString("C");
 
                 foreach (FurnitureInventory item in Cart.Return.ReturnedFurniture)
                 {
@@ -76,7 +76,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                     row["ID"] = item.FurnitureID;
                     row["Name"] = item.Name;
                     row["Qty to Return"] = item.Quantity;
-                    row["Balance/Fine"] = item.Daily_Rental_Rate;
+                    row["Balance/Fine"] = item.Daily_Rental_Rate.ToString("C");
 
                     _DataTable.Rows.Add(row);
                 }
