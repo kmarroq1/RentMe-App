@@ -117,7 +117,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             try
             {
                 _ReturnController.CompleteReturn(Cart.Return);
-                MessageBox.Show("Return successfully processed.", "Success");
+                new ReceiptModal(Cart.Return).ShowDialog();
                 Cart.ClearReturns();
                 UpdateElements();
             }
