@@ -2,6 +2,7 @@
 using RentMe_App.UserControls.MemberDashboardUCs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace RentMe_App.View.EmployeeModals
@@ -16,6 +17,8 @@ namespace RentMe_App.View.EmployeeModals
         private List<FurnitureInventory> _furnitureList;
         private readonly OrdersController ordersController;
         private readonly Order currentOrder;
+        private FurnitureInventory selectedFurniture;
+        private int furnitureRentalTransactionID;
 
         #endregion
 
@@ -29,6 +32,8 @@ namespace RentMe_App.View.EmployeeModals
             InitializeComponent();
             ordersController = new OrdersController();
             currentOrder = selectedOrder;
+            ReturnButton.Enabled = false;
+            furnitureRentalTransactionID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID;
             PopulateData();
             PopulateGridView();
         }
@@ -45,44 +50,78 @@ namespace RentMe_App.View.EmployeeModals
 
         private void ReturnButton_Click(object sender, System.EventArgs e)
         {
-            //add condition for if item has already been returned
-            //add option to choose quantity to return
-            //right now defaults to returning 1 furniture item
-            /*            if (currentOrder.Open)
-                        {*/
-            Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
-            Cart.Return.RentalID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID ;
-            errorLabel.Text = "Added to cart!";
-            /* }
-             else
-             {
-                 errorLabel.Text = "This item has already been returned.";
-             }*/
-
-            //update datagridview - subtract quantity shown
+            try
+            {
+                Cart.Return.RentalID = furnitureRentalTransactionID;
+                Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
+                Cart.Return.RentalID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID;
+                errorLabel.Text = "Added to cart!";
+            } catch (Exception exception)
+            {
+                errorLabel.Text = exception.Message;
+            }
         }
 
         private FurnitureInventory CreateReturnItem()
         {
-            var selectedItem = _furnitureList.Find(x => x.FurnitureID == int.Parse(furnitureOrderedDataGridView.SelectedRows[0].Cells["FurnitureID"].Value.ToString()));
+            selectedFurniture = _furnitureList.Find(x => x.FurnitureID == int.Parse(furnitureOrderedDataGridView.SelectedRows[0].Cells["FurnitureID"].Value.ToString()));
             return new FurnitureInventory
             {
-                FurnitureID = (int)selectedItem.FurnitureID,
-                Name = selectedItem.Name,
-                Description = selectedItem.Description,
-                Daily_Rental_Rate = selectedItem.Daily_Rental_Rate,
-                Daily_Fine_Rate = selectedItem.Daily_Fine_Rate,
-                Style_Name = selectedItem.Style_Name,
-                Category_Name = selectedItem.Category_Name,
-                Image_Small_Url = selectedItem.Image_Small_Url,
-                Image_Large_Url = selectedItem.Image_Large_Url,
-                Quantity = 1,
+                FurnitureID = (int)selectedFurniture.FurnitureID,
+                Name = selectedFurniture.Name,
+                Description = selectedFurniture.Description,
+                Daily_Rental_Rate = selectedFurniture.Daily_Rental_Rate,
+                Daily_Fine_Rate = selectedFurniture.Daily_Fine_Rate,
+                Style_Name = selectedFurniture.Style_Name,
+                Category_Name = selectedFurniture.Category_Name,
+                Image_Small_Url = selectedFurniture.Image_Small_Url,
+                Image_Large_Url = selectedFurniture.Image_Large_Url,
+                Quantity = ReturnQuantityValidation(),
+                RentalTransactionID = furnitureRentalTransactionID,
             };
         }
 
         private void CloseButton_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private int ReturnQuantityValidation()
+        {
+            var enteredValue = (int)qtyReturnNumericUpDown.Value;
+            var isInCart = Cart.Return.ReturnedFurniture.Any(x => x.FurnitureID == selectedFurniture.FurnitureID && x.RentalTransactionID == furnitureRentalTransactionID);
+            var cartQuantity = 0;
+            if (isInCart)
+            {
+                cartQuantity = Cart.Return.ReturnedFurniture.Find(x => x.FurnitureID == selectedFurniture.FurnitureID).Quantity;
+            }
+            var returnLimit = (selectedFurniture.QuantityRented - selectedFurniture.QuantityReturned) - cartQuantity;
+
+            if (!isInCart && (returnLimit == 0 || currentOrder.OrderType == "return"))
+            {
+                throw new Exception("This item has already been returned.");
+            }
+            else if (enteredValue == 0)
+            {
+                throw new Exception("Must return more than 0 items.");
+            } 
+            else if (isInCart && returnLimit > 0)
+            {
+                errorLabel.Text = "You can return " + returnLimit + " more of this item.";
+                return (int)qtyReturnNumericUpDown.Value;
+            }
+            else if (isInCart && returnLimit == 0)
+            {
+                throw new Exception("Your return cart has all of these items already.");
+            }
+            else if (enteredValue > returnLimit)
+            {
+                throw new Exception("You can only return up to " + returnLimit + " items.");
+            }
+            else
+            {
+                return (int)qtyReturnNumericUpDown.Value;
+            }
         }
 
         private void PopulateData()
@@ -114,6 +153,7 @@ namespace RentMe_App.View.EmployeeModals
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //selectedFurniture = _furnitureList.Find(x => x.FurnitureID == int.Parse(furnitureOrderedDataGridView.SelectedRows[0].Cells["FurnitureID"].Value.ToString()));
             errorLabel.Text = "";
             ReturnButton.Enabled = true;
             furnitureOrderedDataGridView.CurrentRow.Selected = true;

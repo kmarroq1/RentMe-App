@@ -72,6 +72,11 @@ namespace RentMe_App.Model
         /// </summary>
         public int? QuantityReturned { get; set; }
 
+        /// <summary>
+        /// The rental transaction id of this furniture item
+        /// </summary>
+        public int RentalTransactionID { get; set; }
+
         #endregion
 
         #region Constructors
