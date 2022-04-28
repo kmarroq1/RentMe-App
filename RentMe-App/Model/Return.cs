@@ -10,7 +10,7 @@ namespace RentMe_App.Model
     /// Models a return transaction
     /// </summary>
     public class Return : Transaction
-    {        
+    {
         #region Fields
 
         private int _memberID;

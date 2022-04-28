@@ -56,7 +56,8 @@ namespace RentMe_App.View.EmployeeModals
                 Cart.Return.ReturnedFurniture.Add(CreateReturnItem());
                 Cart.Return.RentalID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID;
                 errorLabel.Text = "Added to cart!";
-            } catch (Exception exception)
+            }
+            catch (Exception exception)
             {
                 errorLabel.Text = exception.Message;
             }
@@ -104,7 +105,7 @@ namespace RentMe_App.View.EmployeeModals
             else if (enteredValue == 0)
             {
                 throw new Exception("Must return more than 0 items.");
-            } 
+            }
             else if (isInCart && returnLimit > 0)
             {
                 errorLabel.Text = "You can return " + returnLimit + " more of this item.";
