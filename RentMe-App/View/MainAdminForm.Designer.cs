@@ -43,8 +43,10 @@ namespace RentMe_App
             this.labelFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameValueLabel = new System.Windows.Forms.Label();
+            this.reportUserControl1 = new RentMe_App.UserControls.ReportUserControl();
             this.tabControl1.SuspendLayout();
             this.personnelTabPage.SuspendLayout();
+            this.reportsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -81,6 +83,7 @@ namespace RentMe_App
             // 
             // reportsTabPage
             // 
+            this.reportsTabPage.Controls.Add(this.reportUserControl1);
             this.reportsTabPage.Location = new System.Drawing.Point(4, 22);
             this.reportsTabPage.Name = "reportsTabPage";
             this.reportsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -195,6 +198,13 @@ namespace RentMe_App
             this.usernameValueLabel.TabIndex = 1;
             this.usernameValueLabel.Text = "  ";
             // 
+            // reportUserControl1
+            // 
+            this.reportUserControl1.Location = new System.Drawing.Point(-2, 6);
+            this.reportUserControl1.Name = "reportUserControl1";
+            this.reportUserControl1.Size = new System.Drawing.Size(828, 519);
+            this.reportUserControl1.TabIndex = 0;
+            // 
             // MainAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +222,7 @@ namespace RentMe_App
             this.Load += new System.EventHandler(this.MainAdminForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.personnelTabPage.ResumeLayout(false);
+            this.reportsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -238,5 +249,6 @@ namespace RentMe_App
         private System.Windows.Forms.FlowLayoutPanel labelFlowLayoutPanel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label usernameValueLabel;
+        private UserControls.ReportUserControl reportUserControl1;
     }
 }

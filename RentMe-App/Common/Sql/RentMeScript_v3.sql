@@ -602,3 +602,76 @@ END
 GO
 
 --SELECT [dbo].[sfGetAuthorizedEmployeeLoginInfo] ('Jane', 'test1234')
+
+USE [cs6232-g5]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'spGetMostPopularFurnitureDuringDates')  
+DROP PROCEDURE spGetMostPopularFurnitureDuringDates 
+go
+
+CREATE PROCEDURE spGetMostPopularFurnitureDuringDates (
+    @startDate	DATETIME
+	, @endDate	DATETIME
+)
+AS
+BEGIN
+
+DECLARE @total_rentals_var	INT
+
+IF (ISNULL(@startDate, '') = '') OR (ISNULL(@endDate, '') = '')
+BEGIN
+    RETURN
+END
+
+IF (@startDate > @endDate)
+BEGIN
+   RETURN
+END
+
+SELECT
+@total_rentals_var = COUNT(*) 
+FROM rentalTransaction TRA
+WHERE
+TRA.transaction_date BETWEEN @startDate AND @endDate
+;
+
+SELECT
+FUR.furnitureID AS 'furniture_id'
+, CAT.name AS 'category'
+, FUR.name AS 'furniture_name'
+, CNT.times_rented_out AS 'times_rented_out'
+, @total_rentals_var AS 'total_all_rentals'
+, CAST(	(CNT.times_rented_out * 1.00000 / @total_rentals_var * 1.00000) * 100 AS DECIMAL(10,2)	) AS 'percentage'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented >= 18 AND CNT.age_when_rented <= 29 THEN 1 ELSE 0 END) / CNT.times_rented_out * 100 AS DECIMAL(10,2)	) AS 'perc_in_18_29'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented < 18 OR CNT.age_when_rented > 29 THEN 1 ELSE 0 END) / CNT.times_rented_out * 100 AS DECIMAL(10,2)	) AS 'perc_out_18_29'
+FROM (
+	SELECT
+    REN.furnitureID
+    , TRA.memberID
+    , COUNT(TRA.transactionID) OVER (PARTITION BY REN.furnitureID) AS 'times_rented_out'
+	, FLOOR(DATEDIFF(YEAR, TRA.transaction_date, MEM.birthDate) / 365.25) AS 'age_when_rented'
+    FROM rentalTransaction TRA
+    JOIN furnitureRented REN
+		ON TRA.transactionID = REN.rental_transactionID
+	JOIN storeMember MEM
+		ON TRA.memberID = MEM.memberID
+	WHERE
+    TRA.transaction_date BETWEEN @startDate AND @endDate
+) CNT
+JOIN furniture FUR
+	ON CNT.furnitureID = FUR.furnitureID
+JOIN category CAT
+	ON FUR.category_name = CAT.name
+WHERE
+CNT.times_rented_out >= 2
+GROUP BY FUR.furnitureID, CNT.times_rented_out, CAT.name, FUR.name
+ORDER BY times_rented_out DESC, FUR.furnitureID DESC
+;
+
+RETURN
+END
