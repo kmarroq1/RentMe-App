@@ -30,7 +30,7 @@ namespace RentMe_App.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.mostPopularFurnitureLabel = new System.Windows.Forms.Label();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -43,21 +43,24 @@ namespace RentMe_App.UserControls
             this.spGetMostPopularFurnitureDuringDatesTableAdapter = new RentMe_App.RentMeDataSetTableAdapters.spGetMostPopularFurnitureDuringDatesTableAdapter();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.clearButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spGetMostPopularFurnitureDuringDatesBindingSource)).BeginInit();
             this.flowLayoutPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportViewer
             // 
-            reportDataSource3.Name = "RentMeDataSet";
-            reportDataSource3.Value = this.spGetMostPopularFurnitureDuringDatesBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource1.Name = "RentMeDataSet";
+            reportDataSource1.Value = this.spGetMostPopularFurnitureDuringDatesBindingSource;
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "RentMe_App.Report.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(19, 91);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(788, 390);
+            this.reportViewer.Size = new System.Drawing.Size(788, 363);
             this.reportViewer.TabIndex = 0;
             // 
             // mostPopularFurnitureLabel
@@ -152,10 +155,36 @@ namespace RentMe_App.UserControls
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.errorMessageLabel, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 460);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 30);
+            this.tableLayoutPanel1.TabIndex = 29;
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.errorMessageLabel.Location = new System.Drawing.Point(386, 8);
+            this.errorMessageLabel.MaximumSize = new System.Drawing.Size(400, 0);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(16, 13);
+            this.errorMessageLabel.TabIndex = 26;
+            this.errorMessageLabel.Text = "   ";
+            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // ReportUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.endDateLabel);
             this.Controls.Add(this.endDateTimePicker);
@@ -170,6 +199,8 @@ namespace RentMe_App.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.spGetMostPopularFurnitureDuringDatesBindingSource)).EndInit();
             this.flowLayoutPanel.ResumeLayout(false);
             this.flowLayoutPanel.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +220,7 @@ namespace RentMe_App.UserControls
         private RentMeDataSetTableAdapters.spGetMostPopularFurnitureDuringDatesTableAdapter spGetMostPopularFurnitureDuringDatesTableAdapter;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
