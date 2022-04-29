@@ -23,9 +23,9 @@ namespace RentMe_App.DAL
         /// <param name="startDate">start date</param>
         /// <param name="endDate">end date</param>
         /// <returns>report data</returns>
-        public DataSet GetMostPopularFurnitureDuringDates(DateTime startDate, DateTime endDate)
+        public DataTable GetMostPopularFurnitureDuringDates(DateTime startDate, DateTime endDate)
         {
-            DataSet dsReport;
+            DataTable table;
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
                 connection.Open();
@@ -44,17 +44,15 @@ namespace RentMe_App.DAL
 
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
-                        selectCommand.Connection = connection;
-                        selectCommand.CommandType = CommandType.StoredProcedure;
                         sda.SelectCommand = selectCommand;
-                        using (dsReport = new DataSet())
+                        using (table = new DataTable())
                         {
-                            sda.Fill(dsReport, "ReportDataTable");
+                            sda.Fill(table);
                         }
                     }
                 }
             }
-            return dsReport;
+            return table;
         }
 
         #endregion

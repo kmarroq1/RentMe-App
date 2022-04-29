@@ -36,11 +36,40 @@ namespace RentMe_App.UserControls
 
         private void RunButton_Click(object sender, EventArgs e)
         {
-            DataSet dsReport = (DataSet)reportController.GetMostPopularFurnitureDuringDates(startDateTimePicker.Value, endDateTimePicker.Value);
-            ReportDataSource datasource = new ReportDataSource("RentMeDataSet", dsReport.Tables[0]);
+            DataTable reportTable = SortDataTable(reportController.GetMostPopularFurnitureDuringDates(startDateTimePicker.Value, endDateTimePicker.Value));
+            ReportDataSource datasource = new ReportDataSource("RentMeDataSet", reportTable);
             reportViewer.LocalReport.DataSources.Clear();
             reportViewer.LocalReport.DataSources.Add(datasource);
             reportViewer.RefreshReport();
+        }
+
+        private DataTable SortDataTable(DataTable table)
+        {
+            DataView dv = table.DefaultView;
+            Console.WriteLine(dv.ToString());
+            dv.Sort = "times_rented_out desc, furniture_id desc";
+            DataTable sortedtable = dv.ToTable();
+            PrintDataTable(sortedtable);
+            return sortedtable;
+        }
+
+        public static void PrintDataTable(DataTable tbl)
+        {
+            string line = "";
+            foreach (DataColumn item in tbl.Columns)
+            {
+                line += item.ColumnName + "   ";
+            }
+            line += "\n";
+            foreach (DataRow row in tbl.Rows)
+            {
+                for (int i = 0; i < tbl.Columns.Count; i++)
+                {
+                    line += row[i].ToString() + "   ";
+                }
+                line += "\n";
+            }
+            Console.WriteLine(line);
         }
 
         #endregion

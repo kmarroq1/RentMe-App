@@ -39,7 +39,7 @@ namespace RentMe_App.Controller
         /// <param name="startDate">start date</param>
         /// <param name="endDate">end date</param>
         /// <returns>report data</returns>
-        public DataSet GetMostPopularFurnitureDuringDates(DateTime startDate, DateTime endDate)
+        public DataTable GetMostPopularFurnitureDuringDates(DateTime startDate, DateTime endDate)
         {
             if (!DateTime.TryParse(startDate.ToString(), out _))
             {
