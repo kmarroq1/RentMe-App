@@ -36,40 +36,29 @@ namespace RentMe_App.UserControls
 
         private void RunButton_Click(object sender, EventArgs e)
         {
-            DataTable reportTable = SortDataTable(reportController.GetMostPopularFurnitureDuringDates(startDateTimePicker.Value, endDateTimePicker.Value));
+            DataTable reportTable = reportController.GetMostPopularFurnitureDuringDates(startDateTimePicker.Value, endDateTimePicker.Value);
             ReportDataSource datasource = new ReportDataSource("RentMeDataSet", reportTable);
             reportViewer.LocalReport.DataSources.Clear();
             reportViewer.LocalReport.DataSources.Add(datasource);
             reportViewer.RefreshReport();
         }
 
-        private DataTable SortDataTable(DataTable table)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
-            DataView dv = table.DefaultView;
-            Console.WriteLine(dv.ToString());
-            dv.Sort = "times_rented_out desc, furniture_id desc";
-            DataTable sortedtable = dv.ToTable();
-            PrintDataTable(sortedtable);
-            return sortedtable;
+            ClearForm();
         }
 
-        public static void PrintDataTable(DataTable tbl)
+        private void ClearForm()
         {
-            string line = "";
-            foreach (DataColumn item in tbl.Columns)
-            {
-                line += item.ColumnName + "   ";
-            }
-            line += "\n";
-            foreach (DataRow row in tbl.Rows)
-            {
-                for (int i = 0; i < tbl.Columns.Count; i++)
-                {
-                    line += row[i].ToString() + "   ";
-                }
-                line += "\n";
-            }
-            Console.WriteLine(line);
+            startDateTimePicker.Value = DateTime.Now;
+            endDateTimePicker.Value = DateTime.Now;
+            reportViewer.Clear();
+
+        }
+
+        private void ReportUserControl_VisibleChanged(object sender, EventArgs e)
+        {
+            ClearForm();
         }
 
         #endregion

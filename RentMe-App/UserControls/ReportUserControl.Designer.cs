@@ -30,7 +30,7 @@ namespace RentMe_App.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.mostPopularFurnitureLabel = new System.Windows.Forms.Label();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -41,15 +41,18 @@ namespace RentMe_App.UserControls
             this.rentMeDataSet = new RentMe_App.RentMeDataSet();
             this.spGetMostPopularFurnitureDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.spGetMostPopularFurnitureDuringDatesTableAdapter = new RentMe_App.RentMeDataSetTableAdapters.spGetMostPopularFurnitureDuringDatesTableAdapter();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spGetMostPopularFurnitureDuringDatesBindingSource)).BeginInit();
+            this.flowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // reportViewer
             // 
-            reportDataSource1.Name = "RentMeDataSet";
-            reportDataSource1.Value = this.spGetMostPopularFurnitureDuringDatesBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource3.Name = "RentMeDataSet";
+            reportDataSource3.Value = this.spGetMostPopularFurnitureDuringDatesBindingSource;
+            this.reportViewer.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer.LocalReport.ReportEmbeddedResource = "RentMe_App.Report.rdlc";
             this.reportViewer.Location = new System.Drawing.Point(19, 91);
             this.reportViewer.Name = "reportViewer";
@@ -104,7 +107,7 @@ namespace RentMe_App.UserControls
             // runButton
             // 
             this.runButton.AutoSize = true;
-            this.runButton.Location = new System.Drawing.Point(583, 48);
+            this.runButton.Location = new System.Drawing.Point(3, 3);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 23);
             this.runButton.TabIndex = 3;
@@ -126,11 +129,34 @@ namespace RentMe_App.UserControls
             // 
             this.spGetMostPopularFurnitureDuringDatesTableAdapter.ClearBeforeFill = true;
             // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.AutoSize = true;
+            this.flowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel.Controls.Add(this.runButton);
+            this.flowLayoutPanel.Controls.Add(this.clearButton);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(581, 44);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel.TabIndex = 6;
+            this.flowLayoutPanel.WrapContents = false;
+            // 
+            // clearButton
+            // 
+            this.clearButton.AutoSize = true;
+            this.clearButton.Location = new System.Drawing.Point(84, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 4;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // ReportUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.runButton);
+            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.endDateLabel);
             this.Controls.Add(this.endDateTimePicker);
             this.Controls.Add(this.startDateLabel);
@@ -139,8 +165,11 @@ namespace RentMe_App.UserControls
             this.Controls.Add(this.reportViewer);
             this.Name = "ReportUserControl";
             this.Size = new System.Drawing.Size(828, 502);
+            this.VisibleChanged += new System.EventHandler(this.ReportUserControl_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spGetMostPopularFurnitureDuringDatesBindingSource)).EndInit();
+            this.flowLayoutPanel.ResumeLayout(false);
+            this.flowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +187,7 @@ namespace RentMe_App.UserControls
         private System.Windows.Forms.BindingSource spGetMostPopularFurnitureDuringDatesBindingSource;
         private RentMeDataSet rentMeDataSet;
         private RentMeDataSetTableAdapters.spGetMostPopularFurnitureDuringDatesTableAdapter spGetMostPopularFurnitureDuringDatesTableAdapter;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.Button clearButton;
     }
 }
