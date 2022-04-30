@@ -168,7 +168,7 @@ namespace RentMe_App.View.EmployeeModals
                     }
                     var formattedBalance = Math.Round((double)balance, 2);
                     totalBalance += formattedBalance;
-                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, formattedBalance);
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, formattedBalance);
                 }
             }
             catch (Exception exception)
