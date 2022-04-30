@@ -82,6 +82,8 @@ namespace RentMe_App.DAL
                         while (reader.Read())
                         {
                             double.TryParse(reader["order_total"].ToString(), out double result);
+                            result = result * ((DateTime)reader["due_date"] - (DateTime)reader["date_ordered"]).TotalDays;
+
                             Order order = new Order
                             {
                                 TransactionID = (int)reader["rentalTransactionId"],
@@ -89,7 +91,7 @@ namespace RentMe_App.DAL
                                 OrderDate = (DateTime)reader["date_ordered"],
                                 DueDate = (DateTime)reader["due_date"],
                                 DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"],
-                                OrderTotal = result,
+                                OrderTotal = Math.Round(result, 2),
                                 Open = (int)reader["open_status"] == 1,
                                 Balance = 0,
                                 MemberID = memberID,
@@ -176,6 +178,8 @@ namespace RentMe_App.DAL
                         while (reader.Read())
                         {
                             double.TryParse(reader["order_total"].ToString(), out double result);
+                            result = result * ((DateTime)reader["due_date"] - (DateTime)reader["date_ordered"]).TotalDays;
+
                             Order order = new Order
                             {
                                 TransactionID = (int)reader["rentalTransactionId"],
@@ -183,7 +187,7 @@ namespace RentMe_App.DAL
                                 OrderDate = (DateTime)reader["date_ordered"],
                                 DueDate = (DateTime)reader["due_date"],
                                 DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"],
-                                OrderTotal = result,
+                                OrderTotal = Math.Round(result, 2),
                                 Open = (int)reader["open_status"] == 1,
                                 MemberID = memberID,
                                 EmployeeID = (int)reader["employeeID"],
