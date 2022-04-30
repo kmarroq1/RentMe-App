@@ -105,6 +105,16 @@ namespace RentMe_App.Model
             }
         }
 
+        /// <summary>
+        /// Returns the Item with the given FurnitureID if it exists.
+        /// </summary>
+        /// <param name="id">The FurnitureID to search for.</param>
+        /// <returns>The matching Item</returns>
+        public FurnitureInventory GetItemByID(int id)
+        {
+            return _returnedFurniture.Find(new Predicate<FurnitureInventory>(item => item.FurnitureID == id));
+        }
+
         #endregion
     }
 }

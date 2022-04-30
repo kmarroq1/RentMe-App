@@ -74,6 +74,7 @@ namespace RentMe_App.DAL
 
                         // TODO: if the user returns all items, delete instead of update
 
+                        /*
                         string furnitureRentedUpdateStatement = @"UPDATE [furnitureRented]
                                                                   SET [quantity] = [quantity] - @Quantity
                                                                   WHERE [furnitureID] = @FurnitureID
@@ -92,6 +93,7 @@ namespace RentMe_App.DAL
 
                             cmd.ExecuteNonQuery();
                         }
+                        */
 
                         /*
                         string furnitureRentedDeleteStatement = @"DELETE FROM [furnitureRented]
