@@ -199,6 +199,7 @@ namespace RentMe_App.View.EmployeeModals
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
+            this.bottomTableLayoutPanel.SetColumnSpan(this.errorLabel, 2);
             this.errorLabel.Location = new System.Drawing.Point(262, 0);
             this.errorLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.errorLabel.Name = "errorLabel";

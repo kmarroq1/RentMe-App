@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace RentMe_App.Model
 {
@@ -61,6 +60,21 @@ namespace RentMe_App.Model
         /// getter/setter method for Quantity
         /// </summary>
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// Amount of furniture rented
+        /// </summary>
+        public int? QuantityRented { get; set; }
+
+        /// <summary>
+        /// Amount of furniture returned
+        /// </summary>
+        public int? QuantityReturned { get; set; }
+
+        /// <summary>
+        /// The rental transaction id of this furniture item
+        /// </summary>
+        public int RentalTransactionID { get; set; }
 
         #endregion
 

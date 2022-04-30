@@ -10,7 +10,7 @@ namespace RentMe_App.Model
     /// Models a return transaction
     /// </summary>
     public class Return : Transaction
-    {        
+    {
         #region Fields
 
         private int _memberID;
@@ -56,6 +56,8 @@ namespace RentMe_App.Model
         public List<FurnitureInventory> ReturnedFurniture
         {
             get => _returnedFurniture;
+            /*TODO needs to update Furniture Inventory Quantity property when more than one of the same item is added to the cart in different sessions
+            In other words, this list should consolidate the same items (same furnitureID and same rentalTransactionID)- Kim M. */
         }
 
         /// <summary>

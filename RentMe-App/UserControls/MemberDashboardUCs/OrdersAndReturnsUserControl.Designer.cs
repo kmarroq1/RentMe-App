@@ -39,10 +39,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.transactionLabel = new System.Windows.Forms.Label();
             this.ViewAllButton = new System.Windows.Forms.Button();
             this.orderHistoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ViewButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +46,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Open = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ViewButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.topTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -171,7 +170,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // 
             this.orderHistoryDataGridView.AllowUserToAddRows = false;
             this.orderHistoryDataGridView.AllowUserToDeleteRows = false;
-            this.orderHistoryDataGridView.AllowUserToOrderColumns = true;
             this.orderHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderHistoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -180,9 +178,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DueDate,
             this.DateReturned,
             this.OrderTotal,
-            this.Open,
-            this.Balance});
-            this.orderHistoryDataGridView.Location = new System.Drawing.Point(0, 90);
+            this.Open});
+            this.orderHistoryDataGridView.Location = new System.Drawing.Point(5, 90);
             this.orderHistoryDataGridView.Margin = new System.Windows.Forms.Padding(1);
             this.orderHistoryDataGridView.MultiSelect = false;
             this.orderHistoryDataGridView.Name = "orderHistoryDataGridView";
@@ -190,9 +187,53 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.RowHeadersVisible = false;
             this.orderHistoryDataGridView.RowHeadersWidth = 123;
             this.orderHistoryDataGridView.RowTemplate.Height = 46;
-            this.orderHistoryDataGridView.Size = new System.Drawing.Size(799, 355);
+            this.orderHistoryDataGridView.Size = new System.Drawing.Size(784, 355);
             this.orderHistoryDataGridView.TabIndex = 1;
             this.orderHistoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.ToolTipText = "Transaction ID";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "Order Date";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // DateReturned
+            // 
+            this.DateReturned.HeaderText = "Date Returned";
+            this.DateReturned.Name = "DateReturned";
+            this.DateReturned.ReadOnly = true;
+            this.DateReturned.Width = 160;
+            // 
+            // OrderTotal
+            // 
+            this.OrderTotal.HeaderText = "Order Total";
+            this.OrderTotal.Name = "OrderTotal";
+            this.OrderTotal.ReadOnly = true;
+            // 
+            // Open
+            // 
+            this.Open.HeaderText = "Open";
+            this.Open.Name = "Open";
+            this.Open.ReadOnly = true;
             // 
             // bottomTableLayoutPanel
             // 
@@ -248,55 +289,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.errorMsgLabel.TabIndex = 2;
             this.errorMsgLabel.Text = "  ";
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.ToolTipText = "Transaction ID";
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "Order Date";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "Due Date";
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            // 
-            // DateReturned
-            // 
-            this.DateReturned.HeaderText = "Date Returned";
-            this.DateReturned.Name = "DateReturned";
-            this.DateReturned.ReadOnly = true;
-            // 
-            // OrderTotal
-            // 
-            this.OrderTotal.HeaderText = "Order Total";
-            this.OrderTotal.Name = "OrderTotal";
-            this.OrderTotal.ReadOnly = true;
-            // 
-            // Open
-            // 
-            this.Open.HeaderText = "Open";
-            this.Open.Name = "Open";
-            this.Open.ReadOnly = true;
-            // 
-            // Balance
-            // 
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
-            this.Balance.ReadOnly = true;
-            // 
             // OrdersAndReturnsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,6 +331,5 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Open;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
     }
 }

@@ -20,7 +20,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         public DateTime? DateReturned { get; set; }
         public double OrderTotal { get; set; }
         public bool Open { get; set; }
-        public double Balance { get; set; }
+        public double? Balance { get; set; }
         public List<FurnitureInventory> FurnitureList { get; set; }
         public int? RentalTransactionID { get; set; }
 
