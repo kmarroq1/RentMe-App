@@ -126,9 +126,6 @@
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
-      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controller\OrdersController.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\RentalCartUserControl.cs">
       <SubType>UserControl</SubType>
