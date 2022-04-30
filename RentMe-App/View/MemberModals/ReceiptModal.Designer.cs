@@ -45,7 +45,6 @@ namespace RentMe_App.View.MemberModals
             this.TransactionDateFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TransactionDateLabelLabel = new System.Windows.Forms.Label();
             this.TransactionDateValueLabel = new System.Windows.Forms.Label();
-            this.ItemizationFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.DueDateFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.DueDateLabelLabel = new System.Windows.Forms.Label();
             this.DueDateValueLabel = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@ namespace RentMe_App.View.MemberModals
             this.CloseButton = new System.Windows.Forms.Button();
             this.PrintButton = new System.Windows.Forms.Button();
             this.EmailButton = new System.Windows.Forms.Button();
+            this.ItemizationTextBox = new System.Windows.Forms.TextBox();
             this.HeaderFlowLayoutPanel.SuspendLayout();
             this.ReceiptDetailsFlowLayoutPanel.SuspendLayout();
             this.MemberIDFlowLayoutPanel.SuspendLayout();
@@ -105,12 +105,12 @@ namespace RentMe_App.View.MemberModals
             this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.MemberNameFlowLayoutPanel);
             this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.RentalTransactionIDFlowLayoutPanel);
             this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.TransactionDateFlowLayoutPanel);
-            this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.ItemizationFlowLayoutPanel);
+            this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.ItemizationTextBox);
             this.ReceiptDetailsFlowLayoutPanel.Controls.Add(this.DueDateFlowLayoutPanel);
             this.ReceiptDetailsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ReceiptDetailsFlowLayoutPanel.Location = new System.Drawing.Point(12, 37);
             this.ReceiptDetailsFlowLayoutPanel.Name = "ReceiptDetailsFlowLayoutPanel";
-            this.ReceiptDetailsFlowLayoutPanel.Size = new System.Drawing.Size(183, 101);
+            this.ReceiptDetailsFlowLayoutPanel.Size = new System.Drawing.Size(243, 159);
             this.ReceiptDetailsFlowLayoutPanel.TabIndex = 1;
             // 
             // MemberIDFlowLayoutPanel
@@ -226,21 +226,12 @@ namespace RentMe_App.View.MemberModals
             this.TransactionDateValueLabel.TabIndex = 1;
             this.TransactionDateValueLabel.Text = "XX/XX/XXXX";
             // 
-            // ItemizationFlowLayoutPanel
-            // 
-            this.ItemizationFlowLayoutPanel.AutoSize = true;
-            this.ItemizationFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ItemizationFlowLayoutPanel.Location = new System.Drawing.Point(3, 79);
-            this.ItemizationFlowLayoutPanel.Name = "ItemizationFlowLayoutPanel";
-            this.ItemizationFlowLayoutPanel.Size = new System.Drawing.Size(0, 0);
-            this.ItemizationFlowLayoutPanel.TabIndex = 6;
-            // 
             // DueDateFlowLayoutPanel
             // 
             this.DueDateFlowLayoutPanel.AutoSize = true;
             this.DueDateFlowLayoutPanel.Controls.Add(this.DueDateLabelLabel);
             this.DueDateFlowLayoutPanel.Controls.Add(this.DueDateValueLabel);
-            this.DueDateFlowLayoutPanel.Location = new System.Drawing.Point(3, 85);
+            this.DueDateFlowLayoutPanel.Location = new System.Drawing.Point(3, 143);
             this.DueDateFlowLayoutPanel.Name = "DueDateFlowLayoutPanel";
             this.DueDateFlowLayoutPanel.Size = new System.Drawing.Size(141, 13);
             this.DueDateFlowLayoutPanel.TabIndex = 5;
@@ -267,7 +258,7 @@ namespace RentMe_App.View.MemberModals
             // HorizontalRule
             // 
             this.HorizontalRule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HorizontalRule.Location = new System.Drawing.Point(12, 141);
+            this.HorizontalRule.Location = new System.Drawing.Point(12, 203);
             this.HorizontalRule.Name = "HorizontalRule";
             this.HorizontalRule.Size = new System.Drawing.Size(188, 2);
             this.HorizontalRule.TabIndex = 2;
@@ -279,7 +270,7 @@ namespace RentMe_App.View.MemberModals
             this.TotalFlowLayoutPanel.Controls.Add(this.TotalLabelLabel);
             this.TotalFlowLayoutPanel.Controls.Add(this.TotalTypeLabel);
             this.TotalFlowLayoutPanel.Controls.Add(this.TotalAmountLabel);
-            this.TotalFlowLayoutPanel.Location = new System.Drawing.Point(12, 146);
+            this.TotalFlowLayoutPanel.Location = new System.Drawing.Point(12, 208);
             this.TotalFlowLayoutPanel.Name = "TotalFlowLayoutPanel";
             this.TotalFlowLayoutPanel.Size = new System.Drawing.Size(188, 13);
             this.TotalFlowLayoutPanel.TabIndex = 3;
@@ -318,7 +309,7 @@ namespace RentMe_App.View.MemberModals
             this.ButtonsFlowLayoutPanel.Controls.Add(this.CloseButton);
             this.ButtonsFlowLayoutPanel.Controls.Add(this.PrintButton);
             this.ButtonsFlowLayoutPanel.Controls.Add(this.EmailButton);
-            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(12, 165);
+            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(12, 227);
             this.ButtonsFlowLayoutPanel.Name = "ButtonsFlowLayoutPanel";
             this.ButtonsFlowLayoutPanel.Size = new System.Drawing.Size(243, 29);
             this.ButtonsFlowLayoutPanel.TabIndex = 4;
@@ -353,13 +344,23 @@ namespace RentMe_App.View.MemberModals
             this.EmailButton.Text = "Email";
             this.EmailButton.UseVisualStyleBackColor = true;
             // 
+            // ItemizationTextBox
+            // 
+            this.ItemizationTextBox.Location = new System.Drawing.Point(3, 79);
+            this.ItemizationTextBox.Multiline = true;
+            this.ItemizationTextBox.Name = "ItemizationTextBox";
+            this.ItemizationTextBox.ReadOnly = true;
+            this.ItemizationTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ItemizationTextBox.Size = new System.Drawing.Size(237, 58);
+            this.ItemizationTextBox.TabIndex = 7;
+            // 
             // ReceiptModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(266, 201);
+            this.ClientSize = new System.Drawing.Size(266, 268);
             this.Controls.Add(this.ButtonsFlowLayoutPanel);
             this.Controls.Add(this.TotalFlowLayoutPanel);
             this.Controls.Add(this.HorizontalRule);
@@ -411,7 +412,6 @@ namespace RentMe_App.View.MemberModals
         private System.Windows.Forms.FlowLayoutPanel TransactionDateFlowLayoutPanel;
         private System.Windows.Forms.Label TransactionDateLabelLabel;
         private System.Windows.Forms.Label TransactionDateValueLabel;
-        private System.Windows.Forms.FlowLayoutPanel ItemizationFlowLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel DueDateFlowLayoutPanel;
         private System.Windows.Forms.Label DueDateLabelLabel;
         private System.Windows.Forms.Label DueDateValueLabel;
@@ -424,5 +424,6 @@ namespace RentMe_App.View.MemberModals
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.Button EmailButton;
+        private System.Windows.Forms.TextBox ItemizationTextBox;
     }
 }

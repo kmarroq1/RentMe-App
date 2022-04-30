@@ -49,12 +49,11 @@ namespace RentMe_App.View.MemberModals
         #region Methods
         private void DisplayItems()
         {
+            ItemizationTextBox.Text = "";
+
             foreach (FurnitureInventory item in _transaction.ReturnedFurniture)
             {
-                ItemizationFlowLayoutPanel.Controls.Add(new Label
-                { Text = $"{item.Quantity} x ID: {item.FurnitureID} (daily rate per item: {item.Daily_Rental_Rate:C})"
-                , AutoSize = true
-                });
+                ItemizationTextBox.Text += $"{item.Quantity} x {item.Name} (daily rate per item: {item.Daily_Rental_Rate:C})\n";
             }
         }
         #endregion
