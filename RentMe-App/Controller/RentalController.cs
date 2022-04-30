@@ -41,9 +41,25 @@ namespace RentMe_App.Controller
         /// <param name="returnDate">date customer will return</param>
         /// <param name="rentalFurnitureList">list of furniture to rent</param>
         /// <returns>returns int transactionID to indicate completed</returns>
-        public int CreateRentalTransaction(int memberID, int employeeID, 
+        public int CreateRentalTransaction(int memberID, int employeeID,
             DateTime returnDate, List<FurnitureInventory> rentalFurnitureList)
         {
+            if (memberID < 0 || employeeID < 0)
+            {
+                throw new ArgumentException("MemberID and EmployeeID must be greater than 0 to return results");
+            }
+
+            if (!DateTime.TryParse(returnDate.ToString(), out _))
+            {
+                throw new ArgumentException("Return Date is not valid", "returnDate");
+
+            }
+
+            if (rentalFurnitureList.Count == 0)
+            {
+                throw new ArgumentException("Rental Furniture List needs values to execute");
+
+            }
             return rentalDBDAL.CreateRentalTransaction(memberID, employeeID, returnDate, rentalFurnitureList);
         }
 
@@ -54,6 +70,10 @@ namespace RentMe_App.Controller
         /// <returns>rental info</returns>
         public Rental GetRentalByID(int transactionID)
         {
+            if (transactionID < 0)
+            {
+                throw new ArgumentException("TransactionID must be greater than 0 to return results");
+            }
             return rentalDBDAL.GetRentalByID(transactionID);
         }
 
@@ -64,6 +84,10 @@ namespace RentMe_App.Controller
         /// <returns>rented furniture</returns>
         public List<FurnitureInventory> GetRentalFurniture(int transactionID)
         {
+            if (transactionID < 0)
+            {
+                throw new ArgumentException("TransactionID must be greater than 0 to return results");
+            }
             return rentalDBDAL.GetRentalFurniture(transactionID);
         }
 

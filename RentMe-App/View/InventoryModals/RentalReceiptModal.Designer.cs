@@ -184,6 +184,7 @@ namespace RentMe_App.View.InventoryModals
             this.rentalItemsTextBox.Location = new System.Drawing.Point(12, 195);
             this.rentalItemsTextBox.Multiline = true;
             this.rentalItemsTextBox.Name = "rentalItemsTextBox";
+            this.rentalItemsTextBox.ReadOnly = true;
             this.rentalItemsTextBox.Size = new System.Drawing.Size(410, 197);
             this.rentalItemsTextBox.TabIndex = 2;
             this.rentalItemsTextBox.Text = "  ";
