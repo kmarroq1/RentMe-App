@@ -18,7 +18,8 @@ namespace RentMe_App.View.EmployeeModals
         private readonly OrdersController ordersController;
         private readonly Order currentOrder;
         private FurnitureInventory selectedFurniture;
-        private int furnitureRentalTransactionID;
+        private readonly int furnitureRentalTransactionID;
+        private double? totalBalance;
 
         #endregion
 
@@ -34,8 +35,8 @@ namespace RentMe_App.View.EmployeeModals
             currentOrder = selectedOrder;
             ReturnButton.Enabled = false;
             furnitureRentalTransactionID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID;
-            PopulateData();
             PopulateGridView();
+            PopulateData();
         }
 
         #endregion
@@ -130,7 +131,7 @@ namespace RentMe_App.View.EmployeeModals
             transactionTypeLabel.Text = currentOrder.OrderType;
             dueDateLabel.Text = currentOrder.DueDate.ToShortDateString();
             amountPaidLabel.Text = currentOrder.OrderTotal.ToString();
-            balanceLabel.Text = "0";
+            balanceLabel.Text = totalBalance.ToString();
         }
 
         private void PopulateGridView()
@@ -141,7 +142,33 @@ namespace RentMe_App.View.EmployeeModals
                 _furnitureList = updatedOrder.FurnitureList;
                 foreach (var furniture in _furnitureList)
                 {
-                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, 0);
+                    if (furniture.QuantityReturned == null || furniture.QuantityRented == null || furniture.QuantityReturned < 0 || furniture.QuantityRented < 0)
+                    {
+                        furniture.QuantityReturned = 0;
+                        furniture.QuantityRented = 0;
+                    }
+
+                    double? balance = null;
+                    if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now > currentOrder.DueDate) //late
+                    {
+                        var overdraftFee = (DateTime.Now - currentOrder.DueDate).TotalDays * (double)furniture.Daily_Fine_Rate;
+                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - currentOrder.DueDate).TotalDays) + overdraftFee;
+                    }
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now == currentOrder.DueDate) //on time
+                    {
+                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - DateTime.Now).TotalDays);
+                    }
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now < currentOrder.DueDate) //early
+                    {
+                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - DateTime.Now).TotalDays);
+                    }
+                    else
+                    {
+                        balance = 0; //already returned
+                    }
+                    var formattedBalance = Math.Round((double)balance, 2);
+                    totalBalance += formattedBalance;
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Image_Small_Url, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, formattedBalance);
                 }
             }
             catch (Exception exception)
@@ -150,8 +177,6 @@ namespace RentMe_App.View.EmployeeModals
             }
         }
 
-        #endregion
-
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //selectedFurniture = _furnitureList.Find(x => x.FurnitureID == int.Parse(furnitureOrderedDataGridView.SelectedRows[0].Cells["FurnitureID"].Value.ToString()));
@@ -159,5 +184,7 @@ namespace RentMe_App.View.EmployeeModals
             ReturnButton.Enabled = true;
             furnitureOrderedDataGridView.CurrentRow.Selected = true;
         }
+
+        #endregion
     }
 }
