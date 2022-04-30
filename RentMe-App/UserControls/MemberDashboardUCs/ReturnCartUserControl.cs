@@ -66,7 +66,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
                 _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(string)));
 
-                ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString("C");
+                ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString();
                 ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString("C");
 
                 foreach (FurnitureInventory item in Cart.Return.ReturnedFurniture)
