@@ -18,7 +18,7 @@ namespace RentMe_App.View.EmployeeModals
         private readonly OrdersController ordersController;
         private readonly Order currentOrder;
         private FurnitureInventory selectedFurniture;
-        private int furnitureRentalTransactionID;
+        private readonly int furnitureRentalTransactionID;
         private double? totalBalance;
 
         #endregion
