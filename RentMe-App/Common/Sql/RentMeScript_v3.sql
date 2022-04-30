@@ -646,9 +646,9 @@ FUR.furnitureID AS 'furniture_id'
 , FUR.name AS 'furniture_name'
 , CNT.times_rented_out AS 'times_rented_out'
 , @total_rentals_var AS 'total_all_rentals'
-, CAST(	(CNT.times_rented_out * 1.00000 / @total_rentals_var * 1.00000) * 100 AS DECIMAL(10,2)	) AS 'percentage'
-, CAST(	SUM(CASE WHEN CNT.age_when_rented >= 18 AND CNT.age_when_rented <= 29 THEN 1 ELSE 0 END) / CNT.times_rented_out * 100 AS DECIMAL(10,2)	) AS 'perc_in_18_29'
-, CAST(	SUM(CASE WHEN CNT.age_when_rented < 18 OR CNT.age_when_rented > 29 THEN 1 ELSE 0 END) / CNT.times_rented_out * 100 AS DECIMAL(10,2)	) AS 'perc_out_18_29'
+, CAST(	(CNT.times_rented_out * 1.00000 / @total_rentals_var * 1.00000) AS DECIMAL(10,2)	) AS 'percentage'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented >= 18 AND CNT.age_when_rented <= 29 THEN 1 ELSE 0 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_in_18_29'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented < 18 OR CNT.age_when_rented > 29 THEN 1 ELSE 0 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_out_18_29'
 FROM (
 	SELECT
     REN.furnitureID

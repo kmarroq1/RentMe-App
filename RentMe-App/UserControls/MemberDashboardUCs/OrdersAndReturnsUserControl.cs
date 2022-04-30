@@ -108,9 +108,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ViewButton.Enabled = true;
-            errorMsgLabel.Text = "";
-            orderHistoryDataGridView.CurrentRow.Selected = true;
+            if (orderHistoryDataGridView.CurrentRow != null)
+            {
+                ViewButton.Enabled = true;
+                errorMsgLabel.Text = "";
+                orderHistoryDataGridView.CurrentRow.Selected = true;
+            } 
         }
 
         private void PopulateComboBox()
