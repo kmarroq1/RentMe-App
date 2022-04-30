@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +73,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\RentalController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="Controller\StatesController.cs" />
     <Compile Include="Controller\StyleController.cs" />
@@ -68,6 +87,7 @@
     <Compile Include="DAL\RentalDBDAL.cs" />
     <Compile Include="DAL\OrderDBDAL.cs" />
     <Compile Include="DAL\RentMeAppDBConnection.cs" />
+    <Compile Include="DAL\ReportDBDAL.cs" />
     <Compile Include="DAL\ReturnDBDAL.cs" />
     <Compile Include="DAL\StatesDBDAL.cs" />
     <Compile Include="DAL\StyleDBDAL.cs" />
@@ -76,10 +96,17 @@
     <Compile Include="Model\FurnitureInventory.cs" />
     <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Rental.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Model\Return.cs" />
     <Compile Include="Model\States.cs" />
     <Compile Include="Model\Transaction.cs" />
+    <Compile Include="RentMeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentMeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SharedFormInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,9 +122,6 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
-      <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\OrdersAndReturnsUserControl.Designer.cs">
       <DependentUpon>OrdersAndReturnsUserControl.cs</DependentUpon>
@@ -126,6 +150,12 @@
     </Compile>
     <Compile Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.Designer.cs">
       <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReportUserControl.Designer.cs">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminModals\AddEmployeeModal.cs">
       <SubType>Form</SubType>
@@ -236,6 +266,7 @@
     <Compile Include="View\MainMemberForm.Designer.cs">
       <DependentUpon>MainMemberForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report.rdlc" />
     <EmbeddedResource Include="UserControls\EmployeeDashboardUCs\AddMemberUserControl.resx">
       <DependentUpon>AddMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberDashboardUCs\SearchInventoryUserControl.resx">
       <DependentUpon>SearchInventoryUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReportUserControl.resx">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminModals\AddEmployeeModal.resx">
       <DependentUpon>AddEmployeeModal.cs</DependentUpon>
@@ -318,6 +352,7 @@
     <EmbeddedResource Include="View\MainMemberForm.resx">
       <DependentUpon>MainMemberForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\RentMe_App.Model.Employee.datasource" />
     <None Include="Properties\DataSources\RentMe_App.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
@@ -329,6 +364,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RentMeDataSet.xsc">
+      <DependentUpon>RentMeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RentMeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RentMeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RentMeDataSet.xss">
+      <DependentUpon>RentMeDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -345,6 +391,19 @@
     <Content Include="Common\Sql\insert_inventory_part3.sql" />
     <Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
