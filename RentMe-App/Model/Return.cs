@@ -14,7 +14,7 @@ namespace RentMe_App.Model
         #region Fields
 
         private int _memberID;
-        private readonly List<FurnitureInventory> _returnedFurniture;
+        private List<FurnitureInventory> _returnedFurniture;
         private int _rentalID;
 
         #endregion
@@ -93,18 +93,29 @@ namespace RentMe_App.Model
         /// <summary>
         /// Returns the total daily rental rate of items
         /// </summary>
-        public decimal TotalRate
+        public decimal Balance
         {
             get
             {
-                decimal total = 0.0M;
+                decimal balance = 0.0M;
 
-                foreach (FurnitureInventory furniture in _returnedFurniture) total += furniture.Daily_Rental_Rate;
+                foreach (FurnitureInventory furniture in _returnedFurniture)
+                {
+                    int DateDiff(DateTime later, DateTime former) => Math.Abs(later.Date.Subtract(former.Date).Days);
 
-                return total;
+                    int numberDaysPaid = DateDiff(furniture.DueDate, furniture.RentalDate);
+                    balance += furniture.Daily_Rental_Rate * numberDaysPaid;
+
+                    int numberDaysPosessed = DateDiff(DateTime.Today, furniture.RentalDate);
+                    balance -= furniture.Daily_Rental_Rate * numberDaysPosessed;
+                }
+
+                return balance;
             }
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Returns the Item with the given FurnitureID if it exists.
         /// </summary>
@@ -115,6 +126,33 @@ namespace RentMe_App.Model
             return _returnedFurniture.Find(new Predicate<FurnitureInventory>(item => item.FurnitureID == id));
         }
 
+        /// <summary>
+        /// Adds a new item if not in list.
+        /// Updates quantity otherwise.
+        /// </summary>
+        /// <param name="newItem">The new item to add to the returned furniture</param>
+        public void AddItem(FurnitureInventory newItem)
+        {
+            FurnitureInventory existingEntry = _returnedFurniture.Find(item => item.FurnitureID == newItem.FurnitureID
+                && item.RentalTransactionID == newItem.RentalTransactionID);
+
+            if (existingEntry == null)
+            {
+                _returnedFurniture.Add(newItem);
+            }
+            else
+            {
+                existingEntry.Quantity += newItem.Quantity;
+            }
+        }
+
+        /// <summary>
+        /// Removes all items with a quantity of 0 or less.
+        /// </summary>
+        public void FilterOutEmptyItems()
+        {
+            _returnedFurniture = _returnedFurniture.FindAll(item => item.Quantity > 0);
+        }
         #endregion
     }
 }

@@ -3,6 +3,7 @@ using RentMe_App.Model;
 using RentMe_App.View.MemberModals;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RentMe_App.UserControls.MemberDashboardUCs
@@ -64,10 +65,23 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 _DataTable.Columns.Add(new DataColumn("ID", typeof(int)));
                 _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
                 _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
-                _DataTable.Columns.Add(new DataColumn("Balance/Fine", typeof(string)));
+                _DataTable.Columns.Add(new DataColumn("Daily Rate", typeof(string)));
+                _DataTable.Columns.Add(new DataColumn("Days until Due", typeof(int)));
+                _DataTable.Columns.Add(new DataColumn("Effect on Balance", typeof(string)));
 
                 ReturnCountValueLabel.Text = Cart.Return.TotalItems.ToString();
-                ReturnBalanceValueLabel.Text = Cart.Return.TotalRate.ToString("C");
+
+                if (Cart.Return.Balance < 0)
+                {
+                    ReturnBalanceLabelLabel.Text = "Fees:";
+                    ReturnBalanceValueLabel.ForeColor = Color.Red;
+                }
+                else
+                {
+                    ReturnBalanceLabelLabel.Text = "Refund:";
+                    ReturnBalanceValueLabel.ForeColor = Color.Green;
+                }
+                ReturnBalanceValueLabel.Text = Cart.Return.Balance.ToString("C");
 
                 foreach (FurnitureInventory item in Cart.Return.ReturnedFurniture)
                 {
@@ -76,7 +90,9 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                     row["ID"] = item.FurnitureID;
                     row["Name"] = item.Name;
                     row["Qty to Return"] = item.Quantity;
-                    row["Balance/Fine"] = item.Daily_Rental_Rate.ToString("C");
+                    row["Daily Rate"] = item.Daily_Rental_Rate.ToString("C");
+                    row["Days until Due"] = item.DueDate.Date.Subtract(DateTime.Today).Days;
+                    row["Effect on Balance"] = (item.Daily_Rental_Rate * item.DueDate.Date.Subtract(DateTime.Today).Days).ToString("C");
 
                     _DataTable.Rows.Add(row);
                 }
@@ -116,8 +132,20 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             try
             {
+                Cart.Return.TransactionDate = DateTime.Now;
+                
+                Cart.Return.FilterOutEmptyItems();
+                if (Cart.Return.ReturnedFurniture.Count < 1)
+                {
+                    Cart.ClearReturns();
+                    UpdateElements();
+                    throw new Exception("Cart empty. Nothing to return");
+                }
+                
                 _ReturnController.CompleteReturn(Cart.Return);
+
                 new ReceiptModal(Cart.Return).ShowDialog();
+                
                 Cart.ClearReturns();
                 UpdateElements();
             }
@@ -137,6 +165,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ErrorMessage.Hide();
                 UpdateItemButton.Enabled = true;
                 DeleteItemButton.Enabled = true;
+            }
+            else
+            {
+                UpdateItemButton.Enabled = false;
+                DeleteItemButton.Enabled = false;
             }
         }
 
@@ -181,5 +214,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         }
         #endregion
 
+        private void ReturnsDataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            UpdateItemButton.Enabled = false;
+            DeleteItemButton.Enabled = false;
+        }
     }
 }
