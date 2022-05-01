@@ -133,8 +133,19 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             try
             {
                 Cart.Return.TransactionDate = DateTime.Now;
+                
+                Cart.Return.FilterOutEmptyItems();
+                if (Cart.Return.ReturnedFurniture.Count < 1)
+                {
+                    Cart.ClearReturns();
+                    UpdateElements();
+                    throw new Exception("Cart empty. Nothing to return");
+                }
+                
                 _ReturnController.CompleteReturn(Cart.Return);
+
                 new ReceiptModal(Cart.Return).ShowDialog();
+                
                 Cart.ClearReturns();
                 UpdateElements();
             }

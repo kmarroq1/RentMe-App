@@ -14,7 +14,7 @@ namespace RentMe_App.Model
         #region Fields
 
         private int _memberID;
-        private readonly List<FurnitureInventory> _returnedFurniture;
+        private List<FurnitureInventory> _returnedFurniture;
         private int _rentalID;
 
         #endregion
@@ -144,6 +144,14 @@ namespace RentMe_App.Model
             {
                 existingEntry.Quantity += newItem.Quantity;
             }
+        }
+
+        /// <summary>
+        /// Removes all items with a quantity of 0 or less.
+        /// </summary>
+        public void FilterOutEmptyItems()
+        {
+            _returnedFurniture = _returnedFurniture.FindAll(item => item.Quantity > 0);
         }
         #endregion
     }
