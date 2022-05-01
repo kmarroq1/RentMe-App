@@ -178,6 +178,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             int totalDaysRented = DaysBetween(DateTime.Now.Date, dueDateTimePicker.Value.Date);
             decimal totalCost = 0;
 
+            if (totalDaysRented == 0 && rentalCartList.Count > 0)
+            {
+                totalDaysRented = 1;
+            }
+
             for (int count = 0; count < rentalCartList.Count; count++)
             {
                 totalCost += rentalCartList[count].Quantity * (rentalCartList[count].Daily_Rental_Rate * totalDaysRented);
