@@ -81,6 +81,7 @@ namespace RentMe_App.View.EmployeeModals
                 Image_Large_Url = selectedFurniture.Image_Large_Url,
                 Quantity = ReturnQuantityValidation(),
                 RentalTransactionID = furnitureRentalTransactionID,
+                Balance = selectedFurniture.Balance
             };
         }
 
