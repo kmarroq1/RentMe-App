@@ -126,6 +126,25 @@ namespace RentMe_App.Model
             return _returnedFurniture.Find(new Predicate<FurnitureInventory>(item => item.FurnitureID == id));
         }
 
+        /// <summary>
+        /// Adds a new item if not in list.
+        /// Updates quantity otherwise.
+        /// </summary>
+        /// <param name="newItem">The new item to add to the returned furniture</param>
+        public void AddItem(FurnitureInventory newItem)
+        {
+            FurnitureInventory existingEntry = _returnedFurniture.Find(item => item.FurnitureID == newItem.FurnitureID
+                && item.RentalTransactionID == newItem.RentalTransactionID);
+
+            if (existingEntry == null)
+            {
+                _returnedFurniture.Add(newItem);
+            }
+            else
+            {
+                existingEntry.Quantity += newItem.Quantity;
+            }
+        }
         #endregion
     }
 }
