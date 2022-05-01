@@ -82,7 +82,7 @@ namespace RentMe_App.DAL
                         while (reader.Read())
                         {
                             double.TryParse(reader["order_total"].ToString(), out double result);
-                            result *= ((DateTime)reader["due_date"] - (DateTime)reader["date_ordered"]).TotalDays;
+                            result *= (((DateTime)reader["due_date"]).Date - ((DateTime)reader["date_ordered"]).Date).Days;
 
                             Order order = new Order
                             {
@@ -178,7 +178,7 @@ namespace RentMe_App.DAL
                         while (reader.Read())
                         {
                             double.TryParse(reader["order_total"].ToString(), out double result);
-                            result *= ((DateTime)reader["due_date"] - (DateTime)reader["date_ordered"]).TotalDays;
+                            result *= (((DateTime)reader["due_date"]).Date - ((DateTime)reader["date_ordered"]).Date).Days;
 
                             Order order = new Order
                             {

@@ -72,6 +72,11 @@ namespace RentMe_App.Model
         public int? QuantityReturned { get; set; }
 
         /// <summary>
+        /// Balance for furniture items not yet returned
+        /// </summary>
+        public decimal? Balance { get; set; }
+
+        /// <summary>
         /// The rental transaction id of this furniture item
         /// </summary>
         public int RentalTransactionID { get; set; }

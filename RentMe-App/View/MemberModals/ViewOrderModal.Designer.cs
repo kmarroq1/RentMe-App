@@ -45,16 +45,15 @@ namespace RentMe_App.View.EmployeeModals
             this.ReturnButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.furnitureOrderedDataGridView = new System.Windows.Forms.DataGridView();
+            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
@@ -218,6 +217,7 @@ namespace RentMe_App.View.EmployeeModals
             this.RentAgainButton.TabIndex = 1;
             this.RentAgainButton.Text = "Rent Again";
             this.RentAgainButton.UseVisualStyleBackColor = true;
+            this.RentAgainButton.Visible = false;
             this.RentAgainButton.Click += new System.EventHandler(this.RentAgainButton_Click);
             // 
             // ReturnButton
@@ -251,7 +251,6 @@ namespace RentMe_App.View.EmployeeModals
             this.furnitureOrderedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.furnitureOrderedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FurnitureID,
-            this.Image,
             this.FurnitureName,
             this.RentalDate,
             this.QtyRented,
@@ -269,23 +268,34 @@ namespace RentMe_App.View.EmployeeModals
             this.furnitureOrderedDataGridView.TabIndex = 2;
             this.furnitureOrderedDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
+            // qtyReturnNumericUpDown
+            // 
+            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
+            this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
+            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
+            this.qtyReturnNumericUpDown.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Return how many?";
+            // 
             // FurnitureID
             // 
             this.FurnitureID.HeaderText = "Furniture ID";
             this.FurnitureID.Name = "FurnitureID";
             this.FurnitureID.ReadOnly = true;
             // 
-            // Image
-            // 
-            this.Image.HeaderText = "Image";
-            this.Image.Name = "Image";
-            this.Image.ReadOnly = true;
-            // 
             // FurnitureName
             // 
             this.FurnitureName.HeaderText = "Name";
             this.FurnitureName.Name = "FurnitureName";
             this.FurnitureName.ReadOnly = true;
+            this.FurnitureName.Width = 180;
             // 
             // RentalDate
             // 
@@ -316,22 +326,6 @@ namespace RentMe_App.View.EmployeeModals
             this.Balance.HeaderText = "Balance";
             this.Balance.Name = "Balance";
             this.Balance.ReadOnly = true;
-            // 
-            // qtyReturnNumericUpDown
-            // 
-            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
-            this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
-            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
-            this.qtyReturnNumericUpDown.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(342, 78);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Return how many?";
             // 
             // ViewOrderModal
             // 
@@ -378,15 +372,14 @@ namespace RentMe_App.View.EmployeeModals
         private System.Windows.Forms.Button RentAgainButton;
         private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.NumericUpDown qtyReturnNumericUpDown;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
-        private System.Windows.Forms.NumericUpDown qtyReturnNumericUpDown;
-        private System.Windows.Forms.Label label1;
     }
 }
