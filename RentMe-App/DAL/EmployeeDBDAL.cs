@@ -89,6 +89,7 @@ namespace RentMe_App.DAL
             string selectStatement =
                 "SELECT employee.employeeID as employeeID, birthDate, fname, lname, sex, phone, address1, address2, city, state, zip, active, username, version, admin.employeeID as adminID " +
                 "FROM employee " +
+                "JOIN login ON login.employeeID = employee.employeeID " +
                 "LEFT JOIN admin ON admin.employeeID = employee.employeeID " +
                 "WHERE " +
                 "LOWER(fname) = @fName " +
@@ -129,7 +130,9 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
-                                Version = (byte[])reader["version"]
+                                Username = reader["username"].ToString(),
+                                Version = (byte[])reader["version"],
+                                IsAdmin = reader["adminID"] == DBNull.Value ? false : true,
                             };
                             newList.Add(employee);
                         }
@@ -152,6 +155,7 @@ namespace RentMe_App.DAL
             string selectStatement =
                 "SELECT employee.employeeID as employeeID, birthDate, fname, lname, sex, phone, address1, address2, city, state, zip, active, username, version, admin.employeeID as adminID " +
                 "FROM employee " +
+                "JOIN login ON login.employeeID = employee.employeeID " +
                 "LEFT JOIN admin ON admin.employeeID = employee.employeeID " +
                 "WHERE " +
                 "phone = @phone " +
@@ -190,7 +194,9 @@ namespace RentMe_App.DAL
                                 State = reader["state"].ToString(),
                                 Zip = reader["zip"].ToString(),
                                 IsActive = (bool)reader["active"],
-                                Version = (byte[])reader["version"]
+                                Username = reader["username"].ToString(),
+                                Version = (byte[])reader["version"],
+                                IsAdmin = reader["adminID"] == DBNull.Value ? false : true,
                             };
                             newList.Add(employee);
                         }
