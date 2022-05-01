@@ -36,6 +36,7 @@ namespace RentMe_App.View.MemberModals
             this.NameGroupBox = new System.Windows.Forms.GroupBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.DescriptionGroupBox = new System.Windows.Forms.GroupBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.StyleGroupBox = new System.Windows.Forms.GroupBox();
             this.StyleLabel = new System.Windows.Forms.Label();
             this.CategoryGroupBox = new System.Windows.Forms.GroupBox();
@@ -51,7 +52,6 @@ namespace RentMe_App.View.MemberModals
             this.CancelButton = new System.Windows.Forms.Button();
             this.ContentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.QuantityFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.HeaderFlowLayoutPanel.SuspendLayout();
             this.NameGroupBox.SuspendLayout();
             this.DescriptionGroupBox.SuspendLayout();
@@ -139,6 +139,16 @@ namespace RentMe_App.View.MemberModals
             this.DescriptionGroupBox.TabIndex = 3;
             this.DescriptionGroupBox.TabStop = false;
             this.DescriptionGroupBox.Text = "Furniture Description";
+            // 
+            // DescriptionTextBox
+            // 
+            this.DescriptionTextBox.Location = new System.Drawing.Point(10, 20);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.ReadOnly = true;
+            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DescriptionTextBox.Size = new System.Drawing.Size(341, 48);
+            this.DescriptionTextBox.TabIndex = 0;
             // 
             // StyleGroupBox
             // 
@@ -311,15 +321,6 @@ namespace RentMe_App.View.MemberModals
             this.QuantityFlowLayoutPanel.Name = "QuantityFlowLayoutPanel";
             this.QuantityFlowLayoutPanel.Size = new System.Drawing.Size(102, 26);
             this.QuantityFlowLayoutPanel.TabIndex = 11;
-            // 
-            // DescriptionTextBox
-            // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(10, 20);
-            this.DescriptionTextBox.Multiline = true;
-            this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DescriptionTextBox.Size = new System.Drawing.Size(341, 48);
-            this.DescriptionTextBox.TabIndex = 0;
             // 
             // ItemDetailsModal
             // 
