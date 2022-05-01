@@ -67,7 +67,7 @@ namespace RentMe_App.DAL
                         "MAX(CASE WHEN (furnitureRented.quantity - (CASE WHEN furnitureReturned.quantity IS NULL THEN 0 ELSE furnitureReturned.quantity END)) > 0 THEN 1 ELSE 0 END) as open_status " +
                     "FROM rentalTransaction " +
                     "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = rentalTransaction.transactionID " +
-                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID AND furnitureReturned.quantity = furnitureRented.quantity " +
                     "LEFT JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
                     "LEFT JOIN furniture ON furnitureRented.furnitureID = furniture.furnitureID " +
                     "WHERE memberID = @memberID " +
@@ -162,7 +162,7 @@ namespace RentMe_App.DAL
                         "MAX(CASE WHEN (furnitureRented.quantity - (CASE WHEN furnitureReturned.quantity IS NULL THEN 0 ELSE furnitureReturned.quantity END)) > 0 THEN 1 ELSE 0 END) as open_status " +
                     "FROM rentalTransaction " +
                     "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = rentalTransaction.transactionID " +
-                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                    "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = rentalTransaction.transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID AND furnitureReturned.quantity = furnitureRented.quantity " +
                     "LEFT JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
                     "LEFT JOIN furniture ON furnitureRented.furnitureID = furniture.furnitureID " +
                     "WHERE memberId = @memberId AND rentalTransaction.transactionID = @transactionID " +
@@ -211,20 +211,21 @@ namespace RentMe_App.DAL
         {
             List<FurnitureInventory> furnitureList = new List<FurnitureInventory>();
 
-            string furnitureSelectStatement = "SELECT furniture.furnitureID as furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url, furnitureRented.quantity as qty_rented, furnitureReturned.quantity as qty_returned " +
+            string furnitureSelectStatement = "SELECT furniture.furnitureID as furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url, furnitureRented.quantity as qty_rented, SUM(furnitureReturned.quantity) as qty_returned " +
                 "FROM furniture ";
             if (currentOrder.OrderType == "rental")
             {
                 furnitureSelectStatement += "LEFT JOIN furnitureRented ON furniture.furnitureID = furnitureRented.furnitureID " +
                     "LEFT JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
-                    "WHERE furnitureRented.rental_transactionID = @transactionID";
+                    "WHERE furnitureRented.rental_transactionID = @transactionID ";
             }
             else
             {
                 furnitureSelectStatement += "LEFT JOIN furnitureReturned ON furnitureReturned.furnitureID = furniture.furnitureID " +
                     "LEFT JOIN furnitureRented ON furnitureRented.rental_transactionID = furnitureReturned.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
-                    "WHERE return_transactionID = @transactionID";
+                    "WHERE return_transactionID = @transactionID ";
             }
+            furnitureSelectStatement += "GROUP BY furnitureRented.rental_transactionID, furniture.furnitureID, name, description, style_name, category_name, daily_rental_rate, daily_fine_rate, image_small_url, image_large_url, furnitureRented.quantity ";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
