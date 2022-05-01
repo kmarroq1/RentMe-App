@@ -19,7 +19,7 @@ namespace RentMe_App.View.EmployeeModals
         private readonly Order currentOrder;
         private FurnitureInventory selectedFurniture;
         private readonly int furnitureRentalTransactionID;
-        private double? totalBalance;
+        private decimal? totalBalance;
 
         #endregion
 
@@ -136,8 +136,8 @@ namespace RentMe_App.View.EmployeeModals
         {
             transactionTypeLabel.Text = currentOrder.OrderType;
             dueDateLabel.Text = currentOrder.DueDate.ToShortDateString();
-            amountPaidLabel.Text = currentOrder.OrderTotal.ToString();
-            balanceLabel.Text = totalBalance.ToString();
+            amountPaidLabel.Text = currentOrder.OrderTotal.ToString("C");
+            balanceLabel.Text = totalBalance?.ToString("C");
         }
 
         private void PopulateGridView()
@@ -184,8 +184,8 @@ namespace RentMe_App.View.EmployeeModals
                     }
 
                     furniture.Balance = balance;
-                    var formattedBalance = Math.Round((double)balance, 2);
-                    totalBalance += formattedBalance;
+                    var formattedBalance = balance?.ToString("C");
+                    totalBalance += balance;
                     furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, formattedBalance);
                 }
             }
@@ -197,7 +197,6 @@ namespace RentMe_App.View.EmployeeModals
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //selectedFurniture = _furnitureList.Find(x => x.FurnitureID == int.Parse(furnitureOrderedDataGridView.SelectedRows[0].Cells["FurnitureID"].Value.ToString()));
             errorLabel.Text = "";
             ReturnButton.Enabled = true;
             furnitureOrderedDataGridView.CurrentRow.Selected = true;
