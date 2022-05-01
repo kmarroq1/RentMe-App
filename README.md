@@ -12,8 +12,8 @@ Password: test1234
 ```
 ### Notes
 ```bash
-Pull from our latest Release version
-DB has been updated - zip file turned in on moodle contains updated export
+Pull from our latest Release version (final iteration)
+Database has been updated - zip file submitted on Moodle contains the updated script
 Member ID 1 and 21 have existing transactions
 ```
 ## To-do
