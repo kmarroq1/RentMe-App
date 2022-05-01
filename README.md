@@ -12,15 +12,10 @@ Password: test1234
 ```
 ### Notes
 ```bash
-Pull from our latest Release version for Iteration 2
-DB has been updated - zip contains updated export
-Only Meber ID 1 has transactions in DB
+Pull from our latest Release version
+DB has been updated - zip file turned in on moodle contains updated export
+Member ID 1 and 21 have existing transactions
 ```
 ## To-do
-- Can only return 1 item at a time - change so that user can adjust quantity to return
-- OrderDBDAL queries must be updated to reflect appropriate quantities
-- Balance is not calculated
-- Second rental transactions crash the app
 - Member changing feature without logging out will be added
 - Updating customers and employees needs to not take place if no changes are made
-- Add report feature
