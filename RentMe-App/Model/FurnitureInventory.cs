@@ -81,6 +81,16 @@ namespace RentMe_App.Model
         /// </summary>
         public int RentalTransactionID { get; set; }
 
+        /// <summary>
+        /// Dictates how the RentalDate can be accessed & mutated.
+        /// </summary>
+        public DateTime RentalDate { get; set; }
+
+        /// <summary>
+        /// Dictates how the DueDate can be accessed & mutated.
+        /// </summary>
+        public DateTime DueDate { get; set; }
+
         #endregion
 
         #region Constructors

@@ -93,18 +93,29 @@ namespace RentMe_App.Model
         /// <summary>
         /// Returns the total daily rental rate of items
         /// </summary>
-        public decimal TotalRate
+        public decimal Balance
         {
             get
             {
-                decimal total = 0.0M;
+                decimal balance = 0.0M;
 
-                foreach (FurnitureInventory furniture in _returnedFurniture) total += furniture.Daily_Rental_Rate;
+                foreach (FurnitureInventory furniture in _returnedFurniture)
+                {
+                    int DateDiff(DateTime later, DateTime former) => Math.Abs(later.Date.Subtract(former.Date).Days);
 
-                return total;
+                    int numberDaysPaid = DateDiff(furniture.DueDate, furniture.RentalDate);
+                    balance += furniture.Daily_Rental_Rate * numberDaysPaid;
+
+                    int numberDaysPosessed = DateDiff(DateTime.Today, furniture.RentalDate);
+                    balance -= furniture.Daily_Rental_Rate * numberDaysPosessed;
+                }
+
+                return balance;
             }
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Returns the Item with the given FurnitureID if it exists.
         /// </summary>

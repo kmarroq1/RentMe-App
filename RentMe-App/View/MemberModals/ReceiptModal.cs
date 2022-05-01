@@ -42,7 +42,7 @@ namespace RentMe_App.View.MemberModals
 
             TotalTypeLabel.Text = "Balance";
 
-            TotalAmountLabel.Text = _transaction.TotalRate.ToString("C");
+            TotalAmountLabel.Text = _transaction.Balance.ToString("C");
         }
         #endregion
 
