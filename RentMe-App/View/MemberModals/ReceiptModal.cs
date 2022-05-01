@@ -33,7 +33,7 @@ namespace RentMe_App.View.MemberModals
 
             MemberIDValueLabel.Text = _transaction.MemberID.ToString();
 
-            // TODO: get member name
+            MemberNameValueLabel.Text = SharedFormInfo.MemberName;
 
             ReturnTransactionIDValueLabel.Text = _transaction.RentalID.ToString();
 

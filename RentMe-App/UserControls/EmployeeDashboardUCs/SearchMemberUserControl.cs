@@ -299,6 +299,7 @@ namespace RentMe_App.UserControls
             {
                 MainMemberForm mainMemberForm = new MainMemberForm(SharedFormInfo.MainEmployeeForm);
                 SharedFormInfo.MemberIDForm = (int)selectedMember.MemberID;
+                SharedFormInfo.MemberName = $"{selectedMember.Fname} {selectedMember.Lname}";
                 mainMemberForm.ShowDialog();
             }
 
