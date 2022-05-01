@@ -173,7 +173,7 @@ namespace RentMe_App.View.EmployeeModals
                     else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date == currentOrder.OrderDate.Date) //same day of rental - expect full refund if returning all items
                     {
                         balance = totalFurnitureCostForItemsNotReturned;
-                    } 
+                    }
                     else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date < currentOrder.DueDate.Date) //early - expect partial refund
                     {
                         balance = totalFurnitureCostForItemsNotReturned - (quantityNotReturned * furniture.Daily_Rental_Rate * (DateTime.Now.Date - currentOrder.OrderDate.Date).Days);
@@ -186,7 +186,7 @@ namespace RentMe_App.View.EmployeeModals
                     furniture.Balance = balance;
                     var formattedBalance = balance?.ToString("C");
                     totalBalance += balance;
-                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate, formattedBalance);
+                    furnitureOrderedDataGridView.Rows.Add(furniture.FurnitureID, furniture.Name, currentOrder.OrderDate.ToShortDateString(), furniture.QuantityRented, furniture.QuantityReturned, furniture.Daily_Rental_Rate.ToString("C"), furniture.Daily_Rental_Rate.ToString("C"), formattedBalance);
                 }
             }
             catch (Exception exception)

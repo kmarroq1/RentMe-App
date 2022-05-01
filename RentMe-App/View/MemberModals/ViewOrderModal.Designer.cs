@@ -53,6 +53,7 @@ namespace RentMe_App.View.EmployeeModals
             this.QtyRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtyReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FineRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -256,6 +257,7 @@ namespace RentMe_App.View.EmployeeModals
             this.QtyRented,
             this.QtyReturned,
             this.RentalRate,
+            this.FineRate,
             this.Balance});
             this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(1, 160);
             this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1);
@@ -295,11 +297,10 @@ namespace RentMe_App.View.EmployeeModals
             this.FurnitureName.HeaderText = "Name";
             this.FurnitureName.Name = "FurnitureName";
             this.FurnitureName.ReadOnly = true;
-            this.FurnitureName.Width = 180;
             // 
             // RentalDate
             // 
-            this.RentalDate.HeaderText = "RentalDate";
+            this.RentalDate.HeaderText = "Rental Date";
             this.RentalDate.Name = "RentalDate";
             this.RentalDate.ReadOnly = true;
             // 
@@ -317,9 +318,15 @@ namespace RentMe_App.View.EmployeeModals
             // 
             // RentalRate
             // 
-            this.RentalRate.HeaderText = "RentalRate";
+            this.RentalRate.HeaderText = "Rental Rate";
             this.RentalRate.Name = "RentalRate";
             this.RentalRate.ReadOnly = true;
+            // 
+            // FineRate
+            // 
+            this.FineRate.HeaderText = "Fine Rate";
+            this.FineRate.Name = "FineRate";
+            this.FineRate.ReadOnly = true;
             // 
             // Balance
             // 
@@ -380,6 +387,7 @@ namespace RentMe_App.View.EmployeeModals
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyRented;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtyReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FineRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance;
     }
 }
