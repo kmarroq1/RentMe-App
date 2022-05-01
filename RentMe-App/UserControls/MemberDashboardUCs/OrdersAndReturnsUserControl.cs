@@ -157,7 +157,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 foreach (var order in _orderList)
                 {
-                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate.ToShortDateString(), order.DueDate.ToShortDateString(), order.DateReturned, "$ " + order.OrderTotal, order.Open);
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate.ToShortDateString(), order.DueDate.ToShortDateString(), order.DateReturned?.ToShortDateString(), "$ " + order.OrderTotal, order.Open);
                 }
             }
             catch (Exception exception)
