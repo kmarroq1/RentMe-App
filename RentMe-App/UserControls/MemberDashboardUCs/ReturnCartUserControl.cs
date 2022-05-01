@@ -78,7 +78,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 else
                 {
-                    ReturnBalanceLabelLabel.Text = "Refund";
+                    ReturnBalanceLabelLabel.Text = "Refund:";
                     ReturnBalanceValueLabel.ForeColor = Color.Green;
                 }
                 ReturnBalanceValueLabel.Text = Cart.Return.Balance.ToString("C");
@@ -132,6 +132,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             try
             {
+                Cart.Return.TransactionDate = DateTime.Now;
                 _ReturnController.CompleteReturn(Cart.Return);
                 new ReceiptModal(Cart.Return).ShowDialog();
                 Cart.ClearReturns();
