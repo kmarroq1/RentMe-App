@@ -55,12 +55,15 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 completeRentalButton.Enabled = true;
                 BuildDataGridView(rentalCartList);
                 int totalItemsInCart = 0;
+                decimal totalCost = 0;
                 for (int count = 0; count < rentalCartList.Count; count++)
                 {
                     totalItemsInCart += rentalCartList[count].Quantity;
+                    totalCost += rentalCartList[count].Quantity * rentalCartList[count].Daily_Rental_Rate;
                 }
 
                 totalItemsInCartValuelabel.Text = totalItemsInCart.ToString();
+                currentTotalValueLabel.Text = totalCost.ToString("C");
             }
             else
             {
@@ -171,7 +174,8 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
         private void DueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            int totalDaysRented = (int)(Convert.ToDateTime(dueDateTimePicker.Value) - DateTime.Now).TotalDays;
+            HideErrorMessage();
+            int totalDaysRented = DaysBetween(DateTime.Now.Date, dueDateTimePicker.Value.Date);
             decimal totalCost = 0;
 
             for (int count = 0; count < rentalCartList.Count; count++)
@@ -195,7 +199,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             try
             {
-                if ((int)(dueDateTimePicker.Value - DateTime.Today).TotalDays == 0)
+                if (DaysBetween(dueDateTimePicker.Value.Date, DateTime.Today.Date) == 0)
                 {
                     ShowErrorMessage("You must choose a rental date in the future");
                 }
@@ -301,6 +305,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void RentalCartUserControl_VisibleChanged(object sender, EventArgs e)
         {
             HideErrorMessage();
+        }
+
+        private int DaysBetween(DateTime d1, DateTime d2)
+        {
+            TimeSpan span = d2.Subtract(d1);
+            return (int)Math.Abs(span.Days);
         }
 
         #endregion

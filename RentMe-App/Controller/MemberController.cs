@@ -39,6 +39,10 @@ namespace RentMe_App.Controller
         /// <returns>list of member objects</returns>
         public List<Member> GetMemberByID(int memberID)
         {
+            if (memberID < 0)
+            {
+                throw new ArgumentException("MemberID must be greater than 0 to return results");
+            }
             return memberDBSource.GetMemberByID(memberID);
         }
 
@@ -50,6 +54,10 @@ namespace RentMe_App.Controller
         /// <returns>list of member objects</returns>
         public List<Member> GetMemberByName(string fname, string lname)
         {
+            if (string.IsNullOrEmpty(fname) || string.IsNullOrEmpty(lname))
+            {
+                throw new ArgumentException("First and Last Name must have value to return results");
+            }
             return memberDBSource.GetMemberByName(fname, lname);
         }
 
@@ -60,6 +68,10 @@ namespace RentMe_App.Controller
         /// <returns>list of member objects</returns>
         public List<Member> GetMemberByPhone(string phone)
         {
+            if (string.IsNullOrEmpty(phone))
+            {
+                throw new ArgumentException("Phone must have value to return results");
+            }
             return memberDBSource.GetMemberByPhone(phone);
         }
 
@@ -69,6 +81,10 @@ namespace RentMe_App.Controller
         /// <param name="newMember">The new member to add.</param>
         public int AddMember(Member newMember)
         {
+            if (newMember == null)
+            {
+                throw new InvalidOperationException("Member object cannot be null");
+            }
             return memberDBSource.AddMember(newMember);
         }
 

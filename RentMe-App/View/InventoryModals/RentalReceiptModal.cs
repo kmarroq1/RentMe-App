@@ -61,7 +61,8 @@ namespace RentMe_App.View.InventoryModals
                 rentalFurnitureList = rentalController.GetRentalFurniture(transactionID);
                 string furniture = "";
                 decimal totalCost = 0;
-                int totalDaysRented = (int)(Convert.ToDateTime(rental.ReturnDate) - rental.TransactionDate).TotalDays;
+                int totalDaysRented = DaysBetween(rental.TransactionDate.Date, rental.ReturnDate.Date);
+                Console.WriteLine(totalDaysRented.ToString());
 
                 Console.WriteLine(totalDaysRented.ToString());
                 for (int count = 0; count < rentalFurnitureList.Count; count++)
@@ -100,6 +101,12 @@ namespace RentMe_App.View.InventoryModals
         {
             errorMessageLabel.Text = message;
             errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+        }
+
+        private int DaysBetween(DateTime d1, DateTime d2)
+        {
+            TimeSpan span = d2.Subtract(d1);
+            return (int)Math.Abs(span.Days);
         }
 
         #endregion
