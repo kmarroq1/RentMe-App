@@ -113,7 +113,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ViewButton.Enabled = true;
                 errorMsgLabel.Text = "";
                 orderHistoryDataGridView.CurrentRow.Selected = true;
-            } 
+            }
         }
 
         private void PopulateComboBox()
@@ -136,7 +136,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 foreach (var order in _orderList)
                 {
-                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate, order.DueDate, order.DateReturned, order.OrderTotal, order.Open, order.Balance);
+                    orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate.ToShortDateString(), order.DueDate.ToShortDateString(), order.DateReturned?.ToShortDateString(), order.OrderTotal.ToString("C"), order.Open, order.Balance?.ToString("C"));
                 }
             }
             catch (Exception exception)

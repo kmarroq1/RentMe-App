@@ -36,6 +36,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         /// <returns></returns>
         public List<Order> GetOrderHistory(int memberID)
         {
+            if (memberID < 0)
+            {
+                throw new Exception("Member ID must be a positive number");
+            }
             return orderDBDAL.GetOrderHistory(memberID);
         }
 
@@ -47,6 +51,14 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         /// <returns></returns>
         public List<Order> GetOrdersByTransactionId(int currentMemberID, int transactionID)
         {
+            if (currentMemberID < 0)
+            {
+                throw new Exception("Member ID must be a positive number");
+            }
+            if (transactionID < 0)
+            {
+                throw new Exception("Transaction ID must be a positive number");
+            }
             return orderDBDAL.GetOrdersByTransactionId(currentMemberID, transactionID);
         }
 
@@ -67,6 +79,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         /// <returns></returns>
         public Order GetOrderFurnitureList(Order currentOrder)
         {
+            if (currentOrder == null)
+            {
+                throw new Exception("Order does not exist");
+            }
             return orderDBDAL.GetOrderFurnitureList(currentOrder);
         }
 
