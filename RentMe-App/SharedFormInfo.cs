@@ -39,6 +39,21 @@ namespace RentMe_App
         /// </summary>
         public static int MemberIDForm;
 
+        /// <summary>
+        /// Captures the selected member's full name.
+        /// </summary>
         public static string MemberName;
+
+        /// <summary>
+        /// Clears all values from the session.
+        /// </summary>
+        public static void ClearSession()
+        {
+            UsernameForm = null;
+            EmployeeNameForm = null;
+            EmployeeIDForm = 0;
+            MemberIDForm = 0;
+            MemberName = "";
+        }
     }
 }
