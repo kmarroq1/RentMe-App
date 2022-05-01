@@ -54,7 +54,7 @@ namespace RentMe_App.View.MemberModals
 
             NameLabel.Text = _furniture.Name;
 
-            DescriptionLabel.Text = _furniture.Description;
+            DescriptionTextBox.Text = _furniture.Description;
 
             StyleLabel.Text = _furniture.Style_Name;
 
@@ -63,6 +63,7 @@ namespace RentMe_App.View.MemberModals
             RateLabel.Text = _furniture.Daily_Rental_Rate.ToString();
 
             QuantityNumericUpDown.Value = _furniture.Quantity;
+            QuantityNumericUpDown.Maximum = _furniture.QuantityRented.Value - _furniture.QuantityReturned.Value;
         }
 
         /// <summary>
@@ -85,6 +86,12 @@ namespace RentMe_App.View.MemberModals
                 if (QuantityNumericUpDown.Value == _furniture.Quantity)
                     throw new ArgumentException("Quantity not changed. Nothing to update.");
 
+                if (QuantityNumericUpDown.Value < 0)
+                    throw new ArgumentException("Quantity cannot be negative");
+
+                if (QuantityNumericUpDown.Value > (_furniture.QuantityRented - _furniture.QuantityReturned))
+                    throw new ArgumentException("Quantity exceeds number of rented items.");
+
                 _furniture.Quantity = (int) QuantityNumericUpDown.Value;
             }
             catch (Exception ex)
@@ -98,6 +105,19 @@ namespace RentMe_App.View.MemberModals
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void QuantityNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (QuantityNumericUpDown.Value < 0)
+            {
+                ShowError("Quantity cannot be negative.");
+                SubmitButton.Enabled = false;
+                return;
+            }
+            
+            ErrorMessage.Hide();
+            SubmitButton.Enabled = true;
         }
         #endregion
     }

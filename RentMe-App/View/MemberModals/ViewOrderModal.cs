@@ -80,6 +80,8 @@ namespace RentMe_App.View.EmployeeModals
                 Image_Small_Url = selectedFurniture.Image_Small_Url,
                 Image_Large_Url = selectedFurniture.Image_Large_Url,
                 Quantity = ReturnQuantityValidation(),
+                QuantityRented = selectedFurniture.QuantityRented,
+                QuantityReturned = selectedFurniture.QuantityReturned,
                 RentalTransactionID = furnitureRentalTransactionID,
                 Balance = selectedFurniture.Balance,
                 RentalDate = currentOrder.OrderDate,
