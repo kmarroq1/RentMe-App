@@ -35,7 +35,7 @@ namespace RentMe_App.View.MemberModals
 
             MemberNameValueLabel.Text = SharedFormInfo.MemberName;
 
-            ReturnTransactionIDValueLabel.Text = _transaction.RentalID.ToString();
+            ReturnTransactionIDValueLabel.Text = _transaction.TransactionID.ToString();
 
             TransactionDateValueLabel.Text = _transaction.TransactionDate.ToShortDateString();
 
