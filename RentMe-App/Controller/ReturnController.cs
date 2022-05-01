@@ -1,5 +1,6 @@
 ﻿using RentMe_App.DAL;
 using RentMe_App.Model;
+using System;
 
 namespace RentMe_App.Controller
 {
@@ -25,6 +26,12 @@ namespace RentMe_App.Controller
         /// <param name="returnToComplete">The Return to write to the DB</param>
         public void CompleteReturn(Return returnToComplete)
         {
+            if (returnToComplete == null)
+                throw new ArgumentNullException("Return", "Return object non-existant");
+
+            if (returnToComplete.ReturnedFurniture.Count < 1)
+                throw new EmptyTransactionException("Nothing to return");
+
             _returnDataAccess.CompleteReturn(returnToComplete);
         }
     }

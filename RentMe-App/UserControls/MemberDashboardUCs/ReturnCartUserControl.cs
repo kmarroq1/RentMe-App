@@ -135,12 +135,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 Cart.Return.TransactionDate = DateTime.Now;
                 
                 Cart.Return.FilterOutEmptyItems();
-                if (Cart.Return.ReturnedFurniture.Count < 1)
-                {
-                    Cart.ClearReturns();
-                    UpdateElements();
-                    throw new Exception("Cart empty. Nothing to return");
-                }
                 
                 _ReturnController.CompleteReturn(Cart.Return);
 
@@ -149,10 +143,16 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 Cart.ClearReturns();
                 UpdateElements();
             }
+            catch (EmptyTransactionException err)
+            {
+                Cart.ClearReturns();
+                UpdateElements();
+
+                ShowErrorMessage(err.Message);
+            }
             catch (Exception err)
             {
-                ErrorMessage.Text = err.Message;
-                ErrorMessage.Show();
+                ShowErrorMessage(err.Message);
             }
         }
 
