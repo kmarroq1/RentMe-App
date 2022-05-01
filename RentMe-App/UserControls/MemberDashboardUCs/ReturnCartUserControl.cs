@@ -93,8 +93,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                     row["Qty to Return"] = item.Quantity;
                     row["Daily Rate"] = item.Daily_Rental_Rate.ToString("C");
                     row["Fine Rate"] = item.Daily_Fine_Rate.ToString("C");
-                    row["Days until Due"] = item.DueDate.Date.Subtract(DateTime.Today).Days;
-                    row["Effect on Balance"] = (item.Daily_Rental_Rate * item.DueDate.Date.Subtract(DateTime.Today).Days).ToString("C");
+                    row["Days until Due"] = ItemDaysUntilDue(item).ToString();
+                    row["Effect on Balance"] = (
+                        (ItemDaysUntilDue(item) > 0 ? item.Daily_Rental_Rate : ItemDaysUntilDue(item) < 0 ? item.Daily_Fine_Rate : 0)
+                        * ItemDaysUntilDue(item) * item.Quantity
+                        ).ToString("C");
 
                     _DataTable.Rows.Add(row);
                 }
@@ -115,6 +118,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 throw new ArgumentException("Please select a row");
 
             return Cart.Return.GetItemByID(Convert.ToInt32(ReturnsDataGridView.SelectedRows[0].Cells["ID"].Value));
+        }
+        
+        private int ItemDaysUntilDue(FurnitureInventory item)
+        {
+            return item.DueDate.Date.Subtract(DateTime.Today).Days;
         }
         #endregion
 
@@ -214,12 +222,12 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ShowErrorMessage(ex.Message);
             }
         }
-        #endregion
 
         private void ReturnsDataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             UpdateItemButton.Enabled = false;
             DeleteItemButton.Enabled = false;
         }
+        #endregion
     }
 }
