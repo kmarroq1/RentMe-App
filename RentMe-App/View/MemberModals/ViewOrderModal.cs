@@ -34,6 +34,7 @@ namespace RentMe_App.View.EmployeeModals
             ordersController = new OrdersController();
             currentOrder = selectedOrder;
             ReturnButton.Enabled = false;
+            totalBalance = 0;
             furnitureRentalTransactionID = currentOrder.OrderType == "rental" ? currentOrder.TransactionID : (int)currentOrder.RentalTransactionID;
             PopulateGridView();
             PopulateData();
@@ -148,19 +149,29 @@ namespace RentMe_App.View.EmployeeModals
                         furniture.QuantityRented = 0;
                     }
 
-                    double? balance = null;
-                    if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now > currentOrder.DueDate) //late
+                    var quantityNotReturned = furniture.QuantityRented - furniture.QuantityReturned;
+                    var totalFurnitureCostForItemsNotReturned = (decimal)(furniture.Daily_Rental_Rate * (currentOrder.DueDate.Date - currentOrder.OrderDate.Date).Days) * quantityNotReturned;
+                    decimal? balance = 0;
+
+                    if (quantityNotReturned == 0)
                     {
-                        var overdraftFee = (DateTime.Now - currentOrder.DueDate).TotalDays * (double)furniture.Daily_Fine_Rate;
-                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - currentOrder.DueDate).TotalDays) + overdraftFee;
+                        balance = 0;
                     }
-                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now == currentOrder.DueDate) //on time
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date > currentOrder.DueDate.Date) //late - expect late fee
                     {
-                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - DateTime.Now).TotalDays);
+                        balance = (currentOrder.DueDate.Date - DateTime.Now.Date).Days * quantityNotReturned * furniture.Daily_Fine_Rate;
                     }
-                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now < currentOrder.DueDate) //early
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date == currentOrder.DueDate.Date) //on time - expect 0 balance if returning all items
                     {
-                        balance = currentOrder.OrderTotal - ((furniture.QuantityRented - furniture.QuantityReturned) * (double)furniture.Daily_Rental_Rate * (currentOrder.OrderDate - DateTime.Now).TotalDays);
+                        balance = 0;
+                    }
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date == currentOrder.OrderDate.Date) //same day of rental - expect full refund if returning all items
+                    {
+                        balance = totalFurnitureCostForItemsNotReturned;
+                    } 
+                    else if (currentOrder.OrderType == "rental" && currentOrder.DateReturned == null && DateTime.Now.Date < currentOrder.DueDate.Date) //early - expect partial refund
+                    {
+                        balance = totalFurnitureCostForItemsNotReturned - (quantityNotReturned * furniture.Daily_Rental_Rate * (DateTime.Now.Date - currentOrder.OrderDate.Date).Days);
                     }
                     else
                     {
