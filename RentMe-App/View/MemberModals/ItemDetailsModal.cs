@@ -60,7 +60,9 @@ namespace RentMe_App.View.MemberModals
 
             CategoryLabel.Text = _furniture.Category_Name;
 
-            RateLabel.Text = _furniture.Daily_Rental_Rate.ToString();
+            RateLabel.Text = _furniture.Daily_Rental_Rate.ToString("C");
+
+            FineLabel.Text = _furniture.Daily_Fine_Rate.ToString("C");
 
             QuantityNumericUpDown.Value = _furniture.Quantity;
             QuantityNumericUpDown.Maximum = _furniture.QuantityRented.Value - _furniture.QuantityReturned.Value;

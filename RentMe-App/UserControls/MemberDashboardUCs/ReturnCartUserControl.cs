@@ -66,6 +66,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 _DataTable.Columns.Add(new DataColumn("Name", typeof(string)));
                 _DataTable.Columns.Add(new DataColumn("Qty to Return", typeof(int)));
                 _DataTable.Columns.Add(new DataColumn("Daily Rate", typeof(string)));
+                _DataTable.Columns.Add(new DataColumn("Fine Rate", typeof(string)));
                 _DataTable.Columns.Add(new DataColumn("Days until Due", typeof(int)));
                 _DataTable.Columns.Add(new DataColumn("Effect on Balance", typeof(string)));
 
@@ -91,6 +92,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                     row["Name"] = item.Name;
                     row["Qty to Return"] = item.Quantity;
                     row["Daily Rate"] = item.Daily_Rental_Rate.ToString("C");
+                    row["Fine Rate"] = item.Daily_Fine_Rate.ToString("C");
                     row["Days until Due"] = item.DueDate.Date.Subtract(DateTime.Today).Days;
                     row["Effect on Balance"] = (item.Daily_Rental_Rate * item.DueDate.Date.Subtract(DateTime.Today).Days).ToString("C");
 

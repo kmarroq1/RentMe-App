@@ -52,6 +52,8 @@ namespace RentMe_App.View.MemberModals
             this.CancelButton = new System.Windows.Forms.Button();
             this.ContentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.QuantityFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.FineGroupBox = new System.Windows.Forms.GroupBox();
+            this.FineLabel = new System.Windows.Forms.Label();
             this.HeaderFlowLayoutPanel.SuspendLayout();
             this.NameGroupBox.SuspendLayout();
             this.DescriptionGroupBox.SuspendLayout();
@@ -63,6 +65,7 @@ namespace RentMe_App.View.MemberModals
             this.ButtonsFlowLayoutPanel.SuspendLayout();
             this.ContentTableLayoutPanel.SuspendLayout();
             this.QuantityFlowLayoutPanel.SuspendLayout();
+            this.FineGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeaderFlowLayoutPanel
@@ -246,7 +249,7 @@ namespace RentMe_App.View.MemberModals
             this.FooterTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.FooterTableLayoutPanel.Controls.Add(this.ButtonsFlowLayoutPanel, 0, 1);
             this.FooterTableLayoutPanel.Controls.Add(this.ErrorMessage, 0, 0);
-            this.FooterTableLayoutPanel.Location = new System.Drawing.Point(12, 364);
+            this.FooterTableLayoutPanel.Location = new System.Drawing.Point(12, 426);
             this.FooterTableLayoutPanel.Name = "FooterTableLayoutPanel";
             this.FooterTableLayoutPanel.RowCount = 2;
             this.FooterTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -291,8 +294,8 @@ namespace RentMe_App.View.MemberModals
             // 
             this.ContentTableLayoutPanel.ColumnCount = 1;
             this.ContentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.ContentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ContentTableLayoutPanel.Controls.Add(this.QuantityFlowLayoutPanel, 0, 5);
+            this.ContentTableLayoutPanel.Controls.Add(this.FineGroupBox, 0, 5);
+            this.ContentTableLayoutPanel.Controls.Add(this.QuantityFlowLayoutPanel, 0, 6);
             this.ContentTableLayoutPanel.Controls.Add(this.NameGroupBox, 0, 0);
             this.ContentTableLayoutPanel.Controls.Add(this.DescriptionGroupBox, 0, 1);
             this.ContentTableLayoutPanel.Controls.Add(this.StyleGroupBox, 0, 2);
@@ -300,14 +303,15 @@ namespace RentMe_App.View.MemberModals
             this.ContentTableLayoutPanel.Controls.Add(this.CategoryGroupBox, 0, 3);
             this.ContentTableLayoutPanel.Location = new System.Drawing.Point(12, 45);
             this.ContentTableLayoutPanel.Name = "ContentTableLayoutPanel";
-            this.ContentTableLayoutPanel.RowCount = 6;
+            this.ContentTableLayoutPanel.RowCount = 7;
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ContentTableLayoutPanel.Size = new System.Drawing.Size(372, 313);
+            this.ContentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ContentTableLayoutPanel.Size = new System.Drawing.Size(373, 375);
             this.ContentTableLayoutPanel.TabIndex = 10;
             // 
             // QuantityFlowLayoutPanel
@@ -317,16 +321,36 @@ namespace RentMe_App.View.MemberModals
             this.QuantityFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.QuantityFlowLayoutPanel.Controls.Add(this.QuantityLabel);
             this.QuantityFlowLayoutPanel.Controls.Add(this.QuantityNumericUpDown);
-            this.QuantityFlowLayoutPanel.Location = new System.Drawing.Point(3, 279);
+            this.QuantityFlowLayoutPanel.Location = new System.Drawing.Point(3, 334);
             this.QuantityFlowLayoutPanel.Name = "QuantityFlowLayoutPanel";
             this.QuantityFlowLayoutPanel.Size = new System.Drawing.Size(102, 26);
             this.QuantityFlowLayoutPanel.TabIndex = 11;
+            // 
+            // FineGroupBox
+            // 
+            this.FineGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FineGroupBox.Controls.Add(this.FineLabel);
+            this.FineGroupBox.Location = new System.Drawing.Point(3, 275);
+            this.FineGroupBox.Name = "FineGroupBox";
+            this.FineGroupBox.Size = new System.Drawing.Size(357, 42);
+            this.FineGroupBox.TabIndex = 12;
+            this.FineGroupBox.TabStop = false;
+            this.FineGroupBox.Text = "Daily Fine Rate";
+            // 
+            // FineLabel
+            // 
+            this.FineLabel.AutoSize = true;
+            this.FineLabel.Location = new System.Drawing.Point(7, 20);
+            this.FineLabel.Name = "FineLabel";
+            this.FineLabel.Size = new System.Drawing.Size(39, 13);
+            this.FineLabel.TabIndex = 0;
+            this.FineLabel.Text = "[ Fine ]";
             // 
             // ItemDetailsModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 426);
+            this.ClientSize = new System.Drawing.Size(384, 488);
             this.Controls.Add(this.ContentTableLayoutPanel);
             this.Controls.Add(this.FooterTableLayoutPanel);
             this.Controls.Add(this.HeaderFlowLayoutPanel);
@@ -357,6 +381,8 @@ namespace RentMe_App.View.MemberModals
             this.ContentTableLayoutPanel.PerformLayout();
             this.QuantityFlowLayoutPanel.ResumeLayout(false);
             this.QuantityFlowLayoutPanel.PerformLayout();
+            this.FineGroupBox.ResumeLayout(false);
+            this.FineGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -386,5 +412,7 @@ namespace RentMe_App.View.MemberModals
         private System.Windows.Forms.FlowLayoutPanel QuantityFlowLayoutPanel;
         private System.Windows.Forms.Label FurnitureIDValueLabel;
         private System.Windows.Forms.TextBox DescriptionTextBox;
+        private System.Windows.Forms.GroupBox FineGroupBox;
+        private System.Windows.Forms.Label FineLabel;
     }
 }
