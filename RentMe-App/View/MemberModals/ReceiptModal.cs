@@ -1,4 +1,5 @@
 ﻿using RentMe_App.Model;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RentMe_App.View.MemberModals
@@ -32,17 +33,26 @@ namespace RentMe_App.View.MemberModals
 
             MemberIDValueLabel.Text = _transaction.MemberID.ToString();
 
-            RentalTransactionIDValueLabel.Text = _transaction.RentalID.ToString();
+            MemberNameValueLabel.Text = SharedFormInfo.MemberName;
+
+            ReturnTransactionIDValueLabel.Text = _transaction.RentalID.ToString();
 
             TransactionDateValueLabel.Text = _transaction.TransactionDate.ToShortDateString();
 
             DisplayItems();
 
-            DueDateValueLabel.Text = _transaction.ReturnDate.ToShortDateString();
+            if (_transaction.Balance < 0)
+            {
+                TotalTypeLabel.Text = "Fees:";
+                TotalAmountLabel.ForeColor = Color.Red;
+            }
+            else
+            {
+                TotalTypeLabel.Text = "Refund:";
+                TotalAmountLabel.ForeColor = Color.Green;
+            }
 
-            TotalTypeLabel.Text = "Balance";
-
-            TotalAmountLabel.Text = _transaction.TotalRate.ToString("C");
+            TotalAmountLabel.Text = _transaction.Balance.ToString("C");
         }
         #endregion
 

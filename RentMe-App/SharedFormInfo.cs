@@ -38,5 +38,7 @@ namespace RentMe_App
         /// form memberID
         /// </summary>
         public static int MemberIDForm;
+
+        public static string MemberName;
     }
 }

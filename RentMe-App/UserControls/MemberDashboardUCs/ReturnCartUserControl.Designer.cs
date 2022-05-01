@@ -223,6 +223,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.ReturnsDataGridView.Size = new System.Drawing.Size(374, 234);
             this.ReturnsDataGridView.TabIndex = 8;
             this.ReturnsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridView_CellClick);
+            this.ReturnsDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ReturnsDataGridView_ColumnHeaderMouseClick);
             // 
             // ErrorMessage
             // 

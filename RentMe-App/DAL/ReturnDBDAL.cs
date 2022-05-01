@@ -47,8 +47,6 @@ namespace RentMe_App.DAL
 
                     foreach (FurnitureInventory furniture in returnToComplete.ReturnedFurniture)
                     {
-                        // TODO: if partial furniture return exists, update instead of insert
-
                         string furnitureReturnedInsertStatement = @"INSERT INTO [furnitureReturned]
 	                                                                    (furnitureID, rental_transactionID, return_transactionID, quantity)
                                                                     VALUES
@@ -61,7 +59,7 @@ namespace RentMe_App.DAL
                             cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
 
                             cmd.Parameters.Add("RentalID", SqlDbType.Int);
-                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
+                            cmd.Parameters["RentalID"].Value = furniture.RentalTransactionID;
 
                             cmd.Parameters.Add("ReturnID", SqlDbType.Int);
                             cmd.Parameters["ReturnID"].Value = newReturnID;
@@ -71,47 +69,6 @@ namespace RentMe_App.DAL
 
                             cmd.ExecuteNonQuery();
                         }
-
-                        // TODO: if the user returns all items, delete instead of update
-
-                        /*
-                        string furnitureRentedUpdateStatement = @"UPDATE [furnitureRented]
-                                                                  SET [quantity] = [quantity] - @Quantity
-                                                                  WHERE [furnitureID] = @FurnitureID
-                                                                    AND [rental_transactionID] = @RentalID;";
-
-                        using (SqlCommand cmd = new SqlCommand(furnitureRentedUpdateStatement, connection, transaction))
-                        {
-                            cmd.Parameters.Add("Quantity", SqlDbType.Int);
-                            cmd.Parameters["Quantity"].Value = furniture.Quantity;
-
-                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
-                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
-
-                            cmd.Parameters.Add("RentalID", SqlDbType.Int);
-                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
-
-                            cmd.ExecuteNonQuery();
-                        }
-                        */
-
-                        /*
-                        string furnitureRentedDeleteStatement = @"DELETE FROM [furnitureRented]
-                                                                  WHERE [rental_transactionID] = @RentalID
-	                                                                  AND [furnitureID] = @FurnitureID
-                                                                  ;";
-
-                        using (SqlCommand cmd = new SqlCommand(furnitureRentedDeleteStatement, connection, transaction))
-                        {
-                            cmd.Parameters.Add("RentalID", SqlDbType.Int);
-                            cmd.Parameters["RentalID"].Value = returnToComplete.RentalID;
-
-                            cmd.Parameters.Add("FurnitureID", SqlDbType.Int);
-                            cmd.Parameters["FurnitureID"].Value = furniture.FurnitureID;
-
-                            cmd.ExecuteNonQuery();
-                        }
-                        */
 
                         string furnitureInventoryUpdateStatement = @"UPDATE [inventory]
                                                                      SET [quantity] = [quantity] + @Quantity
