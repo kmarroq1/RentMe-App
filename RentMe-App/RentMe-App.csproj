@@ -93,6 +93,7 @@
     <Compile Include="DAL\StyleDBDAL.cs" />
     <Compile Include="Interfaces\IHideErrorMessage.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\EmptyTransactionException.cs" />
     <Compile Include="Model\FurnitureInventory.cs" />
     <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Rental.cs" />
