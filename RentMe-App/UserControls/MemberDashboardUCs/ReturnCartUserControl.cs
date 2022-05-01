@@ -155,6 +155,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 UpdateItemButton.Enabled = true;
                 DeleteItemButton.Enabled = true;
             }
+            else
+            {
+                UpdateItemButton.Enabled = false;
+                DeleteItemButton.Enabled = false;
+            }
         }
 
         private void UpdateItemButton_Click(object sender, EventArgs e)
@@ -198,5 +203,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         }
         #endregion
 
+        private void ReturnsDataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            UpdateItemButton.Enabled = false;
+            DeleteItemButton.Enabled = false;
+        }
     }
 }
