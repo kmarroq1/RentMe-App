@@ -114,6 +114,23 @@ namespace RentMe_App.Model
         }
 
         /// <summary>
+        /// Removes all items from the rental transation.
+        /// </summary>
+        public static void ClearRentals()
+        {
+            RentalList.Clear();
+        }
+
+        /// <summary>
+        /// Removes all items from both transations.
+        /// </summary>
+        public static void ClearCarts()
+        {
+            ClearRentals();
+            ClearReturns();
+        }
+
+        /// <summary>
         /// method used to add item to rental cart list
         /// </summary>
         /// <param name="rentalItem">item to add to rental cart</param>
