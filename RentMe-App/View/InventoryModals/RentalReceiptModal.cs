@@ -92,11 +92,6 @@ namespace RentMe_App.View.InventoryModals
             Close();
         }
 
-        private void HideErrorMessage()
-        {
-            errorMessageLabel.Text = "";
-        }
-
         private void ShowErrorMessage(string message)
         {
             errorMessageLabel.Text = message;

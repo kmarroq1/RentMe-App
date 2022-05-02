@@ -76,7 +76,7 @@ namespace RentMe_App.Model
                         var cartItem = ReturnList.FirstOrDefault(o => o.FurnitureID == returnItem.FurnitureID);
                         if (cartItem != null && returnItem.Quantity <= quantityInStock - cartItem.Quantity)
                         {
-                            cartItem.Quantity = cartItem.Quantity + returnItem.Quantity;
+                            cartItem.Quantity += returnItem.Quantity;
                             addedToCart = true;
                         }
                     }
@@ -153,7 +153,7 @@ namespace RentMe_App.Model
                         var cartItem = RentalList.FirstOrDefault(o => o.FurnitureID == rentalItem.FurnitureID);
                         if (cartItem != null && rentalItem.Quantity <= quantityInStock - cartItem.Quantity)
                         {
-                            cartItem.Quantity = cartItem.Quantity + rentalItem.Quantity;
+                            cartItem.Quantity += rentalItem.Quantity;
                             addedToCart = true;
                         }
                     }
