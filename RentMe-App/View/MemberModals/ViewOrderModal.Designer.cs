@@ -45,8 +45,6 @@ namespace RentMe_App.View.EmployeeModals
             this.ReturnButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.furnitureOrderedDataGridView = new System.Windows.Forms.DataGridView();
-            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +53,8 @@ namespace RentMe_App.View.EmployeeModals
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FineRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
@@ -75,8 +75,7 @@ namespace RentMe_App.View.EmployeeModals
             this.topLableLayoutPanel.Controls.Add(this.amountPaidLabel, 1, 3);
             this.topLableLayoutPanel.Controls.Add(this.balanceTitleLabel, 0, 4);
             this.topLableLayoutPanel.Controls.Add(this.balanceLabel, 1, 4);
-            this.topLableLayoutPanel.Location = new System.Drawing.Point(7, 5);
-            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
+            this.topLableLayoutPanel.Location = new System.Drawing.Point(22, 14);
             this.topLableLayoutPanel.Name = "topLableLayoutPanel";
             this.topLableLayoutPanel.RowCount = 5;
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.4657F));
@@ -84,96 +83,87 @@ namespace RentMe_App.View.EmployeeModals
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.63358F));
-            this.topLableLayoutPanel.Size = new System.Drawing.Size(252, 153);
+            this.topLableLayoutPanel.Size = new System.Drawing.Size(798, 435);
             this.topLableLayoutPanel.TabIndex = 0;
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(1, 0);
-            this.titleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.titleLabel.Location = new System.Drawing.Point(3, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(68, 13);
+            this.titleLabel.Size = new System.Drawing.Size(205, 37);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Order Details";
             // 
             // typeTitleLabel
             // 
             this.typeTitleLabel.AutoSize = true;
-            this.typeTitleLabel.Location = new System.Drawing.Point(1, 45);
-            this.typeTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.typeTitleLabel.Location = new System.Drawing.Point(3, 128);
             this.typeTitleLabel.Name = "typeTitleLabel";
-            this.typeTitleLabel.Size = new System.Drawing.Size(93, 13);
+            this.typeTitleLabel.Size = new System.Drawing.Size(274, 37);
             this.typeTitleLabel.TabIndex = 2;
             this.typeTitleLabel.Text = "Transaction Type:";
             // 
             // transactionTypeLabel
             // 
             this.transactionTypeLabel.AutoSize = true;
-            this.transactionTypeLabel.Location = new System.Drawing.Point(103, 45);
-            this.transactionTypeLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.transactionTypeLabel.Location = new System.Drawing.Point(327, 128);
             this.transactionTypeLabel.Name = "transactionTypeLabel";
-            this.transactionTypeLabel.Size = new System.Drawing.Size(13, 13);
+            this.transactionTypeLabel.Size = new System.Drawing.Size(35, 37);
             this.transactionTypeLabel.TabIndex = 4;
             this.transactionTypeLabel.Text = "  ";
             // 
             // dueDateTitleLabel
             // 
             this.dueDateTitleLabel.AutoSize = true;
-            this.dueDateTitleLabel.Location = new System.Drawing.Point(1, 71);
-            this.dueDateTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.dueDateTitleLabel.Location = new System.Drawing.Point(3, 204);
             this.dueDateTitleLabel.Name = "dueDateTitleLabel";
-            this.dueDateTitleLabel.Size = new System.Drawing.Size(56, 13);
+            this.dueDateTitleLabel.Size = new System.Drawing.Size(160, 37);
             this.dueDateTitleLabel.TabIndex = 5;
             this.dueDateTitleLabel.Text = "Due Date:";
             // 
             // dueDateLabel
             // 
             this.dueDateLabel.AutoSize = true;
-            this.dueDateLabel.Location = new System.Drawing.Point(103, 71);
-            this.dueDateLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.dueDateLabel.Location = new System.Drawing.Point(327, 204);
             this.dueDateLabel.Name = "dueDateLabel";
-            this.dueDateLabel.Size = new System.Drawing.Size(13, 13);
+            this.dueDateLabel.Size = new System.Drawing.Size(35, 37);
             this.dueDateLabel.TabIndex = 6;
             this.dueDateLabel.Text = "  ";
             // 
             // amtPaidTitleLabel
             // 
             this.amtPaidTitleLabel.AutoSize = true;
-            this.amtPaidTitleLabel.Location = new System.Drawing.Point(1, 97);
-            this.amtPaidTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.amtPaidTitleLabel.Location = new System.Drawing.Point(3, 280);
             this.amtPaidTitleLabel.Name = "amtPaidTitleLabel";
-            this.amtPaidTitleLabel.Size = new System.Drawing.Size(70, 13);
+            this.amtPaidTitleLabel.Size = new System.Drawing.Size(211, 37);
             this.amtPaidTitleLabel.TabIndex = 7;
             this.amtPaidTitleLabel.Text = "Amount Paid:";
             // 
             // amountPaidLabel
             // 
             this.amountPaidLabel.AutoSize = true;
-            this.amountPaidLabel.Location = new System.Drawing.Point(103, 97);
-            this.amountPaidLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.amountPaidLabel.Location = new System.Drawing.Point(327, 280);
             this.amountPaidLabel.Name = "amountPaidLabel";
-            this.amountPaidLabel.Size = new System.Drawing.Size(13, 13);
+            this.amountPaidLabel.Size = new System.Drawing.Size(35, 37);
             this.amountPaidLabel.TabIndex = 8;
             this.amountPaidLabel.Text = "  ";
             // 
             // balanceTitleLabel
             // 
             this.balanceTitleLabel.AutoSize = true;
-            this.balanceTitleLabel.Location = new System.Drawing.Point(1, 123);
-            this.balanceTitleLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.balanceTitleLabel.Location = new System.Drawing.Point(3, 356);
             this.balanceTitleLabel.Name = "balanceTitleLabel";
-            this.balanceTitleLabel.Size = new System.Drawing.Size(49, 13);
+            this.balanceTitleLabel.Size = new System.Drawing.Size(141, 37);
             this.balanceTitleLabel.TabIndex = 9;
             this.balanceTitleLabel.Text = "Balance:";
             // 
             // balanceLabel
             // 
             this.balanceLabel.AutoSize = true;
-            this.balanceLabel.Location = new System.Drawing.Point(103, 123);
-            this.balanceLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.balanceLabel.Location = new System.Drawing.Point(327, 356);
             this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(13, 13);
+            this.balanceLabel.Size = new System.Drawing.Size(35, 37);
             this.balanceLabel.TabIndex = 10;
             this.balanceLabel.Text = "  ";
             // 
@@ -187,23 +177,21 @@ namespace RentMe_App.View.EmployeeModals
             this.bottomTableLayoutPanel.Controls.Add(this.RentAgainButton, 0, 1);
             this.bottomTableLayoutPanel.Controls.Add(this.ReturnButton, 1, 1);
             this.bottomTableLayoutPanel.Controls.Add(this.CloseButton, 2, 1);
-            this.bottomTableLayoutPanel.Location = new System.Drawing.Point(1, 410);
-            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
+            this.bottomTableLayoutPanel.Location = new System.Drawing.Point(3, 1167);
             this.bottomTableLayoutPanel.Name = "bottomTableLayoutPanel";
             this.bottomTableLayoutPanel.RowCount = 2;
             this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.06202F));
             this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.93798F));
-            this.bottomTableLayoutPanel.Size = new System.Drawing.Size(783, 54);
+            this.bottomTableLayoutPanel.Size = new System.Drawing.Size(2480, 154);
             this.bottomTableLayoutPanel.TabIndex = 1;
             // 
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
             this.bottomTableLayoutPanel.SetColumnSpan(this.errorLabel, 2);
-            this.errorLabel.Location = new System.Drawing.Point(262, 0);
-            this.errorLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.errorLabel.Location = new System.Drawing.Point(829, 0);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(13, 13);
+            this.errorLabel.Size = new System.Drawing.Size(35, 37);
             this.errorLabel.TabIndex = 0;
             this.errorLabel.Text = "  ";
             // 
@@ -211,10 +199,9 @@ namespace RentMe_App.View.EmployeeModals
             // 
             this.RentAgainButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.RentAgainButton.Enabled = false;
-            this.RentAgainButton.Location = new System.Drawing.Point(86, 26);
-            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1);
+            this.RentAgainButton.Location = new System.Drawing.Point(273, 77);
             this.RentAgainButton.Name = "RentAgainButton";
-            this.RentAgainButton.Size = new System.Drawing.Size(88, 22);
+            this.RentAgainButton.Size = new System.Drawing.Size(279, 63);
             this.RentAgainButton.TabIndex = 1;
             this.RentAgainButton.Text = "Rent Again";
             this.RentAgainButton.UseVisualStyleBackColor = true;
@@ -224,10 +211,9 @@ namespace RentMe_App.View.EmployeeModals
             // ReturnButton
             // 
             this.ReturnButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ReturnButton.Location = new System.Drawing.Point(331, 26);
-            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1);
+            this.ReturnButton.Location = new System.Drawing.Point(1047, 77);
             this.ReturnButton.Name = "ReturnButton";
-            this.ReturnButton.Size = new System.Drawing.Size(121, 22);
+            this.ReturnButton.Size = new System.Drawing.Size(383, 63);
             this.ReturnButton.TabIndex = 2;
             this.ReturnButton.Text = "Add to Return Cart";
             this.ReturnButton.UseVisualStyleBackColor = true;
@@ -236,10 +222,9 @@ namespace RentMe_App.View.EmployeeModals
             // CloseButton
             // 
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CloseButton.Location = new System.Drawing.Point(615, 26);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(1);
+            this.CloseButton.Location = new System.Drawing.Point(1949, 77);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(74, 22);
+            this.CloseButton.Size = new System.Drawing.Size(234, 63);
             this.CloseButton.TabIndex = 3;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -259,92 +244,109 @@ namespace RentMe_App.View.EmployeeModals
             this.RentalRate,
             this.FineRate,
             this.Balance});
-            this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(1, 160);
-            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1);
+            this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(3, 455);
             this.furnitureOrderedDataGridView.Name = "furnitureOrderedDataGridView";
             this.furnitureOrderedDataGridView.ReadOnly = true;
             this.furnitureOrderedDataGridView.RowHeadersVisible = false;
             this.furnitureOrderedDataGridView.RowHeadersWidth = 123;
             this.furnitureOrderedDataGridView.RowTemplate.Height = 46;
-            this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(783, 240);
+            this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(2480, 683);
             this.furnitureOrderedDataGridView.TabIndex = 2;
             this.furnitureOrderedDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
+            // FurnitureID
+            // 
+            this.FurnitureID.HeaderText = "Furniture ID";
+            this.FurnitureID.MinimumWidth = 15;
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.ReadOnly = true;
+            this.FurnitureID.Width = 300;
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.MinimumWidth = 15;
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
+            this.FurnitureName.Width = 300;
+            // 
+            // RentalDate
+            // 
+            this.RentalDate.HeaderText = "Rental Date";
+            this.RentalDate.MinimumWidth = 15;
+            this.RentalDate.Name = "RentalDate";
+            this.RentalDate.ReadOnly = true;
+            this.RentalDate.Width = 300;
+            // 
+            // QtyRented
+            // 
+            this.QtyRented.HeaderText = "Qty Rented";
+            this.QtyRented.MinimumWidth = 15;
+            this.QtyRented.Name = "QtyRented";
+            this.QtyRented.ReadOnly = true;
+            this.QtyRented.Width = 300;
+            // 
+            // QtyReturned
+            // 
+            this.QtyReturned.HeaderText = "Qty Returned";
+            this.QtyReturned.MinimumWidth = 15;
+            this.QtyReturned.Name = "QtyReturned";
+            this.QtyReturned.ReadOnly = true;
+            this.QtyReturned.Width = 300;
+            // 
+            // RentalRate
+            // 
+            this.RentalRate.HeaderText = "Rental Rate";
+            this.RentalRate.MinimumWidth = 15;
+            this.RentalRate.Name = "RentalRate";
+            this.RentalRate.ReadOnly = true;
+            this.RentalRate.Width = 300;
+            // 
+            // FineRate
+            // 
+            this.FineRate.HeaderText = "Fine Rate";
+            this.FineRate.MinimumWidth = 15;
+            this.FineRate.Name = "FineRate";
+            this.FineRate.ReadOnly = true;
+            this.FineRate.Width = 300;
+            // 
+            // Balance
+            // 
+            this.Balance.HeaderText = "Balance";
+            this.Balance.MinimumWidth = 15;
+            this.Balance.Name = "Balance";
+            this.Balance.ReadOnly = true;
+            this.Balance.Width = 300;
+            // 
             // qtyReturnNumericUpDown
             // 
-            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
+            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(1406, 216);
+            this.qtyReturnNumericUpDown.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
-            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
+            this.qtyReturnNumericUpDown.ReadOnly = true;
+            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(361, 44);
             this.qtyReturnNumericUpDown.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(342, 78);
+            this.label1.Location = new System.Drawing.Point(1083, 222);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.Size = new System.Drawing.Size(284, 37);
             this.label1.TabIndex = 4;
             this.label1.Text = "Return how many?";
             // 
-            // FurnitureID
-            // 
-            this.FurnitureID.HeaderText = "Furniture ID";
-            this.FurnitureID.Name = "FurnitureID";
-            this.FurnitureID.ReadOnly = true;
-            // 
-            // FurnitureName
-            // 
-            this.FurnitureName.HeaderText = "Name";
-            this.FurnitureName.Name = "FurnitureName";
-            this.FurnitureName.ReadOnly = true;
-            // 
-            // RentalDate
-            // 
-            this.RentalDate.HeaderText = "Rental Date";
-            this.RentalDate.Name = "RentalDate";
-            this.RentalDate.ReadOnly = true;
-            // 
-            // QtyRented
-            // 
-            this.QtyRented.HeaderText = "Qty Rented";
-            this.QtyRented.Name = "QtyRented";
-            this.QtyRented.ReadOnly = true;
-            // 
-            // QtyReturned
-            // 
-            this.QtyReturned.HeaderText = "Qty Returned";
-            this.QtyReturned.Name = "QtyReturned";
-            this.QtyReturned.ReadOnly = true;
-            // 
-            // RentalRate
-            // 
-            this.RentalRate.HeaderText = "Rental Rate";
-            this.RentalRate.Name = "RentalRate";
-            this.RentalRate.ReadOnly = true;
-            // 
-            // FineRate
-            // 
-            this.FineRate.HeaderText = "Fine Rate";
-            this.FineRate.Name = "FineRate";
-            this.FineRate.ReadOnly = true;
-            // 
-            // Balance
-            // 
-            this.Balance.HeaderText = "Balance";
-            this.Balance.Name = "Balance";
-            this.Balance.ReadOnly = true;
-            // 
             // ViewOrderModal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(2483, 1312);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.qtyReturnNumericUpDown);
             this.Controls.Add(this.furnitureOrderedDataGridView);
             this.Controls.Add(this.bottomTableLayoutPanel);
             this.Controls.Add(this.topLableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewOrderModal";
