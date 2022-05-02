@@ -99,15 +99,20 @@ namespace RentMe_App.Model
             {
                 decimal balance = 0.0M;
 
-                foreach (FurnitureInventory furniture in _returnedFurniture)
+                int DateDiff(DateTime later, DateTime former)
                 {
-                    int DateDiff(DateTime later, DateTime former) => Math.Abs(later.Date.Subtract(former.Date).Days);
+                    return Math.Abs(later.Date.Subtract(former.Date).Days);
+                }
 
-                    int numberDaysPaid = DateDiff(furniture.DueDate, furniture.RentalDate);
-                    balance += furniture.Daily_Rental_Rate * numberDaysPaid;
+                foreach (FurnitureInventory item in _returnedFurniture)
+                {
+                    int numberDaysPaid = DateDiff(item.DueDate, item.RentalDate);
+                    int numberDaysPosessed = DateDiff(DateTime.Today, item.RentalDate);
 
-                    int numberDaysPosessed = DateDiff(DateTime.Today, furniture.RentalDate);
-                    balance -= furniture.Daily_Rental_Rate * numberDaysPosessed;
+                    if (numberDaysPosessed > numberDaysPaid)
+                        balance -= item.Quantity * item.Daily_Fine_Rate * (numberDaysPosessed - numberDaysPaid);
+                    else
+                        balance += item.Quantity * item.Daily_Rental_Rate * (numberDaysPaid - numberDaysPosessed);
                 }
 
                 return balance;
