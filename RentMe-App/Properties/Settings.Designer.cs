@@ -17,12 +17,18 @@ namespace RentMe_App.Properties {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
+        /// <summary>
+        /// Returns default instance
+        /// </summary>
         public static Settings Default {
             get {
                 return defaultInstance;
             }
         }
         
+        /// <summary>
+        /// Connection string
+        /// </summary>
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]

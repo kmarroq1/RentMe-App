@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace RentMe_App.View.MemberModals
 {
+    /// <summary>
+    /// Defines an items details modal
+    /// </summary>
     public partial class ItemDetailsModal : Form
     {
         #region Fields

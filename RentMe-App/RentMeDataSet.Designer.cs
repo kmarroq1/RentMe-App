@@ -28,6 +28,9 @@ namespace RentMe_App {
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
+        /// <summary>
+        /// Constructor for class
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public RentMeDataSet() {
@@ -75,6 +78,9 @@ namespace RentMe_App {
             this.Relations.CollectionChanged += schemaChangedHandler;
         }
         
+        /// <summary>
+        /// stored procedure for getting the most popular furniture during given dates
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
@@ -85,6 +91,9 @@ namespace RentMe_App {
             }
         }
         
+        /// <summary>
+        /// Getter and setter  for schema serialization mode
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
@@ -98,6 +107,9 @@ namespace RentMe_App {
             }
         }
         
+        /// <summary>
+        /// gets tables
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
@@ -107,6 +119,9 @@ namespace RentMe_App {
             }
         }
         
+        /// <summary>
+        /// returns relations
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
@@ -295,6 +310,9 @@ namespace RentMe_App {
             
             private global::System.Data.DataColumn columnperc_out_18_29;
             
+            /// <summary>
+            /// Initializes stored procedure
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesDataTable() {
@@ -328,6 +346,9 @@ namespace RentMe_App {
                 this.InitVars();
             }
             
+            /// <summary>
+            /// returns furniture id column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn furniture_idColumn {
@@ -336,6 +357,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns category column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn categoryColumn {
@@ -344,6 +368,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns column furniture name
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn furniture_nameColumn {
@@ -352,6 +379,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns times rented out column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn times_rented_outColumn {
@@ -360,6 +390,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns all rentals column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn total_all_rentalsColumn {
@@ -368,6 +401,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns percentage column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn percentageColumn {
@@ -376,6 +412,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns column of percentage between 18 and 29
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn perc_in_18_29Column {
@@ -384,6 +423,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns column of percentage outside of 18 and 29
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn perc_out_18_29Column {
@@ -392,6 +434,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns row's count
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
@@ -401,6 +446,11 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// returns row at given index
+            /// </summary>
+            /// <param name="index"></param>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRow this[int index] {
@@ -421,12 +471,27 @@ namespace RentMe_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event spGetMostPopularFurnitureDuringDatesRowChangeEventHandler spGetMostPopularFurnitureDuringDatesRowDeleted;
             
+            /// <summary>
+            /// adds row
+            /// </summary>
+            /// <param name="row"></param>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddspGetMostPopularFurnitureDuringDatesRow(spGetMostPopularFurnitureDuringDatesRow row) {
                 this.Rows.Add(row);
             }
             
+            /// <summary>
+            /// adds a row
+            /// </summary>
+            /// <param name="category"></param>
+            /// <param name="furniture_name"></param>
+            /// <param name="times_rented_out"></param>
+            /// <param name="total_all_rentals"></param>
+            /// <param name="percentage"></param>
+            /// <param name="perc_in_18_29"></param>
+            /// <param name="perc_out_18_29"></param>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRow AddspGetMostPopularFurnitureDuringDatesRow(string category, string furniture_name, int times_rented_out, int total_all_rentals, decimal percentage, decimal perc_in_18_29, decimal perc_out_18_29) {
@@ -445,6 +510,12 @@ namespace RentMe_App {
                 return rowspGetMostPopularFurnitureDuringDatesRow;
             }
             
+            /// <summary>
+            /// find by furniture id and category
+            /// </summary>
+            /// <param name="furniture_id"></param>
+            /// <param name="category"></param>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRow FindByfurniture_idcategory(int furniture_id, string category) {
@@ -453,6 +524,10 @@ namespace RentMe_App {
                             category})));
             }
             
+            /// <summary>
+            /// clone
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
@@ -516,6 +591,10 @@ namespace RentMe_App {
                 this.columnperc_out_18_29.ReadOnly = true;
             }
             
+            /// <summary>
+            /// add a row
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRow NewspGetMostPopularFurnitureDuringDatesRow() {
@@ -570,12 +649,21 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// remove a row
+            /// </summary>
+            /// <param name="row"></param>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemovespGetMostPopularFurnitureDuringDatesRow(spGetMostPopularFurnitureDuringDatesRow row) {
                 this.Rows.Remove(row);
             }
             
+            /// <summary>
+            /// get typed table schema
+            /// </summary>
+            /// <param name="xs"></param>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
@@ -654,6 +742,9 @@ namespace RentMe_App {
                 this.tablespGetMostPopularFurnitureDuringDates = ((spGetMostPopularFurnitureDuringDatesDataTable)(this.Table));
             }
             
+            /// <summary>
+            /// getter and setter for furniture id
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int furniture_id {
@@ -665,6 +756,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for category
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string category {
@@ -676,6 +770,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for furniture name
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string furniture_name {
@@ -687,6 +784,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for times rented out
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int times_rented_out {
@@ -704,6 +804,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for total all rentals
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int total_all_rentals {
@@ -721,6 +824,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for percentage column
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal percentage {
@@ -737,7 +843,10 @@ namespace RentMe_App {
                     this[this.tablespGetMostPopularFurnitureDuringDates.percentageColumn] = value;
                 }
             }
-            
+
+            /// <summary>
+            /// getter and setter for percentage between 18 and 29
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal perc_in_18_29 {
@@ -755,6 +864,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// getter and setter for percentage outside 18 and 29
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal perc_out_18_29 {
@@ -772,60 +884,95 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// null check
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Istimes_rented_outNull() {
                 return this.IsNull(this.tablespGetMostPopularFurnitureDuringDates.times_rented_outColumn);
             }
             
+            /// <summary>
+            /// sets to null
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Settimes_rented_outNull() {
                 this[this.tablespGetMostPopularFurnitureDuringDates.times_rented_outColumn] = global::System.Convert.DBNull;
             }
             
+            /// <summary>
+            /// null check
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Istotal_all_rentalsNull() {
                 return this.IsNull(this.tablespGetMostPopularFurnitureDuringDates.total_all_rentalsColumn);
             }
             
+            /// <summary>
+            /// set total all rentals to null
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Settotal_all_rentalsNull() {
                 this[this.tablespGetMostPopularFurnitureDuringDates.total_all_rentalsColumn] = global::System.Convert.DBNull;
             }
             
+            /// <summary>
+            /// checks for null values in percentage column
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IspercentageNull() {
                 return this.IsNull(this.tablespGetMostPopularFurnitureDuringDates.percentageColumn);
             }
             
+            /// <summary>
+            /// set percentage to null
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetpercentageNull() {
                 this[this.tablespGetMostPopularFurnitureDuringDates.percentageColumn] = global::System.Convert.DBNull;
             }
             
+            /// <summary>
+            /// null check
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isperc_in_18_29Null() {
                 return this.IsNull(this.tablespGetMostPopularFurnitureDuringDates.perc_in_18_29Column);
             }
             
+            /// <summary>
+            /// converts value to null
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setperc_in_18_29Null() {
                 this[this.tablespGetMostPopularFurnitureDuringDates.perc_in_18_29Column] = global::System.Convert.DBNull;
             }
             
+            /// <summary>
+            /// null check
+            /// </summary>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isperc_out_18_29Null() {
                 return this.IsNull(this.tablespGetMostPopularFurnitureDuringDates.perc_out_18_29Column);
             }
             
+            /// <summary>
+            /// converts to null
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setperc_out_18_29Null() {
@@ -843,6 +990,11 @@ namespace RentMe_App {
             
             private global::System.Data.DataRowAction eventAction;
             
+            /// <summary>
+            /// event for stored procedure row
+            /// </summary>
+            /// <param name="row"></param>
+            /// <param name="action"></param>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRowChangeEvent(spGetMostPopularFurnitureDuringDatesRow row, global::System.Data.DataRowAction action) {
@@ -850,6 +1002,9 @@ namespace RentMe_App {
                 this.eventAction = action;
             }
             
+            /// <summary>
+            /// Returns event row
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public spGetMostPopularFurnitureDuringDatesRow Row {
@@ -858,6 +1013,9 @@ namespace RentMe_App {
                 }
             }
             
+            /// <summary>
+            /// event action
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
@@ -892,6 +1050,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
         
         private bool _clearBeforeFill;
         
+        /// <summary>
+        /// stored procedure table adapter
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public spGetMostPopularFurnitureDuringDatesTableAdapter() {
@@ -974,6 +1135,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             }
         }
         
+        /// <summary>
+        /// Clears data before fill
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
@@ -1023,6 +1187,13 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@endDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
+        /// <summary>
+        /// Fills in data
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
@@ -1048,6 +1219,12 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             return returnValue;
         }
         
+        /// <summary>
+        /// Gets report data
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
@@ -1088,6 +1265,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
         
         private global::System.Data.IDbConnection _connection;
         
+        /// <summary>
+        /// getter and setter for order options
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public UpdateOrderOption UpdateOrder {
@@ -1099,6 +1279,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             }
         }
         
+        /// <summary>
+        /// Backs up data set
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
@@ -1110,6 +1293,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             }
         }
         
+        /// <summary>
+        /// Returns connection
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
@@ -1125,6 +1311,9 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
             }
         }
         
+        /// <summary>
+        /// Returns table adapter instance count
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
@@ -1397,6 +1586,12 @@ namespace RentMe_App.RentMeDataSetTableAdapters {
                 return root;
             }
             
+            /// <summary>
+            /// Compares two rows
+            /// </summary>
+            /// <param name="row1"></param>
+            /// <param name="row2"></param>
+            /// <returns></returns>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {

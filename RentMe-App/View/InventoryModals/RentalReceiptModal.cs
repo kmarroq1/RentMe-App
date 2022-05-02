@@ -89,7 +89,7 @@ namespace RentMe_App.View.InventoryModals
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void HideErrorMessage()
