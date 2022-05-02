@@ -55,15 +55,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 completeRentalButton.Enabled = true;
                 BuildDataGridView(rentalCartList);
                 int totalItemsInCart = 0;
-                decimal totalCost = 0;
                 for (int count = 0; count < rentalCartList.Count; count++)
                 {
                     totalItemsInCart += rentalCartList[count].Quantity;
-                    totalCost += rentalCartList[count].Quantity * rentalCartList[count].Daily_Rental_Rate;
                 }
 
                 totalItemsInCartValuelabel.Text = totalItemsInCart.ToString();
-                currentTotalValueLabel.Text = totalCost.ToString("C");
+                CalculateTotalCost();
             }
             else
             {
@@ -175,6 +173,11 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void DueDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             HideErrorMessage();
+            CalculateTotalCost();
+        }
+
+        private void CalculateTotalCost()
+        {
             int totalDaysRented = DaysBetween(DateTime.Now.Date, dueDateTimePicker.Value.Date);
             decimal totalCost = 0;
 
@@ -310,6 +313,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         private void RentalCartUserControl_VisibleChanged(object sender, EventArgs e)
         {
             HideErrorMessage();
+            CalculateTotalCost();
         }
 
         private int DaysBetween(DateTime d1, DateTime d2)
