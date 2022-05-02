@@ -45,8 +45,6 @@ namespace RentMe_App.View.EmployeeModals
             this.ReturnButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.furnitureOrderedDataGridView = new System.Windows.Forms.DataGridView();
-            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +53,8 @@ namespace RentMe_App.View.EmployeeModals
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FineRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyReturnNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.topLableLayoutPanel.SuspendLayout();
             this.bottomTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureOrderedDataGridView)).BeginInit();
@@ -76,7 +76,7 @@ namespace RentMe_App.View.EmployeeModals
             this.topLableLayoutPanel.Controls.Add(this.balanceTitleLabel, 0, 4);
             this.topLableLayoutPanel.Controls.Add(this.balanceLabel, 1, 4);
             this.topLableLayoutPanel.Location = new System.Drawing.Point(7, 5);
-            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.topLableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
             this.topLableLayoutPanel.Name = "topLableLayoutPanel";
             this.topLableLayoutPanel.RowCount = 5;
             this.topLableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.4657F));
@@ -188,7 +188,7 @@ namespace RentMe_App.View.EmployeeModals
             this.bottomTableLayoutPanel.Controls.Add(this.ReturnButton, 1, 1);
             this.bottomTableLayoutPanel.Controls.Add(this.CloseButton, 2, 1);
             this.bottomTableLayoutPanel.Location = new System.Drawing.Point(1, 410);
-            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.bottomTableLayoutPanel.Margin = new System.Windows.Forms.Padding(1);
             this.bottomTableLayoutPanel.Name = "bottomTableLayoutPanel";
             this.bottomTableLayoutPanel.RowCount = 2;
             this.bottomTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.06202F));
@@ -212,7 +212,7 @@ namespace RentMe_App.View.EmployeeModals
             this.RentAgainButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.RentAgainButton.Enabled = false;
             this.RentAgainButton.Location = new System.Drawing.Point(86, 26);
-            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.RentAgainButton.Margin = new System.Windows.Forms.Padding(1);
             this.RentAgainButton.Name = "RentAgainButton";
             this.RentAgainButton.Size = new System.Drawing.Size(88, 22);
             this.RentAgainButton.TabIndex = 1;
@@ -225,7 +225,7 @@ namespace RentMe_App.View.EmployeeModals
             // 
             this.ReturnButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ReturnButton.Location = new System.Drawing.Point(331, 26);
-            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ReturnButton.Margin = new System.Windows.Forms.Padding(1);
             this.ReturnButton.Name = "ReturnButton";
             this.ReturnButton.Size = new System.Drawing.Size(121, 22);
             this.ReturnButton.TabIndex = 2;
@@ -237,7 +237,7 @@ namespace RentMe_App.View.EmployeeModals
             // 
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CloseButton.Location = new System.Drawing.Point(615, 26);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(74, 22);
             this.CloseButton.TabIndex = 3;
@@ -260,7 +260,7 @@ namespace RentMe_App.View.EmployeeModals
             this.FineRate,
             this.Balance});
             this.furnitureOrderedDataGridView.Location = new System.Drawing.Point(1, 160);
-            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.furnitureOrderedDataGridView.Margin = new System.Windows.Forms.Padding(1);
             this.furnitureOrderedDataGridView.Name = "furnitureOrderedDataGridView";
             this.furnitureOrderedDataGridView.ReadOnly = true;
             this.furnitureOrderedDataGridView.RowHeadersVisible = false;
@@ -269,23 +269,6 @@ namespace RentMe_App.View.EmployeeModals
             this.furnitureOrderedDataGridView.Size = new System.Drawing.Size(783, 240);
             this.furnitureOrderedDataGridView.TabIndex = 2;
             this.furnitureOrderedDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
-            // 
-            // qtyReturnNumericUpDown
-            // 
-            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
-            this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
-            this.qtyReturnNumericUpDown.ReadOnly = true;
-            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
-            this.qtyReturnNumericUpDown.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(342, 78);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Return how many?";
             // 
             // FurnitureID
             // 
@@ -343,17 +326,34 @@ namespace RentMe_App.View.EmployeeModals
             this.Balance.Name = "Balance";
             this.Balance.ReadOnly = true;
             // 
+            // qtyReturnNumericUpDown
+            // 
+            this.qtyReturnNumericUpDown.Location = new System.Drawing.Point(444, 76);
+            this.qtyReturnNumericUpDown.Name = "qtyReturnNumericUpDown";
+            this.qtyReturnNumericUpDown.ReadOnly = true;
+            this.qtyReturnNumericUpDown.Size = new System.Drawing.Size(114, 20);
+            this.qtyReturnNumericUpDown.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Return how many?";
+            // 
             // ViewOrderModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 373);
+            this.ClientSize = new System.Drawing.Size(784, 470);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.qtyReturnNumericUpDown);
             this.Controls.Add(this.furnitureOrderedDataGridView);
             this.Controls.Add(this.bottomTableLayoutPanel);
             this.Controls.Add(this.topLableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewOrderModal";
