@@ -78,6 +78,7 @@ namespace RentMe_App.View
             this.addMemberTabPage.TabIndex = 0;
             this.addMemberTabPage.Text = "Add Member";
             this.addMemberTabPage.UseVisualStyleBackColor = true;
+            this.addMemberTabPage.Enter += new System.EventHandler(this.AddMemberTabPage_Enter);
             // 
             // addMemberUserControl1
             // 

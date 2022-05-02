@@ -91,6 +91,11 @@ namespace RentMe_App.View
         {
             addMemberUserControl1.ClearFields();
         }
+
+        private void AddMemberTabPage_Enter(object sender, System.EventArgs e)
+        {
+            addMemberUserControl1.ClearFields();
+        }
         #endregion
     }
 }
