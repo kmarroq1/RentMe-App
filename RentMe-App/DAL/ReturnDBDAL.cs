@@ -15,7 +15,8 @@ namespace RentMe_App.DAL
         /// Writes the Return Transaction to the appropriate tables.
         /// </summary>
         /// <param name="returnToComplete">The Transaction to write to the DB.</param>
-        public void CompleteReturn(Return returnToComplete)
+        /// <returns>The Return transaction's ID</returns>
+        public int CompleteReturn(Return returnToComplete)
         {
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -87,6 +88,8 @@ namespace RentMe_App.DAL
                     }
 
                     transaction.Commit();
+
+                    return newReturnID;
                 }
             }
         }

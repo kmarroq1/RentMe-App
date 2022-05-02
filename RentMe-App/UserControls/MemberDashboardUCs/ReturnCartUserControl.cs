@@ -146,7 +146,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 
                 Cart.Return.FilterOutEmptyItems();
                 
-                _ReturnController.CompleteReturn(Cart.Return);
+                Cart.Return.TransactionID = _ReturnController.CompleteReturn(Cart.Return);
 
                 new ReceiptModal(Cart.Return).ShowDialog();
                 

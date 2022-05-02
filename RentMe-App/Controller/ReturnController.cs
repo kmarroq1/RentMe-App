@@ -24,7 +24,8 @@ namespace RentMe_App.Controller
         /// to the appropriate tables.
         /// </summary>
         /// <param name="returnToComplete">The Return to write to the DB</param>
-        public void CompleteReturn(Return returnToComplete)
+        /// <returns>The ID of the new return transaction.</returns>
+        public int CompleteReturn(Return returnToComplete)
         {
             if (returnToComplete == null)
                 throw new ArgumentNullException("Return", "Return object non-existant");
@@ -32,7 +33,7 @@ namespace RentMe_App.Controller
             if (returnToComplete.ReturnedFurniture.Count < 1)
                 throw new EmptyTransactionException("Nothing to return");
 
-            _returnDataAccess.CompleteReturn(returnToComplete);
+            return _returnDataAccess.CompleteReturn(returnToComplete);
         }
     }
 }
