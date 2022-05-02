@@ -263,6 +263,45 @@ namespace RentMe_App.DAL
             return currentOrder;
         }
 
+        /// <summary>
+        /// Gets an order's pending status from the database
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public bool GetOrderStatus(Order order)
+        {
+            var isOpen = false;
+
+            var stringStatusSelectStatement = "SELECT MAX(furnitureRented.quantity) - SUM(furnitureReturned.quantity) as pendingItems " +
+                "FROM furnitureRented " +
+                "JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                "JOIN rentalTransaction ON rentalTransaction.transactionID = furnitureRented.rental_transactionID " +
+                "WHERE furnitureRented.rental_transactionID = @transactionID " +
+                "GROUP BY furnitureRented.rental_transactionID, rentalTransaction.transactionID, furnitureRented.quantity";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(stringStatusSelectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@transactionID", order.TransactionID);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if ((int)reader["pendingItems"] > 0)
+                            {
+                                isOpen = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return isOpen;
+        }
+
         #endregion
 
     }

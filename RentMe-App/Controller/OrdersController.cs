@@ -86,6 +86,20 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             return orderDBDAL.GetOrderFurnitureList(currentOrder);
         }
 
+        /// <summary>
+        /// Gets an order's pending status
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public bool GetOrderStatus(Order order)
+        {
+            if (order == null)
+            {
+                throw new Exception("Order does not exist");
+            }
+            return orderDBDAL.GetOrderStatus(order);
+        }
+
         #endregion
     }
 }

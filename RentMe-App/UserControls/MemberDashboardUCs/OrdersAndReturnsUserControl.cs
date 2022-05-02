@@ -157,12 +157,25 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
                 foreach (var order in _orderList)
                 {
+                    order.Open = CalculateStatus(order);
                     orderHistoryDataGridView.Rows.Add(order.TransactionID, order.OrderType, order.OrderDate.ToShortDateString(), order.DueDate.ToShortDateString(), order.DateReturned?.ToShortDateString(), order.OrderTotal.ToString("C"), order.Open);
                 }
             }
             catch (Exception exception)
             {
                 errorMsgLabel.Text = exception.Message;
+            }
+        }
+
+        private bool CalculateStatus(Order order)
+        {
+            if (order.OrderType == "rental")
+            {
+                return _ordersController.GetOrderStatus(order);
+            }
+            else
+            {
+                return false;
             }
         }
 
