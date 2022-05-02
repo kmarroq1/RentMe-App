@@ -272,10 +272,11 @@ namespace RentMe_App.DAL
         {
             var isOpen = false;
 
-            var stringStatusSelectStatement = "SELECT MAX(furnitureRented.quantity) - SUM(furnitureReturned.quantity) as pendingItems " +
+            var stringStatusSelectStatement = "SELECT MAX(furnitureRented.quantity) - SUM(furnitureReturned.quantity) as pendingItems, MAX(returnTransaction.return_date) as return_date " +
                 "FROM furnitureRented " +
                 "JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                 "JOIN rentalTransaction ON rentalTransaction.transactionID = furnitureRented.rental_transactionID " +
+                "JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
                 "WHERE furnitureRented.rental_transactionID = @transactionID " +
                 "GROUP BY furnitureRented.rental_transactionID, rentalTransaction.transactionID, furnitureRented.quantity";
 
@@ -294,6 +295,10 @@ namespace RentMe_App.DAL
                             if ((int)reader["pendingItems"] > 0)
                             {
                                 isOpen = true;
+                            }
+                            else
+                            {
+                                order.DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"];
                             }
                         }
                     }
