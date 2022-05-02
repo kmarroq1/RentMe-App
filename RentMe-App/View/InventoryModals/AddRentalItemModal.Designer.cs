@@ -276,6 +276,7 @@ namespace RentMe_App.View.InventoryModals
             // 
             this.quantityToRentNumericUpDown.Location = new System.Drawing.Point(124, 366);
             this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
+            this.quantityToRentNumericUpDown.ReadOnly = true;
             this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.quantityToRentNumericUpDown.TabIndex = 9;
             this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.QuantityToRentNumericUpDown_ValueChanged);
@@ -305,7 +306,7 @@ namespace RentMe_App.View.InventoryModals
             this.errorMessageLabel.Text = "   ";
             this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // addRentalItemModal
+            // AddRentalItemModal
             // 
             this.ClientSize = new System.Drawing.Size(437, 478);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -315,7 +316,7 @@ namespace RentMe_App.View.InventoryModals
             this.Controls.Add(this.quantityToRentLabel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "addRentalItemModal";
+            this.Name = "AddRentalItemModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe: Rent Furniture";
             this.Load += new System.EventHandler(this.AddRentalItemModal_Load);
