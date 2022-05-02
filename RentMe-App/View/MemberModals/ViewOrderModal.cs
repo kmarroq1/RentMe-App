@@ -113,14 +113,17 @@ namespace RentMe_App.View.EmployeeModals
             {
                 throw new Exception("Must return more than 0 items.");
             }
-            else if (isInCart && returnLimit > 0)
+            else if (isInCart && returnLimit > 0 && enteredValue > returnLimit)
             {
-                errorLabel.Text = "You can return " + returnLimit + " more of this item.";
-                return (int)qtyReturnNumericUpDown.Value;
+               throw new Exception("You can return " + returnLimit + " more of this item.");
             }
             else if (isInCart && returnLimit == 0)
             {
                 throw new Exception("Your return cart has all of these items already.");
+            }
+            else if (isInCart && returnLimit > 0)
+            {
+                return (int)qtyReturnNumericUpDown.Value;
             }
             else if (enteredValue > returnLimit)
             {
