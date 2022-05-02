@@ -1,8 +1,8 @@
 ﻿using RentMe_App.Model;
-using System.Data.SqlClient;
-using System.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace RentMe_App.DAL
 {

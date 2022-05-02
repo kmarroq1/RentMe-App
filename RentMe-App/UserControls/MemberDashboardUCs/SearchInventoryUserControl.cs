@@ -141,7 +141,7 @@ namespace RentMe_App.UserControls
             }
         }
 
-    private void BuildDataGridView(List<FurnitureInventory> inventoryList)
+        private void BuildDataGridView(List<FurnitureInventory> inventoryList)
         {
             searchInventoryDataGridView.DataSource = null;
             searchInventoryDataGridView.Columns.Clear();
@@ -271,7 +271,7 @@ namespace RentMe_App.UserControls
             modal.ShowDialog();
 
             RefreshSearchDataGrid();
-                        
+
         }
 
         private void CheckFurnitureFound(List<FurnitureInventory> inventoryList)

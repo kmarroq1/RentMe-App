@@ -97,7 +97,7 @@ namespace RentMe_App.View.MemberModals
                 if (QuantityNumericUpDown.Value > (_furniture.QuantityRented - _furniture.QuantityReturned))
                     throw new ArgumentException("Quantity exceeds number of rented items.");
 
-                _furniture.Quantity = (int) QuantityNumericUpDown.Value;
+                _furniture.Quantity = (int)QuantityNumericUpDown.Value;
             }
             catch (Exception ex)
             {
@@ -120,7 +120,7 @@ namespace RentMe_App.View.MemberModals
                 SubmitButton.Enabled = false;
                 return;
             }
-            
+
             ErrorMessage.Hide();
             SubmitButton.Enabled = true;
         }

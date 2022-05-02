@@ -25,7 +25,7 @@ namespace RentMe_App.View
         /// Login Instance
         /// </summary>
         public LoginForm loginForm;
-        
+
         private bool _killApp;
 
         #endregion
@@ -53,7 +53,7 @@ namespace RentMe_App.View
         public void Logout()
         {
             _killApp = false;
-            this.loginForm.LogOut();
+            loginForm.LogOut();
             Close();
         }
 
