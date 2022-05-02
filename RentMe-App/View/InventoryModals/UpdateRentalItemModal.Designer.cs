@@ -74,6 +74,7 @@ namespace RentMe_App.View.InventoryModals
             // 
             this.quantityToRentNumericUpDown.Location = new System.Drawing.Point(124, 366);
             this.quantityToRentNumericUpDown.Name = "quantityToRentNumericUpDown";
+            this.quantityToRentNumericUpDown.ReadOnly = true;
             this.quantityToRentNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.quantityToRentNumericUpDown.TabIndex = 38;
             this.quantityToRentNumericUpDown.ValueChanged += new System.EventHandler(this.QuantityToRentNumericUpDown_ValueChanged);
