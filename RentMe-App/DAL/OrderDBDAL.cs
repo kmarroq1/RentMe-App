@@ -22,12 +22,13 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT MAX(rentals.transactionID) as rentalTransactionId, returns.transactionID as returnTransactionId, MAX(returns.employeeID) as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, MAX(returns.return_date) as return_date, rentals.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                 "LEFT JOIN rentalTransaction AS rentals ON furnitureRented.rental_transactionID = rentals.transactionID " +
-                "WHERE memberId = @memberId";
+                "WHERE memberId = @memberId " +
+                "GROUP BY returns.transactionID, rentals.transaction_date, rentals.return_date, rentals.employeeID ";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -117,12 +118,13 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT MAX(rentals.transactionID) as rentalTransactionId, returns.transactionID as returnTransactionId, MAX(returns.employeeID) as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, MAX(returns.return_date) as return_date, rentals.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                 "LEFT JOIN rentalTransaction AS rentals ON furnitureRented.rental_transactionID = rentals.transactionID " +
-                "WHERE memberId = @memberId AND returns.transactionID = @transactionID";
+                "WHERE memberId = @memberId AND returns.transactionID = @transactionID " +
+                "GROUP BY returns.transactionID, rentals.transaction_date, rentals.return_date, rentals.employeeID ";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
