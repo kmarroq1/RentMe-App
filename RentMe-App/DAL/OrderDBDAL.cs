@@ -22,12 +22,13 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT MAX(rentals.transactionID) as rentalTransactionId, returns.transactionID as returnTransactionId, MAX(returns.employeeID) as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, MAX(returns.return_date) as return_date, rentals.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                 "LEFT JOIN rentalTransaction AS rentals ON furnitureRented.rental_transactionID = rentals.transactionID " +
-                "WHERE memberId = @memberId";
+                "WHERE memberId = @memberId " +
+                "GROUP BY returns.transactionID, rentals.transaction_date, rentals.return_date, rentals.employeeID ";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -117,12 +118,13 @@ namespace RentMe_App.DAL
         {
             List<Order> orderList = new List<Order>();
 
-            string returnSelectStatement = "SELECT rentals.transactionID as rentalTransactionId, returns.transactionID as returnTransactionId, returns.employeeID as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, returns.return_date, returns.employeeID " +
+            string returnSelectStatement = "SELECT MAX(rentals.transactionID) as rentalTransactionId, returns.transactionID as returnTransactionId, MAX(returns.employeeID) as employeeID, rentals.transaction_date as date_ordered , rentals.return_date as due_date, MAX(returns.return_date) as return_date, rentals.employeeID " +
                 "FROM returnTransaction AS returns " +
                 "LEFT JOIN furnitureReturned ON returns.transactionID = furnitureReturned.return_transactionID " +
                 "LEFT JOIN furnitureRented ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
                 "LEFT JOIN rentalTransaction AS rentals ON furnitureRented.rental_transactionID = rentals.transactionID " +
-                "WHERE memberId = @memberId AND returns.transactionID = @transactionID";
+                "WHERE memberId = @memberId AND returns.transactionID = @transactionID " +
+                "GROUP BY returns.transactionID, rentals.transaction_date, rentals.return_date, rentals.employeeID ";
 
             using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
             {
@@ -261,6 +263,50 @@ namespace RentMe_App.DAL
             }
             currentOrder.FurnitureList = furnitureList;
             return currentOrder;
+        }
+
+        /// <summary>
+        /// Gets an order's pending status from the database
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public bool GetOrderStatus(Order order)
+        {
+            var isOpen = false;
+
+            var stringStatusSelectStatement = "SELECT MAX(furnitureRented.quantity) - SUM(furnitureReturned.quantity) as pendingItems, MAX(returnTransaction.return_date) as return_date " +
+                "FROM furnitureRented " +
+                "JOIN furnitureReturned ON furnitureReturned.rental_transactionID = furnitureRented.rental_transactionID AND furnitureReturned.furnitureID = furnitureRented.furnitureID " +
+                "JOIN rentalTransaction ON rentalTransaction.transactionID = furnitureRented.rental_transactionID " +
+                "JOIN returnTransaction ON returnTransaction.transactionID = furnitureReturned.return_transactionID " +
+                "WHERE furnitureRented.rental_transactionID = @transactionID " +
+                "GROUP BY furnitureRented.rental_transactionID, rentalTransaction.transactionID, furnitureRented.quantity";
+
+            using (SqlConnection connection = RentMeAppDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(stringStatusSelectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@transactionID", order.TransactionID);
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if ((int)reader["pendingItems"] > 0)
+                            {
+                                isOpen = true;
+                            }
+                            else
+                            {
+                                order.DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"];
+                            }
+                        }
+                    }
+                }
+            }
+            return isOpen;
         }
 
         #endregion

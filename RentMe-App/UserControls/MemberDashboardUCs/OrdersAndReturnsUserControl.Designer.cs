@@ -39,10 +39,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.transactionLabel = new System.Windows.Forms.Label();
             this.ViewAllButton = new System.Windows.Forms.Button();
             this.orderHistoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ViewButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.DateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Open = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bottomTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ViewButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.errorMsgLabel = new System.Windows.Forms.Label();
             this.topTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderHistoryDataGridView)).BeginInit();
             this.bottomTableLayoutPanel.SuspendLayout();
@@ -194,6 +194,51 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.orderHistoryDataGridView.TabIndex = 1;
             this.orderHistoryDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.ToolTipText = "Transaction ID";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "Order Date";
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Due Date";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // DateReturned
+            // 
+            this.DateReturned.HeaderText = "Date Returned";
+            this.DateReturned.Name = "DateReturned";
+            this.DateReturned.ReadOnly = true;
+            this.DateReturned.Width = 160;
+            // 
+            // OrderTotal
+            // 
+            this.OrderTotal.HeaderText = "Order Total";
+            this.OrderTotal.Name = "OrderTotal";
+            this.OrderTotal.ReadOnly = true;
+            this.OrderTotal.Width = 130;
+            // 
+            // Open
+            // 
+            this.Open.HeaderText = "Open";
+            this.Open.Name = "Open";
+            this.Open.ReadOnly = true;
+            // 
             // bottomTableLayoutPanel
             // 
             this.bottomTableLayoutPanel.ColumnCount = 6;
@@ -240,6 +285,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             // errorMsgLabel
             // 
             this.errorMsgLabel.AutoSize = true;
+            this.bottomTableLayoutPanel.SetColumnSpan(this.errorMsgLabel, 3);
             this.errorMsgLabel.ForeColor = System.Drawing.Color.Red;
             this.errorMsgLabel.Location = new System.Drawing.Point(265, 0);
             this.errorMsgLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
@@ -247,51 +293,6 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
             this.errorMsgLabel.Size = new System.Drawing.Size(13, 13);
             this.errorMsgLabel.TabIndex = 2;
             this.errorMsgLabel.Text = "  ";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.ToolTipText = "Transaction ID";
-            // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "Order Date";
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.ReadOnly = true;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "Due Date";
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            // 
-            // DateReturned
-            // 
-            this.DateReturned.HeaderText = "Date Returned";
-            this.DateReturned.Name = "DateReturned";
-            this.DateReturned.ReadOnly = true;
-            this.DateReturned.Width = 160;
-            // 
-            // OrderTotal
-            // 
-            this.OrderTotal.HeaderText = "Order Total";
-            this.OrderTotal.Name = "OrderTotal";
-            this.OrderTotal.ReadOnly = true;
-            this.OrderTotal.Width = 130;
-            // 
-            // Open
-            // 
-            this.Open.HeaderText = "Open";
-            this.Open.Name = "Open";
-            this.Open.ReadOnly = true;
             // 
             // OrdersAndReturnsUserControl
             // 
