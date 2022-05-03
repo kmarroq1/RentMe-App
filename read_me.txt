@@ -16,6 +16,3 @@ Pull from our latest Release version (final iteration)
 Database has been updated - zip file submitted on Moodle contains the updated script
 Member ID 1 and 21 have existing transactions
 ```
-## To-do
-- Member changing feature without logging out will be added
-- Updating customers and employees needs to not take place if no changes are made
