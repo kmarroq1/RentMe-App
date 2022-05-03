@@ -12,7 +12,7 @@ Password: test1234
 ```
 ### Notes
 ```bash
-Pull from our latest Release version (final iteration)
-Database has been updated - zip file submitted on Moodle contains the updated script
+Pull from our latest Release version (v3.0.0)
+Database has been updated - sql file is called cs6232-g5-RentMeScript.sql. Can be found in main directory or in Common>Sql folder
 Member ID 1 and 21 have existing transactions
 ```
