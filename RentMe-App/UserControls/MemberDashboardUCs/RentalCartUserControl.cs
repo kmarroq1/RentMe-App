@@ -207,6 +207,19 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             try
             {
+                switch (MessageBox.Show(
+                    "Are you sure you would like to rent these items?"
+                    , "Rental Confirmation"
+                    , MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.Yes:
+                        break;
+                    case DialogResult.No:
+                        return;
+                    default:
+                        throw new Exception("Exception occurred within confirmation dialog.");
+                }
+
                 if (DaysBetween(dueDateTimePicker.Value.Date, DateTime.Today.Date) == 0)
                 {
                     ShowErrorMessage("You must choose a rental date in the future");
