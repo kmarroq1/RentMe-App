@@ -382,7 +382,6 @@
   <ItemGroup>
     <Content Include="Common\Images\RentMe Logo_smaller.png" />
     <Content Include="Common\QA_Checklist.txt" />
-    <Content Include="Common\Sql\RentMeScript_v3.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -397,6 +396,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Sql\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
