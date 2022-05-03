@@ -142,6 +142,19 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
         {
             try
             {
+                switch (MessageBox.Show(
+                    "Are you sure you would like to return these items?"
+                    , "Return Confirmation"
+                    , MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.Yes:
+                        break;
+                    case DialogResult.No:
+                        return;
+                    default:
+                        throw new Exception("Exception occurred within confirmation dialog.");
+                }
+
                 Cart.Return.TransactionDate = DateTime.Now;
                 
                 Cart.Return.FilterOutEmptyItems();
