@@ -272,7 +272,7 @@ namespace RentMe_App.DAL
         /// <returns></returns>
         public bool GetOrderStatus(Order order)
         {
-            var isOpen = false;
+            var isOpen = true;
 
             var stringStatusSelectStatement = "SELECT MAX(furnitureRented.quantity) - SUM(furnitureReturned.quantity) as pendingItems, MAX(returnTransaction.return_date) as return_date " +
                 "FROM furnitureRented " +
@@ -300,8 +300,10 @@ namespace RentMe_App.DAL
                             }
                             else
                             {
-                                order.DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"];
+                                isOpen = false;
                             }
+                            order.DateReturned = reader["return_date"] == DBNull.Value ? null : (DateTime?)reader["return_date"];
+
                         }
                     }
                 }
