@@ -6023,14 +6023,14 @@ FUR.furnitureID AS 'furniture_id'
 , CNT.times_rented_out AS 'times_rented_out'
 , @total_rentals_var AS 'total_all_rentals'
 , CAST(	(CNT.times_rented_out * 1.00000 / @total_rentals_var * 1.00000) AS DECIMAL(10,2)	) AS 'percentage'
-, CAST(	SUM(CASE WHEN CNT.age_when_rented >= 18 AND CNT.age_when_rented <= 29 THEN 1 ELSE 0 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_in_18_29'
-, CAST(	SUM(CASE WHEN CNT.age_when_rented < 18 OR CNT.age_when_rented > 29 THEN 1 ELSE 0 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_out_18_29'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented >= 18 AND CNT.age_when_rented <= 29 THEN 1.00 ELSE 0.00 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_in_18_29'
+, CAST(	SUM(CASE WHEN CNT.age_when_rented < 18 OR CNT.age_when_rented > 29 THEN 1.00 ELSE 0.00 END) / CNT.times_rented_out AS DECIMAL(10,2)	) AS 'perc_out_18_29'
 FROM (
 	SELECT
     REN.furnitureID
     , TRA.memberID
     , COUNT(TRA.transactionID) OVER (PARTITION BY REN.furnitureID) AS 'times_rented_out'
-	, FLOOR(DATEDIFF(YEAR, TRA.transaction_date, MEM.birthDate) / 365.25) AS 'age_when_rented'
+	, DATEDIFF(YEAR, MEM.birthDate, TRA.transaction_date) AS 'age_when_rented'
     FROM rentalTransaction TRA
     JOIN furnitureRented REN
 		ON TRA.transactionID = REN.rental_transactionID
