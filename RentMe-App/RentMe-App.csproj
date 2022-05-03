@@ -79,7 +79,6 @@
     <Compile Include="Controller\StyleController.cs" />
     <Compile Include="DAL\CategoryDBDAL.cs" />
     <Compile Include="DAL\EmployeeDBDAL.cs" />
-    <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDBDAL.cs" />
     <Compile Include="DAL\InventoryDBDAL.cs" />
     <Compile Include="DAL\LoginDBDAL.cs" />
@@ -383,14 +382,6 @@
   <ItemGroup>
     <Content Include="Common\Images\RentMe Logo_smaller.png" />
     <Content Include="Common\QA_Checklist.txt" />
-    <Content Include="Common\Sql\insert_furniture_part1.sql" />
-    <Content Include="Common\Sql\insert_furniture_part2.sql" />
-    <Content Include="Common\Sql\insert_furniture_part3.sql" />
-    <Content Include="Common\Sql\RegisterMember.sql" />
-    <Content Include="Common\Sql\insert_inventory_part1.sql" />
-    <Content Include="Common\Sql\insert_inventory_part2.sql" />
-    <Content Include="Common\Sql\insert_inventory_part3.sql" />
-    <Content Include="Common\Sql\RegisterMember.sql" />
     <Content Include="Common\Sql\RentMeScript_v3.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

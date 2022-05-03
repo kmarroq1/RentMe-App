@@ -73,7 +73,7 @@ namespace RentMe_App.Model
         /// <param name="percentage">percentage of times or total</param>
         /// <param name="perc_in_18_29">percentage inside 18-29 age</param>
         /// <param name="perc_out_18_29">percentage outside 18-29 age</param>
-        public Report(int furniture_id, string furniture_name, string category, int times_rented_out, int total_all_rentals, 
+        public Report(int furniture_id, string furniture_name, string category, int times_rented_out, int total_all_rentals,
             decimal percentage, decimal perc_in_18_29, decimal perc_out_18_29)
         {
             if (furniture_id < 0)

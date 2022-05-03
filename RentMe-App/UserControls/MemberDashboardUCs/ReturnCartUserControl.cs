@@ -119,7 +119,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
 
             return Cart.Return.GetItemByID(Convert.ToInt32(ReturnsDataGridView.SelectedRows[0].Cells["ID"].Value));
         }
-        
+
         private int ItemDaysUntilDue(FurnitureInventory item)
         {
             return item.DueDate.Date.Subtract(DateTime.Today).Days;
@@ -156,13 +156,13 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 }
 
                 Cart.Return.TransactionDate = DateTime.Now;
-                
+
                 Cart.Return.FilterOutEmptyItems();
-                
+
                 Cart.Return.TransactionID = _ReturnController.CompleteReturn(Cart.Return);
 
                 new ReceiptModal(Cart.Return).ShowDialog();
-                
+
                 Cart.ClearReturns();
                 UpdateElements();
             }
@@ -215,7 +215,7 @@ namespace RentMe_App.UserControls.MemberDashboardUCs
                 ShowErrorMessage(ex.Message);
             }
         }
-        
+
         private void DeleteItemButton_Click(object sender, EventArgs e)
         {
             if (ReturnsDataGridView.SelectedRows.Count != 1)

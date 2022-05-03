@@ -26,7 +26,7 @@ namespace RentMe_App.View.MemberModals
             _transaction = transaction;
 
             InitializeComponent();
-            
+
             Text += "Return Receipt";
 
             TransactionTypeHeaderLabel.Text = "Return";

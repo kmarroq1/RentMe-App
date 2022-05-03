@@ -1,6 +1,5 @@
 ﻿using RentMe_App.Model;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RentMe_App.View.InventoryModals
@@ -48,7 +47,7 @@ namespace RentMe_App.View.InventoryModals
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void HideErrorMessage()

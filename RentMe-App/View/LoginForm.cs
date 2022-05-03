@@ -26,7 +26,7 @@ namespace RentMe_App.View
         public LoginForm()
         {
             InitializeComponent();
-            
+
             loginController = new LoginController();
         }
 

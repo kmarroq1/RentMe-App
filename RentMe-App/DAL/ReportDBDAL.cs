@@ -1,10 +1,6 @@
-﻿using Microsoft.Reporting.WinForms;
-using RentMe_App.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using Report = RentMe_App.Model.Report;
 
 namespace RentMe_App.DAL
 {
